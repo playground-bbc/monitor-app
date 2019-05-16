@@ -7,8 +7,12 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
+use yii\data\ArrayDataProvider;
 use app\models\LoginForm;
 use app\models\ContactForm;
+
+
+use \Codebird\Codebird;
 
 class SiteController extends Controller
 {
@@ -33,6 +37,8 @@ class SiteController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'logout' => ['post'],
+                    'index' => ['GET', 'POST'],
+                    
                 ],
             ],
         ];
@@ -61,7 +67,75 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        Codebird::setConsumerKey(Yii::$app->params['twitter']['api_key'], Yii::$app->params['twitter']['api_secret_key']);
+        $cb = Codebird::getInstance();
+
+        if (!Yii::$app->session->has('oauth_token_twitter')) {
+            $reply = $cb->oauth_requestToken([
+                'oauth_callback' => 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']
+            ]);
+
+              // store the token
+              $cb->setToken($reply->oauth_token, $reply->oauth_token_secret);
+              Yii::$app->session->set('oauth_token_twitter',$reply->oauth_token);
+              Yii::$app->session->set('oauth_token_secret_twitter',$reply->oauth_token_secret);
+              Yii::$app->session->set('oauth_verify_twitter',true);
+              
+
+              // redirect to auth website
+              $auth_url = $cb->oauth_authorize();
+              header('Location: ' . $auth_url);
+              die();
+        }elseif (isset($_GET['oauth_verifier']) && isset($_SESSION['oauth_verify'])) {
+          // verify the token
+          $cb->setToken(Yii::$app->session->get('oauth_token_twitter'), Yii::$app->session->get('oauth_token_secret_twitter'));
+          Yii::$app->session->remove('oauth_verify');
+
+          // get the access token
+          $reply = $cb->oauth_accessToken([
+            'oauth_verifier' => $_GET['oauth_verifier']
+          ]);
+
+          // store the token (which is different from the request token!)
+          Yii::$app->session->set('oauth_token_twitter',$reply->oauth_token);
+          Yii::$app->session->set('oauth_token_secret_twitter',$reply->oauth_token_secret);
+
+          // send to same URL, without oauth GET parameters
+          header('Location: ' . basename(__FILE__));
+          die();
+        }
+        
+        $params = [
+            'q' => '#LG',
+            'lang' => 'es',
+            'result_type' => 'recent',
+            'count' => '20',
+
+        ];
+        $reply = $cb->search_tweets($params, true);
+
+        /*
+            echo "<pre>";
+            var_export((array) $reply->statuses);
+            echo "</pre>";
+            die();
+        */
+
+        $dataProvider = new ArrayDataProvider([
+            'allModels' => (array)$reply->statuses,
+            'pagination' => [
+                'pageSize' => 10,
+            ],
+            'sort' => [
+                'attributes' => ['id','user.name'],
+            ],
+        ]);
+
+        
+
+        return $this->render('index',[
+            'dataProvider' => $dataProvider,
+        ]);
     }
 
     /**
