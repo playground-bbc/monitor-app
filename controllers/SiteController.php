@@ -69,7 +69,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        global $cb;
+        
         Codebird::setConsumerKey(Yii::$app->params['twitter']['api_key'], Yii::$app->params['twitter']['api_secret_key']);
         $cb = Codebird::getInstance();
 
@@ -110,8 +110,8 @@ class SiteController extends Controller
         
 
 
-        if (Yii::$app->request->post('search_twitter')) {
-
+       if (Yii::$app->request->post('search_twitter')) {
+           # code...
             $params = [
                 'q' => Yii::$app->request->post('search_twitter'),
                 'lang' => 'es',
@@ -119,47 +119,17 @@ class SiteController extends Controller
                 'count' => '20',
 
             ];
-            $reply = $cb->search_tweets($params, true); 
-            $dataProvider = new ArrayDataProvider([
-                'allModels' => (array)$reply->statuses,
-                'pagination' => [
-                    'pageSize' => 10,
-                ],
-                'sort' => [
-                    'attributes' => ['id','user.name'],
-                ],
-            ]);
+            $reply = (array) $cb->search_tweets($params, true); 
 
             return $this->render('index',[
-                'dataProvider' => $dataProvider,
+                'reply' => $reply['statuses']
             ]);
-        }
+       }
 
-        $params = [
-            'q' => '#LG',
-            'lang' => 'es',
-            'result_type' => 'recent',
-            'count' => '20',
-
-        ];
-        $reply = $cb->search_tweets($params, true); 
             
 
-        
-
-        $dataProvider = new ArrayDataProvider([
-            'allModels' => (array)$reply->statuses,
-            'pagination' => [
-                'pageSize' => 10,
-            ],
-            'sort' => [
-                'attributes' => ['id','user.name'],
-            ],
-        ]);
-        
-
         return $this->render('index',[
-            'dataProvider' => $dataProvider,
+            'reply' => []
         ]);
     }
 

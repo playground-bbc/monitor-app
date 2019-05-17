@@ -52,6 +52,11 @@ $config = [
         ],
         */
     ],
+    'modules' => [
+        'monitor' => [
+            'class' => 'app\modules\monitor\Module',
+        ],
+    ],
     'params' => $params,
 ];
 

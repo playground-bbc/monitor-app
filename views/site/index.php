@@ -7,6 +7,15 @@ use yii\grid\GridView;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
+use yii\data\ArrayDataProvider;
+
+
+/*
+echo "<pre>";
+var_dump($reply);
+die();
+echo "</pre>";
+*/
 ?>
 <div class="site-index">
 
@@ -36,7 +45,12 @@ use yii\helpers\Url;
 
                 <?php 
                     echo GridView::widget([
-                    'dataProvider' => $dataProvider,
+                    'dataProvider' => new \yii\data\ArrayDataProvider([
+                        'allModels' => (!empty($reply)) ? $reply : [] ,
+                        'sort' => [
+                            'attributes' => ['id','user.name'],
+                        ],
+                    ]),
                     'columns' => [
                         ['class' => 'yii\grid\SerialColumn'],
                         // Simple columns defined by the data contained in $dataProvider.
