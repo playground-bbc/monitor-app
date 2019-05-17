@@ -9,6 +9,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use yii\helpers\Url;
 
 AppAsset::register($this);
 ?>
@@ -38,10 +39,11 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
-            Yii::$app->user->isGuest ? (
+            ['label' => 'Home', 'url' => [Url::to('index.php/site/index')]],
+            ['label' => 'Twitter', 'url' => [Url::to('index.php/monitor/index')]],
+           // ['label' => 'Contact', 'url' => ['/site/contact']],
+            /*
+                Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
                 '<li>'
@@ -53,6 +55,7 @@ AppAsset::register($this);
                 . Html::endForm()
                 . '</li>'
             )
+            */
         ],
     ]);
     NavBar::end();

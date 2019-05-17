@@ -44,18 +44,17 @@ $config = [
         ],
         'db' => $db,
         /*
+        */
         'urlManager' => [
             'enablePrettyUrl' => true,
-            'showScriptName' => false,
+            //'showScriptName' => false,
             'rules' => [
+               // '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+             
+                
             ],
         ],
-        */
-    ],
-    'modules' => [
-        'monitor' => [
-            'class' => 'app\modules\monitor\Module',
-        ],
+        
     ],
     'params' => $params,
 ];
