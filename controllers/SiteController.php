@@ -22,6 +22,7 @@ class SiteController extends Controller
     public function behaviors()
     {
         return [
+            /*
             'access' => [
                 'class' => AccessControl::className(),
                 'only' => ['logout'],
@@ -33,10 +34,11 @@ class SiteController extends Controller
                     ],
                 ],
             ],
+            */
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'logout' => ['post'],
+                    'logout' => ['POST'],
                     'index' => ['GET', 'POST'],
                     
                 ],
@@ -67,6 +69,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        global $cb;
         Codebird::setConsumerKey(Yii::$app->params['twitter']['api_key'], Yii::$app->params['twitter']['api_secret_key']);
         $cb = Codebird::getInstance();
 
@@ -105,6 +108,33 @@ class SiteController extends Controller
           die();
         }
         
+
+
+        if (Yii::$app->request->post('search_twitter')) {
+
+            $params = [
+                'q' => Yii::$app->request->post('search_twitter'),
+                'lang' => 'es',
+                'result_type' => 'recent',
+                'count' => '20',
+
+            ];
+            $reply = $cb->search_tweets($params, true); 
+            $dataProvider = new ArrayDataProvider([
+                'allModels' => (array)$reply->statuses,
+                'pagination' => [
+                    'pageSize' => 10,
+                ],
+                'sort' => [
+                    'attributes' => ['id','user.name'],
+                ],
+            ]);
+
+            return $this->render('index',[
+                'dataProvider' => $dataProvider,
+            ]);
+        }
+
         $params = [
             'q' => '#LG',
             'lang' => 'es',
@@ -112,14 +142,10 @@ class SiteController extends Controller
             'count' => '20',
 
         ];
-        $reply = $cb->search_tweets($params, true);
+        $reply = $cb->search_tweets($params, true); 
+            
 
-        /*
-            echo "<pre>";
-            var_export((array) $reply->statuses);
-            echo "</pre>";
-            die();
-        */
+        
 
         $dataProvider = new ArrayDataProvider([
             'allModels' => (array)$reply->statuses,
@@ -130,7 +156,6 @@ class SiteController extends Controller
                 'attributes' => ['id','user.name'],
             ],
         ]);
-
         
 
         return $this->render('index',[
@@ -168,6 +193,13 @@ class SiteController extends Controller
     public function actionLogout()
     {
         Yii::$app->user->logout();
+       
+        /*
+            Yii::$app->session->remove('oauth_token_twitter');
+            Yii::$app->session->remove('oauth_token_secret_twitter');
+            Yii::$app->session->remove('oauth_verify_twitter');
+        */
+
 
         return $this->goHome();
     }

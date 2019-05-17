@@ -15,7 +15,7 @@ use yii\helpers\Url;
 
         <p class="lead">Get started Social Media.</p>
 
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
+        <p><?= Html::a('Logout', ['logout'], ['class' => 'btn btn-lg btn-success']) ?></p>
     </div>
 
     <div class="body-content">
