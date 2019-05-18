@@ -1,0 +1,10 @@
+class_name: AcceptanceTester
+modules:
+    enabled:
+        - WebDriver:
+            url: http://localhost/monitor-app/alfa/web/index.php
+            browser: chrome
+        - Yii2:
+            part: orm
+            entryScript: index-test.php
+            cleanup: false
