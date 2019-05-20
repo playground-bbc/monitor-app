@@ -3,6 +3,7 @@
 namespace app\modules\monitor\controllers;
 
 use yii\web\Controller;
+use LiveChat\Api\Client as LiveChat;
 
 /**
  * Default controller for the `monitor` module

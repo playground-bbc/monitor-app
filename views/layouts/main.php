@@ -36,11 +36,17 @@ AppAsset::register($this);
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
-    echo Nav::widget([
+    
+    
+    
+
+  echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Home', 'url' => ['index']],
+            ['label' => 'Default', 'url' => ['/monitor/default']],
             ['label' => 'Twitter', 'url' => ['/monitor/twitter']],
+            ['label' => 'Scraping', 'url' => ['/monitor/scraping']],
            // ['label' => 'Contact', 'url' => ['/site/contact']],
             /*
                 Yii::$app->user->isGuest ? (
@@ -58,6 +64,8 @@ AppAsset::register($this);
             */
         ],
     ]);
+
+
     NavBar::end();
     ?>
 

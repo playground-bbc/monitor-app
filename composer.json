@@ -19,7 +19,9 @@
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
         "jublonet/codebird-php": "^3.1",
-        "facebook/webdriver": "^1.6"
+        "facebook/webdriver": "^1.6",
+        "livechat/api-client-php": "^1.1",
+        "kartik-v/yii2-widget-select2": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
