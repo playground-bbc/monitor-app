@@ -22,7 +22,6 @@ class SiteController extends Controller
     public function behaviors()
     {
         return [
-            /*
             'access' => [
                 'class' => AccessControl::className(),
                 'only' => ['logout'],
@@ -34,7 +33,6 @@ class SiteController extends Controller
                     ],
                 ],
             ],
-            */
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -69,10 +67,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        
-        return $this->render('index',[
-            'reply' => []
-        ]);
+        return $this->render('index');
     }
 
     /**
@@ -105,14 +100,6 @@ class SiteController extends Controller
     public function actionLogout()
     {
         Yii::$app->user->logout();
-       
-        /*
-            Yii::$app->session->remove('oauth_token_twitter');
-            Yii::$app->session->remove('oauth_token_secret_twitter');
-            Yii::$app->session->remove('oauth_verify_twitter');
-        */
-
-
         return $this->goHome();
     }
 

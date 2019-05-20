@@ -1,6 +1,5 @@
 <?php
-
-namespace app\controllers;
+namespace app\modules\monitor\controllers;
 
 use Yii;
 use yii\filters\AccessControl;
@@ -13,7 +12,7 @@ use app\models\TwitterApi;
 
 use \Codebird\Codebird;
 
-class MonitorController extends Controller
+class TwitterController extends Controller
 {
    
     /**

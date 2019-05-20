@@ -39,8 +39,8 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Home', 'url' => [Url::to('/site/index')]],
-            ['label' => 'Twitter', 'url' => [Url::to('/monitor/index')]],
+            ['label' => 'Home', 'url' => ['index']],
+            ['label' => 'Twitter', 'url' => ['/monitor/twitter']],
            // ['label' => 'Contact', 'url' => ['/site/contact']],
             /*
                 Yii::$app->user->isGuest ? (
