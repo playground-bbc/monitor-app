@@ -10,6 +10,10 @@ use yii\helpers\Html;
         <code><?= __FILE__ ?></code>
     </p>
     <p>
-        <?= $this->render('_form',['model' => $model])?>
+        <?= $this->render('_form',[
+	        'model' => $model,
+	        'categories' => $categories
+	      ])
+	    ?>
     </p>
 </div>

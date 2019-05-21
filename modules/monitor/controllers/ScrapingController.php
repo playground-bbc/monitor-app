@@ -7,6 +7,7 @@ use yii\web\Controller;
 use yii\web\Response;
 
 use app\models\WebPage;
+use app\models\Category;
 
 
 
@@ -30,7 +31,28 @@ class ScrapingController extends Controller
     public function actionCreate()
     {
       $model = new WebPage();
-       return $this->render('create',['model' => $model]);
+      $categories = Category::find()->all();
+
+      if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+        return $this->redirect(['view','id' => $model->id]);
+
+      }
+
+      return $this->render('create',[
+        'model' => $model,
+        'categories' => $categories
+      ]);
+    }
+
+
+    /**
+     * Renders the view view for the module
+     * @return string
+     */
+    public function actionView()
+    {
+       return $this->render('view');
     }
 
 }

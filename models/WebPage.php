@@ -33,7 +33,26 @@ class WebPage extends \yii\db\ActiveRecord
             [['name', 'url_web_page', 'category_id'], 'required'],
             [['category_id'], 'integer'],
             [['name'], 'string', 'max' => 100],
-            [['url_web_page'], 'string', 'max' => 255],
+           // [['url_web_page'], 'string', 'max' => 255],
+            [['url_web_page'], 'url'],
+            [['url_web_page'], 'unique'],
+            ['url_web_page', function ($attribute,$model) {
+
+                $handle = curl_init($this->url_web_page);
+                curl_setopt($handle,  CURLOPT_RETURNTRANSFER, TRUE);
+                /* Get the HTML or whatever is linked in $url. */
+                $response = curl_exec($handle);
+
+                /* Check for 404 (file not found). */
+                $httpCode = curl_getinfo($handle, CURLINFO_HTTP_CODE);
+
+                if ($httpCode == 404) {
+
+                    $this->addError($attribute, 'Form must contain a file or message.');
+
+                }
+
+            }],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['category_id' => 'id']],
         ];
     }
