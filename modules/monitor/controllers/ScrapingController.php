@@ -6,8 +6,8 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
 
-use app\models\WebPage;
-use app\models\Category;
+use app\models\Resource;
+use app\models\TypeResource;
 
 
 
@@ -30,8 +30,8 @@ class ScrapingController extends Controller
      */
     public function actionCreate()
     {
-      $model = new WebPage();
-      $categories = Category::find()->all();
+      $model = new Resource();
+      $categories = TypeResource::find()->all();
 
       if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
