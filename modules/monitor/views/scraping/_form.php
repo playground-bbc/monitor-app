@@ -16,7 +16,7 @@ $moduleName = $this->context->action->id;
 $this->title = 'Crear categoría';
 $this->params['breadcrumbs'][] = ['label' => $moduleName, 'Categorias', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
-$data = ArrayHelper::map($categories, 'id', 'name');
+$data = ArrayHelper::map($typeResource, 'id', 'name');
 ?>
 <div class="site-web">
 
@@ -25,7 +25,7 @@ $data = ArrayHelper::map($categories, 'id', 'name');
      
         'layout' => 'horizontal']); ?>
     <?php 
-			echo $form->field($model, 'typeResourceId')->widget(Select2::classname(), [
+			echo $form->field($resource, 'typeResourceId')->widget(Select2::classname(), [
 		   'data' => $data,
 		    'options' => ['placeholder' => 'Select a state ...'],
 		    'pluginOptions' => [
@@ -34,8 +34,8 @@ $data = ArrayHelper::map($categories, 'id', 'name');
 		]);
 
 		 ?>
-        <?= $form->field($model, 'name') ?>
-        <?= $form->field($model, 'url') ?>
+        <?= $form->field($resource, 'name') ?>
+        <?= $form->field($resource, 'url') ?>
         
     
         <div class="form-group">

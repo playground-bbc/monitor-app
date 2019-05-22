@@ -10,19 +10,34 @@ use yii\base\Model;
  */
 class SearchForm extends Model
 {
-    public $text_search;
-    public $query_search = [
-        'and' => '&',
-        'or' => '<>'
-    ];
+    
     public $keywords = [];
+    public $web_resource = [];
     public $negative_words = [
         'malo',
         'terrible'
     ];
+
+    public $social_resources = [
+        'Facebook',
+        'Twitter',
+        'web Page'
+    ];
+
+    public $query_search;
+    /*
+    public $query_search = [
+        'and' => '&',
+        'or' => '<>'
+    ];
+
+    */
+    
+   
     public $start_date;
     public $end_date;
 
+    public $text_search;
 
     /**
      * @return array the validation rules.

@@ -8,6 +8,10 @@ use yii\helpers\Html;
     <p>
         <?= Html::a('<i class="fa fa-link"></i> New Url',['scraping/create'], ['class' => 'btn btn-info', 'title' => 'New Url']) ?>
     </p>
+
+    <p>
+    	<?= $this->render('_search',['form_model' => $form_model]); ?>
+    </p>
     
     <p>
         You may customize this page by editing the following file:<br>

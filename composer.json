@@ -21,7 +21,9 @@
         "jublonet/codebird-php": "^3.1",
         "facebook/webdriver": "^1.6",
         "livechat/api-client-php": "^1.1",
-        "kartik-v/yii2-widget-select2": "dev-master"
+        "kartik-v/yii2-widget-select2": "dev-master",
+        "fabpot/goutte": "^3.2",
+        "faryshta/yii2-jquery-tagsinput": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

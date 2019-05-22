@@ -11,8 +11,8 @@ use yii\helpers\Html;
     </p>
     <p>
         <?= $this->render('_form',[
-	        'model' => $model,
-	        'categories' => $categories
+	        'resource' => $resource,
+	        'typeResource' => $typeResource
 	      ])
 	    ?>
     </p>
