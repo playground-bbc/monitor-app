@@ -28,7 +28,7 @@ $moduleName = $this->context->action->id;
 
         <div class="row">
             <div class="col-lg-12">
-                <?= Html::beginForm(Url::to('index'),'post',['class' => 'form-group']); ?>
+                <?= Html::beginForm(Url::to(['index']),'post',['class' => 'form-group']); ?>
                 <?= Html::input('search', 'search_twitter','',['class' => 'form-control']); ?>
                 <div class="form-group" style="padding-top: 10px ">
                     <?= Html::submitButton('Buscar', ['class' => 'btn btn-primary']); ?>
