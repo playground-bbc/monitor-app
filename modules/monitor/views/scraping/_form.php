@@ -25,7 +25,7 @@ $data = ArrayHelper::map($categories, 'id', 'name');
      
         'layout' => 'horizontal']); ?>
     <?php 
-			echo $form->field($model, 'category_id')->widget(Select2::classname(), [
+			echo $form->field($model, 'typeResourceId')->widget(Select2::classname(), [
 		   'data' => $data,
 		    'options' => ['placeholder' => 'Select a state ...'],
 		    'pluginOptions' => [
@@ -35,7 +35,7 @@ $data = ArrayHelper::map($categories, 'id', 'name');
 
 		 ?>
         <?= $form->field($model, 'name') ?>
-        <?= $form->field($model, 'url_web_page') ?>
+        <?= $form->field($model, 'url') ?>
         
     
         <div class="form-group">
