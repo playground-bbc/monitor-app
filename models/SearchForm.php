@@ -19,9 +19,7 @@ class SearchForm extends Model
     ];
 
     public $social_resources = [
-        'Facebook',
-        'Twitter',
-        'web Page'
+        'TwitterApi' =>'Twitter',
     ];
 
     public $query_search;
@@ -46,7 +44,7 @@ class SearchForm extends Model
     {
         return [
             // text_search  are required
-            [['text_search'], 'required'],
+            [['text_search','keywords','web_resource'], 'required'],
             // text_search has to be a valid string
             [['text_search'], 'string'],
             // start date needs to be entered correctly
@@ -66,6 +64,9 @@ class SearchForm extends Model
             'keywords' => 'Palabras Claves',
         ];
     }
+
+
+
 
     /**
      * Sends an email to the specified email address using the information collected by this model.

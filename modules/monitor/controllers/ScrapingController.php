@@ -9,8 +9,9 @@ use yii\web\Response;
 use app\models\Resource;
 use app\models\TypeResource;
 use app\models\SearchForm;
+use app\models\Crawler;
 
-use Goutte\Client;
+
 
 
 
@@ -24,10 +25,17 @@ class ScrapingController extends Controller
     public function actionIndex()
     {
       $form_model = new SearchForm();
+      $model = new Crawler();
 
       if ($form_model->load(Yii::$app->request->post())) {
-          var_dump(Yii::$app->request->post());
-          die();
+         
+        $model->keywords = $form_model->keywords;
+        $model->web_resource = $form_model->web_resource;
+        var_dump($model->web_resource);
+        die();
+
+
+        
         //return $this->redirect(['view','id' => $resource->id]);
 
       }
@@ -65,31 +73,6 @@ class ScrapingController extends Controller
      */
     public function actionView($id)
     {
-      /*
-      $resource = Resource::findOne($id);
-      $client = new Client();
-      $crawler = $client->request('GET', 'https://www.yiiframework.com/doc/guide/2.0/en/db-migrations');
-       //var_dump($crawler);
-       //die();
-    
-      $name = $resource->name;
-      $searchword = "Tim";
-      //$out = [];
-      //$out = $crawler->evaluate("//p[text()[contains(.,".$searchword .")]]")->each(function ($node) use($searchword)
-      $out = $crawler->evaluate("//p[text()[contains(.,".$searchword .")]]")->each(function ($node) use($searchword)
-      {
-        if (preg_match("/".$searchword."/i",$node->text())) {
-          return $node->text();
-        }
-        
-      });
-     // $stripped = preg_replace('/\s+/', ' ', $out[0]);
-      echo "<pre>";
-      var_dump(array_filter($out));
-      echo "</pre>";
-      die();
-      */
-
        
       return $this->render('view');
     }
