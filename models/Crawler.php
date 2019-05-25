@@ -80,7 +80,10 @@ class Crawler extends Model
     {
         $rule = [
             'text_paragraph' => "//p[text()[contains(.,".$word .")]]",
+            'text_title_h1' => "//h1[text()[contains(.,".$word .")]]",
         ];
+
+        return (isset($rule[$type_rule])) ? $rule[$type_rule] : null ;
     }
 
 

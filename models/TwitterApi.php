@@ -30,7 +30,6 @@ class TwitterApi extends Model
         $reply = $this->twitter->oauth_requestToken([
           'oauth_callback' => 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']
         ]);
-        
         // store the token
         $this->twitter->setToken($reply->oauth_token, $reply->oauth_token_secret);
         Yii::$app->session->set('oauth_token_twitter',$reply->oauth_token);
