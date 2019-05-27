@@ -29,14 +29,10 @@ class ScrapingController extends Controller
 
       if ($form_model->load(Yii::$app->request->post())) {
          
-        $model->keywords = $form_model->keywords;
-        $model->web_resource = $form_model->web_resource;
-        var_dump($model->web_resource);
-        die();
 
 
         
-        //return $this->redirect(['view','id' => $resource->id]);
+        return $this->redirect(['view','id' => $resource->id]);
 
       }
 

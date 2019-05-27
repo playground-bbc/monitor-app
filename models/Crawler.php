@@ -39,11 +39,7 @@ class Crawler extends Model
 
     public function scraping()
     {
-        foreach ($this->web_resource as $key => $value) {
-            $crawler = $this->_client->request('GET', $value);
-            $this->data[] = $value;
-        }
-        return $this->data;
+      $crawler = $this->_client->request('GET','https://www.yiiframework.com/doc/guide/2.0/en/db-migrations');
        /*
       $resource = Resource::findOne($id);
       $client = new Client();
@@ -68,11 +64,13 @@ class Crawler extends Model
       echo "</pre>";
       die();
       */
+      return $this->data;
     }
 
-    public function get_content($crawler, $patterns = [''])
+    public function get_content($crawler, $value)
     {
         $out = [];
+
 
     }
 
