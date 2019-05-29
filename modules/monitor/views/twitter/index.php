@@ -6,8 +6,15 @@ use yii\helpers\Url;
 use yii\data\ArrayDataProvider;
 
 $moduleName = $this->context->action->id;
+$word = Yii::$app->session->get('key');
+ /*
+ */
+ if (\Yii::$app->request->get('page')) {
+  $reply = \Yii::$app->cache->get(Yii::$app->session->get('key'));
+  $reply = $reply['statuses'];  
 
-//var_dump($moduleName);
+}
+
  ?>
 
 <div class="monitor-default-index">
@@ -29,7 +36,7 @@ $moduleName = $this->context->action->id;
         <div class="row">
             <div class="col-lg-12">
                 <?= Html::beginForm(Url::to(['index']),'post',['class' => 'form-group']); ?>
-                <?= Html::input('search', 'search_twitter','',['class' => 'form-control']); ?>
+                <?= Html::input('search', 'search_twitter',$word,['class' => 'form-control']); ?>
                 <div class="form-group" style="padding-top: 10px ">
                     <?= Html::submitButton('Buscar', ['class' => 'btn btn-primary']); ?>
                 </div>
@@ -44,9 +51,17 @@ $moduleName = $this->context->action->id;
                     echo GridView::widget([
                     'dataProvider' => new \yii\data\ArrayDataProvider([
                         'allModels' => (!empty($reply)) ? $reply : [] ,
+                        //'allModels' => $reply,
+                        //'key' => 'id',
                         'sort' => [
                             'attributes' => ['id','user.name'],
                         ],
+                        /*
+                        'pagination' => [
+                                'pageSize' => 10
+                            
+                        ],
+                        */
                     ]),
                     'columns' => [
                         ['class' => 'yii\grid\SerialColumn'],
@@ -57,6 +72,7 @@ $moduleName = $this->context->action->id;
                             'format' => 'image',
                             'value'=>function($data) { return $data['user']['profile_image_url']; },
                         ],
+                       // 'entities.media.urls.url',
                         'created_at',
                         'user.name',
                         'text'

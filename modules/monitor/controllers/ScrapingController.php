@@ -32,7 +32,7 @@ class ScrapingController extends Controller
 
 
         
-        return $this->redirect(['view','id' => $resource->id]);
+       // return $this->redirect(['view','id' => $resource->id]);
 
       }
 
@@ -52,7 +52,7 @@ class ScrapingController extends Controller
 
       if ($resource->load(Yii::$app->request->post()) && $resource->save()) {
 
-        return $this->redirect(['view','id' => $resource->id]);
+        return $this->redirect('index');
 
       }
 

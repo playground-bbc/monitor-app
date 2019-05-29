@@ -44,7 +44,7 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Home', 'url' => ['index']],
-            ['label' => 'Default', 'url' => ['/monitor/default']],
+           // ['label' => 'Default', 'url' => ['/monitor/default']],
             ['label' => 'Twitter', 'url' => ['/monitor/twitter']],
             ['label' => 'Scraping', 'url' => ['/monitor/scraping']],
            // ['label' => 'Contact', 'url' => ['/site/contact']],

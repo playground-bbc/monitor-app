@@ -7,6 +7,7 @@ use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use yii\data\ArrayDataProvider;
+use yii\caching\ArrayCache;
 use app\models\TwitterApi;
 
 
@@ -23,6 +24,7 @@ class TwitterController extends Controller
     {
      
       $twitterApi = new TwitterApi();
+
         if (!\Yii::$app->session->has('oauth_token_twitter')) {
               $twitterApi->authenticate();
         }elseif (isset($_GET['oauth_verifier']) && isset($_SESSION['oauth_verify'])) {
@@ -31,22 +33,29 @@ class TwitterController extends Controller
 
        if (\Yii::$app->request->post('search_twitter')) {
            # code...
+            $key = \Yii::$app->request->post('search_twitter');
+            Yii::$app->session->set('key',$key);
             $params = [
-                'q' => Yii::$app->request->post('search_twitter'),
+                'q' => $key,
                 'lang' => 'es',
                 'result_type' => 'recent',
                 'count' => '20',
 
             ];
-            $reply = $twitterApi->search_tweets($params, true); 
+             
+            /*
+            $reply = Yii::$app->cache->getOrSet($key, function () use ($twitterApi,$params) {
+                return $twitterApi->search_tweets($params, true);
+            });
+            */
+            $reply = $twitterApi->search_tweets($params, true);
+
             return $this->render('index',[
                 'reply' => $reply['statuses']
             ]);
-        }
 
-        
-       
-       return $this->render('index');
+        }
+      return $this->render('index');
     }
 
     public function actionLogout()

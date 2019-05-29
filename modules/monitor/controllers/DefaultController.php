@@ -32,8 +32,8 @@ class DefaultController extends Controller
 		$client->setClient($guzzleClient);
 		$type = 'GET';
 		$urls = [
-			'pizza'=> 'http://localhost/pizza/',
-		//	'menu'=>'http://localhost/pizza/menu.html'
+			'playground2'=> 'http://localhost/playground2/',
+			'hola-mundo'=>'http://localhost/playground2/index.php/2019/05/13/hola-mundo/'
 		];
         /*$crawler = $client->request($type,$url);*/
         
@@ -41,12 +41,13 @@ class DefaultController extends Controller
         //$product = $crawler->filter('#section-counter');
 
 		//$status_code = $client->getResponse()->getStatus();
-		$searchword = ['Italian Cuizine','Pizza'];
+		$searchword = ['Edítala','tu primera entrada'];
 		$rules = [
         	'h1'=> "//h1[text()]",
-        	//'h2'=>"//h2[text()]",
-        	//'h3'=>"//h3[text()]",
-        	//'h4'=>"//p[text()]",
+        	'h2'=>"//h2[text()]",
+        	'h3'=>"//h3[text()]",
+        	'h4'=>"//h4[text()]",
+        	'p'=>"//p[text()]",
         	//'text_paragraph' => "//p[text()[contains(.,".$word .")]]",
             //'text_title_h1' => "//h1[text()[contains(.,".$word .")]]",
         ];
@@ -82,10 +83,10 @@ class DefaultController extends Controller
         				foreach ($rules as $title => $rule) {
 	        					$node[$domain][$word][$title] = $crawler->filterXpath($rule)->each(function (Crawler $node,$i) use ($searchword,$word) {
 							    $text = $node->text();
-							    similar_text($word, $text, $percent);
+							    $isSubstring = $this->isSubstring($word, $text);
 							    return ['id' => $node->extract(['id']),
 							    		'_text' => $text,
-							    		'percent' => $percent
+							    		'isSubstring' => ($isSubstring == -1) ? false : true
 									];
 							});
 	        			}
@@ -155,74 +156,28 @@ class DefaultController extends Controller
     }
 
 
-    function get_corpus_index($corpus = array(), $separator=' ') {
+    // Returns true if s1 is substring of s2 
+	function isSubstring($s1, $s2) 
+	{ 
+		$M = strlen($s1); 
+		$N = strlen($s2); 
 
-	    $dictionary = array();
-	    $doc_count = array();
+		// A loop to slide 
+		// pat[] one by one 
+		for ($i = 0; $i <= $N - $M; $i++) 
+		{ 
+			$j = 0; 
 
-	    foreach($corpus as $doc_id => $doc) {
-	        $terms = explode($separator, $doc);
-	        $doc_count[$doc_id] = count($terms);
+			// For current index i, 
+			// check for pattern match 
+			for (; $j < $M; $j++) 
+				if ($s2[$i + $j] != $s1[$j]) 
+					break; 
 
-	        // tf–idf, short for term frequency–inverse document frequency, 
-	        // according to wikipedia is a numerical statistic that is intended to reflect 
-	        // how important a word is to a document in a corpus
+			if ($j == $M) 
+				return $i; 
+		} 
 
-	        foreach($terms as $term) {
-	            if(!isset($dictionary[$term])) {
-	                $dictionary[$term] = array('document_frequency' => 0, 'postings' => array());
-	            }
-	            if(!isset($dictionary[$term]['postings'][$doc_id])) {
-	                $dictionary[$term]['document_frequency']++;
-	                $dictionary[$term]['postings'][$doc_id] = array('term_frequency' => 0);
-	            }
-
-	            $dictionary[$term]['postings'][$doc_id]['term_frequency']++;
-	        }
-
-	        //from http://phpir.com/simple-search-the-vector-space-model/
-
-	    }
-
-	    return array('doc_count' => $doc_count, 'dictionary' => $dictionary);
-	}
-
-	function get_similar_documents($query='', $corpus=array(), $separator=' '){
-
-	    $similar_documents=array();
-
-	    if($query!=''&&!empty($corpus)){
-
-	        $words=explode($separator,$query);
-	        $corpus= $this->get_corpus_index($corpus);
-	        $doc_count=count($corpus['doc_count']);
-
-	        foreach($words as $word) {
-	            //$entry = $corpus['dictionary'][$word];
-	            $entry = (isset($corpus['dictionary'][$word])) ? $corpus['dictionary'][$word] : '';
-	            foreach($entry['postings'] as $doc_id => $posting) {
-
-	                //get term frequency–inverse document frequency
-	                $score=$posting['term_frequency'] * log($doc_count + 1 / $entry['document_frequency'] + 1, 2);
-
-	                if(isset($similar_documents[$doc_id])){
-	                    $similar_documents[$doc_id]+=$score;
-	                }
-	                else{
-	                    $similar_documents[$doc_id]=$score;
-	                }
-
-	            }
-	        }
-
-	        // length normalise
-	        foreach($similar_documents as $doc_id => $score) {
-	            $similar_documents[$doc_id] = $score/$corpus['doc_count'][$doc_id];
-	        }
-
-	        // sort fro  high to low
-	        arsort($similar_documents);
-	    }   
-	    return $similar_documents;
-	}
+		return -1; 
+	} 
 }
