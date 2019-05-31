@@ -12,21 +12,21 @@ class m190521_144424_resource extends Migration
      */
     public function up()
     {
-        $tableOptions = null;
+        $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
         if ($this->db->driverName === 'mysql') {
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
         }
 
         $this->createTable('{{%resource}}',[
-            'id'        => $this->primaryKey(),
-            'name'      => $this->string(),
-            'url'       => $this->string(),
+            'id'             => $this->primaryKey(),
+            'name'           => $this->string(),
+            'url'            => $this->string(),
             'typeResourceId' => $this->integer()->notNull(),
-            'status'    => $this->smallInteger(1)->defaultValue(1),
-            'createdAt' => $this->integer(),
-            'updatedAt' => $this->integer(),
-            'createdBy' => $this->integer(),
-            'updatedBy' => $this->integer(),
+            'status'         => $this->smallInteger(1)->defaultValue(1),
+            'createdAt'      => $this->integer(),
+            'updatedAt'      => $this->integer(),
+            'createdBy'      => $this->integer(),
+            'updatedBy'      => $this->integer(),
 
         ],$tableOptions);
 
@@ -43,14 +43,14 @@ class m190521_144424_resource extends Migration
 
         // creates index for column `typeResourceId`
         $this->createIndex(
-            'idx-type-resourceId',
+            'idx-type-ResourceId',
             'resource', // nombre de la tabla relacionada
             'typeResourceId'
         );
 
         // add foreign key for table `resource`
         $this->addForeignKey(
-            'fk-type-resourceId',
+            'fk-type-typeResourceId',
             'resource', 
             'typeResourceId',
             'type_resource',
@@ -69,18 +69,4 @@ class m190521_144424_resource extends Migration
         $this->dropTable('{{%resource}}');
     }
 
-    /*
-    // Use up()/down() to run migration code without a transaction.
-    public function up()
-    {
-
-    }
-
-    public function down()
-    {
-        echo "m190521_144424_resource cannot be reverted.\n";
-
-        return false;
-    }
-    */
 }

@@ -23,19 +23,19 @@ class SearchForm extends Model
     ];
 
     public $query_search;
-    /*
-    public $query_search = [
-        'and' => '&',
-        'or' => '<>'
-    ];
-
-    */
+   
     
    
     public $start_date;
     public $end_date;
-
     public $text_search;
+
+
+    // live -chat escenario //
+
+    public $product_family = [];
+    public $product_catyegory = [];
+    public $product_model = [];
 
     /**
      * @return array the validation rules.
@@ -44,12 +44,21 @@ class SearchForm extends Model
     {
         return [
             // text_search  are required
-            [['text_search','keywords','web_resource'], 'required'],
+            [['text_search','keywords','web_resource'], 'required', 'on' => 'scraping'],
+            [['text_search','keywords','product_family','product_catyegory','product_model'], 'required', 'on' => 'live-chat'],
             // text_search has to be a valid string
             [['text_search'], 'string'],
             // start date needs to be entered correctly
             [['start_date','end_date'], 'date'],
         ];
+    }
+
+    public function scenarios()
+    {
+        $scenarios = parent::scenarios();
+        $scenarios['scraping'] = ['text_search','keywords','web_resource'];
+        $scenarios['live-chat'] = ['text_search','keywords','product_family','product_catyegory','product_model'];
+        return $scenarios;
     }
 
     /**

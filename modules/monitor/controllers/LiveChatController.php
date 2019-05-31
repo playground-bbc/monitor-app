@@ -4,6 +4,7 @@ namespace app\modules\monitor\controllers;
 
 use yii;
 use yii\web\Controller;
+use app\models\SearchForm;
 use LiveChat\Api\Client as LiveChat;
 
 
@@ -18,6 +19,8 @@ class LiveChatController extends Controller
      */
     public function actionIndex()
     {
+        $form_model = new SearchForm();
+        $form_model->scenario = 'live-chat';
     	$LiveChatAPI = new LiveChat(Yii::$app->params['liveChat']['apiLogin'], Yii::$app->params['liveChat']['apiKey']);
 		
     	$params = [
@@ -29,11 +32,8 @@ class LiveChatController extends Controller
     	];
 		$tickets = $LiveChatAPI->tickets->get($params);
 		$ticketsId = $LiveChatAPI->tickets->getSingleTicket('Q0EYH');
-		echo "<pre>";
-		print_r($tickets);
-		die();
-		echo "</pre>";
-    	return $this->render('index');
+		
+    	return $this->render('index',['form_model' => $form_model]);
     }	
  
 }

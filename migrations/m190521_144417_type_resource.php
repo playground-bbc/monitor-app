@@ -3,7 +3,7 @@
 use yii\db\Migration;
 
 /**
- * Class m190521_144417_type_resource
+ * Class m190521_144417_TypeResource
  */
 class m190521_144417_type_resource extends Migration
 {
@@ -12,7 +12,7 @@ class m190521_144417_type_resource extends Migration
      */
     public function up()
     {
-        $tableOptions = null;
+        $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
         if ($this->db->driverName === 'mysql') {
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
         }
@@ -54,7 +54,7 @@ class m190521_144417_type_resource extends Migration
 
     public function down()
     {
-        echo "m190521_144417_type_resource cannot be reverted.\n";
+        echo "m190521_144417_TypeResource cannot be reverted.\n";
 
         return false;
     }

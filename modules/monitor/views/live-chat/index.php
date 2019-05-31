@@ -9,4 +9,7 @@
         You may customize this page by editing the following file:<br>
         <code><?= __FILE__ ?></code>
     </p>
+    <p>
+        <?=  $this->render('_form',['form_model' => $form_model]); ?>
+    </p>
 </div>
