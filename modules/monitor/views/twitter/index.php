@@ -54,7 +54,7 @@ $word = Yii::$app->session->get('key');
                         //'allModels' => $reply,
                         //'key' => 'id',
                         'sort' => [
-                            'attributes' => ['id','user.name'],
+                            'attributes' => ['id','user.screen_name'],
                         ],
                         /*
                         'pagination' => [
@@ -74,7 +74,11 @@ $word = Yii::$app->session->get('key');
                         ],
                        // 'entities.media.urls.url',
                         'created_at',
-                        'user.name',
+                        [
+                            'header'=> Yii::t('app', 'Username'),
+                            'value' => 'user.screen_name'
+                        ],
+                        
                         'text'
                     ],
                 ]);
