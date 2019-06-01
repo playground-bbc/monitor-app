@@ -1,5 +1,11 @@
 <?php
 
+// path to folder flat archives
+$s = DIRECTORY_SEPARATOR;
+
+Yii::setAlias('@live-chat', dirname(dirname(__DIR__)) . "{$s}monitor-app{$s}monitor-app-filebase{$s}live-chat");
+Yii::setAlias('@backup', dirname(dirname(__DIR__)) . "{$s}monitor-app{$s}monitor-app-filebase{$s}backup");
+
 return [
     'twitter' => [
     	'api_key' => 'o1Ah41T1AhjUs9e2xYJQMuCaE',

@@ -34,22 +34,11 @@ $data = [
     // extra configuration
 	]); ?>
 
-	<?= $form->field($form_model, 'web_resource[]')->label(false)->widget(Select2::className(), [
-	        'data' => ArrayHelper::map(Resource::find()->all(), 'url', 'name'),
-	        'options' => [
-	            'multiple' => true,
-	            'placeholder' => 'Choose tag ...',
-	        ],
-	        'pluginOptions' => [
-	            'tags' => true
-	        ]
-	    ]);  
-    ?>
 
 
-	<?= $form->field($form_model, 'social_resources[]')->listBox($form_model->social_resources,['multiple' => 'true']); ?>
+	<?= $form->field($form_model, 'text_search')->textarea(['rows' => 2]); ?>
 
-	<?php $form->field($form_model, 'query_search')->textarea(['rows'=>2,'cols'=>5]); ?>
+	
 
     <div class="form-group">
         <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
