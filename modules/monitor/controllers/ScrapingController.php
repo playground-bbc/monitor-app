@@ -2,14 +2,14 @@
 namespace app\modules\monitor\controllers;
 
 use Yii;
-use yii\filters\AccessControl;
-use yii\web\Controller;
 use yii\web\Response;
+use yii\web\Controller;
+use yii\filters\AccessControl;
 
-use app\models\Resource;
-use app\models\TypeResource;
-use app\models\SearchForm;
 use app\models\Crawler;
+use app\models\Resource;
+use app\models\SearchForm;
+use app\models\TypeResource;
 
 
 

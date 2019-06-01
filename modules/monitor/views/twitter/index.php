@@ -1,20 +1,16 @@
 <?php 
-use yii\grid\GridView;
-use yii\helpers\Html;
 use yii\helpers\Url;
-
+use yii\helpers\Html;
+use yii\grid\GridView;
 use yii\data\ArrayDataProvider;
 
 $moduleName = $this->context->action->id;
 $word = Yii::$app->session->get('key');
- /*
- */
- if (\Yii::$app->request->get('page')) {
-  $reply = \Yii::$app->cache->get(Yii::$app->session->get('key'));
-  $reply = $reply['statuses'];  
 
+if (\Yii::$app->request->get('page')) {
+    $reply = \Yii::$app->cache->get(Yii::$app->session->get('key'));
+    $reply = $reply['statuses'];  
 }
-
  ?>
 
 <div class="monitor-default-index">
@@ -47,8 +43,7 @@ $word = Yii::$app->session->get('key');
             <div class="col-lg-12">
                 <h2>Twitter</h2>
 
-                <?php 
-                    echo GridView::widget([
+                <?= GridView::widget([
                     'dataProvider' => new \yii\data\ArrayDataProvider([
                         'allModels' => (!empty($reply)) ? $reply : [] ,
                         //'allModels' => $reply,
@@ -85,6 +80,5 @@ $word = Yii::$app->session->get('key');
                  ?>
             </div>
         </div>
-
     </div>
 </div>

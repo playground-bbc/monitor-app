@@ -1,10 +1,10 @@
 <?php
-
 use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
-use kartik\select2\Select2;
-use yii\helpers\ArrayHelper;
 use yii\widgets\Breadcrumbs;
+use yii\helpers\ArrayHelper;
+use yii\bootstrap\ActiveForm;
+
+use kartik\select2\Select2;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\WebPage */
@@ -22,25 +22,24 @@ $data = ArrayHelper::map($typeResource, 'id', 'name');
 
     <?php $form = ActiveForm::begin([
         'id' => 'form-webpage',
-     
-        'layout' => 'horizontal']); ?>
-    <?php 
-			echo $form->field($resource, 'typeResourceId')->widget(Select2::classname(), [
+        'layout' => 'horizontal']); 
+    ?>
+    
+    <?= $form->field($resource, 'typeResourceId')->widget(Select2::classname(), [
 		   'data' => $data,
 		    'options' => ['placeholder' => 'Select a state ...'],
 		    'pluginOptions' => [
 		        'allowClear' => true
 		    ],
 		]);
-
-		 ?>
-        <?= $form->field($resource, 'name') ?>
-        <?= $form->field($resource, 'url') ?>
+	?>
+    <?= $form->field($resource, 'name') ?>
+    <?= $form->field($resource, 'url') ?>
         
     
-        <div class="form-group">
-            <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>
-        </div>
+    <div class="form-group">
+        <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>
+    </div>
     <?php ActiveForm::end(); ?>
 
 </div><!-- site-web -->

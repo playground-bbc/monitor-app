@@ -1,11 +1,10 @@
 <?php
-
 namespace app\modules\monitor\controllers;
 
 use yii\web\Controller;
-use LiveChat\Api\Client as LiveChat;
 
 use Goutte\Client;
+use LiveChat\Api\Client as LiveChat;
 use GuzzleHttp\Client as GuzzleClient;
 use Symfony\Component\DomCrawler\Crawler;
 
@@ -21,7 +20,7 @@ class DefaultController extends Controller
     public function actionIndex()
     {
         
-         return $this->render('index');
+        return $this->render('index');
 	}
 
 }

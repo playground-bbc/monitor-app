@@ -50,7 +50,7 @@ class m190531_221157_alert_resources extends Migration
             'fk-AlertResources-idAlert',
             'alert_resources',
             'idAlert',
-            'Alerts',
+            'alerts',
             'id',
             'CASCADE'
         );
@@ -67,7 +67,7 @@ class m190531_221157_alert_resources extends Migration
             'fk-AlertResources-idResources',
             'alert_resources',
             'idResources',
-            'Resource',
+            'resource',
             'id',
             'CASCADE'
         );

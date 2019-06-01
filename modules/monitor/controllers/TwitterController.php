@@ -2,14 +2,9 @@
 namespace app\modules\monitor\controllers;
 
 use Yii;
-use yii\filters\AccessControl;
 use yii\web\Controller;
-use yii\web\Response;
-use yii\filters\VerbFilter;
-use yii\data\ArrayDataProvider;
-use yii\caching\ArrayCache;
-use app\models\TwitterApi;
 
+use app\models\TwitterApi;
 
 use \Codebird\Codebird;
 
@@ -60,8 +55,9 @@ class TwitterController extends Controller
 
     public function actionLogout()
     {
-        $twitterApi = new TwitterApi();
-        $twitterApi->logout();
+      $twitterApi = new TwitterApi();
+      $twitterApi->logout();
+      
       return $this->goHome();
     }
 }

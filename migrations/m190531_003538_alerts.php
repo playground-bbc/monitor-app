@@ -49,7 +49,7 @@ class m190531_003538_alerts extends Migration
             'useralert_userId_alerts',
             'alerts',
             'userId',
-            'Users',
+            'users',
             'id',
             'CASCADE',
             'CASCADE'

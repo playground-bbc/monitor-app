@@ -1,13 +1,13 @@
 <?php 
 use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
-use kartik\select2\Select2;
 use yii\helpers\ArrayHelper;
 use yii\widgets\Breadcrumbs;
-use faryshta\widgets\JqueryTagsInput;
-
+use yii\bootstrap\ActiveForm;
 
 use app\models\Resource;
+
+use kartik\select2\Select2;
+use faryshta\widgets\JqueryTagsInput;
 
 /* @var $this yii\web\View */
 /* @var $form_model app\models\SearchForm */
