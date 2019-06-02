@@ -7,6 +7,7 @@ use yii\bootstrap\ActiveForm;
 use app\models\Resource;
 
 use kartik\select2\Select2;
+use kartik\date\DatePicker;
 use faryshta\widgets\JqueryTagsInput;
 
 /* @var $this yii\web\View */
@@ -24,12 +25,36 @@ $data = [
 ?>
 
 <?php $form = ActiveForm::begin(['id' => 'search-form']); ?>
+	<div class="row">
+	    <div class="col-md-6">
+			<?= $form->field($form_model, 'keywords[]')->widget(JqueryTagsInput::className(), [
+				    // extra configuration
+					])->label(true); ?>	    	
+	    </div>
 
-    <?= $form->field($form_model, 'keywords[]')->widget(JqueryTagsInput::className(), [
-    // extra configuration
-	]); ?>
+		<div class="col-md-6">
+			<?= $form->field($form_model, 'products[]')->widget(JqueryTagsInput::className(), [
+			    // extra configuration
+				]); ?>
+		</div>
+	</div>
+	
 
-	<?= $form->field($form_model, 'text_search')->textarea(['rows' => 2]); ?>
+
+	<?php 
+		echo DatePicker::widget([
+		    'name' => 'from_date',
+		    'value' => '2019-02-15',
+		    'type' => DatePicker::TYPE_RANGE,
+		    'name2' => 'to_date',
+		    'value2' => '2019-02-15',
+		    'pluginOptions' => [
+		        'autoclose' => true,
+		        'format' => 'yyyy-mm-dd'
+		    ]
+		]);
+
+	 ?>
 
     <div class="form-group">
         <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>

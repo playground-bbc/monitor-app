@@ -1,0 +1,1428 @@
+{
+    "__created_at": 1559488406,
+    "__updated_at": 1559488597,
+    "data": [
+        {
+            "pages": 0,
+            "total": 0,
+            "tickets": []
+        },
+        {
+            "monitor": {
+                "pages": 0,
+                "total": 0,
+                "tickets": []
+            },
+            "Lg": {
+                "pages": 1,
+                "total": 16,
+                "tickets": [
+                    {
+                        "assignee": {
+                            "name": "Moises Promotor LG Electonics",
+                            "id": "jorge1.gonzalez@lgepartner.com"
+                        },
+                        "events": [
+                            {
+                                "author": {
+                                    "id": "Yann23cl@gmail.com",
+                                    "name": "Atiliano ",
+                                    "type": "client"
+                                },
+                                "date": "2019-02-16T02:53:04Z",
+                                "is_private": false,
+                                "message": "Mensaje:\nPorque dice 9-5 kilos \n\n",
+                                "type": "message",
+                                "source": {
+                                    "url": "https://www.hites.com/lavadora-lg-wd9wb6-9-5-kg-752864001",
+                                    "type": "chat-window"
+                                }
+                            },
+                            {
+                                "date": "2019-02-18T12:53:37Z",
+                                "is_private": false,
+                                "source": {
+                                    "type": "lc2"
+                                },
+                                "message": "por es de 9 kilos de lavado y 5 de secado",
+                                "type": "message",
+                                "author": {
+                                    "name": "Moises Promotor LG Electonics",
+                                    "type": "agent",
+                                    "id": "jorge1.gonzalez@lgepartner.com"
+                                }
+                            },
+                            {
+                                "date": "2019-02-18T12:53:37Z",
+                                "to": {
+                                    "name": "Moises Promotor LG Electonics",
+                                    "id": "jorge1.gonzalez@lgepartner.com"
+                                },
+                                "type": "assignee_changed",
+                                "author": {
+                                    "name": "Moises Promotor LG Electonics",
+                                    "id": "jorge1.gonzalez@lgepartner.com"
+                                }
+                            },
+                            {
+                                "date": "2019-02-18T12:53:37Z",
+                                "current": "solved",
+                                "previous": "open",
+                                "type": "status_changed",
+                                "author": {
+                                    "name": "Moises Promotor LG Electonics",
+                                    "id": "jorge1.gonzalez@lgepartner.com"
+                                }
+                            },
+                            {
+                                "date": "2019-02-19T13:30:02Z",
+                                "type": "rating_offer_sent"
+                            },
+                            {
+                                "date": "2019-02-19T17:57:26Z",
+                                "is_private": false,
+                                "author": {
+                                    "name": "yann ROA",
+                                    "type": "client",
+                                    "id": "yann23cl@gmail.com"
+                                },
+                                "source": {
+                                    "type": "mail"
+                                },
+                                "message": "Hola, sólo estoy interesado en una secadora, hasta 9 kilos, que sea buena y\nbarata.",
+                                "type": "message"
+                            },
+                            {
+                                "date": "2019-02-19T17:57:26Z",
+                                "current": "open",
+                                "previous": "solved",
+                                "type": "status_changed"
+                            },
+                            {
+                                "date": "2019-02-19T17:59:08Z",
+                                "current": "spam",
+                                "previous": "open",
+                                "type": "status_changed",
+                                "author": {
+                                    "name": "Moises Promotor LG Electonics",
+                                    "id": "jorge1.gonzalez@lgepartner.com"
+                                }
+                            },
+                            {
+                                "date": "2019-02-19T17:59:44Z",
+                                "current": "good",
+                                "type": "rated",
+                                "author": {
+                                    "name": "Atiliano ",
+                                    "type": "client",
+                                    "id": "Yann23cl@gmail.com"
+                                }
+                            }
+                        ],
+                        "id": "O37WS",
+                        "requester": {
+                            "mail": "Yann23cl@gmail.com",
+                            "name": "Atiliano ",
+                            "utc_offset": "America/Santiago",
+                            "ip": "186.106.166.9"
+                        },
+                        "groups": [
+                            {
+                                "id": 0,
+                                "name": "General",
+                                "inherited": true
+                            }
+                        ],
+                        "status": "spam",
+                        "subject": "Lavadora lg 9-5 kilos",
+                        "modified": "2019-03-28T19:02:57Z",
+                        "source": {
+                            "type": "chat-window",
+                            "url": "https://www.hites.com/lavadora-lg-wd9wb6-9-5-kg-752864001"
+                        },
+                        "opened": [
+                            {
+                                "from": "2019-02-16T02:53:04Z",
+                                "to": "2019-02-18T12:53:37Z"
+                            },
+                            {
+                                "from": "2019-02-19T17:57:26Z",
+                                "to": "2019-02-19T17:59:08Z"
+                            }
+                        ],
+                        "firstResponse": {
+                            "agent": "jorge1.gonzalez@lgepartner.com",
+                            "date": "2019-02-18T12:53:37Z"
+                        },
+                        "ccs": [],
+                        "tags": [],
+                        "rate": "rated_good",
+                        "date": "2019-02-16T02:53:04Z",
+                        "currentGroup": {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    },
+                    {
+                        "assignee": {
+                            "name": "Moises Promotor LG Electonics",
+                            "id": "jorge1.gonzalez@lgepartner.com"
+                        },
+                        "events": [
+                            {
+                                "author": {
+                                    "id": "hernan.isakson@gmail.com",
+                                    "name": "Hernán Isakson",
+                                    "type": "client"
+                                },
+                                "date": "2019-02-17T01:55:51Z",
+                                "is_private": false,
+                                "message": "Mensaje:\nDeseo más información sobre características, consumo y precios para despacho a Viña del Mar.\nRefigeradores chicos Lg no frost\n\n",
+                                "type": "message",
+                                "source": {
+                                    "url": "https://www.hites.com/refrigerador-lg-lt23bppapzpecl-no-frost-209-litros-751281001?gclid=CjwKCAiAhp_jBRAxEiwAXbniXSbKY__QtESIE9BAvO_Ac27gV7O-S8RVBvawyMJJMB1zr_2EwV6ErhoC-kcQAvD_BwE",
+                                    "type": "chat-window"
+                                }
+                            },
+                            {
+                                "date": "2019-02-18T13:03:00Z",
+                                "is_private": false,
+                                "source": {
+                                    "type": "lc2"
+                                },
+                                "message": "se recomienda ver stock, las descripciones y especificaciones",
+                                "type": "message",
+                                "author": {
+                                    "name": "Moises Promotor LG Electonics",
+                                    "type": "agent",
+                                    "id": "jorge1.gonzalez@lgepartner.com"
+                                }
+                            },
+                            {
+                                "date": "2019-02-18T13:03:00Z",
+                                "to": {
+                                    "name": "Moises Promotor LG Electonics",
+                                    "id": "jorge1.gonzalez@lgepartner.com"
+                                },
+                                "type": "assignee_changed",
+                                "author": {
+                                    "name": "Moises Promotor LG Electonics",
+                                    "id": "jorge1.gonzalez@lgepartner.com"
+                                }
+                            },
+                            {
+                                "date": "2019-02-18T13:03:00Z",
+                                "current": "solved",
+                                "previous": "open",
+                                "type": "status_changed",
+                                "author": {
+                                    "name": "Moises Promotor LG Electonics",
+                                    "id": "jorge1.gonzalez@lgepartner.com"
+                                }
+                            },
+                            {
+                                "date": "2019-02-19T13:30:02Z",
+                                "type": "rating_offer_sent"
+                            }
+                        ],
+                        "id": "GBWFD",
+                        "requester": {
+                            "mail": "hernan.isakson@gmail.com",
+                            "name": "Hernán Isakson",
+                            "utc_offset": "America/Santiago",
+                            "ip": "186.11.7.247"
+                        },
+                        "groups": [
+                            {
+                                "id": 0,
+                                "name": "General",
+                                "inherited": true
+                            }
+                        ],
+                        "status": "solved",
+                        "subject": "Refrigeradores Lg de 209 lt, 235 lt y 254 lt, no fros",
+                        "modified": "2019-03-28T19:02:57Z",
+                        "source": {
+                            "type": "chat-window",
+                            "url": "https://www.hites.com/refrigerador-lg-lt23bppapzpecl-no-frost-209-litros-751281001?gclid=CjwKCAiAhp_jBRAxEiwAXbniXSbKY__QtESIE9BAvO_Ac27gV7O-S8RVBvawyMJJMB1zr_2EwV6ErhoC-kcQAvD_BwE"
+                        },
+                        "opened": [
+                            {
+                                "from": "2019-02-17T01:55:51Z",
+                                "to": "2019-02-18T13:03:00Z"
+                            }
+                        ],
+                        "resolutionDate": "2019-02-18T13:03:00Z",
+                        "firstResponse": {
+                            "agent": "jorge1.gonzalez@lgepartner.com",
+                            "date": "2019-02-18T13:03:00Z"
+                        },
+                        "ccs": [],
+                        "tags": [],
+                        "rate": "not_rated",
+                        "date": "2019-02-17T01:55:51Z",
+                        "currentGroup": {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    },
+                    {
+                        "assignee": {
+                            "name": "Moises Promotor LG Electonics",
+                            "id": "jorge1.gonzalez@lgepartner.com"
+                        },
+                        "events": [
+                            {
+                                "author": {
+                                    "id": "ivanlealpavez@gmail.com",
+                                    "name": "Víctor leal pavez",
+                                    "type": "client"
+                                },
+                                "date": "2019-02-17T01:21:55Z",
+                                "is_private": false,
+                                "message": "Mensaje:\nPagar un pie de230,000 y dos letras de 25,000\n\n\n\n",
+                                "type": "message",
+                                "source": {
+                                    "url": "https://www.abcdin.cl/tienda/es/abcdin/tv-audio/televisores-video/televisores-led/led-lg-55-4k-ultra-hd-smart-tv-55uk6350-1125164?utm_medium=display&utm_source=facebook&utm_campaign=diasd_led_visitante",
+                                    "type": "chat-window"
+                                }
+                            },
+                            {
+                                "date": "2019-02-18T13:02:33Z",
+                                "is_private": false,
+                                "source": {
+                                    "type": "lc2"
+                                },
+                                "message": "no es factible dejar pie en compras on line",
+                                "type": "message",
+                                "author": {
+                                    "name": "Moises Promotor LG Electonics",
+                                    "type": "agent",
+                                    "id": "jorge1.gonzalez@lgepartner.com"
+                                }
+                            },
+                            {
+                                "date": "2019-02-18T13:02:33Z",
+                                "to": {
+                                    "name": "Moises Promotor LG Electonics",
+                                    "id": "jorge1.gonzalez@lgepartner.com"
+                                },
+                                "type": "assignee_changed",
+                                "author": {
+                                    "name": "Moises Promotor LG Electonics",
+                                    "id": "jorge1.gonzalez@lgepartner.com"
+                                }
+                            },
+                            {
+                                "date": "2019-02-18T13:02:33Z",
+                                "current": "solved",
+                                "previous": "open",
+                                "type": "status_changed",
+                                "author": {
+                                    "name": "Moises Promotor LG Electonics",
+                                    "id": "jorge1.gonzalez@lgepartner.com"
+                                }
+                            },
+                            {
+                                "date": "2019-02-19T13:30:02Z",
+                                "type": "rating_offer_sent"
+                            }
+                        ],
+                        "id": "VZ89F",
+                        "requester": {
+                            "mail": "ivanlealpavez@gmail.com",
+                            "name": "Víctor leal pavez",
+                            "utc_offset": "America/Santiago",
+                            "ip": "191.126.169.170"
+                        },
+                        "groups": [
+                            {
+                                "id": 0,
+                                "name": "General",
+                                "inherited": true
+                            }
+                        ],
+                        "status": "solved",
+                        "subject": "Comprar Smart TV de 55 pulgadas",
+                        "modified": "2019-03-28T19:02:57Z",
+                        "source": {
+                            "type": "chat-window",
+                            "url": "https://www.abcdin.cl/tienda/es/abcdin/tv-audio/televisores-video/televisores-led/led-lg-55-4k-ultra-hd-smart-tv-55uk6350-1125164?utm_medium=display&utm_source=facebook&utm_campaign=diasd_led_visitante"
+                        },
+                        "opened": [
+                            {
+                                "from": "2019-02-17T01:21:55Z",
+                                "to": "2019-02-18T13:02:33Z"
+                            }
+                        ],
+                        "resolutionDate": "2019-02-18T13:02:33Z",
+                        "firstResponse": {
+                            "agent": "jorge1.gonzalez@lgepartner.com",
+                            "date": "2019-02-18T13:02:33Z"
+                        },
+                        "ccs": [],
+                        "tags": [],
+                        "rate": "not_rated",
+                        "date": "2019-02-17T01:21:55Z",
+                        "currentGroup": {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    },
+                    {
+                        "assignee": {
+                            "name": "Moises Promotor LG Electonics",
+                            "id": "jorge1.gonzalez@lgepartner.com"
+                        },
+                        "events": [
+                            {
+                                "author": {
+                                    "id": "romina.avila.r@gmail.com",
+                                    "name": "Romina Ávila",
+                                    "type": "client"
+                                },
+                                "date": "2019-02-16T15:23:36Z",
+                                "is_private": false,
+                                "message": "Mensaje:\nCuanta garantía tiene\n\n",
+                                "type": "message",
+                                "source": {
+                                    "url": "https://www.hites.com/708933001",
+                                    "type": "chat-window"
+                                }
+                            },
+                            {
+                                "date": "2019-02-18T13:00:44Z",
+                                "is_private": false,
+                                "source": {
+                                    "type": "lc2"
+                                },
+                                "message": "365 dias desde la fecha de compra",
+                                "type": "message",
+                                "author": {
+                                    "name": "Moises Promotor LG Electonics",
+                                    "type": "agent",
+                                    "id": "jorge1.gonzalez@lgepartner.com"
+                                }
+                            },
+                            {
+                                "date": "2019-02-18T13:00:44Z",
+                                "to": {
+                                    "name": "Moises Promotor LG Electonics",
+                                    "id": "jorge1.gonzalez@lgepartner.com"
+                                },
+                                "type": "assignee_changed",
+                                "author": {
+                                    "name": "Moises Promotor LG Electonics",
+                                    "id": "jorge1.gonzalez@lgepartner.com"
+                                }
+                            },
+                            {
+                                "date": "2019-02-18T13:00:44Z",
+                                "current": "solved",
+                                "previous": "open",
+                                "type": "status_changed",
+                                "author": {
+                                    "name": "Moises Promotor LG Electonics",
+                                    "id": "jorge1.gonzalez@lgepartner.com"
+                                }
+                            },
+                            {
+                                "date": "2019-02-19T13:30:02Z",
+                                "type": "rating_offer_sent"
+                            },
+                            {
+                                "date": "2019-02-19T16:11:08Z",
+                                "current": "good",
+                                "author": {
+                                    "name": "Romina Ávila",
+                                    "id": "romina.avila.r@gmail.com",
+                                    "type": "client"
+                                },
+                                "type": "rated"
+                            }
+                        ],
+                        "id": "FTNUB",
+                        "requester": {
+                            "mail": "romina.avila.r@gmail.com",
+                            "name": "Romina Ávila",
+                            "utc_offset": "America/Santiago",
+                            "ip": "186.105.249.72"
+                        },
+                        "groups": [
+                            {
+                                "id": 0,
+                                "name": "General",
+                                "inherited": true
+                            }
+                        ],
+                        "status": "solved",
+                        "subject": "Tiene garantía el Blu ray",
+                        "modified": "2019-03-28T19:02:57Z",
+                        "source": {
+                            "type": "chat-window",
+                            "url": "https://www.hites.com/708933001"
+                        },
+                        "opened": [
+                            {
+                                "from": "2019-02-16T15:23:36Z",
+                                "to": "2019-02-18T13:00:44Z"
+                            }
+                        ],
+                        "resolutionDate": "2019-02-18T13:00:44Z",
+                        "firstResponse": {
+                            "agent": "jorge1.gonzalez@lgepartner.com",
+                            "date": "2019-02-18T13:00:44Z"
+                        },
+                        "ccs": [],
+                        "tags": [],
+                        "rate": "rated_good",
+                        "date": "2019-02-16T15:23:36Z",
+                        "currentGroup": {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    },
+                    {
+                        "assignee": {
+                            "name": "Moises Promotor LG Electonics",
+                            "id": "jorge1.gonzalez@lgepartner.com"
+                        },
+                        "events": [
+                            {
+                                "author": {
+                                    "id": "ricotin7@gmail.com",
+                                    "name": "Ricardo",
+                                    "type": "client"
+                                },
+                                "date": "2019-02-16T11:37:48Z",
+                                "is_private": false,
+                                "message": "Mensaje:\nCual es la diferencia entre esta tv y la LED LG 43UK6500 43\"\n\n",
+                                "type": "message",
+                                "source": {
+                                    "url": "https://simple.ripley.cl/led-lg-43uk6300-43-2000369724874p",
+                                    "type": "chat-window"
+                                }
+                            },
+                            {
+                                "date": "2019-02-18T13:00:18Z",
+                                "is_private": false,
+                                "source": {
+                                    "type": "lc2"
+                                },
+                                "message": "UK6500 es un modelo mas actualizado y mejorado en su especificaciones",
+                                "type": "message",
+                                "author": {
+                                    "name": "Moises Promotor LG Electonics",
+                                    "type": "agent",
+                                    "id": "jorge1.gonzalez@lgepartner.com"
+                                }
+                            },
+                            {
+                                "date": "2019-02-18T13:00:18Z",
+                                "to": {
+                                    "name": "Moises Promotor LG Electonics",
+                                    "id": "jorge1.gonzalez@lgepartner.com"
+                                },
+                                "type": "assignee_changed",
+                                "author": {
+                                    "name": "Moises Promotor LG Electonics",
+                                    "id": "jorge1.gonzalez@lgepartner.com"
+                                }
+                            },
+                            {
+                                "date": "2019-02-18T13:00:18Z",
+                                "current": "solved",
+                                "previous": "open",
+                                "type": "status_changed",
+                                "author": {
+                                    "name": "Moises Promotor LG Electonics",
+                                    "id": "jorge1.gonzalez@lgepartner.com"
+                                }
+                            },
+                            {
+                                "date": "2019-02-19T13:30:02Z",
+                                "type": "rating_offer_sent"
+                            }
+                        ],
+                        "id": "CQ9AR",
+                        "requester": {
+                            "mail": "ricotin7@gmail.com",
+                            "name": "Ricardo",
+                            "utc_offset": "America/Santiago",
+                            "ip": "190.44.78.213"
+                        },
+                        "groups": [
+                            {
+                                "id": 0,
+                                "name": "General",
+                                "inherited": true
+                            }
+                        ],
+                        "status": "solved",
+                        "subject": "Diferencia ",
+                        "modified": "2019-03-28T19:02:57Z",
+                        "source": {
+                            "type": "chat-window",
+                            "url": "https://simple.ripley.cl/led-lg-43uk6300-43-2000369724874p"
+                        },
+                        "opened": [
+                            {
+                                "from": "2019-02-16T11:37:48Z",
+                                "to": "2019-02-18T13:00:18Z"
+                            }
+                        ],
+                        "resolutionDate": "2019-02-18T13:00:18Z",
+                        "firstResponse": {
+                            "agent": "jorge1.gonzalez@lgepartner.com",
+                            "date": "2019-02-18T13:00:18Z"
+                        },
+                        "ccs": [],
+                        "tags": [],
+                        "rate": "not_rated",
+                        "date": "2019-02-16T11:37:48Z",
+                        "currentGroup": {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    },
+                    {
+                        "events": [
+                            {
+                                "author": {
+                                    "id": "Rrene.rebeca@gmail.com",
+                                    "name": "Rebeca",
+                                    "type": "client"
+                                },
+                                "date": "2019-02-16T23:32:26Z",
+                                "is_private": false,
+                                "message": "Mensaje:\nHola \n\n",
+                                "type": "message",
+                                "source": {
+                                    "url": "https://www.hites.com/led-lg-32lj550b-32-hd-smart-tv-744201001",
+                                    "type": "chat-window"
+                                }
+                            },
+                            {
+                                "date": "2019-02-18T13:02:06Z",
+                                "current": "spam",
+                                "previous": "open",
+                                "type": "status_changed",
+                                "author": {
+                                    "name": "Moises Promotor LG Electonics",
+                                    "id": "jorge1.gonzalez@lgepartner.com"
+                                }
+                            }
+                        ],
+                        "id": "BCLMH",
+                        "requester": {
+                            "mail": "Rrene.rebeca@gmail.com",
+                            "name": "Rebeca",
+                            "utc_offset": "America/Santiago",
+                            "ip": "200.120.82.213"
+                        },
+                        "groups": [
+                            {
+                                "id": 0,
+                                "name": "General",
+                                "inherited": true
+                            }
+                        ],
+                        "status": "spam",
+                        "subject": "Hola",
+                        "modified": "2019-02-18T13:02:06Z",
+                        "source": {
+                            "type": "chat-window",
+                            "url": "https://www.hites.com/led-lg-32lj550b-32-hd-smart-tv-744201001"
+                        },
+                        "opened": [
+                            {
+                                "from": "2019-02-16T23:32:26Z",
+                                "to": "2019-02-18T13:02:06Z"
+                            }
+                        ],
+                        "firstResponse": {},
+                        "ccs": [],
+                        "tags": [],
+                        "rate": "not_rated",
+                        "date": "2019-02-16T23:32:26Z",
+                        "currentGroup": {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    },
+                    {
+                        "events": [
+                            {
+                                "author": {
+                                    "id": "carmenararat1@hotmai.com",
+                                    "name": "Carmen Ararat",
+                                    "type": "client"
+                                },
+                                "date": "2019-02-16T21:15:17Z",
+                                "is_private": false,
+                                "message": "Mensaje:\nHh\n\n",
+                                "type": "message",
+                                "source": {
+                                    "url": "https://www.hites.com/lavadora-lg-wd9wb6-9-5-kg-752864001",
+                                    "type": "chat-window"
+                                }
+                            },
+                            {
+                                "date": "2019-02-18T13:01:59Z",
+                                "current": "spam",
+                                "previous": "open",
+                                "type": "status_changed",
+                                "author": {
+                                    "name": "Moises Promotor LG Electonics",
+                                    "id": "jorge1.gonzalez@lgepartner.com"
+                                }
+                            }
+                        ],
+                        "id": "TQBOZ",
+                        "requester": {
+                            "mail": "carmenararat1@hotmai.com",
+                            "name": "Carmen Ararat",
+                            "utc_offset": "America/Santiago",
+                            "ip": "190.46.23.252"
+                        },
+                        "groups": [
+                            {
+                                "id": 0,
+                                "name": "General",
+                                "inherited": true
+                            }
+                        ],
+                        "status": "spam",
+                        "subject": "Disponibilidad",
+                        "modified": "2019-02-18T13:01:59Z",
+                        "source": {
+                            "type": "chat-window",
+                            "url": "https://www.hites.com/lavadora-lg-wd9wb6-9-5-kg-752864001"
+                        },
+                        "opened": [
+                            {
+                                "from": "2019-02-16T21:15:17Z",
+                                "to": "2019-02-18T13:01:59Z"
+                            }
+                        ],
+                        "firstResponse": {},
+                        "ccs": [],
+                        "tags": [],
+                        "rate": "not_rated",
+                        "date": "2019-02-16T21:15:17Z",
+                        "currentGroup": {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    },
+                    {
+                        "events": [
+                            {
+                                "author": {
+                                    "id": "samuelramosreyes@gmail.com",
+                                    "name": "Samuel Ramos",
+                                    "type": "client"
+                                },
+                                "date": "2019-02-16T18:44:50Z",
+                                "is_private": false,
+                                "message": "Mensaje:\nSaquen está era la no me deja hacer la compra weones ctm\n\n",
+                                "type": "message",
+                                "source": {
+                                    "url": "https://www.hites.com/refrigerador-lg-lt32bppx-no-frost-312-litros-751282001?utm_campaign=RT_carroabandonado_2019-02-16&utm_medium=email&utm_source=RT_Automation",
+                                    "type": "chat-window"
+                                }
+                            },
+                            {
+                                "date": "2019-02-18T13:01:55Z",
+                                "current": "spam",
+                                "previous": "open",
+                                "type": "status_changed",
+                                "author": {
+                                    "name": "Moises Promotor LG Electonics",
+                                    "id": "jorge1.gonzalez@lgepartner.com"
+                                }
+                            }
+                        ],
+                        "id": "BI2SZ",
+                        "requester": {
+                            "mail": "samuelramosreyes@gmail.com",
+                            "name": "Samuel Ramos",
+                            "utc_offset": "America/Santiago",
+                            "ip": "181.203.126.12"
+                        },
+                        "groups": [
+                            {
+                                "id": 0,
+                                "name": "General",
+                                "inherited": true
+                            }
+                        ],
+                        "status": "spam",
+                        "subject": "Déjense wearme para hacer la compra Ctm cla2",
+                        "modified": "2019-02-18T13:01:55Z",
+                        "source": {
+                            "type": "chat-window",
+                            "url": "https://www.hites.com/refrigerador-lg-lt32bppx-no-frost-312-litros-751282001?utm_campaign=RT_carroabandonado_2019-02-16&utm_medium=email&utm_source=RT_Automation"
+                        },
+                        "opened": [
+                            {
+                                "from": "2019-02-16T18:44:50Z",
+                                "to": "2019-02-18T13:01:55Z"
+                            }
+                        ],
+                        "firstResponse": {},
+                        "ccs": [],
+                        "tags": [],
+                        "rate": "not_rated",
+                        "date": "2019-02-16T18:44:50Z",
+                        "currentGroup": {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    },
+                    {
+                        "events": [
+                            {
+                                "author": {
+                                    "id": "samuelramosreyes@gmail.com",
+                                    "name": "Samuel Ramos",
+                                    "type": "client"
+                                },
+                                "date": "2019-02-16T18:41:35Z",
+                                "is_private": false,
+                                "message": "Mensaje:\nHola\n\n",
+                                "type": "message",
+                                "source": {
+                                    "url": "https://www.hites.com/refrigerador-lg-lt32bppx-no-frost-312-litros-751282001?utm_campaign=RT_carroabandonado_2019-02-16&utm_medium=email&utm_source=RT_Automation",
+                                    "type": "chat-window"
+                                }
+                            },
+                            {
+                                "date": "2019-02-18T13:01:50Z",
+                                "current": "spam",
+                                "previous": "open",
+                                "type": "status_changed",
+                                "author": {
+                                    "name": "Moises Promotor LG Electonics",
+                                    "id": "jorge1.gonzalez@lgepartner.com"
+                                }
+                            }
+                        ],
+                        "id": "ZTK7A",
+                        "requester": {
+                            "mail": "samuelramosreyes@gmail.com",
+                            "name": "Samuel Ramos",
+                            "utc_offset": "America/Santiago",
+                            "ip": "181.203.126.12"
+                        },
+                        "groups": [
+                            {
+                                "id": 0,
+                                "name": "General",
+                                "inherited": true
+                            }
+                        ],
+                        "status": "spam",
+                        "subject": "Refrigerador",
+                        "modified": "2019-02-18T13:01:50Z",
+                        "source": {
+                            "type": "chat-window",
+                            "url": "https://www.hites.com/refrigerador-lg-lt32bppx-no-frost-312-litros-751282001?utm_campaign=RT_carroabandonado_2019-02-16&utm_medium=email&utm_source=RT_Automation"
+                        },
+                        "opened": [
+                            {
+                                "from": "2019-02-16T18:41:35Z",
+                                "to": "2019-02-18T13:01:50Z"
+                            }
+                        ],
+                        "firstResponse": {},
+                        "ccs": [],
+                        "tags": [],
+                        "rate": "not_rated",
+                        "date": "2019-02-16T18:41:35Z",
+                        "currentGroup": {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    },
+                    {
+                        "events": [
+                            {
+                                "author": {
+                                    "id": "samuelramosreyes@gmail.com",
+                                    "name": "Samuel Ramos",
+                                    "type": "client"
+                                },
+                                "date": "2019-02-16T18:40:12Z",
+                                "is_private": false,
+                                "message": "Mensaje:\nDejarlo en domicilio\n\n",
+                                "type": "message",
+                                "source": {
+                                    "url": "https://www.hites.com/refrigerador-lg-lt32bppx-no-frost-312-litros-751282001?utm_campaign=RT_carroabandonado_2019-02-16&utm_medium=email&utm_source=RT_Automation",
+                                    "type": "chat-window"
+                                }
+                            },
+                            {
+                                "date": "2019-02-18T13:00:57Z",
+                                "current": "spam",
+                                "previous": "open",
+                                "type": "status_changed",
+                                "author": {
+                                    "name": "Moises Promotor LG Electonics",
+                                    "id": "jorge1.gonzalez@lgepartner.com"
+                                }
+                            }
+                        ],
+                        "id": "6PH7H",
+                        "requester": {
+                            "mail": "samuelramosreyes@gmail.com",
+                            "name": "Samuel Ramos",
+                            "utc_offset": "America/Santiago",
+                            "ip": "181.203.126.12"
+                        },
+                        "groups": [
+                            {
+                                "id": 0,
+                                "name": "General",
+                                "inherited": true
+                            }
+                        ],
+                        "status": "spam",
+                        "subject": "Refrigerador",
+                        "modified": "2019-02-18T13:00:57Z",
+                        "source": {
+                            "type": "chat-window",
+                            "url": "https://www.hites.com/refrigerador-lg-lt32bppx-no-frost-312-litros-751282001?utm_campaign=RT_carroabandonado_2019-02-16&utm_medium=email&utm_source=RT_Automation"
+                        },
+                        "opened": [
+                            {
+                                "from": "2019-02-16T18:40:12Z",
+                                "to": "2019-02-18T13:00:57Z"
+                            }
+                        ],
+                        "firstResponse": {},
+                        "ccs": [],
+                        "tags": [],
+                        "rate": "not_rated",
+                        "date": "2019-02-16T18:40:12Z",
+                        "currentGroup": {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    },
+                    {
+                        "events": [
+                            {
+                                "author": {
+                                    "id": "samuelramosreyes@gmail.com",
+                                    "name": "Samuel Ramos",
+                                    "type": "client"
+                                },
+                                "date": "2019-02-16T18:34:32Z",
+                                "is_private": false,
+                                "message": "Mensaje:\nDejar de 09.00 a 12.30 y 16 .30 a 20.30 hrs\n\n",
+                                "type": "message",
+                                "source": {
+                                    "url": "https://www.hites.com/refrigerador-lg-lt32bppx-no-frost-312-litros-751282001?utm_campaign=RT_carroabandonado_2019-02-16&utm_medium=email&utm_source=RT_Automation",
+                                    "type": "chat-window"
+                                }
+                            },
+                            {
+                                "date": "2019-02-18T13:00:51Z",
+                                "current": "spam",
+                                "previous": "open",
+                                "type": "status_changed",
+                                "author": {
+                                    "name": "Moises Promotor LG Electonics",
+                                    "id": "jorge1.gonzalez@lgepartner.com"
+                                }
+                            }
+                        ],
+                        "id": "SICLI",
+                        "requester": {
+                            "mail": "samuelramosreyes@gmail.com",
+                            "name": "Samuel Ramos",
+                            "utc_offset": "America/Santiago",
+                            "ip": "181.203.126.12"
+                        },
+                        "groups": [
+                            {
+                                "id": 0,
+                                "name": "General",
+                                "inherited": true
+                            }
+                        ],
+                        "status": "spam",
+                        "subject": "Refrigerador",
+                        "modified": "2019-02-18T13:00:51Z",
+                        "source": {
+                            "type": "chat-window",
+                            "url": "https://www.hites.com/refrigerador-lg-lt32bppx-no-frost-312-litros-751282001?utm_campaign=RT_carroabandonado_2019-02-16&utm_medium=email&utm_source=RT_Automation"
+                        },
+                        "opened": [
+                            {
+                                "from": "2019-02-16T18:34:32Z",
+                                "to": "2019-02-18T13:00:51Z"
+                            }
+                        ],
+                        "firstResponse": {},
+                        "ccs": [],
+                        "tags": [],
+                        "rate": "not_rated",
+                        "date": "2019-02-16T18:34:32Z",
+                        "currentGroup": {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    },
+                    {
+                        "events": [
+                            {
+                                "author": {
+                                    "id": "pdiazcabrera70@gmail.com",
+                                    "name": "Paula ",
+                                    "type": "client"
+                                },
+                                "date": "2019-02-16T13:05:14Z",
+                                "is_private": false,
+                                "message": "Mensaje:\nCuanto salen y donde las puedo ver \n\n",
+                                "type": "message",
+                                "source": {
+                                    "url": "https://simple.ripley.cl/lavadora-lg-wd100cv-2000358268051p",
+                                    "type": "chat-window"
+                                }
+                            },
+                            {
+                                "date": "2019-02-18T13:00:28Z",
+                                "current": "spam",
+                                "previous": "open",
+                                "type": "status_changed",
+                                "author": {
+                                    "name": "Moises Promotor LG Electonics",
+                                    "id": "jorge1.gonzalez@lgepartner.com"
+                                }
+                            }
+                        ],
+                        "id": "LOTCM",
+                        "requester": {
+                            "mail": "pdiazcabrera70@gmail.com",
+                            "name": "Paula ",
+                            "utc_offset": "America/Santiago",
+                            "ip": "181.43.172.52"
+                        },
+                        "groups": [
+                            {
+                                "id": 0,
+                                "name": "General",
+                                "inherited": true
+                            }
+                        ],
+                        "status": "spam",
+                        "subject": "Mini lavadora de 2 a 3 kilos ",
+                        "modified": "2019-02-18T13:00:28Z",
+                        "source": {
+                            "type": "chat-window",
+                            "url": "https://simple.ripley.cl/lavadora-lg-wd100cv-2000358268051p"
+                        },
+                        "opened": [
+                            {
+                                "from": "2019-02-16T13:05:14Z",
+                                "to": "2019-02-18T13:00:28Z"
+                            }
+                        ],
+                        "firstResponse": {},
+                        "ccs": [],
+                        "tags": [],
+                        "rate": "not_rated",
+                        "date": "2019-02-16T13:05:14Z",
+                        "currentGroup": {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    },
+                    {
+                        "events": [
+                            {
+                                "author": {
+                                    "id": "j.sandovalcurin@gmail.com",
+                                    "name": "Claudia Michelle ",
+                                    "type": "client"
+                                },
+                                "date": "2019-02-15T19:48:08Z",
+                                "is_private": false,
+                                "message": "Mensaje:\nJajaja\n\n",
+                                "type": "message",
+                                "source": {
+                                    "url": "https://www.hites.com/led-lg-49uj6300-49-ultra-hd-4k-smart-tv-744205001",
+                                    "type": "chat-window"
+                                }
+                            },
+                            {
+                                "date": "2019-02-15T20:05:03Z",
+                                "current": "spam",
+                                "previous": "open",
+                                "type": "status_changed",
+                                "author": {
+                                    "name": "Moises Promotor LG Electonics",
+                                    "id": "jorge1.gonzalez@lgepartner.com"
+                                }
+                            }
+                        ],
+                        "id": "ZLR90",
+                        "requester": {
+                            "mail": "j.sandovalcurin@gmail.com",
+                            "name": "Claudia Michelle ",
+                            "utc_offset": "America/Santiago",
+                            "ip": "181.73.221.122"
+                        },
+                        "groups": [
+                            {
+                                "id": 0,
+                                "name": "General",
+                                "inherited": true
+                            }
+                        ],
+                        "status": "spam",
+                        "subject": "Jajaj",
+                        "modified": "2019-02-15T20:05:03Z",
+                        "source": {
+                            "type": "chat-window",
+                            "url": "https://www.hites.com/led-lg-49uj6300-49-ultra-hd-4k-smart-tv-744205001"
+                        },
+                        "opened": [
+                            {
+                                "from": "2019-02-15T19:48:08Z",
+                                "to": "2019-02-15T20:05:03Z"
+                            }
+                        ],
+                        "firstResponse": {},
+                        "ccs": [],
+                        "tags": [],
+                        "rate": "not_rated",
+                        "date": "2019-02-15T19:48:08Z",
+                        "currentGroup": {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    },
+                    {
+                        "events": [
+                            {
+                                "author": {
+                                    "id": "yordenes.yessica@gmail.com",
+                                    "name": "Yessica",
+                                    "type": "client"
+                                },
+                                "date": "2019-02-15T18:40:45Z",
+                                "is_private": false,
+                                "message": "Mensaje:\nCotizacion\n\n",
+                                "type": "message",
+                                "source": {
+                                    "url": "https://www.hites.com/lavadora-lg-wt13wsb-13-kg-752863001",
+                                    "type": "chat-window"
+                                }
+                            },
+                            {
+                                "date": "2019-02-15T20:04:48Z",
+                                "current": "spam",
+                                "previous": "open",
+                                "type": "status_changed",
+                                "author": {
+                                    "name": "Moises Promotor LG Electonics",
+                                    "id": "jorge1.gonzalez@lgepartner.com"
+                                }
+                            }
+                        ],
+                        "id": "XVYS8",
+                        "requester": {
+                            "mail": "yordenes.yessica@gmail.com",
+                            "name": "Yessica",
+                            "utc_offset": "America/Santiago",
+                            "ip": "191.116.130.51"
+                        },
+                        "groups": [
+                            {
+                                "id": 0,
+                                "name": "General",
+                                "inherited": true
+                            }
+                        ],
+                        "status": "spam",
+                        "subject": "Lavadora",
+                        "modified": "2019-02-15T20:04:48Z",
+                        "source": {
+                            "type": "chat-window",
+                            "url": "https://www.hites.com/lavadora-lg-wt13wsb-13-kg-752863001"
+                        },
+                        "opened": [
+                            {
+                                "from": "2019-02-15T18:40:45Z",
+                                "to": "2019-02-15T20:04:48Z"
+                            }
+                        ],
+                        "firstResponse": {},
+                        "ccs": [],
+                        "tags": [],
+                        "rate": "not_rated",
+                        "date": "2019-02-15T18:40:45Z",
+                        "currentGroup": {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    },
+                    {
+                        "assignee": {
+                            "name": "Moises Promotor LG Electonics",
+                            "id": "jorge1.gonzalez@lgepartner.com"
+                        },
+                        "events": [
+                            {
+                                "author": {
+                                    "id": "anagracielamorales14@gmail.com",
+                                    "name": "Ana",
+                                    "type": "client"
+                                },
+                                "date": "2019-02-14T22:45:11Z",
+                                "is_private": false,
+                                "message": "Mensaje:\nQuiero tener claridad del consumo de Watts Hora (WH) de refrigerador especificado en asunto.\n\n",
+                                "type": "message",
+                                "source": {
+                                    "url": "https://simple.ripley.cl/refrigerador-lg-lb31mpp-2000366220898p#",
+                                    "type": "chat-window"
+                                }
+                            },
+                            {
+                                "date": "2019-02-15T12:20:11Z",
+                                "is_private": false,
+                                "source": {
+                                    "type": "lc2"
+                                },
+                                "message": "Consumo Energético 18,67 KwH/mes\nClase de Eficiencia Energética A++",
+                                "type": "message",
+                                "author": {
+                                    "name": "Moises Promotor LG Electonics",
+                                    "type": "agent",
+                                    "id": "jorge1.gonzalez@lgepartner.com"
+                                }
+                            },
+                            {
+                                "date": "2019-02-15T12:20:11Z",
+                                "to": {
+                                    "name": "Moises Promotor LG Electonics",
+                                    "id": "jorge1.gonzalez@lgepartner.com"
+                                },
+                                "type": "assignee_changed",
+                                "author": {
+                                    "name": "Moises Promotor LG Electonics",
+                                    "id": "jorge1.gonzalez@lgepartner.com"
+                                }
+                            },
+                            {
+                                "date": "2019-02-15T12:20:11Z",
+                                "current": "solved",
+                                "previous": "open",
+                                "type": "status_changed",
+                                "author": {
+                                    "name": "Moises Promotor LG Electonics",
+                                    "id": "jorge1.gonzalez@lgepartner.com"
+                                }
+                            },
+                            {
+                                "date": "2019-02-15T14:21:44Z",
+                                "is_private": false,
+                                "author": {
+                                    "name": "Ana Morales Rojas",
+                                    "type": "client",
+                                    "id": "anagracielamorales14@gmail.com"
+                                },
+                                "source": {
+                                    "type": "mail"
+                                },
+                                "message": "Estimado.\n\nEso ya lo sabía viene en la descripción de las especificaciones del refrigerador.  Lo que pregunté es el consumo por hora. No por mes.\n\nQuedó atenta a  la respuesta.\n\nSaludos.\n\nEnviado desde mi iPhone\n\nEl 15-02-2019, a la(s) 09:20, 8246671+ZRT57@tickets.livechatinc.com escribió:",
+                                "type": "message"
+                            },
+                            {
+                                "date": "2019-02-15T14:21:44Z",
+                                "current": "open",
+                                "previous": "solved",
+                                "type": "status_changed"
+                            },
+                            {
+                                "date": "2019-02-15T20:12:38Z",
+                                "current": "spam",
+                                "previous": "open",
+                                "type": "status_changed",
+                                "author": {
+                                    "name": "Moises Promotor LG Electonics",
+                                    "id": "jorge1.gonzalez@lgepartner.com"
+                                }
+                            }
+                        ],
+                        "id": "ZRT57",
+                        "requester": {
+                            "mail": "anagracielamorales14@gmail.com",
+                            "name": "Ana",
+                            "utc_offset": "America/Santiago",
+                            "ip": "181.43.173.29"
+                        },
+                        "groups": [
+                            {
+                                "id": 0,
+                                "name": "General",
+                                "inherited": true
+                            }
+                        ],
+                        "status": "spam",
+                        "subject": "Consumo en wh de refrigerador LG LB31MPP",
+                        "modified": "2019-03-28T19:02:57Z",
+                        "source": {
+                            "type": "chat-window",
+                            "url": "https://simple.ripley.cl/refrigerador-lg-lb31mpp-2000366220898p#"
+                        },
+                        "opened": [
+                            {
+                                "from": "2019-02-14T22:45:11Z",
+                                "to": "2019-02-15T12:20:11Z"
+                            },
+                            {
+                                "from": "2019-02-15T14:21:44Z",
+                                "to": "2019-02-15T20:12:38Z"
+                            }
+                        ],
+                        "firstResponse": {
+                            "agent": "jorge1.gonzalez@lgepartner.com",
+                            "date": "2019-02-15T12:20:11Z"
+                        },
+                        "ccs": [],
+                        "tags": [],
+                        "rate": "not_rated",
+                        "date": "2019-02-14T22:45:11Z",
+                        "currentGroup": {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    },
+                    {
+                        "assignee": {
+                            "name": "Moises Promotor LG Electonics",
+                            "id": "jorge1.gonzalez@lgepartner.com"
+                        },
+                        "events": [
+                            {
+                                "author": {
+                                    "id": "s.alarconsarria@gmail.com",
+                                    "name": "sebastian alarcon sarria",
+                                    "type": "client"
+                                },
+                                "date": "2019-02-15T03:04:27Z",
+                                "is_private": false,
+                                "message": "Mensaje:\nbuenas quiero saber si el modelo 49UJ6200 me deja conectar el celular directamente, gracia\n\n",
+                                "type": "message",
+                                "source": {
+                                    "url": "https://simple.ripley.cl/led-lg-49uk6200-49-2000371726965p",
+                                    "type": "chat-window"
+                                }
+                            },
+                            {
+                                "date": "2019-02-15T12:23:04Z",
+                                "is_private": false,
+                                "source": {
+                                    "type": "lc2"
+                                },
+                                "message": "por supuesto, se puede conectar desde la app y bluetooth",
+                                "type": "message",
+                                "author": {
+                                    "name": "Moises Promotor LG Electonics",
+                                    "type": "agent",
+                                    "id": "jorge1.gonzalez@lgepartner.com"
+                                }
+                            },
+                            {
+                                "date": "2019-02-15T12:23:04Z",
+                                "to": {
+                                    "name": "Moises Promotor LG Electonics",
+                                    "id": "jorge1.gonzalez@lgepartner.com"
+                                },
+                                "type": "assignee_changed",
+                                "author": {
+                                    "name": "Moises Promotor LG Electonics",
+                                    "id": "jorge1.gonzalez@lgepartner.com"
+                                }
+                            },
+                            {
+                                "date": "2019-02-15T12:23:04Z",
+                                "current": "solved",
+                                "previous": "open",
+                                "type": "status_changed",
+                                "author": {
+                                    "name": "Moises Promotor LG Electonics",
+                                    "id": "jorge1.gonzalez@lgepartner.com"
+                                }
+                            },
+                            {
+                                "date": "2019-02-16T12:59:51Z",
+                                "type": "rating_offer_sent"
+                            }
+                        ],
+                        "id": "X7AW5",
+                        "requester": {
+                            "mail": "s.alarconsarria@gmail.com",
+                            "name": "sebastian alarcon sarria",
+                            "utc_offset": "America/Santiago",
+                            "ip": "201.189.197.92"
+                        },
+                        "groups": [
+                            {
+                                "id": 0,
+                                "name": "General",
+                                "inherited": true
+                            }
+                        ],
+                        "status": "solved",
+                        "subject": "duda",
+                        "modified": "2019-03-28T19:02:57Z",
+                        "source": {
+                            "type": "chat-window",
+                            "url": "https://simple.ripley.cl/led-lg-49uk6200-49-2000371726965p"
+                        },
+                        "opened": [
+                            {
+                                "from": "2019-02-15T03:04:27Z",
+                                "to": "2019-02-15T12:23:04Z"
+                            }
+                        ],
+                        "resolutionDate": "2019-02-15T12:23:04Z",
+                        "firstResponse": {
+                            "agent": "jorge1.gonzalez@lgepartner.com",
+                            "date": "2019-02-15T12:23:04Z"
+                        },
+                        "ccs": [],
+                        "tags": [],
+                        "rate": "not_rated",
+                        "date": "2019-02-15T03:04:27Z",
+                        "currentGroup": {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}
