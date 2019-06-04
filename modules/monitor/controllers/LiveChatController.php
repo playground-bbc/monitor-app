@@ -3,6 +3,7 @@ namespace app\modules\monitor\controllers;
 
 use app\models\api\LiveChatApi;
 use app\models\ProductsModels;
+use app\models\ProductsCategories;
 use app\models\Dictionary;
 use app\models\SearchForm;
 use yii\web\Controller;
@@ -17,7 +18,7 @@ class LiveChatController extends Controller
      * Renders the index view for the module
      * @return string
      */
-    public function actionIndex()
+    public function actionView()
     {
         $form_model           = new SearchForm();
         $form_model->scenario = 'live-chat';
@@ -31,14 +32,13 @@ class LiveChatController extends Controller
 
         $products_models = ProductsModels::find()->asArray()->all();
         $dictionary  = new Dictionary;
+        $productsCategories =  ProductsCategories::find()->where(['or', ['parentId' => 0], ['parentId' => null]])->all();
 
-        $pages = $liveChat->chatByQuery($products_models, 1);
+        //$pages = $liveChat->chatByQuery($products_models, 1);
         
-        echo "<pre>";
-        var_dump($liveChat->searchBywords($dictionary->orderedWords));
-        echo "</pre>";
-        die();
-        return $this->render('index', ['form_model' => $form_model]);
+        $count_words = $liveChat->searchAndCountBywords($dictionary->orderedwords,1);
+        
+        return $this->render('view',['productsCategories' => $productsCategories]);
     }
 
 }

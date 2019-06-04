@@ -6,6 +6,7 @@ use LiveChat\Api\Client as LiveChat;
 use Stringizer\Stringizer;
 use Yii;
 use yii\base\Model;
+use yii\helpers\ArrayHelper;
 
 /**
  * LiveChatApi is the model behind the login API.
@@ -91,41 +92,80 @@ class LiveChatApi extends Model
             $this->params['page'] = 1;
         }
 
-        /*
-            foreach ($query as $key => $value) {
-                $this->params['query'] = $value;
-                $pages[$value] = $this->_liveChat->tickets->get($this->params)->pages;
-                while ($this->params['page'] <= $pages[$value]) {
-                    $index = $this->params['page'];
-                    $this->_data[$value][$index] = $this->_liveChat->tickets->get($this->params);
-                    $this->params['page']++;
-                }
-
-            }
-
-        */
-
-        /* 
-            foreach ($query as $key => $value) {
-                $this->params['query'] = $value;
-                $this->_data[$alertId][$value] = $this->_liveChat->tickets->get($this->params);
-            }
         $this->saveDataJson($file);
-        */
-        return $this->_data;
     }
 
-    public function searchBywords($words)
+    /** go through the json located in the monitor_app folder the live_chat + id file
+         'SMART TV LED 49" FHD' => 
+            array (size=2)
+              'Palabras Positivas' => 
+                array (size=3)
+                  'bueno' => int 0
+                  'diferencia' => int 1
+                  'media noche' => int 0
+              'Palabras Negativas' => 
+                array (size=3)
+                  'diferencia' => int 1
+                  'defecto' => int 0
+                  'tengo un problema' => int 0
+     */
+    public function searchAndCountBywords($words,$alertId)
     {
-        $result = [];
-        foreach ($words as $category => $word) {
-            foreach ($this->_data as $key => $value) {
-                $result[$category] = $value->tickets[0]->events[0]->message;
+        $fileName = $this->getFilename($alertId);
+        $data = $fileName->field('data');
+
+        $tickets = [];
+       
+        foreach ($data as $product => $value) {
+            $tickets[$product] = $value['tickets'];
+        }
+
+        $events = [];
+        foreach ($tickets as $ticket => $value) {
+            for ($i=0; $i < sizeof($tickets[$ticket]) ; $i++) { 
+                $events[$ticket][] = $tickets[$ticket][$i]['events'];
+            }
+        } 
+
+      
+        $message = [];
+         foreach ($events as $key => $value) {
+            for ($i=0; $i < sizeof($events[$key]) ; $i++) { 
+                for ($j=0; $j <sizeof($events[$key][$i]) ; $j++) { 
+                    $message[$key][] = $events[$key][$i][$j];
+                    
+                }
+            }
+        } 
+
+        $message_client = [];
+        foreach ($message as $key => $value) {
+            for ($i=0; $i <sizeof($value) ; $i++) { 
+                if (isset($value[$i]['author']['type']) && $value[$i]['author']['type']== 'client') {
+                    $message_client[$key][] = $value[$i]['message'];
+                }
             }
         }
-        return $result;
-    }
 
+
+        $model_by_word = [];
+        foreach ($message_client as $key => $value) {
+            foreach ($words as $category => $word) {
+                for ($i=0; $i < sizeof($value) ; $i++) { 
+                    $s = new Stringizer($value[$i]);
+                    for ($j=0; $j <sizeof($word) ; $j++) { 
+                        $model_by_word[$key][$category][$word[$j]] = $s->containsCountIncaseSensitive($word[$j]);
+                    }
+                }
+            }
+        }
+
+        return $model_by_word;
+
+    }
+    /**
+     * it goes through all the data and converts it into a json file
+     */
     public function saveDataJson($file)
     {
         foreach ($this->_data as $key => $value) {

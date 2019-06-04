@@ -1,1428 +1,1264 @@
 {
-    "__created_at": 1559488406,
-    "__updated_at": 1559488597,
-    "data": [
-        {
-            "pages": 0,
-            "total": 0,
-            "tickets": []
-        },
-        {
-            "monitor": {
-                "pages": 0,
-                "total": 0,
-                "tickets": []
-            },
-            "Lg": {
-                "pages": 1,
-                "total": 16,
-                "tickets": [
-                    {
-                        "assignee": {
-                            "name": "Moises Promotor LG Electonics",
-                            "id": "jorge1.gonzalez@lgepartner.com"
-                        },
-                        "events": [
-                            {
-                                "author": {
-                                    "id": "Yann23cl@gmail.com",
-                                    "name": "Atiliano ",
-                                    "type": "client"
-                                },
-                                "date": "2019-02-16T02:53:04Z",
-                                "is_private": false,
-                                "message": "Mensaje:\nPorque dice 9-5 kilos \n\n",
-                                "type": "message",
-                                "source": {
-                                    "url": "https://www.hites.com/lavadora-lg-wd9wb6-9-5-kg-752864001",
-                                    "type": "chat-window"
-                                }
-                            },
-                            {
-                                "date": "2019-02-18T12:53:37Z",
-                                "is_private": false,
-                                "source": {
-                                    "type": "lc2"
-                                },
-                                "message": "por es de 9 kilos de lavado y 5 de secado",
-                                "type": "message",
-                                "author": {
-                                    "name": "Moises Promotor LG Electonics",
-                                    "type": "agent",
-                                    "id": "jorge1.gonzalez@lgepartner.com"
-                                }
-                            },
-                            {
-                                "date": "2019-02-18T12:53:37Z",
-                                "to": {
-                                    "name": "Moises Promotor LG Electonics",
-                                    "id": "jorge1.gonzalez@lgepartner.com"
-                                },
-                                "type": "assignee_changed",
-                                "author": {
-                                    "name": "Moises Promotor LG Electonics",
-                                    "id": "jorge1.gonzalez@lgepartner.com"
-                                }
-                            },
-                            {
-                                "date": "2019-02-18T12:53:37Z",
-                                "current": "solved",
-                                "previous": "open",
-                                "type": "status_changed",
-                                "author": {
-                                    "name": "Moises Promotor LG Electonics",
-                                    "id": "jorge1.gonzalez@lgepartner.com"
-                                }
-                            },
-                            {
-                                "date": "2019-02-19T13:30:02Z",
-                                "type": "rating_offer_sent"
-                            },
-                            {
-                                "date": "2019-02-19T17:57:26Z",
-                                "is_private": false,
-                                "author": {
-                                    "name": "yann ROA",
-                                    "type": "client",
-                                    "id": "yann23cl@gmail.com"
-                                },
-                                "source": {
-                                    "type": "mail"
-                                },
-                                "message": "Hola, sólo estoy interesado en una secadora, hasta 9 kilos, que sea buena y\nbarata.",
-                                "type": "message"
-                            },
-                            {
-                                "date": "2019-02-19T17:57:26Z",
-                                "current": "open",
-                                "previous": "solved",
-                                "type": "status_changed"
-                            },
-                            {
-                                "date": "2019-02-19T17:59:08Z",
-                                "current": "spam",
-                                "previous": "open",
-                                "type": "status_changed",
-                                "author": {
-                                    "name": "Moises Promotor LG Electonics",
-                                    "id": "jorge1.gonzalez@lgepartner.com"
-                                }
-                            },
-                            {
-                                "date": "2019-02-19T17:59:44Z",
-                                "current": "good",
-                                "type": "rated",
-                                "author": {
-                                    "name": "Atiliano ",
-                                    "type": "client",
-                                    "id": "Yann23cl@gmail.com"
-                                }
-                            }
-                        ],
-                        "id": "O37WS",
-                        "requester": {
-                            "mail": "Yann23cl@gmail.com",
-                            "name": "Atiliano ",
-                            "utc_offset": "America/Santiago",
-                            "ip": "186.106.166.9"
-                        },
-                        "groups": [
-                            {
-                                "id": 0,
-                                "name": "General",
-                                "inherited": true
-                            }
-                        ],
-                        "status": "spam",
-                        "subject": "Lavadora lg 9-5 kilos",
-                        "modified": "2019-03-28T19:02:57Z",
-                        "source": {
-                            "type": "chat-window",
-                            "url": "https://www.hites.com/lavadora-lg-wd9wb6-9-5-kg-752864001"
-                        },
-                        "opened": [
-                            {
-                                "from": "2019-02-16T02:53:04Z",
-                                "to": "2019-02-18T12:53:37Z"
-                            },
-                            {
-                                "from": "2019-02-19T17:57:26Z",
-                                "to": "2019-02-19T17:59:08Z"
-                            }
-                        ],
-                        "firstResponse": {
-                            "agent": "jorge1.gonzalez@lgepartner.com",
-                            "date": "2019-02-18T12:53:37Z"
-                        },
-                        "ccs": [],
-                        "tags": [],
-                        "rate": "rated_good",
-                        "date": "2019-02-16T02:53:04Z",
-                        "currentGroup": {
-                            "id": 0,
-                            "name": "General",
-                            "inherited": true
-                        }
+    "__created_at": 1559576625,
+    "__updated_at": 1559600427,
+    "data": {
+        "SMART TV LED 49\" FHD": {
+            "pages": 1,
+            "total": 1,
+            "tickets": [
+                {
+                    "assignee": {
+                        "name": "Edgar Promotor LG Electonics ",
+                        "id": "edgar.pino@lgepartner.com"
                     },
-                    {
-                        "assignee": {
-                            "name": "Moises Promotor LG Electonics",
-                            "id": "jorge1.gonzalez@lgepartner.com"
-                        },
-                        "events": [
-                            {
-                                "author": {
-                                    "id": "hernan.isakson@gmail.com",
-                                    "name": "Hernán Isakson",
-                                    "type": "client"
-                                },
-                                "date": "2019-02-17T01:55:51Z",
-                                "is_private": false,
-                                "message": "Mensaje:\nDeseo más información sobre características, consumo y precios para despacho a Viña del Mar.\nRefigeradores chicos Lg no frost\n\n",
-                                "type": "message",
-                                "source": {
-                                    "url": "https://www.hites.com/refrigerador-lg-lt23bppapzpecl-no-frost-209-litros-751281001?gclid=CjwKCAiAhp_jBRAxEiwAXbniXSbKY__QtESIE9BAvO_Ac27gV7O-S8RVBvawyMJJMB1zr_2EwV6ErhoC-kcQAvD_BwE",
-                                    "type": "chat-window"
-                                }
+                    "events": [
+                        {
+                            "author": {
+                                "id": "Dafne.vergara.c@gmail.com",
+                                "name": "Dafne",
+                                "type": "client"
                             },
-                            {
-                                "date": "2019-02-18T13:03:00Z",
-                                "is_private": false,
-                                "source": {
-                                    "type": "lc2"
-                                },
-                                "message": "se recomienda ver stock, las descripciones y especificaciones",
-                                "type": "message",
-                                "author": {
-                                    "name": "Moises Promotor LG Electonics",
-                                    "type": "agent",
-                                    "id": "jorge1.gonzalez@lgepartner.com"
-                                }
-                            },
-                            {
-                                "date": "2019-02-18T13:03:00Z",
-                                "to": {
-                                    "name": "Moises Promotor LG Electonics",
-                                    "id": "jorge1.gonzalez@lgepartner.com"
-                                },
-                                "type": "assignee_changed",
-                                "author": {
-                                    "name": "Moises Promotor LG Electonics",
-                                    "id": "jorge1.gonzalez@lgepartner.com"
-                                }
-                            },
-                            {
-                                "date": "2019-02-18T13:03:00Z",
-                                "current": "solved",
-                                "previous": "open",
-                                "type": "status_changed",
-                                "author": {
-                                    "name": "Moises Promotor LG Electonics",
-                                    "id": "jorge1.gonzalez@lgepartner.com"
-                                }
-                            },
-                            {
-                                "date": "2019-02-19T13:30:02Z",
-                                "type": "rating_offer_sent"
+                            "date": "2019-02-07T01:27:37Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nCual es la diferencia entre Full Hd y Full HD 4K\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://www.hites.com/led-lg-49lj5500-49-full-hd-smart-tv-744204001",
+                                "type": "chat-window"
                             }
-                        ],
-                        "id": "GBWFD",
-                        "requester": {
-                            "mail": "hernan.isakson@gmail.com",
-                            "name": "Hernán Isakson",
-                            "utc_offset": "America/Santiago",
-                            "ip": "186.11.7.247"
                         },
-                        "groups": [
-                            {
-                                "id": 0,
-                                "name": "General",
-                                "inherited": true
+                        {
+                            "date": "2019-02-07T12:25:59Z",
+                            "is_private": false,
+                            "attachments": [
+                                {
+                                    "url": "cdn.livechat-static.com/api/file/v2/lc/att-old/8246671/99328200f60ffe57a9754f2d285cd4d1/TIPO%20DE%20RESOLUCION.jpg",
+                                    "name": "TIPO DE RESOLUCION.jpg",
+                                    "width": 640,
+                                    "height": 360,
+                                    "content_type": "image/jpeg",
+                                    "content_encoding": "binary"
+                                }
+                            ],
+                            "author": {
+                                "name": "Edgar Promotor LG Electonics ",
+                                "type": "agent",
+                                "id": "edgar.pino@lgepartner.com"
+                            },
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "message": "Hola buen día,  le indico que esto guarda relación con el tamaño que es capaz de reproducir el TV, los tamaños serian los siguientes Full HD (FHD)  o Ultra HD 4K (UHD 4K) Adjunto envió una imagen para que valide de manera ilustrativa lo que le estoy comentando bien.\n\nHa sido un placer hablar con usted hoy. Que tenga buen día,",
+                            "type": "message"
+                        },
+                        {
+                            "date": "2019-02-07T12:25:59Z",
+                            "to": {
+                                "name": "Edgar Promotor LG Electonics ",
+                                "id": "edgar.pino@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Edgar Promotor LG Electonics ",
+                                "id": "edgar.pino@lgepartner.com"
                             }
-                        ],
-                        "status": "solved",
-                        "subject": "Refrigeradores Lg de 209 lt, 235 lt y 254 lt, no fros",
-                        "modified": "2019-03-28T19:02:57Z",
-                        "source": {
-                            "type": "chat-window",
-                            "url": "https://www.hites.com/refrigerador-lg-lt23bppapzpecl-no-frost-209-litros-751281001?gclid=CjwKCAiAhp_jBRAxEiwAXbniXSbKY__QtESIE9BAvO_Ac27gV7O-S8RVBvawyMJJMB1zr_2EwV6ErhoC-kcQAvD_BwE"
                         },
-                        "opened": [
-                            {
-                                "from": "2019-02-17T01:55:51Z",
-                                "to": "2019-02-18T13:03:00Z"
+                        {
+                            "date": "2019-02-07T12:25:59Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Edgar Promotor LG Electonics ",
+                                "id": "edgar.pino@lgepartner.com"
                             }
-                        ],
-                        "resolutionDate": "2019-02-18T13:03:00Z",
-                        "firstResponse": {
-                            "agent": "jorge1.gonzalez@lgepartner.com",
-                            "date": "2019-02-18T13:03:00Z"
                         },
-                        "ccs": [],
-                        "tags": [],
-                        "rate": "not_rated",
-                        "date": "2019-02-17T01:55:51Z",
-                        "currentGroup": {
-                            "id": 0,
-                            "name": "General",
-                            "inherited": true
+                        {
+                            "date": "2019-02-08T12:51:35Z",
+                            "type": "rating_offer_sent"
                         }
+                    ],
+                    "id": "9632Z",
+                    "requester": {
+                        "mail": "Dafne.vergara.c@gmail.com",
+                        "name": "Dafne",
+                        "utc_offset": "America/Santiago",
+                        "ip": "191.125.169.187"
                     },
-                    {
-                        "assignee": {
-                            "name": "Moises Promotor LG Electonics",
-                            "id": "jorge1.gonzalez@lgepartner.com"
-                        },
-                        "events": [
-                            {
-                                "author": {
-                                    "id": "ivanlealpavez@gmail.com",
-                                    "name": "Víctor leal pavez",
-                                    "type": "client"
-                                },
-                                "date": "2019-02-17T01:21:55Z",
-                                "is_private": false,
-                                "message": "Mensaje:\nPagar un pie de230,000 y dos letras de 25,000\n\n\n\n",
-                                "type": "message",
-                                "source": {
-                                    "url": "https://www.abcdin.cl/tienda/es/abcdin/tv-audio/televisores-video/televisores-led/led-lg-55-4k-ultra-hd-smart-tv-55uk6350-1125164?utm_medium=display&utm_source=facebook&utm_campaign=diasd_led_visitante",
-                                    "type": "chat-window"
-                                }
-                            },
-                            {
-                                "date": "2019-02-18T13:02:33Z",
-                                "is_private": false,
-                                "source": {
-                                    "type": "lc2"
-                                },
-                                "message": "no es factible dejar pie en compras on line",
-                                "type": "message",
-                                "author": {
-                                    "name": "Moises Promotor LG Electonics",
-                                    "type": "agent",
-                                    "id": "jorge1.gonzalez@lgepartner.com"
-                                }
-                            },
-                            {
-                                "date": "2019-02-18T13:02:33Z",
-                                "to": {
-                                    "name": "Moises Promotor LG Electonics",
-                                    "id": "jorge1.gonzalez@lgepartner.com"
-                                },
-                                "type": "assignee_changed",
-                                "author": {
-                                    "name": "Moises Promotor LG Electonics",
-                                    "id": "jorge1.gonzalez@lgepartner.com"
-                                }
-                            },
-                            {
-                                "date": "2019-02-18T13:02:33Z",
-                                "current": "solved",
-                                "previous": "open",
-                                "type": "status_changed",
-                                "author": {
-                                    "name": "Moises Promotor LG Electonics",
-                                    "id": "jorge1.gonzalez@lgepartner.com"
-                                }
-                            },
-                            {
-                                "date": "2019-02-19T13:30:02Z",
-                                "type": "rating_offer_sent"
-                            }
-                        ],
-                        "id": "VZ89F",
-                        "requester": {
-                            "mail": "ivanlealpavez@gmail.com",
-                            "name": "Víctor leal pavez",
-                            "utc_offset": "America/Santiago",
-                            "ip": "191.126.169.170"
-                        },
-                        "groups": [
-                            {
-                                "id": 0,
-                                "name": "General",
-                                "inherited": true
-                            }
-                        ],
-                        "status": "solved",
-                        "subject": "Comprar Smart TV de 55 pulgadas",
-                        "modified": "2019-03-28T19:02:57Z",
-                        "source": {
-                            "type": "chat-window",
-                            "url": "https://www.abcdin.cl/tienda/es/abcdin/tv-audio/televisores-video/televisores-led/led-lg-55-4k-ultra-hd-smart-tv-55uk6350-1125164?utm_medium=display&utm_source=facebook&utm_campaign=diasd_led_visitante"
-                        },
-                        "opened": [
-                            {
-                                "from": "2019-02-17T01:21:55Z",
-                                "to": "2019-02-18T13:02:33Z"
-                            }
-                        ],
-                        "resolutionDate": "2019-02-18T13:02:33Z",
-                        "firstResponse": {
-                            "agent": "jorge1.gonzalez@lgepartner.com",
-                            "date": "2019-02-18T13:02:33Z"
-                        },
-                        "ccs": [],
-                        "tags": [],
-                        "rate": "not_rated",
-                        "date": "2019-02-17T01:21:55Z",
-                        "currentGroup": {
+                    "groups": [
+                        {
                             "id": 0,
                             "name": "General",
                             "inherited": true
                         }
+                    ],
+                    "status": "solved",
+                    "subject": "Consulta",
+                    "modified": "2019-02-08T12:51:35Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.hites.com/led-lg-49lj5500-49-full-hd-smart-tv-744204001"
                     },
-                    {
-                        "assignee": {
-                            "name": "Moises Promotor LG Electonics",
-                            "id": "jorge1.gonzalez@lgepartner.com"
-                        },
-                        "events": [
-                            {
-                                "author": {
-                                    "id": "romina.avila.r@gmail.com",
-                                    "name": "Romina Ávila",
-                                    "type": "client"
-                                },
-                                "date": "2019-02-16T15:23:36Z",
-                                "is_private": false,
-                                "message": "Mensaje:\nCuanta garantía tiene\n\n",
-                                "type": "message",
-                                "source": {
-                                    "url": "https://www.hites.com/708933001",
-                                    "type": "chat-window"
-                                }
-                            },
-                            {
-                                "date": "2019-02-18T13:00:44Z",
-                                "is_private": false,
-                                "source": {
-                                    "type": "lc2"
-                                },
-                                "message": "365 dias desde la fecha de compra",
-                                "type": "message",
-                                "author": {
-                                    "name": "Moises Promotor LG Electonics",
-                                    "type": "agent",
-                                    "id": "jorge1.gonzalez@lgepartner.com"
-                                }
-                            },
-                            {
-                                "date": "2019-02-18T13:00:44Z",
-                                "to": {
-                                    "name": "Moises Promotor LG Electonics",
-                                    "id": "jorge1.gonzalez@lgepartner.com"
-                                },
-                                "type": "assignee_changed",
-                                "author": {
-                                    "name": "Moises Promotor LG Electonics",
-                                    "id": "jorge1.gonzalez@lgepartner.com"
-                                }
-                            },
-                            {
-                                "date": "2019-02-18T13:00:44Z",
-                                "current": "solved",
-                                "previous": "open",
-                                "type": "status_changed",
-                                "author": {
-                                    "name": "Moises Promotor LG Electonics",
-                                    "id": "jorge1.gonzalez@lgepartner.com"
-                                }
-                            },
-                            {
-                                "date": "2019-02-19T13:30:02Z",
-                                "type": "rating_offer_sent"
-                            },
-                            {
-                                "date": "2019-02-19T16:11:08Z",
-                                "current": "good",
-                                "author": {
-                                    "name": "Romina Ávila",
-                                    "id": "romina.avila.r@gmail.com",
-                                    "type": "client"
-                                },
-                                "type": "rated"
-                            }
-                        ],
-                        "id": "FTNUB",
-                        "requester": {
-                            "mail": "romina.avila.r@gmail.com",
-                            "name": "Romina Ávila",
-                            "utc_offset": "America/Santiago",
-                            "ip": "186.105.249.72"
-                        },
-                        "groups": [
-                            {
-                                "id": 0,
-                                "name": "General",
-                                "inherited": true
-                            }
-                        ],
-                        "status": "solved",
-                        "subject": "Tiene garantía el Blu ray",
-                        "modified": "2019-03-28T19:02:57Z",
-                        "source": {
-                            "type": "chat-window",
-                            "url": "https://www.hites.com/708933001"
-                        },
-                        "opened": [
-                            {
-                                "from": "2019-02-16T15:23:36Z",
-                                "to": "2019-02-18T13:00:44Z"
-                            }
-                        ],
-                        "resolutionDate": "2019-02-18T13:00:44Z",
-                        "firstResponse": {
-                            "agent": "jorge1.gonzalez@lgepartner.com",
-                            "date": "2019-02-18T13:00:44Z"
-                        },
-                        "ccs": [],
-                        "tags": [],
-                        "rate": "rated_good",
-                        "date": "2019-02-16T15:23:36Z",
-                        "currentGroup": {
-                            "id": 0,
-                            "name": "General",
-                            "inherited": true
+                    "opened": [
+                        {
+                            "from": "2019-02-07T01:27:37Z",
+                            "to": "2019-02-07T12:25:59Z"
                         }
+                    ],
+                    "resolutionDate": "2019-02-07T12:25:59Z",
+                    "firstResponse": {
+                        "agent": "edgar.pino@lgepartner.com",
+                        "date": "2019-02-07T12:25:59Z"
                     },
-                    {
-                        "assignee": {
-                            "name": "Moises Promotor LG Electonics",
-                            "id": "jorge1.gonzalez@lgepartner.com"
-                        },
-                        "events": [
-                            {
-                                "author": {
-                                    "id": "ricotin7@gmail.com",
-                                    "name": "Ricardo",
-                                    "type": "client"
-                                },
-                                "date": "2019-02-16T11:37:48Z",
-                                "is_private": false,
-                                "message": "Mensaje:\nCual es la diferencia entre esta tv y la LED LG 43UK6500 43\"\n\n",
-                                "type": "message",
-                                "source": {
-                                    "url": "https://simple.ripley.cl/led-lg-43uk6300-43-2000369724874p",
-                                    "type": "chat-window"
-                                }
-                            },
-                            {
-                                "date": "2019-02-18T13:00:18Z",
-                                "is_private": false,
-                                "source": {
-                                    "type": "lc2"
-                                },
-                                "message": "UK6500 es un modelo mas actualizado y mejorado en su especificaciones",
-                                "type": "message",
-                                "author": {
-                                    "name": "Moises Promotor LG Electonics",
-                                    "type": "agent",
-                                    "id": "jorge1.gonzalez@lgepartner.com"
-                                }
-                            },
-                            {
-                                "date": "2019-02-18T13:00:18Z",
-                                "to": {
-                                    "name": "Moises Promotor LG Electonics",
-                                    "id": "jorge1.gonzalez@lgepartner.com"
-                                },
-                                "type": "assignee_changed",
-                                "author": {
-                                    "name": "Moises Promotor LG Electonics",
-                                    "id": "jorge1.gonzalez@lgepartner.com"
-                                }
-                            },
-                            {
-                                "date": "2019-02-18T13:00:18Z",
-                                "current": "solved",
-                                "previous": "open",
-                                "type": "status_changed",
-                                "author": {
-                                    "name": "Moises Promotor LG Electonics",
-                                    "id": "jorge1.gonzalez@lgepartner.com"
-                                }
-                            },
-                            {
-                                "date": "2019-02-19T13:30:02Z",
-                                "type": "rating_offer_sent"
-                            }
-                        ],
-                        "id": "CQ9AR",
-                        "requester": {
-                            "mail": "ricotin7@gmail.com",
-                            "name": "Ricardo",
-                            "utc_offset": "America/Santiago",
-                            "ip": "190.44.78.213"
-                        },
-                        "groups": [
-                            {
-                                "id": 0,
-                                "name": "General",
-                                "inherited": true
-                            }
-                        ],
-                        "status": "solved",
-                        "subject": "Diferencia ",
-                        "modified": "2019-03-28T19:02:57Z",
-                        "source": {
-                            "type": "chat-window",
-                            "url": "https://simple.ripley.cl/led-lg-43uk6300-43-2000369724874p"
-                        },
-                        "opened": [
-                            {
-                                "from": "2019-02-16T11:37:48Z",
-                                "to": "2019-02-18T13:00:18Z"
-                            }
-                        ],
-                        "resolutionDate": "2019-02-18T13:00:18Z",
-                        "firstResponse": {
-                            "agent": "jorge1.gonzalez@lgepartner.com",
-                            "date": "2019-02-18T13:00:18Z"
-                        },
-                        "ccs": [],
-                        "tags": [],
-                        "rate": "not_rated",
-                        "date": "2019-02-16T11:37:48Z",
-                        "currentGroup": {
-                            "id": 0,
-                            "name": "General",
-                            "inherited": true
-                        }
-                    },
-                    {
-                        "events": [
-                            {
-                                "author": {
-                                    "id": "Rrene.rebeca@gmail.com",
-                                    "name": "Rebeca",
-                                    "type": "client"
-                                },
-                                "date": "2019-02-16T23:32:26Z",
-                                "is_private": false,
-                                "message": "Mensaje:\nHola \n\n",
-                                "type": "message",
-                                "source": {
-                                    "url": "https://www.hites.com/led-lg-32lj550b-32-hd-smart-tv-744201001",
-                                    "type": "chat-window"
-                                }
-                            },
-                            {
-                                "date": "2019-02-18T13:02:06Z",
-                                "current": "spam",
-                                "previous": "open",
-                                "type": "status_changed",
-                                "author": {
-                                    "name": "Moises Promotor LG Electonics",
-                                    "id": "jorge1.gonzalez@lgepartner.com"
-                                }
-                            }
-                        ],
-                        "id": "BCLMH",
-                        "requester": {
-                            "mail": "Rrene.rebeca@gmail.com",
-                            "name": "Rebeca",
-                            "utc_offset": "America/Santiago",
-                            "ip": "200.120.82.213"
-                        },
-                        "groups": [
-                            {
-                                "id": 0,
-                                "name": "General",
-                                "inherited": true
-                            }
-                        ],
-                        "status": "spam",
-                        "subject": "Hola",
-                        "modified": "2019-02-18T13:02:06Z",
-                        "source": {
-                            "type": "chat-window",
-                            "url": "https://www.hites.com/led-lg-32lj550b-32-hd-smart-tv-744201001"
-                        },
-                        "opened": [
-                            {
-                                "from": "2019-02-16T23:32:26Z",
-                                "to": "2019-02-18T13:02:06Z"
-                            }
-                        ],
-                        "firstResponse": {},
-                        "ccs": [],
-                        "tags": [],
-                        "rate": "not_rated",
-                        "date": "2019-02-16T23:32:26Z",
-                        "currentGroup": {
-                            "id": 0,
-                            "name": "General",
-                            "inherited": true
-                        }
-                    },
-                    {
-                        "events": [
-                            {
-                                "author": {
-                                    "id": "carmenararat1@hotmai.com",
-                                    "name": "Carmen Ararat",
-                                    "type": "client"
-                                },
-                                "date": "2019-02-16T21:15:17Z",
-                                "is_private": false,
-                                "message": "Mensaje:\nHh\n\n",
-                                "type": "message",
-                                "source": {
-                                    "url": "https://www.hites.com/lavadora-lg-wd9wb6-9-5-kg-752864001",
-                                    "type": "chat-window"
-                                }
-                            },
-                            {
-                                "date": "2019-02-18T13:01:59Z",
-                                "current": "spam",
-                                "previous": "open",
-                                "type": "status_changed",
-                                "author": {
-                                    "name": "Moises Promotor LG Electonics",
-                                    "id": "jorge1.gonzalez@lgepartner.com"
-                                }
-                            }
-                        ],
-                        "id": "TQBOZ",
-                        "requester": {
-                            "mail": "carmenararat1@hotmai.com",
-                            "name": "Carmen Ararat",
-                            "utc_offset": "America/Santiago",
-                            "ip": "190.46.23.252"
-                        },
-                        "groups": [
-                            {
-                                "id": 0,
-                                "name": "General",
-                                "inherited": true
-                            }
-                        ],
-                        "status": "spam",
-                        "subject": "Disponibilidad",
-                        "modified": "2019-02-18T13:01:59Z",
-                        "source": {
-                            "type": "chat-window",
-                            "url": "https://www.hites.com/lavadora-lg-wd9wb6-9-5-kg-752864001"
-                        },
-                        "opened": [
-                            {
-                                "from": "2019-02-16T21:15:17Z",
-                                "to": "2019-02-18T13:01:59Z"
-                            }
-                        ],
-                        "firstResponse": {},
-                        "ccs": [],
-                        "tags": [],
-                        "rate": "not_rated",
-                        "date": "2019-02-16T21:15:17Z",
-                        "currentGroup": {
-                            "id": 0,
-                            "name": "General",
-                            "inherited": true
-                        }
-                    },
-                    {
-                        "events": [
-                            {
-                                "author": {
-                                    "id": "samuelramosreyes@gmail.com",
-                                    "name": "Samuel Ramos",
-                                    "type": "client"
-                                },
-                                "date": "2019-02-16T18:44:50Z",
-                                "is_private": false,
-                                "message": "Mensaje:\nSaquen está era la no me deja hacer la compra weones ctm\n\n",
-                                "type": "message",
-                                "source": {
-                                    "url": "https://www.hites.com/refrigerador-lg-lt32bppx-no-frost-312-litros-751282001?utm_campaign=RT_carroabandonado_2019-02-16&utm_medium=email&utm_source=RT_Automation",
-                                    "type": "chat-window"
-                                }
-                            },
-                            {
-                                "date": "2019-02-18T13:01:55Z",
-                                "current": "spam",
-                                "previous": "open",
-                                "type": "status_changed",
-                                "author": {
-                                    "name": "Moises Promotor LG Electonics",
-                                    "id": "jorge1.gonzalez@lgepartner.com"
-                                }
-                            }
-                        ],
-                        "id": "BI2SZ",
-                        "requester": {
-                            "mail": "samuelramosreyes@gmail.com",
-                            "name": "Samuel Ramos",
-                            "utc_offset": "America/Santiago",
-                            "ip": "181.203.126.12"
-                        },
-                        "groups": [
-                            {
-                                "id": 0,
-                                "name": "General",
-                                "inherited": true
-                            }
-                        ],
-                        "status": "spam",
-                        "subject": "Déjense wearme para hacer la compra Ctm cla2",
-                        "modified": "2019-02-18T13:01:55Z",
-                        "source": {
-                            "type": "chat-window",
-                            "url": "https://www.hites.com/refrigerador-lg-lt32bppx-no-frost-312-litros-751282001?utm_campaign=RT_carroabandonado_2019-02-16&utm_medium=email&utm_source=RT_Automation"
-                        },
-                        "opened": [
-                            {
-                                "from": "2019-02-16T18:44:50Z",
-                                "to": "2019-02-18T13:01:55Z"
-                            }
-                        ],
-                        "firstResponse": {},
-                        "ccs": [],
-                        "tags": [],
-                        "rate": "not_rated",
-                        "date": "2019-02-16T18:44:50Z",
-                        "currentGroup": {
-                            "id": 0,
-                            "name": "General",
-                            "inherited": true
-                        }
-                    },
-                    {
-                        "events": [
-                            {
-                                "author": {
-                                    "id": "samuelramosreyes@gmail.com",
-                                    "name": "Samuel Ramos",
-                                    "type": "client"
-                                },
-                                "date": "2019-02-16T18:41:35Z",
-                                "is_private": false,
-                                "message": "Mensaje:\nHola\n\n",
-                                "type": "message",
-                                "source": {
-                                    "url": "https://www.hites.com/refrigerador-lg-lt32bppx-no-frost-312-litros-751282001?utm_campaign=RT_carroabandonado_2019-02-16&utm_medium=email&utm_source=RT_Automation",
-                                    "type": "chat-window"
-                                }
-                            },
-                            {
-                                "date": "2019-02-18T13:01:50Z",
-                                "current": "spam",
-                                "previous": "open",
-                                "type": "status_changed",
-                                "author": {
-                                    "name": "Moises Promotor LG Electonics",
-                                    "id": "jorge1.gonzalez@lgepartner.com"
-                                }
-                            }
-                        ],
-                        "id": "ZTK7A",
-                        "requester": {
-                            "mail": "samuelramosreyes@gmail.com",
-                            "name": "Samuel Ramos",
-                            "utc_offset": "America/Santiago",
-                            "ip": "181.203.126.12"
-                        },
-                        "groups": [
-                            {
-                                "id": 0,
-                                "name": "General",
-                                "inherited": true
-                            }
-                        ],
-                        "status": "spam",
-                        "subject": "Refrigerador",
-                        "modified": "2019-02-18T13:01:50Z",
-                        "source": {
-                            "type": "chat-window",
-                            "url": "https://www.hites.com/refrigerador-lg-lt32bppx-no-frost-312-litros-751282001?utm_campaign=RT_carroabandonado_2019-02-16&utm_medium=email&utm_source=RT_Automation"
-                        },
-                        "opened": [
-                            {
-                                "from": "2019-02-16T18:41:35Z",
-                                "to": "2019-02-18T13:01:50Z"
-                            }
-                        ],
-                        "firstResponse": {},
-                        "ccs": [],
-                        "tags": [],
-                        "rate": "not_rated",
-                        "date": "2019-02-16T18:41:35Z",
-                        "currentGroup": {
-                            "id": 0,
-                            "name": "General",
-                            "inherited": true
-                        }
-                    },
-                    {
-                        "events": [
-                            {
-                                "author": {
-                                    "id": "samuelramosreyes@gmail.com",
-                                    "name": "Samuel Ramos",
-                                    "type": "client"
-                                },
-                                "date": "2019-02-16T18:40:12Z",
-                                "is_private": false,
-                                "message": "Mensaje:\nDejarlo en domicilio\n\n",
-                                "type": "message",
-                                "source": {
-                                    "url": "https://www.hites.com/refrigerador-lg-lt32bppx-no-frost-312-litros-751282001?utm_campaign=RT_carroabandonado_2019-02-16&utm_medium=email&utm_source=RT_Automation",
-                                    "type": "chat-window"
-                                }
-                            },
-                            {
-                                "date": "2019-02-18T13:00:57Z",
-                                "current": "spam",
-                                "previous": "open",
-                                "type": "status_changed",
-                                "author": {
-                                    "name": "Moises Promotor LG Electonics",
-                                    "id": "jorge1.gonzalez@lgepartner.com"
-                                }
-                            }
-                        ],
-                        "id": "6PH7H",
-                        "requester": {
-                            "mail": "samuelramosreyes@gmail.com",
-                            "name": "Samuel Ramos",
-                            "utc_offset": "America/Santiago",
-                            "ip": "181.203.126.12"
-                        },
-                        "groups": [
-                            {
-                                "id": 0,
-                                "name": "General",
-                                "inherited": true
-                            }
-                        ],
-                        "status": "spam",
-                        "subject": "Refrigerador",
-                        "modified": "2019-02-18T13:00:57Z",
-                        "source": {
-                            "type": "chat-window",
-                            "url": "https://www.hites.com/refrigerador-lg-lt32bppx-no-frost-312-litros-751282001?utm_campaign=RT_carroabandonado_2019-02-16&utm_medium=email&utm_source=RT_Automation"
-                        },
-                        "opened": [
-                            {
-                                "from": "2019-02-16T18:40:12Z",
-                                "to": "2019-02-18T13:00:57Z"
-                            }
-                        ],
-                        "firstResponse": {},
-                        "ccs": [],
-                        "tags": [],
-                        "rate": "not_rated",
-                        "date": "2019-02-16T18:40:12Z",
-                        "currentGroup": {
-                            "id": 0,
-                            "name": "General",
-                            "inherited": true
-                        }
-                    },
-                    {
-                        "events": [
-                            {
-                                "author": {
-                                    "id": "samuelramosreyes@gmail.com",
-                                    "name": "Samuel Ramos",
-                                    "type": "client"
-                                },
-                                "date": "2019-02-16T18:34:32Z",
-                                "is_private": false,
-                                "message": "Mensaje:\nDejar de 09.00 a 12.30 y 16 .30 a 20.30 hrs\n\n",
-                                "type": "message",
-                                "source": {
-                                    "url": "https://www.hites.com/refrigerador-lg-lt32bppx-no-frost-312-litros-751282001?utm_campaign=RT_carroabandonado_2019-02-16&utm_medium=email&utm_source=RT_Automation",
-                                    "type": "chat-window"
-                                }
-                            },
-                            {
-                                "date": "2019-02-18T13:00:51Z",
-                                "current": "spam",
-                                "previous": "open",
-                                "type": "status_changed",
-                                "author": {
-                                    "name": "Moises Promotor LG Electonics",
-                                    "id": "jorge1.gonzalez@lgepartner.com"
-                                }
-                            }
-                        ],
-                        "id": "SICLI",
-                        "requester": {
-                            "mail": "samuelramosreyes@gmail.com",
-                            "name": "Samuel Ramos",
-                            "utc_offset": "America/Santiago",
-                            "ip": "181.203.126.12"
-                        },
-                        "groups": [
-                            {
-                                "id": 0,
-                                "name": "General",
-                                "inherited": true
-                            }
-                        ],
-                        "status": "spam",
-                        "subject": "Refrigerador",
-                        "modified": "2019-02-18T13:00:51Z",
-                        "source": {
-                            "type": "chat-window",
-                            "url": "https://www.hites.com/refrigerador-lg-lt32bppx-no-frost-312-litros-751282001?utm_campaign=RT_carroabandonado_2019-02-16&utm_medium=email&utm_source=RT_Automation"
-                        },
-                        "opened": [
-                            {
-                                "from": "2019-02-16T18:34:32Z",
-                                "to": "2019-02-18T13:00:51Z"
-                            }
-                        ],
-                        "firstResponse": {},
-                        "ccs": [],
-                        "tags": [],
-                        "rate": "not_rated",
-                        "date": "2019-02-16T18:34:32Z",
-                        "currentGroup": {
-                            "id": 0,
-                            "name": "General",
-                            "inherited": true
-                        }
-                    },
-                    {
-                        "events": [
-                            {
-                                "author": {
-                                    "id": "pdiazcabrera70@gmail.com",
-                                    "name": "Paula ",
-                                    "type": "client"
-                                },
-                                "date": "2019-02-16T13:05:14Z",
-                                "is_private": false,
-                                "message": "Mensaje:\nCuanto salen y donde las puedo ver \n\n",
-                                "type": "message",
-                                "source": {
-                                    "url": "https://simple.ripley.cl/lavadora-lg-wd100cv-2000358268051p",
-                                    "type": "chat-window"
-                                }
-                            },
-                            {
-                                "date": "2019-02-18T13:00:28Z",
-                                "current": "spam",
-                                "previous": "open",
-                                "type": "status_changed",
-                                "author": {
-                                    "name": "Moises Promotor LG Electonics",
-                                    "id": "jorge1.gonzalez@lgepartner.com"
-                                }
-                            }
-                        ],
-                        "id": "LOTCM",
-                        "requester": {
-                            "mail": "pdiazcabrera70@gmail.com",
-                            "name": "Paula ",
-                            "utc_offset": "America/Santiago",
-                            "ip": "181.43.172.52"
-                        },
-                        "groups": [
-                            {
-                                "id": 0,
-                                "name": "General",
-                                "inherited": true
-                            }
-                        ],
-                        "status": "spam",
-                        "subject": "Mini lavadora de 2 a 3 kilos ",
-                        "modified": "2019-02-18T13:00:28Z",
-                        "source": {
-                            "type": "chat-window",
-                            "url": "https://simple.ripley.cl/lavadora-lg-wd100cv-2000358268051p"
-                        },
-                        "opened": [
-                            {
-                                "from": "2019-02-16T13:05:14Z",
-                                "to": "2019-02-18T13:00:28Z"
-                            }
-                        ],
-                        "firstResponse": {},
-                        "ccs": [],
-                        "tags": [],
-                        "rate": "not_rated",
-                        "date": "2019-02-16T13:05:14Z",
-                        "currentGroup": {
-                            "id": 0,
-                            "name": "General",
-                            "inherited": true
-                        }
-                    },
-                    {
-                        "events": [
-                            {
-                                "author": {
-                                    "id": "j.sandovalcurin@gmail.com",
-                                    "name": "Claudia Michelle ",
-                                    "type": "client"
-                                },
-                                "date": "2019-02-15T19:48:08Z",
-                                "is_private": false,
-                                "message": "Mensaje:\nJajaja\n\n",
-                                "type": "message",
-                                "source": {
-                                    "url": "https://www.hites.com/led-lg-49uj6300-49-ultra-hd-4k-smart-tv-744205001",
-                                    "type": "chat-window"
-                                }
-                            },
-                            {
-                                "date": "2019-02-15T20:05:03Z",
-                                "current": "spam",
-                                "previous": "open",
-                                "type": "status_changed",
-                                "author": {
-                                    "name": "Moises Promotor LG Electonics",
-                                    "id": "jorge1.gonzalez@lgepartner.com"
-                                }
-                            }
-                        ],
-                        "id": "ZLR90",
-                        "requester": {
-                            "mail": "j.sandovalcurin@gmail.com",
-                            "name": "Claudia Michelle ",
-                            "utc_offset": "America/Santiago",
-                            "ip": "181.73.221.122"
-                        },
-                        "groups": [
-                            {
-                                "id": 0,
-                                "name": "General",
-                                "inherited": true
-                            }
-                        ],
-                        "status": "spam",
-                        "subject": "Jajaj",
-                        "modified": "2019-02-15T20:05:03Z",
-                        "source": {
-                            "type": "chat-window",
-                            "url": "https://www.hites.com/led-lg-49uj6300-49-ultra-hd-4k-smart-tv-744205001"
-                        },
-                        "opened": [
-                            {
-                                "from": "2019-02-15T19:48:08Z",
-                                "to": "2019-02-15T20:05:03Z"
-                            }
-                        ],
-                        "firstResponse": {},
-                        "ccs": [],
-                        "tags": [],
-                        "rate": "not_rated",
-                        "date": "2019-02-15T19:48:08Z",
-                        "currentGroup": {
-                            "id": 0,
-                            "name": "General",
-                            "inherited": true
-                        }
-                    },
-                    {
-                        "events": [
-                            {
-                                "author": {
-                                    "id": "yordenes.yessica@gmail.com",
-                                    "name": "Yessica",
-                                    "type": "client"
-                                },
-                                "date": "2019-02-15T18:40:45Z",
-                                "is_private": false,
-                                "message": "Mensaje:\nCotizacion\n\n",
-                                "type": "message",
-                                "source": {
-                                    "url": "https://www.hites.com/lavadora-lg-wt13wsb-13-kg-752863001",
-                                    "type": "chat-window"
-                                }
-                            },
-                            {
-                                "date": "2019-02-15T20:04:48Z",
-                                "current": "spam",
-                                "previous": "open",
-                                "type": "status_changed",
-                                "author": {
-                                    "name": "Moises Promotor LG Electonics",
-                                    "id": "jorge1.gonzalez@lgepartner.com"
-                                }
-                            }
-                        ],
-                        "id": "XVYS8",
-                        "requester": {
-                            "mail": "yordenes.yessica@gmail.com",
-                            "name": "Yessica",
-                            "utc_offset": "America/Santiago",
-                            "ip": "191.116.130.51"
-                        },
-                        "groups": [
-                            {
-                                "id": 0,
-                                "name": "General",
-                                "inherited": true
-                            }
-                        ],
-                        "status": "spam",
-                        "subject": "Lavadora",
-                        "modified": "2019-02-15T20:04:48Z",
-                        "source": {
-                            "type": "chat-window",
-                            "url": "https://www.hites.com/lavadora-lg-wt13wsb-13-kg-752863001"
-                        },
-                        "opened": [
-                            {
-                                "from": "2019-02-15T18:40:45Z",
-                                "to": "2019-02-15T20:04:48Z"
-                            }
-                        ],
-                        "firstResponse": {},
-                        "ccs": [],
-                        "tags": [],
-                        "rate": "not_rated",
-                        "date": "2019-02-15T18:40:45Z",
-                        "currentGroup": {
-                            "id": 0,
-                            "name": "General",
-                            "inherited": true
-                        }
-                    },
-                    {
-                        "assignee": {
-                            "name": "Moises Promotor LG Electonics",
-                            "id": "jorge1.gonzalez@lgepartner.com"
-                        },
-                        "events": [
-                            {
-                                "author": {
-                                    "id": "anagracielamorales14@gmail.com",
-                                    "name": "Ana",
-                                    "type": "client"
-                                },
-                                "date": "2019-02-14T22:45:11Z",
-                                "is_private": false,
-                                "message": "Mensaje:\nQuiero tener claridad del consumo de Watts Hora (WH) de refrigerador especificado en asunto.\n\n",
-                                "type": "message",
-                                "source": {
-                                    "url": "https://simple.ripley.cl/refrigerador-lg-lb31mpp-2000366220898p#",
-                                    "type": "chat-window"
-                                }
-                            },
-                            {
-                                "date": "2019-02-15T12:20:11Z",
-                                "is_private": false,
-                                "source": {
-                                    "type": "lc2"
-                                },
-                                "message": "Consumo Energético 18,67 KwH/mes\nClase de Eficiencia Energética A++",
-                                "type": "message",
-                                "author": {
-                                    "name": "Moises Promotor LG Electonics",
-                                    "type": "agent",
-                                    "id": "jorge1.gonzalez@lgepartner.com"
-                                }
-                            },
-                            {
-                                "date": "2019-02-15T12:20:11Z",
-                                "to": {
-                                    "name": "Moises Promotor LG Electonics",
-                                    "id": "jorge1.gonzalez@lgepartner.com"
-                                },
-                                "type": "assignee_changed",
-                                "author": {
-                                    "name": "Moises Promotor LG Electonics",
-                                    "id": "jorge1.gonzalez@lgepartner.com"
-                                }
-                            },
-                            {
-                                "date": "2019-02-15T12:20:11Z",
-                                "current": "solved",
-                                "previous": "open",
-                                "type": "status_changed",
-                                "author": {
-                                    "name": "Moises Promotor LG Electonics",
-                                    "id": "jorge1.gonzalez@lgepartner.com"
-                                }
-                            },
-                            {
-                                "date": "2019-02-15T14:21:44Z",
-                                "is_private": false,
-                                "author": {
-                                    "name": "Ana Morales Rojas",
-                                    "type": "client",
-                                    "id": "anagracielamorales14@gmail.com"
-                                },
-                                "source": {
-                                    "type": "mail"
-                                },
-                                "message": "Estimado.\n\nEso ya lo sabía viene en la descripción de las especificaciones del refrigerador.  Lo que pregunté es el consumo por hora. No por mes.\n\nQuedó atenta a  la respuesta.\n\nSaludos.\n\nEnviado desde mi iPhone\n\nEl 15-02-2019, a la(s) 09:20, 8246671+ZRT57@tickets.livechatinc.com escribió:",
-                                "type": "message"
-                            },
-                            {
-                                "date": "2019-02-15T14:21:44Z",
-                                "current": "open",
-                                "previous": "solved",
-                                "type": "status_changed"
-                            },
-                            {
-                                "date": "2019-02-15T20:12:38Z",
-                                "current": "spam",
-                                "previous": "open",
-                                "type": "status_changed",
-                                "author": {
-                                    "name": "Moises Promotor LG Electonics",
-                                    "id": "jorge1.gonzalez@lgepartner.com"
-                                }
-                            }
-                        ],
-                        "id": "ZRT57",
-                        "requester": {
-                            "mail": "anagracielamorales14@gmail.com",
-                            "name": "Ana",
-                            "utc_offset": "America/Santiago",
-                            "ip": "181.43.173.29"
-                        },
-                        "groups": [
-                            {
-                                "id": 0,
-                                "name": "General",
-                                "inherited": true
-                            }
-                        ],
-                        "status": "spam",
-                        "subject": "Consumo en wh de refrigerador LG LB31MPP",
-                        "modified": "2019-03-28T19:02:57Z",
-                        "source": {
-                            "type": "chat-window",
-                            "url": "https://simple.ripley.cl/refrigerador-lg-lb31mpp-2000366220898p#"
-                        },
-                        "opened": [
-                            {
-                                "from": "2019-02-14T22:45:11Z",
-                                "to": "2019-02-15T12:20:11Z"
-                            },
-                            {
-                                "from": "2019-02-15T14:21:44Z",
-                                "to": "2019-02-15T20:12:38Z"
-                            }
-                        ],
-                        "firstResponse": {
-                            "agent": "jorge1.gonzalez@lgepartner.com",
-                            "date": "2019-02-15T12:20:11Z"
-                        },
-                        "ccs": [],
-                        "tags": [],
-                        "rate": "not_rated",
-                        "date": "2019-02-14T22:45:11Z",
-                        "currentGroup": {
-                            "id": 0,
-                            "name": "General",
-                            "inherited": true
-                        }
-                    },
-                    {
-                        "assignee": {
-                            "name": "Moises Promotor LG Electonics",
-                            "id": "jorge1.gonzalez@lgepartner.com"
-                        },
-                        "events": [
-                            {
-                                "author": {
-                                    "id": "s.alarconsarria@gmail.com",
-                                    "name": "sebastian alarcon sarria",
-                                    "type": "client"
-                                },
-                                "date": "2019-02-15T03:04:27Z",
-                                "is_private": false,
-                                "message": "Mensaje:\nbuenas quiero saber si el modelo 49UJ6200 me deja conectar el celular directamente, gracia\n\n",
-                                "type": "message",
-                                "source": {
-                                    "url": "https://simple.ripley.cl/led-lg-49uk6200-49-2000371726965p",
-                                    "type": "chat-window"
-                                }
-                            },
-                            {
-                                "date": "2019-02-15T12:23:04Z",
-                                "is_private": false,
-                                "source": {
-                                    "type": "lc2"
-                                },
-                                "message": "por supuesto, se puede conectar desde la app y bluetooth",
-                                "type": "message",
-                                "author": {
-                                    "name": "Moises Promotor LG Electonics",
-                                    "type": "agent",
-                                    "id": "jorge1.gonzalez@lgepartner.com"
-                                }
-                            },
-                            {
-                                "date": "2019-02-15T12:23:04Z",
-                                "to": {
-                                    "name": "Moises Promotor LG Electonics",
-                                    "id": "jorge1.gonzalez@lgepartner.com"
-                                },
-                                "type": "assignee_changed",
-                                "author": {
-                                    "name": "Moises Promotor LG Electonics",
-                                    "id": "jorge1.gonzalez@lgepartner.com"
-                                }
-                            },
-                            {
-                                "date": "2019-02-15T12:23:04Z",
-                                "current": "solved",
-                                "previous": "open",
-                                "type": "status_changed",
-                                "author": {
-                                    "name": "Moises Promotor LG Electonics",
-                                    "id": "jorge1.gonzalez@lgepartner.com"
-                                }
-                            },
-                            {
-                                "date": "2019-02-16T12:59:51Z",
-                                "type": "rating_offer_sent"
-                            }
-                        ],
-                        "id": "X7AW5",
-                        "requester": {
-                            "mail": "s.alarconsarria@gmail.com",
-                            "name": "sebastian alarcon sarria",
-                            "utc_offset": "America/Santiago",
-                            "ip": "201.189.197.92"
-                        },
-                        "groups": [
-                            {
-                                "id": 0,
-                                "name": "General",
-                                "inherited": true
-                            }
-                        ],
-                        "status": "solved",
-                        "subject": "duda",
-                        "modified": "2019-03-28T19:02:57Z",
-                        "source": {
-                            "type": "chat-window",
-                            "url": "https://simple.ripley.cl/led-lg-49uk6200-49-2000371726965p"
-                        },
-                        "opened": [
-                            {
-                                "from": "2019-02-15T03:04:27Z",
-                                "to": "2019-02-15T12:23:04Z"
-                            }
-                        ],
-                        "resolutionDate": "2019-02-15T12:23:04Z",
-                        "firstResponse": {
-                            "agent": "jorge1.gonzalez@lgepartner.com",
-                            "date": "2019-02-15T12:23:04Z"
-                        },
-                        "ccs": [],
-                        "tags": [],
-                        "rate": "not_rated",
-                        "date": "2019-02-15T03:04:27Z",
-                        "currentGroup": {
-                            "id": 0,
-                            "name": "General",
-                            "inherited": true
-                        }
+                    "ccs": [],
+                    "tags": [],
+                    "rate": "not_rated",
+                    "date": "2019-02-07T01:27:37Z",
+                    "currentGroup": {
+                        "id": 0,
+                        "name": "General",
+                        "inherited": true
                     }
-                ]
-            }
+                }
+            ]
+        },
+        "LG CJ88": {
+            "pages": 1,
+            "total": 11,
+            "tickets": [
+                {
+                    "assignee": {
+                        "name": "Edgar",
+                        "id": "edgar.pino@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "id": "antwanbojan@gmail.com",
+                                "name": "JOSE ANDRES GAJARDO GONZALEZ",
+                                "type": "client"
+                            },
+                            "date": "2019-05-16T04:34:03Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nhoy antes de media noche he intentado comprar un equipo de musica a travez de la web de ripley la cual arrojo error varias veces y al intentar hacer inicio de sesion en la misma pagina arrojo error, esto lo encuentro bastante desagradable ya que no es primera vez que el administrador de la pagina web de ripley hace su trabajo de manera deficiente y siempre perjudicando a nosotros los clientes, siempre la pagina con problemas, les envio el codigo del equipo de musica que quería adquirir con la oferta: MINICOMPONENTE LG CJ88\nSKU: 2000363101053P\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://simple.ripley.cl/minicomponente-lg-cj88-2000363101053p?queryID=64a6dcad18a12783652e8f374592682b&objectID=2000363101053P",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2019-05-20T13:37:39Z",
+                            "is_private": false,
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "message": "hola buen día mi nombre es Edgar, soy promotor virtual de la marca LG. Me gustaría que me indicara ¿A qué comuna desea que se envíe el producto? espero poder ayudarle para que pueda efectuar la compra. quedo atento a sus comentarios",
+                            "type": "message",
+                            "author": {
+                                "name": "Edgar",
+                                "type": "agent",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-05-20T13:37:39Z",
+                            "to": {
+                                "name": "Edgar",
+                                "id": "edgar.pino@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Edgar",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-05-20T13:37:39Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Edgar",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-05-20T14:44:58Z",
+                            "is_private": false,
+                            "author": {
+                                "name": "José Gajardo",
+                                "id": "antwanbojan@gmail.com",
+                                "type": "client"
+                            },
+                            "source": {
+                                "type": "mail"
+                            },
+                            "message": "hola que tal, soy josé, lamentablemente ya efectué la compra pero ahora\ntengo otro inconveniente, el problema es que cuando logre hacer la compra\nsin darme cuenta el sistema de ripley arrojo y envió datos antiguos y\nnumero de telefono que ahora no está operativo, la cosa es que fije el\ndespacho para el día viernes pasado 17 del 05-19, pero el transportista no\nsupo claramente de la ubicación y no pudo contactarse por medio del\ntelefono que arrojó el sistema, el problema es que yo ya había actualizado\nlos datos hace meses y hace un par de semanas hice una compra también por\nla web de un refrigerador y llegó sin problema alguno, el inconveniente más\nmolesto aun es que para yo recibir mi producto falte a la universidad\nporque soy el único quien puede recibir el producto, el producto hasta\nahora no me lo hacen llegar, una de las soluciones que les preste fue que\nel mismo día viernes desde las 12 del día efectue llamados para que le\ndieran al transportista mi numero y mi ubicación exacta estando todavía el\ntransportista en ruta, me dijeron que estaba la información ya recibida por\nel transportista y que estuviera atento a recibir el llamado con los datos\nnuevos pero este nunca me llamó hasta que devolvió el producto a bodega\nteniendo mis datos nuevos, hice reclamos, hice llamadas, gaste plata,\ntiempo, se me acabaron los minutos, me hicieron identificar nuevamente los\nnuevos datos y punto de ubicación y que tenía que esperar llamado para\nrecoordinar el despacho, hasta ahora no me han llamado y les deje bien\nclaro, tuvieron aproximadamente 8 horas para solucionar mi entrega, hasta\ncon mi rut ripley tiene mis datos actuales las cuales podían preguntar en\ndespacho o haber buscado solución por parte de despacho o el mismo\ntransportista ya que la comuna salia perfectamente, ahora yo no puedo\nfaltar más a clases ya que nadie de ellos me pagan los estudios, para más\ntenía prueba y esta semana tengo más pruebas y no puedo darles el gusto a\nque ellos hagan lo que quieran con los clientes por un simple dato\ntelefónico la cual resolvía todo, despacho y el transportista hizo mal su\npega amigo (a), habían bastantes soluciones pero hallaron mejor no entregar\nel producto y me dejaron mal porque era algo importante y para una fecha\nimportante, como cree usted que podría evaluar esta situación, tendré el\ngusto ahora de recomendar bajo este sistema y protocolo deficiente?????,\nespero soluciones ya que hasta ahora no he recibido llamado ni respuesta,\nel producto está comprado y pagado su despacho, saludos,\n\nnombre: José Gajardo González.\nmi dirección: pasaje pablo de rokha 1832, villa los poetas, calle nasario\naraos, comuna de el monte, sector el paico, punto de referencia: sector\nsercano a peaje el paico.\nfono celular: +56979948845\nfono celular referencia: +56982425982 (Magaly Miño Alvarez)",
+                            "type": "message"
+                        },
+                        {
+                            "date": "2019-05-20T14:44:58Z",
+                            "current": "open",
+                            "previous": "solved",
+                            "type": "status_changed"
+                        },
+                        {
+                            "date": "2019-05-20T14:57:42Z",
+                            "is_private": false,
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "message": "le indico que esto debe coordinarlo directamente con el equipo de Ripley Para más información puede acudir al servicio al cliente de Ripley llamando aquí: 6002300222.",
+                            "type": "message",
+                            "author": {
+                                "name": "Edgar",
+                                "type": "agent",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-05-20T14:57:42Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Edgar",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-05-21T15:05:46Z",
+                            "type": "rating_offer_sent"
+                        }
+                    ],
+                    "id": "5919T",
+                    "requester": {
+                        "mail": "antwanbojan@gmail.com",
+                        "name": "JOSE ANDRES GAJARDO GONZALEZ",
+                        "utc_offset": "America/Santiago",
+                        "ip": "45.169.149.169"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "equipo de musica e inicio de sesion",
+                    "modified": "2019-05-21T15:05:46Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://simple.ripley.cl/minicomponente-lg-cj88-2000363101053p?queryID=64a6dcad18a12783652e8f374592682b&objectID=2000363101053P"
+                    },
+                    "opened": [
+                        {
+                            "from": "2019-05-16T04:34:03Z",
+                            "to": "2019-05-20T13:37:39Z"
+                        },
+                        {
+                            "from": "2019-05-20T14:44:58Z",
+                            "to": "2019-05-20T14:57:42Z"
+                        }
+                    ],
+                    "resolutionDate": "2019-05-20T14:57:42Z",
+                    "firstResponse": {
+                        "agent": "edgar.pino@lgepartner.com",
+                        "date": "2019-05-20T13:37:39Z"
+                    },
+                    "ccs": [],
+                    "tags": [],
+                    "rate": "not_rated",
+                    "date": "2019-05-16T04:34:03Z",
+                    "currentGroup": {
+                        "id": 0,
+                        "name": "General",
+                        "inherited": true
+                    }
+                },
+                {
+                    "events": [
+                        {
+                            "author": {
+                                "id": "dylanjoel@gmail.com",
+                                "name": "Joel Cabrera",
+                                "type": "client"
+                            },
+                            "date": "2019-05-04T04:21:10Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nLg\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://simple.ripley.cl/minicomponente-lg-cj88-2000363101053p?gclid=CjwKCAjwza_mBRBTEiwASDWVvubDYID7kiE0OUXpP0fbcUd8s-e_sMg2dD3wqSYxNQXRFrTYByKvrhoCKbAQAvD_BwE",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2019-05-06T14:20:57Z",
+                            "current": "spam",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Edgar",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        }
+                    ],
+                    "id": "TW2LW",
+                    "requester": {
+                        "mail": "dylanjoel@gmail.com",
+                        "name": "Joel Cabrera",
+                        "utc_offset": "America/Santiago",
+                        "ip": "186.156.170.2"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "spam",
+                    "subject": "Producto ",
+                    "modified": "2019-05-06T14:20:57Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://simple.ripley.cl/minicomponente-lg-cj88-2000363101053p?gclid=CjwKCAjwza_mBRBTEiwASDWVvubDYID7kiE0OUXpP0fbcUd8s-e_sMg2dD3wqSYxNQXRFrTYByKvrhoCKbAQAvD_BwE"
+                    },
+                    "opened": [
+                        {
+                            "from": "2019-05-04T04:21:10Z",
+                            "to": "2019-05-06T14:20:57Z"
+                        }
+                    ],
+                    "firstResponse": {},
+                    "ccs": [],
+                    "tags": [],
+                    "rate": "not_rated",
+                    "date": "2019-05-04T04:21:10Z",
+                    "currentGroup": {
+                        "id": 0,
+                        "name": "General",
+                        "inherited": true
+                    }
+                },
+                {
+                    "assignee": {
+                        "name": "Edgar",
+                        "id": "edgar.pino@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "id": "a.rogel.garrido@gmail.com",
+                                "name": "Alejandra ",
+                                "type": "client"
+                            },
+                            "date": "2019-04-28T01:26:01Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nEl equipo lg con tres parlantes tiene conexión Bluetooth con ellos? O por cable?\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://simple.ripley.cl/minicomponente-lg-cj88-2000363101053p",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2019-04-29T14:24:27Z",
+                            "to": {
+                                "name": "Edgar",
+                                "id": "edgar.pino@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Edgar",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-04-29T14:24:27Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Edgar",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        }
+                    ],
+                    "id": "ZOMTB",
+                    "requester": {
+                        "mail": "a.rogel.garrido@gmail.com",
+                        "name": "Alejandra ",
+                        "utc_offset": "America/Santiago",
+                        "ip": "186.105.188.12"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "Consulta ",
+                    "modified": "2019-04-29T14:24:27Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://simple.ripley.cl/minicomponente-lg-cj88-2000363101053p"
+                    },
+                    "opened": [
+                        {
+                            "from": "2019-04-28T01:26:01Z",
+                            "to": "2019-04-29T14:24:27Z"
+                        }
+                    ],
+                    "resolutionDate": "2019-04-29T14:24:27Z",
+                    "firstResponse": {},
+                    "ccs": [],
+                    "tags": [],
+                    "rate": "not_rated",
+                    "date": "2019-04-28T01:26:01Z",
+                    "currentGroup": {
+                        "id": 0,
+                        "name": "General",
+                        "inherited": true
+                    }
+                },
+                {
+                    "assignee": {
+                        "name": "Edgar",
+                        "id": "edgar.pino@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "id": "ivan_trup@hotmail.com",
+                                "name": "ivan",
+                                "type": "client"
+                            },
+                            "date": "2019-04-21T07:32:42Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nme gustaria saber mas de este minicomponente y si se puede comprar con la  targeta riplay por aqui\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://simple.ripley.cl/minicomponente-lg-cj88-2000363101053p",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2019-04-22T15:14:26Z",
+                            "to": {
+                                "name": "Edgar",
+                                "id": "edgar.pino@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Edgar",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-04-22T15:14:26Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Edgar",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        }
+                    ],
+                    "id": "XU626",
+                    "requester": {
+                        "mail": "ivan_trup@hotmail.com",
+                        "name": "ivan",
+                        "utc_offset": "America/Santiago",
+                        "ip": "186.107.113.22"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "comprar",
+                    "modified": "2019-04-22T15:14:26Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://simple.ripley.cl/minicomponente-lg-cj88-2000363101053p"
+                    },
+                    "opened": [
+                        {
+                            "from": "2019-04-21T07:32:42Z",
+                            "to": "2019-04-22T15:14:26Z"
+                        }
+                    ],
+                    "resolutionDate": "2019-04-22T15:14:26Z",
+                    "firstResponse": {},
+                    "ccs": [],
+                    "tags": [],
+                    "rate": "not_rated",
+                    "date": "2019-04-21T07:32:42Z",
+                    "currentGroup": {
+                        "id": 0,
+                        "name": "General",
+                        "inherited": true
+                    }
+                },
+                {
+                    "assignee": {
+                        "name": "Edgar",
+                        "id": "edgar.pino@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "id": "egali2019@gmail.com",
+                                "name": "Esteban Marin Gali Salas",
+                                "type": "client"
+                            },
+                            "date": "2019-04-19T19:27:06Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nuna pregunta al yo comprar por internet y las cuotas esta me rebajan mi saldo de la tarjeta al momento \n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://www.abcdin.cl/tienda/es/abcdin/tv-audio/audio/minicomponentes/minicomponente-lg-cj88-1115362",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2019-04-22T13:32:28Z",
+                            "to": {
+                                "name": "Edgar",
+                                "id": "edgar.pino@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Edgar",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-04-22T13:32:28Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Edgar",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        }
+                    ],
+                    "id": "VLJP1",
+                    "requester": {
+                        "mail": "egali2019@gmail.com",
+                        "name": "Esteban Marin Gali Salas",
+                        "utc_offset": "America/Santiago",
+                        "ip": "200.120.13.201"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "compras en internet",
+                    "modified": "2019-04-22T13:32:28Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.abcdin.cl/tienda/es/abcdin/tv-audio/audio/minicomponentes/minicomponente-lg-cj88-1115362"
+                    },
+                    "opened": [
+                        {
+                            "from": "2019-04-19T19:27:06Z",
+                            "to": "2019-04-22T13:32:28Z"
+                        }
+                    ],
+                    "resolutionDate": "2019-04-22T13:32:28Z",
+                    "firstResponse": {},
+                    "ccs": [],
+                    "tags": [],
+                    "rate": "not_rated",
+                    "date": "2019-04-19T19:27:06Z",
+                    "currentGroup": {
+                        "id": 0,
+                        "name": "General",
+                        "inherited": true
+                    }
+                },
+                {
+                    "assignee": {
+                        "name": "Moises ",
+                        "id": "jorge1.gonzalez@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "id": "RULOROJAS7@HOTMAIL.COM",
+                                "name": "RAUL",
+                                "type": "client"
+                            },
+                            "date": "2019-03-15T03:33:22Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nHOLA ALGUN EQUIPO DE SONIDO TIENE PARLANTES SIN CABLE, VIA BLUETOOTH\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://www.abcdin.cl/tienda/es/abcdin/tv-audio/audio/minicomponentes/minicomponente-lg-cj88-1115362",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2019-03-15T12:22:14Z",
+                            "to": {
+                                "name": "Moises ",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Edgar",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-03-18T12:13:36Z",
+                            "is_private": false,
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "message": "buenos dias:\n    no contamos con equipos sin cables, o son tipo torre o con cables para la conexión de parlantes",
+                            "type": "message",
+                            "author": {
+                                "name": "Moises ",
+                                "type": "agent",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-03-18T12:13:36Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Moises ",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-03-19T12:41:18Z",
+                            "type": "rating_offer_sent"
+                        }
+                    ],
+                    "id": "4PHG2",
+                    "requester": {
+                        "mail": "RULOROJAS7@HOTMAIL.COM",
+                        "name": "RAUL",
+                        "utc_offset": "America/Santiago",
+                        "ip": "186.11.99.123"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "CONSULTA EQUIPO SONIDO",
+                    "modified": "2019-03-28T19:02:57Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.abcdin.cl/tienda/es/abcdin/tv-audio/audio/minicomponentes/minicomponente-lg-cj88-1115362"
+                    },
+                    "opened": [
+                        {
+                            "from": "2019-03-15T03:33:22Z",
+                            "to": "2019-03-18T12:13:36Z"
+                        }
+                    ],
+                    "resolutionDate": "2019-03-18T12:13:36Z",
+                    "firstResponse": {
+                        "agent": "jorge1.gonzalez@lgepartner.com",
+                        "date": "2019-03-18T12:13:36Z"
+                    },
+                    "ccs": [],
+                    "tags": [],
+                    "rate": "not_rated",
+                    "date": "2019-03-15T03:33:22Z",
+                    "currentGroup": {
+                        "id": 0,
+                        "name": "General",
+                        "inherited": true
+                    }
+                },
+                {
+                    "assignee": {
+                        "name": "Moises Promotor LG Electonics",
+                        "id": "jorge1.gonzalez@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "id": "Chicchiugarteflorian@gmail.com",
+                                "name": "FLORIAN chicchi ",
+                                "type": "client"
+                            },
+                            "date": "2019-02-28T02:19:56Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nPrecio de LG cj88 en dólar \n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://www.hites.com/minicomponente-lg-cj88-744246",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2019-02-28T12:04:18Z",
+                            "is_private": false,
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "message": "solo los estan establecidos en la web (pesos chilenos)",
+                            "type": "message",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "type": "agent",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-02-28T12:04:18Z",
+                            "to": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-02-28T12:04:18Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-03-01T12:20:38Z",
+                            "type": "rating_offer_sent"
+                        }
+                    ],
+                    "id": "RGSOK",
+                    "requester": {
+                        "mail": "Chicchiugarteflorian@gmail.com",
+                        "name": "FLORIAN chicchi ",
+                        "utc_offset": "America/Santo_Domingo",
+                        "ip": "181.114.108.182"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "De comprar ",
+                    "modified": "2019-03-28T19:02:57Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.hites.com/minicomponente-lg-cj88-744246"
+                    },
+                    "opened": [
+                        {
+                            "from": "2019-02-28T02:19:56Z",
+                            "to": "2019-02-28T12:04:18Z"
+                        }
+                    ],
+                    "resolutionDate": "2019-02-28T12:04:18Z",
+                    "firstResponse": {
+                        "agent": "jorge1.gonzalez@lgepartner.com",
+                        "date": "2019-02-28T12:04:18Z"
+                    },
+                    "ccs": [],
+                    "tags": [],
+                    "rate": "not_rated",
+                    "date": "2019-02-28T02:19:56Z",
+                    "currentGroup": {
+                        "id": 0,
+                        "name": "General",
+                        "inherited": true
+                    }
+                },
+                {
+                    "assignee": {
+                        "name": "Moises Promotor LG Electonics",
+                        "id": "jorge1.gonzalez@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "id": "Alexisromomartinez01@gmail.com",
+                                "name": "Dksks",
+                                "type": "client"
+                            },
+                            "date": "2018-12-31T21:37:41Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nHola\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://www.hites.com/minicomponente-lg-cj88-744246001",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2019-01-02T12:19:27Z",
+                            "is_private": false,
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "message": "hola",
+                            "type": "message",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "type": "agent",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-01-02T12:19:27Z",
+                            "to": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-01-02T12:19:27Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-01-03T12:34:37Z",
+                            "type": "rating_offer_sent"
+                        }
+                    ],
+                    "id": "NN2SW",
+                    "requester": {
+                        "mail": "Alexisromomartinez01@gmail.com",
+                        "name": "Dksks",
+                        "utc_offset": "America/Santiago",
+                        "ip": "201.219.233.179"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "Hola",
+                    "modified": "2019-03-28T19:02:57Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.hites.com/minicomponente-lg-cj88-744246001"
+                    },
+                    "opened": [
+                        {
+                            "from": "2018-12-31T21:37:41Z",
+                            "to": "2019-01-02T12:19:27Z"
+                        }
+                    ],
+                    "resolutionDate": "2019-01-02T12:19:27Z",
+                    "firstResponse": {
+                        "agent": "jorge1.gonzalez@lgepartner.com",
+                        "date": "2019-01-02T12:19:27Z"
+                    },
+                    "ccs": [],
+                    "tags": [],
+                    "rate": "not_rated",
+                    "date": "2018-12-31T21:37:41Z",
+                    "currentGroup": {
+                        "id": 0,
+                        "name": "General",
+                        "inherited": true
+                    }
+                },
+                {
+                    "assignee": {
+                        "name": "Edgar Promotor LG Electonics ",
+                        "id": "edgar.pino@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "id": "s_lara74@bci.cl",
+                                "name": "Sandra lara",
+                                "type": "client"
+                            },
+                            "date": "2018-12-13T00:18:00Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nAyuda\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://simple.ripley.cl/minicomponente-lg-cj88-2000363101053p?queryID=89fef6aa66bd6d2e400776862841807d&objectID=2000363101053P",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2018-12-13T12:11:35Z",
+                            "to": {
+                                "name": "Edgar Promotor LG Electonics ",
+                                "id": "edgar.pino@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Edgar Promotor LG Electonics ",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-12-13T12:11:35Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Edgar Promotor LG Electonics ",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        }
+                    ],
+                    "id": "UJLKW",
+                    "requester": {
+                        "mail": "s_lara74@bci.cl",
+                        "name": "Sandra lara",
+                        "utc_offset": "America/Santiago",
+                        "ip": "191.114.96.119"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "No puedo completar compra con tc de banco",
+                    "modified": "2018-12-13T12:11:35Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://simple.ripley.cl/minicomponente-lg-cj88-2000363101053p?queryID=89fef6aa66bd6d2e400776862841807d&objectID=2000363101053P"
+                    },
+                    "opened": [
+                        {
+                            "from": "2018-12-13T00:18:00Z",
+                            "to": "2018-12-13T12:11:35Z"
+                        }
+                    ],
+                    "resolutionDate": "2018-12-13T12:11:35Z",
+                    "firstResponse": {},
+                    "ccs": [],
+                    "tags": [],
+                    "rate": "not_rated",
+                    "date": "2018-12-13T00:18:00Z",
+                    "currentGroup": {
+                        "id": 0,
+                        "name": "General",
+                        "inherited": true
+                    }
+                },
+                {
+                    "assignee": {
+                        "name": "Moises Promotor LG Electonics",
+                        "id": "jorge1.gonzalez@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "id": "josesandovaaal2018@gmail.com",
+                                "name": "Jose sandoval poblete",
+                                "type": "client"
+                            },
+                            "date": "2018-10-29T23:55:57Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nAclaraciónes\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://www.abcdin.cl/tienda/es/abcdin/tv-audio/audio/minicomponentes/minicomponente-lg-cj88-1115362",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2018-10-29T23:59:18Z",
+                            "is_private": false,
+                            "author": {
+                                "name": "jose sandoval poblete",
+                                "type": "client",
+                                "id": "josesandovaaal2018@gmail.com"
+                            },
+                            "source": {
+                                "type": "mail"
+                            },
+                            "message": "Si compro por internet donde me llega el eqipo al domicilio o a una tienda",
+                            "type": "message"
+                        },
+                        {
+                            "date": "2018-10-30T13:39:20Z",
+                            "is_private": false,
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "message": "solo contamos con reparto a domicilio",
+                            "type": "message",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "type": "agent",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-10-30T13:39:20Z",
+                            "to": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-10-30T13:39:20Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-10-30T13:42:39Z",
+                            "is_private": false,
+                            "author": {
+                                "name": "jose sandoval poblete",
+                                "type": "client",
+                                "id": "josesandovaaal2018@gmail.com"
+                            },
+                            "source": {
+                                "type": "mail"
+                            },
+                            "message": "I el medio de pago como es i si reparten a zonas rurales",
+                            "type": "message"
+                        },
+                        {
+                            "date": "2018-10-30T13:42:39Z",
+                            "current": "open",
+                            "previous": "solved",
+                            "type": "status_changed"
+                        },
+                        {
+                            "date": "2018-10-30T13:44:06Z",
+                            "is_private": false,
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "message": "durante la compra se confirma esto",
+                            "type": "message",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "type": "agent",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-10-30T13:44:06Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-10-31T14:28:16Z",
+                            "type": "rating_offer_sent"
+                        }
+                    ],
+                    "id": "IK1G2",
+                    "requester": {
+                        "mail": "josesandovaaal2018@gmail.com",
+                        "name": "Jose sandoval poblete",
+                        "utc_offset": "America/Santiago",
+                        "ip": "190.110.97.165"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "Preguntar ",
+                    "modified": "2019-03-28T19:02:57Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.abcdin.cl/tienda/es/abcdin/tv-audio/audio/minicomponentes/minicomponente-lg-cj88-1115362"
+                    },
+                    "opened": [
+                        {
+                            "from": "2018-10-29T23:55:57Z",
+                            "to": "2018-10-30T13:39:20Z"
+                        },
+                        {
+                            "from": "2018-10-30T13:42:39Z",
+                            "to": "2018-10-30T13:44:06Z"
+                        }
+                    ],
+                    "resolutionDate": "2018-10-30T13:44:06Z",
+                    "firstResponse": {
+                        "agent": "jorge1.gonzalez@lgepartner.com",
+                        "date": "2018-10-30T13:39:20Z"
+                    },
+                    "ccs": [],
+                    "tags": [],
+                    "rate": "not_rated",
+                    "date": "2018-10-29T23:55:57Z",
+                    "currentGroup": {
+                        "id": 0,
+                        "name": "General",
+                        "inherited": true
+                    }
+                },
+                {
+                    "assignee": {
+                        "name": "Moises Promotor LG Electonics",
+                        "id": "jorge1.gonzalez@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "id": "hecbalbo@hotmail.com",
+                                "name": "Hector",
+                                "type": "client"
+                            },
+                            "date": "2018-08-18T10:09:58Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nNo tengo tarjeta abcdin con otro medio de pago me respetan el precio\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://www.abcdin.cl/tienda/es/abcdin/minicomponente-lg-cj88-1115362",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2018-08-20T12:34:30Z",
+                            "is_private": false,
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "message": "quedaria en $199.990",
+                            "type": "message",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "type": "agent",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-08-20T12:34:30Z",
+                            "to": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-08-20T12:34:30Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-08-21T13:09:38Z",
+                            "type": "rating_offer_sent"
+                        }
+                    ],
+                    "id": "G01RZ",
+                    "requester": {
+                        "mail": "hecbalbo@hotmail.com",
+                        "name": "Hector",
+                        "utc_offset": "America/Santiago",
+                        "ip": "191.125.147.114"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "Minicomponente",
+                    "modified": "2019-03-28T19:02:57Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.abcdin.cl/tienda/es/abcdin/minicomponente-lg-cj88-1115362"
+                    },
+                    "opened": [
+                        {
+                            "from": "2018-08-18T10:09:58Z",
+                            "to": "2018-08-20T12:34:30Z"
+                        }
+                    ],
+                    "resolutionDate": "2018-08-20T12:34:30Z",
+                    "firstResponse": {
+                        "agent": "jorge1.gonzalez@lgepartner.com",
+                        "date": "2018-08-20T12:34:30Z"
+                    },
+                    "ccs": [],
+                    "tags": [],
+                    "rate": "not_rated",
+                    "date": "2018-08-18T10:09:58Z",
+                    "currentGroup": {
+                        "id": 0,
+                        "name": "General",
+                        "inherited": true
+                    }
+                }
+            ]
         }
-    ]
+    }
 }
