@@ -30,7 +30,7 @@ class m190531_234734_products extends Migration
             'updatedBy'         => $this->integer(),
 
         ], $tableOptions);
-
+        // Televisores
         $this->insert('{{%products}}', [
             'categoryId'         => 1,
             'name'              => 'Ultra HD 4K',
@@ -43,6 +43,63 @@ class m190531_234734_products extends Migration
         ]);
 
         $this->insert('{{%products}}', [
+            'categoryId'         => 1,
+            'name'              => 'HD',
+            'abbreviation_name' => '',
+            'status'            =>  1,
+            'createdAt'         => '1488153462',
+            'updatedAt'         => '1488153462',
+            'createdBy'         => '1',
+            'updatedBy'         => '1',
+        ]);
+
+        $this->insert('{{%products}}', [
+            'categoryId'         => 1,
+            'name'              => 'Full HD',
+            'abbreviation_name' => '',
+            'status'            =>  1,
+            'createdAt'         => '1488153462',
+            'updatedAt'         => '1488153462',
+            'createdBy'         => '1',
+            'updatedBy'         => '1',
+        ]);
+
+        $this->insert('{{%products}}', [
+            'categoryId'         => 1,
+            'name'              => 'NanoCell 4K',
+            'abbreviation_name' => '',
+            'status'            =>  1,
+            'createdAt'         => '1488153462',
+            'updatedAt'         => '1488153462',
+            'createdBy'         => '1',
+            'updatedBy'         => '1',
+        ]);
+
+        $this->insert('{{%products}}', [
+            'categoryId'         => 1,
+            'name'              => 'OLED 4K',
+            'abbreviation_name' => '',
+            'status'            =>  1,
+            'createdAt'         => '1488153462',
+            'updatedAt'         => '1488153462',
+            'createdBy'         => '1',
+            'updatedBy'         => '1',
+        ]);
+
+        $this->insert('{{%products}}', [
+            'categoryId'         => 1,
+            'name'              => 'OLED 4K',
+            'abbreviation_name' => '',
+            'status'            =>  1,
+            'createdAt'         => '1488153462',
+            'updatedAt'         => '1488153462',
+            'createdBy'         => '1',
+            'updatedBy'         => '1',
+        ]);
+        // end Televisores
+
+        // Audio
+        $this->insert('{{%products}}', [
             'categoryId'         => 2,
             'name'              => 'Minicomponentes',
             'abbreviation_name' => '',
@@ -52,6 +109,65 @@ class m190531_234734_products extends Migration
             'createdBy'         => '1',
             'updatedBy'         => '1',
         ]);
+
+        $this->insert('{{%products}}', [
+            'categoryId'         => 2,
+            'name'              => 'Soundbars',
+            'abbreviation_name' => '',
+            'status'            =>  1,
+            'createdAt'         => '1488153462',
+            'updatedAt'         => '1488153462',
+            'createdBy'         => '1',
+            'updatedBy'         => '1',
+        ]);
+
+        $this->insert('{{%products}}', [
+            'categoryId'         => 2,
+            'name'              => 'Parlantes Portátiles Bluetooth',
+            'abbreviation_name' => '',
+            'status'            =>  1,
+            'createdAt'         => '1488153462',
+            'updatedAt'         => '1488153462',
+            'createdBy'         => '1',
+            'updatedBy'         => '1',
+        ]);
+        // end Audio
+
+        // refreigeradores
+
+        $this->insert('{{%products}}', [
+            'categoryId'         => 3,
+            'name'              => 'Refrigeradores',
+            'abbreviation_name' => '',
+            'status'            =>  1,
+            'createdAt'         => '1488153462',
+            'updatedAt'         => '1488153462',
+            'createdBy'         => '1',
+            'updatedBy'         => '1',
+        ]);
+
+        $this->insert('{{%products}}', [
+            'categoryId'         => 3,
+            'name'              => 'Lavadoras',
+            'abbreviation_name' => '',
+            'status'            =>  1,
+            'createdAt'         => '1488153462',
+            'updatedAt'         => '1488153462',
+            'createdBy'         => '1',
+            'updatedBy'         => '1',
+        ]);
+
+        $this->insert('{{%products}}', [
+            'categoryId'         => 3,
+            'name'              => 'Microondas',
+            'abbreviation_name' => '',
+            'status'            =>  1,
+            'createdAt'         => '1488153462',
+            'updatedAt'         => '1488153462',
+            'createdBy'         => '1',
+            'updatedBy'         => '1',
+        ]);
+
 
         // creates index for column `categoryId`
         $this->createIndex(

@@ -53,7 +53,7 @@ class LiveChatApi extends Model
             'query'     => (isset($params['query'])) ? $params['query'] : '',
             'requester' => (isset($params['requester'])) ? $params['requester'] : '',
             'group'     => (isset($params['group'])) ? $params['group'] : '',
-            'source'    => (isset($params['source'])) ? $params['source'] : 'chat-window', // 'lc2', 'chat-window', 'mail', 'facebook:conversation', 'facebook:post' or 'agent-app-manual'.
+            'source'    => (isset($params['source'])) ? $params['source'] : '', // 'lc2', 'chat-window', 'mail', 'facebook:conversation', 'facebook:post' or 'agent-app-manual'.
             'tag'       => (isset($params['tag'])) ? $params['tag'] : '',
             'tagged'    => (isset($params['tagged'])) ? $params['tagged'] : '',
 
@@ -141,15 +141,24 @@ class LiveChatApi extends Model
         $message_client = [];
         foreach ($message as $key => $value) {
             for ($i=0; $i <sizeof($value) ; $i++) { 
-                if (isset($value[$i]['author']['type']) && $value[$i]['author']['type']== 'client') {
-                    $message_client[$key][] = $value[$i]['message'];
+                if (isset($value[$i]['message'])) {
+                        $message_client[$key][] = $value[$i]['message'];
                 }
             }
         }
+        /*foreach ($message as $key => $value) {
+            for ($i=0; $i <sizeof($value) ; $i++) { 
+                if (isset($value[$i]['author']['type']) && $value[$i]['author']['type']== 'client') {
+                    if (isset($value[$i]['message'])) {
+                        $message_client[$key][] = $value[$i]['message'];
+                    }
+                }
+            }
+        }*/
 
 
         $model_by_word = [];
-        foreach ($message_client as $key => $value) {
+        /*foreach ($message_client as $key => $value) {
             foreach ($words as $category => $word) {
                 for ($i=0; $i < sizeof($value) ; $i++) { 
                     $s = new Stringizer($value[$i]);
@@ -158,8 +167,21 @@ class LiveChatApi extends Model
                     }
                 }
             }
+        }*/
+        foreach ($message_client as $key => $value) {
+            foreach ($words as $category => $word) {
+                for ($i=0; $i < sizeof($value) ; $i++) { 
+                    $s = new Stringizer($value[$i]);
+                    $count = 0;
+                    for ($j=0; $j <sizeof($word) ; $j++) { 
+                        $count += $s->containsCountIncaseSensitive($word[$j]);
+                        $model_by_word[$key][$category][$word[$j]] = $count;
+                    }
+                }
+            }
         }
 
+        
         return $model_by_word;
 
     }

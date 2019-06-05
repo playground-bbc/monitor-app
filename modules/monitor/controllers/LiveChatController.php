@@ -35,10 +35,17 @@ class LiveChatController extends Controller
         $productsCategories =  ProductsCategories::find()->where(['or', ['parentId' => 0], ['parentId' => null]])->all();
 
         //$pages = $liveChat->chatByQuery($products_models, 1);
-        
-        $count_words = $liveChat->searchAndCountBywords($dictionary->orderedwords,1);
-        
-        return $this->render('view',['productsCategories' => $productsCategories]);
+        /*var_dump($dictionary->orderedwords);
+        die();*/
+       $count_words = $liveChat->searchAndCountBywords($dictionary->orderedwords,1);
+
+        var_dump($count_words);
+        die();
+
+        return $this->render('view',[
+            'productsCategories' => $productsCategories,
+          //  'count_words' => $count_words
+        ]);
     }
 
 }

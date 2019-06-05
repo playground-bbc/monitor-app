@@ -47,7 +47,7 @@ AppAsset::register($this);
            // ['label' => 'Default', 'url' => ['/monitor/default']],
             ['label' => 'Twitter', 'url' => ['/monitor/twitter']],
             ['label' => 'Scraping', 'url' => ['/monitor/scraping']],
-            ['label' => 'Live Chat', 'url' => ['/monitor/live-chat']],
+            ['label' => 'Live Chat', 'url' => ['/monitor/live-chat/view']],
            // ['label' => 'Contact', 'url' => ['/site/contact']],
             /*
                 Yii::$app->user->isGuest ? (

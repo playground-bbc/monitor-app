@@ -71,7 +71,7 @@ class Products extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getModels()
+    public function getModelos()
     {
         return $this->hasMany(ProductsModels::className(), ['productId' => 'id']);
     }

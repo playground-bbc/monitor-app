@@ -30,7 +30,7 @@ class m190531_234725_products_categories extends Migration
             'updatedBy'         => $this->integer(),
 
         ], $tableOptions);
-
+        // Home Entertainment
         $this->insert('{{%products_categories}}', [
             'parentId'          => null,
             'name'              => 'Home Entertainment',
@@ -63,6 +63,114 @@ class m190531_234725_products_categories extends Migration
             'createdBy'         => '1',
             'updatedBy'         => '1',
         ]);
+        // end Home Entertainment
+
+        // Home Appliances
+        $this->insert('{{%products_categories}}', [
+            'parentId'          => null,
+            'name'              => 'Home Appliances',
+            'abbreviation_name' => 'HA',
+            'status'            => 1,
+            'createdAt'         => '1488153462',
+            'updatedAt'         => '1488153462',
+            'createdBy'         => '1',
+            'updatedBy'         => '1',
+        ]);
+
+        $this->insert('{{%products_categories}}', [
+            'parentId'          => 2,
+            'name'              => 'Refrigeradores',
+            'abbreviation_name' => '',
+            'status'            => 1,
+            'createdAt'         => '1488153462',
+            'updatedAt'         => '1488153462',
+            'createdBy'         => '1',
+            'updatedBy'         => '1',
+        ]);
+
+        $this->insert('{{%products_categories}}', [
+            'parentId'          => 2,
+            'name'              => 'Lavadoras',
+            'abbreviation_name' => '',
+            'status'            => 1,
+            'createdAt'         => '1488153462',
+            'updatedAt'         => '1488153462',
+            'createdBy'         => '1',
+            'updatedBy'         => '1',
+        ]);
+
+        $this->insert('{{%products_categories}}', [
+            'parentId'          => 2,
+            'name'              => 'Microondas',
+            'abbreviation_name' => '',
+            'status'            => 1,
+            'createdAt'         => '1488153462',
+            'updatedAt'         => '1488153462',
+            'createdBy'         => '1',
+            'updatedBy'         => '1',
+        ]);
+
+        //end Home Appliances
+
+        //Mobile connect
+
+        $this->insert('{{%products_categories}}', [
+            'parentId'          => null,
+            'name'              => 'Mobile connect',
+            'abbreviation_name' => 'MC',
+            'status'            => 1,
+            'createdAt'         => '1488153462',
+            'updatedAt'         => '1488153462',
+            'createdBy'         => '1',
+            'updatedBy'         => '1',
+        ]);
+
+        $this->insert('{{%products_categories}}', [
+            'parentId'          => 3,
+            'name'              => 'Smartphones',
+            'abbreviation_name' => '',
+            'status'            => 1,
+            'createdAt'         => '1488153462',
+            'updatedAt'         => '1488153462',
+            'createdBy'         => '1',
+            'updatedBy'         => '1',
+        ]);
+        // end Mobile connect
+
+        // Monitors and Projectors
+        $this->insert('{{%products_categories}}', [
+            'parentId'          => null,
+            'name'              => 'Monitors and Projectors',
+            'abbreviation_name' => 'MP',
+            'status'            => 1,
+            'createdAt'         => '1488153462',
+            'updatedAt'         => '1488153462',
+            'createdBy'         => '1',
+            'updatedBy'         => '1',
+        ]);
+
+        $this->insert('{{%products_categories}}', [
+            'parentId'          => 4,
+            'name'              => 'Monitores',
+            'abbreviation_name' => '',
+            'status'            => 1,
+            'createdAt'         => '1488153462',
+            'updatedAt'         => '1488153462',
+            'createdBy'         => '1',
+            'updatedBy'         => '1',
+        ]);
+
+        $this->insert('{{%products_categories}}', [
+            'parentId'          => 4,
+            'name'              => 'Proyectores',
+            'abbreviation_name' => '',
+            'status'            => 1,
+            'createdAt'         => '1488153462',
+            'updatedAt'         => '1488153462',
+            'createdBy'         => '1',
+            'updatedBy'         => '1',
+        ]);
+        // end Monitors and Projectors
 
         // creates index for column `parentId`
         $this->createIndex(
