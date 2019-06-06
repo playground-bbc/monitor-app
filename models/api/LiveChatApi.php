@@ -8,6 +8,10 @@ use Yii;
 use yii\base\Model;
 use yii\helpers\ArrayHelper;
 
+use app\models\ProductsModels;
+use app\models\ProductsCategories;
+use app\models\CategoriesDictionary;
+
 /**
  * LiveChatApi is the model behind the login API.
  *
@@ -58,23 +62,38 @@ class LiveChatApi extends Model
             'tagged'    => (isset($params['tagged'])) ? $params['tagged'] : '',
 
         ];
+
+    }
+
+    public function getParams()
+    {
+        return $this->params;
     }
 
     public function get_number_pages_by_query($model_products = [])
     {
         $pages = [];
         $products = [];
-        foreach ($model_products as $key => $product) {
-           $products[] = $product['serial_model'];
-           $products[] = $product['name'];
+        
+        if ($this->params['query'] == '') {
+            foreach ($model_products as $key => $product) {
+               $products[] = $product['serial_model'];
+               $products[] = $product['name'];
+            }
+
+            
+            foreach ($products as $key => $value) {
+                $this->params['query'] = $value;
+                $pages[$value] = $this->_liveChat->tickets->get($this->params)->pages;
+            }
+            $this->_filebase->flush(true);
+        }else{
+            $pages[$this->params['query']] = $this->_liveChat->tickets->get($this->params)->pages;
+            $this->_filebase->flush(true);
+
         }
 
         
-        foreach ($products as $key => $value) {
-            $this->params['query'] = $value;
-            $pages[$value] = $this->_liveChat->tickets->get($this->params)->pages;
-            }
-    
         return $pages;
     }
 
@@ -91,6 +110,7 @@ class LiveChatApi extends Model
             }
             $this->params['page'] = 1;
         }
+
 
         $this->saveDataJson($file);
     }
@@ -168,32 +188,137 @@ class LiveChatApi extends Model
                 }
             }
         }*/
+
         foreach ($message_client as $key => $value) {
             foreach ($words as $category => $word) {
-                for ($i=0; $i < sizeof($value) ; $i++) { 
-                    $s = new Stringizer($value[$i]);
-                    $count = 0;
-                    for ($j=0; $j <sizeof($word) ; $j++) { 
-                        $count += $s->containsCountIncaseSensitive($word[$j]);
-                        $model_by_word[$key][$category][$word[$j]] = $count;
-                    }
-                }
+                $model_by_word[$key][$category] = 0;
             }
         }
 
+       
+        foreach ($message_client as $key => $value) {
+            for ($i=0; $i <sizeof($value) ; $i++) { 
+                $s = new Stringizer($value[$i]);
+                foreach ($words as $category => $word) {
+                    for ($j=0; $j <sizeof($word) ; $j++) { 
+                        if ($s->containsCountIncaseSensitive($word[$j])) {
+                            $model_by_word[$key][$category] += $s->containsCountIncaseSensitive($word[$j]);
+                        }
+                    }
+                    # code...
+                }
+            }
+        }
         
         return $model_by_word;
 
+    }
+    /**
+     * return $data = [
+        'MC' => [
+            'Palabras Positivas' => 20,
+            'Palabras Negativas' => 1,
+        ],
+        'MP' => [
+            'Palabras Positivas' => 20,
+            'Palabras Negativas' => 1,
+        ],
+     ]
+     */
+    public function add_words_per_product_line($params = [])
+    {   
+        $product_categories = ArrayHelper::map(ProductsCategories::find()->all(),'id','abbreviation_name');
+        
+        if (!empty($params)) {
+           //$items = ProductsModels::find()->where(['name'=>array_keys($params)])->all();
+           foreach ($params as $product => $value) {
+                if (ProductsModels::find()->where(['name'=>$product])->all()) {
+                    $item[$product] = ProductsModels::find()->where(['name'=>$product])->with('product')->all();
+                }else{
+                   $item[$product] = ProductsModels::find()->where(['serial_model'=>$product])->with('product')->all(); 
+                }
+            } 
+            
+            $parent = [];
+            foreach ($item as $product => $value) {
+                for ($i=0; $i <sizeof($value) ; $i++) { 
+                    $parent[$product] =  $value[$i]->product->category->abbreviation_name;
+                }
+            }
+            
+             $data = [];
+             foreach ($product_categories as $key => $value) {
+                 $data[] = $value;
+             }
+
+             $category_dictionary = CategoriesDictionary::find()->select('name')->asArray()->all();
+
+             $count = [];
+             for ($i=0; $i <sizeof($data) ; $i++) { 
+                 for ($j=0; $j <sizeof($category_dictionary) ; $j++) { 
+                     $count[$data[$i]][$category_dictionary[$j]['name']] = 0 ;
+                 }
+             }
+
+
+            foreach ($params as $product => $value) {
+                foreach ($value as $type => $key) {
+                    $padre = $product;
+                    $family = $parent[$padre];
+                    $count[$family][$type] += $key;
+                }
+            }
+
+            return $count;
+        }
+    }
+
+    public function get_total_tickets($alertId)
+    {
+        $fileName = $this->getFilename($alertId);
+        $data = $fileName->field('data');
+
+        $total = 0;
+        if (!empty($data)) {
+            foreach ($data as $model => $value) {
+                $total += $value['total'];
+            }
+        }
+
+        return $total;
+
+        
+    }
+
+    public function get_tickets_number_of_tickets_status($alertId)
+    {
+       $fileName = $this->getFilename($alertId);
+       $data = $fileName->field('data');
+
+       $status = ['open' => 0,'pending'=> 0,'solved'=> 0,'spam'=> 0];
+
+       foreach ($data as $model => $value) {
+           foreach ($value['tickets'] as $key => $row) {
+               if ($row['status']) {
+                   $status[$row['status']] += 1;
+               }
+           }
+       }
+
+       return $status;
     }
     /**
      * it goes through all the data and converts it into a json file
      */
     public function saveDataJson($file)
     {
-        foreach ($this->_data as $key => $value) {
-            $file->$key = $value;
+        if ($this->getData()) {
+            foreach ($this->_data as $key => $value) {
+                $file->$key = $value;
+            }
+            $file->save();
         }
-        $file->save();
+        
     }
 
 

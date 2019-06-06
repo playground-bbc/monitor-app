@@ -24,8 +24,9 @@ class LiveChatController extends Controller
         $form_model->scenario = 'live-chat';
 
         $params = [
-            'date_from' => '',
-            'date_to'   => '',
+            'date_from' => '2019-05-06',
+            'date_to'   => '2019-06-06',
+          //  'query' => "LG 50UK6300PSB"
         ];
         $liveChat = new LiveChatApi();
         $liveChat->setParams($params);
@@ -34,17 +35,20 @@ class LiveChatController extends Controller
         $dictionary  = new Dictionary;
         $productsCategories =  ProductsCategories::find()->where(['or', ['parentId' => 0], ['parentId' => null]])->all();
 
-        //$pages = $liveChat->chatByQuery($products_models, 1);
-        /*var_dump($dictionary->orderedwords);
-        die();*/
-       $count_words = $liveChat->searchAndCountBywords($dictionary->orderedwords,1);
+       // $pages = $liveChat->chatByQuery($products_models, 1);
+        $count_words = $liveChat->searchAndCountBywords($dictionary->orderedwords,1);
+        $words_per_product_line = $liveChat->add_words_per_product_line($count_words);
+        $total_tickets['total'] = $liveChat->get_total_tickets(1);
+        $get_tickets_number_of_tickets_status = $liveChat->get_tickets_number_of_tickets_status(1);
 
-        var_dump($count_words);
-        die();
+
+        $total_tickets = ArrayHelper::merge($total_tickets,$get_tickets_number_of_tickets_status);
 
         return $this->render('view',[
             'productsCategories' => $productsCategories,
-          //  'count_words' => $count_words
+            'words_per_product_line' => $words_per_product_line,
+            'count_words' => $count_words,
+            'total_tickets' => $total_tickets,
         ]);
     }
 

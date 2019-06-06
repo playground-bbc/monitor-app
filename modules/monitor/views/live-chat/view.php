@@ -112,36 +112,71 @@ $modelMP = ProductsCategories::find()->where(['abbreviation_name' => 'MP'])->wit
           </div>
           <p><h2>Lineas de Productos por Palabras</h2></p>
           <div class="bs-docs-example">
+            <?php if(isset($words_per_product_line)): ?>
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>#</th>
-                  <th>First Name</th>
-                  <th>Last Name</th>
-                  <th>Username</th>
+                  <th>Linea de Productos</th>
+                  <th>Cantidad de Palabras Positivas</th>
+                  <th>Cantidad de Palabras Negativas</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Larry</td>
-                  <td>the Bird</td>
-                  <td>@twitter</td>
-                </tr>
+                  <?php foreach ($words_per_product_line as $key => $value): ?>
+                    <tr>
+                      <td><?= $key ?></td>
+                      <?php foreach ($value as $key => $total): ?>
+                        <td align="justify"><?= $total ?></td>
+                      <?php endforeach ?>
+                    </tr>
+                  <?php endforeach ?>
+
               </tbody>
             </table>
-          </div>  
+            <?php else: ?>
+              <p>No hay resultados</p>
+            <?php endif ?>
+          </div>
+
+      <p><h2>Productos por Palabras</h2></p>
+      <?php if (isset($count_words)): ?>
+      <table class="table table-striped">
+          <thead>
+              <tr>
+                  <th>Productos</th>
+                  <th>Cantidad de Palabras Positivas</th>
+                  <th>Cantidad de Palabras Negativas</th>
+                </tr>
+            </thead>
+            <tbody>
+              <?php foreach ($count_words as $key => $value): ?>
+                  <tr>
+                    <td><?= $key ?></td>
+                    <?php foreach ($value as $key => $total): ?>
+                      <td align="justify"><?= $total ?></td>
+                    <?php endforeach ?>
+                  </tr>
+                <?php endforeach ?>
+            </tbody>
+          </table> 
+          <p><h2>Total de Tickets por status</h2></p>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <?php foreach ($total_tickets as $key => $value):?>
+                    <th><?= $key  ?></th>
+                <?php endforeach ?>
+            </thead>
+            <tbody>
+              <tr>
+                <?php foreach ($total_tickets as $key => $value):?>
+                  <td><?= $value  ?></td>
+                <?php endforeach ?>
+              </tr>
+            </tbody>
+          </table>
+          <?php else: ?>
+            <p>No hay resultados</p>
+          <?php endif ?>
     </div>
 </div>
