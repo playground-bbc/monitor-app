@@ -100,16 +100,44 @@ class LiveChatApi extends Model
     public function chatByQuery($model_products,$alertId)
     {
         $file = $this->getFilename($alertId);
-        $pages = $this->get_number_pages_by_query($model_products);
+       // $pages = $this->get_number_pages_by_query($model_products);
+       
+        if ($this->params['query'] == '') {
+            foreach ($model_products as $key => $product) {
+               $products[] = $product['serial_model'];
+               $products[] = $product['name'];
+            }   
+        }
         
-        foreach ($pages as $product => $page) {
+       // $products =['LG LT29BPP','SMART TV LED 49','SMART TV LED 43','LG WM11WBS6'];
+        foreach ($products as $key => $value) {
+            $this->params['query'] = $value;
+            
+            do {
+                $page = $this->params['page'];
+                $this->_data[$value][$page] = $this->_liveChat->tickets->get($this->params);
+                $this->params['page'] ++;
+
+                
+
+            } while ($this->params['page'] <= $this->_data[$value][$page]->pages);
+
+            $this->params['page'] = 1;
+        }
+        echo "<pre>";
+        var_dump($this->_data);
+        echo "</pre>";
+        die();
+
+        
+        /*foreach ($pages as $product => $page) {
             $this->params['query'] = $product;
             while ($this->params['page'] <= $page) {
                 $this->_data[$product] = $this->_liveChat->tickets->get($this->params);
                 $this->params['page'] ++;
             }
             $this->params['page'] = 1;
-        }
+        }*/
 
 
         $this->saveDataJson($file);
