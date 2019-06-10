@@ -26,42 +26,12 @@ class LiveChatApi extends Model
     public $params   = [];
     public $data;
 
-    // api live chat property
-    public $assignee = [];
-    public $events   = [];
-    public $id;
-    public $requester = [];
-    public $groups    = [];
-    public $status;
-    public $subject;
-    public $modified;
-    public $source        = [];
-    public $opened        = [];
-    public $firstResponse = [];
-    public $ccs           = [];
-    public $tags          = [];
-    public $rate;
-    public $date;
-    public $currentGroup = [];
+
+    
 
     public function setParams($params = [])
     {
-        $this->params = [
-            'date_from' => (isset($params['date_from'])) ? $params['date_from'] : '',
-            'date_to'   => (isset($params['date_to'])) ? $params['date_to'] : '',
-            'page'      => (isset($params['page'])) ? $params['page'] : 1,
-            'assigned'  => (isset($params['assigned'])) ? $params['assigned'] : '',
-            'order'     => (isset($params['order'])) ? $params['order'] : '',
-            'status'    => (isset($params['status'])) ? $params['status'] : '',
-            'assignee'  => (isset($params['assignee'])) ? $params['assignee'] : '',
-            'query'     => (isset($params['query'])) ? $params['query'] : '',
-            'requester' => (isset($params['requester'])) ? $params['requester'] : '',
-            'group'     => (isset($params['group'])) ? $params['group'] : '',
-            'source'    => (isset($params['source'])) ? $params['source'] : '', // 'lc2', 'chat-window', 'mail', 'facebook:conversation', 'facebook:post' or 'agent-app-manual'.
-            'tag'       => (isset($params['tag'])) ? $params['tag'] : '',
-            'tagged'    => (isset($params['tagged'])) ? $params['tagged'] : '',
-
-        ];
+        $this->params = $params;
 
     }
 
@@ -69,6 +39,37 @@ class LiveChatApi extends Model
     {
         return $this->params;
     }
+
+    public function getParamsByProperty($property,$index)
+    {
+        return $this->params[$property][$index];
+    }
+
+    public function getTickets()
+    {
+        return $this->_liveChat->tickets->get($this->params);
+    }
+
+    public function build()
+    {
+        if (!ArrayHelper::keyExists('page', $this->params, false)) {
+            $this->params['page'] = 1;
+        }
+        for ($i=0; $i <sizeof($this->params['query']) ; $i++) { 
+            $params = $this->getParams();
+            $params['query'] = $this->params['query'][$i];
+            do {
+                $page = $this->params['page'];
+                $this->_data[$page] = $this->_liveChat->tickets->get($params);
+                $this->params['page'] ++;
+
+                
+
+            } while ($this->params['page'] <= $this->_data[$page]->pages);
+        }
+        return $this->_data;
+    }
+
 
     public function get_number_pages_by_query($model_products = [])
     {

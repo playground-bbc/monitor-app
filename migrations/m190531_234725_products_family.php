@@ -3,9 +3,9 @@
 use yii\db\Migration;
 
 /**
- * Class m190531_234725_products_categories
+ * Class m190531_234725_products_family
  */
-class m190531_234725_products_categories extends Migration
+class m190531_234725_products_family extends Migration
 {
     /**
      * {@inheritdoc}
@@ -18,7 +18,7 @@ class m190531_234725_products_categories extends Migration
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
         }
 
-        $this->createTable('{{%products_categories}}', [
+        $this->createTable('{{%products_family}}', [
             'id'                => $this->primaryKey(),
             'parentId'          => $this->integer(),
             'name'              => $this->string(),
@@ -31,7 +31,7 @@ class m190531_234725_products_categories extends Migration
 
         ], $tableOptions);
         // Home Entertainment
-        $this->insert('{{%products_categories}}', [
+        $this->insert('{{%products_family}}', [
             'parentId'          => null,
             'name'              => 'Home Entertainment',
             'abbreviation_name' => 'HE',
@@ -42,7 +42,7 @@ class m190531_234725_products_categories extends Migration
             'updatedBy'         => '1',
         ]);
 
-        $this->insert('{{%products_categories}}', [
+        $this->insert('{{%products_family}}', [
             'parentId'          => 1,
             'name'              => 'Televisores',
             'abbreviation_name' => 'TV',
@@ -53,7 +53,7 @@ class m190531_234725_products_categories extends Migration
             'updatedBy'         => '1',
         ]);
 
-        $this->insert('{{%products_categories}}', [
+        $this->insert('{{%products_family}}', [
             'parentId'          => 1,
             'name'              => 'Audio',
             'abbreviation_name' => '',
@@ -66,7 +66,7 @@ class m190531_234725_products_categories extends Migration
         // end Home Entertainment
 
         // Home Appliances
-        $this->insert('{{%products_categories}}', [
+        $this->insert('{{%products_family}}', [
             'parentId'          => null,
             'name'              => 'Home Appliances',
             'abbreviation_name' => 'HA',
@@ -77,7 +77,7 @@ class m190531_234725_products_categories extends Migration
             'updatedBy'         => '1',
         ]);
 
-        $this->insert('{{%products_categories}}', [
+        $this->insert('{{%products_family}}', [
             'parentId'          => 2,
             'name'              => 'Refrigeradores',
             'abbreviation_name' => '',
@@ -88,7 +88,7 @@ class m190531_234725_products_categories extends Migration
             'updatedBy'         => '1',
         ]);
 
-        $this->insert('{{%products_categories}}', [
+        $this->insert('{{%products_family}}', [
             'parentId'          => 2,
             'name'              => 'Lavadoras',
             'abbreviation_name' => '',
@@ -99,7 +99,7 @@ class m190531_234725_products_categories extends Migration
             'updatedBy'         => '1',
         ]);
 
-        $this->insert('{{%products_categories}}', [
+        $this->insert('{{%products_family}}', [
             'parentId'          => 2,
             'name'              => 'Microondas',
             'abbreviation_name' => '',
@@ -114,7 +114,7 @@ class m190531_234725_products_categories extends Migration
 
         //Mobile connect
 
-        $this->insert('{{%products_categories}}', [
+        $this->insert('{{%products_family}}', [
             'parentId'          => null,
             'name'              => 'Mobile connect',
             'abbreviation_name' => 'MC',
@@ -125,7 +125,7 @@ class m190531_234725_products_categories extends Migration
             'updatedBy'         => '1',
         ]);
 
-        $this->insert('{{%products_categories}}', [
+        $this->insert('{{%products_family}}', [
             'parentId'          => 3,
             'name'              => 'Smartphones',
             'abbreviation_name' => '',
@@ -138,7 +138,7 @@ class m190531_234725_products_categories extends Migration
         // end Mobile connect
 
         // Monitors and Projectors
-        $this->insert('{{%products_categories}}', [
+        $this->insert('{{%products_family}}', [
             'parentId'          => null,
             'name'              => 'Monitors and Projectors',
             'abbreviation_name' => 'MP',
@@ -149,7 +149,7 @@ class m190531_234725_products_categories extends Migration
             'updatedBy'         => '1',
         ]);
 
-        $this->insert('{{%products_categories}}', [
+        $this->insert('{{%products_family}}', [
             'parentId'          => 4,
             'name'              => 'Monitores',
             'abbreviation_name' => '',
@@ -160,7 +160,7 @@ class m190531_234725_products_categories extends Migration
             'updatedBy'         => '1',
         ]);
 
-        $this->insert('{{%products_categories}}', [
+        $this->insert('{{%products_family}}', [
             'parentId'          => 4,
             'name'              => 'Proyectores',
             'abbreviation_name' => '',
@@ -174,17 +174,17 @@ class m190531_234725_products_categories extends Migration
 
         // creates index for column `parentId`
         $this->createIndex(
-            'idx-products_categories-parentId',
-            'products_categories',
+            'idx-products_family-parentId',
+            'products_family',
             'parentId'
         );
 
         // add foreign key for table `parentId`
         $this->addForeignKey(
-            'fk-products_categories-parentId',
-            'products_categories',
+            'fk-products_family-parentId',
+            'products_family',
             'parentId',
-            'products_categories',
+            'products_family',
             'id',
             'CASCADE',
             'CASCADE'
@@ -193,6 +193,6 @@ class m190531_234725_products_categories extends Migration
 
     public function down()
     {
-        $this->dropTable('{{%products_categories}}');
+        $this->dropTable('{{%products_family}}');
     }
 }
