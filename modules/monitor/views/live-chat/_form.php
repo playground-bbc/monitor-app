@@ -25,36 +25,34 @@ $data = [
 ?>
 
 <?php $form = ActiveForm::begin(['id' => 'search-form']); ?>
+	
 	<div class="row">
-	    <div class="col-md-6">
-			<?= $form->field($form_model, 'keywords[]')->widget(JqueryTagsInput::className(), [
-				    // extra configuration
-					])->label(true); ?>	    	
-	    </div>
-
+		<div class="col-md-12">
+			<?php 
+			    echo DatePicker::widget([
+			        'name' => 'from_date',
+			        'value' => '01-Feb-1996',
+			        'type' => DatePicker::TYPE_RANGE,
+			        'name2' => 'to_date',
+			        'value2' => '27-Feb-1996',
+			        'pluginOptions' => [
+			            'autoclose' => true,
+			            'format' => 'yyyy-mm-dd'
+			        ]
+			    ]);
+			 ?>
+		</div>
 		<div class="col-md-6">
-			<?= $form->field($form_model, 'products[]')->widget(JqueryTagsInput::className(), [
-			    // extra configuration
-				]); ?>
+			<?= $form->field($form_model, 'products[]')->widget(Select2::classname(), [
+				   'data' => $data,
+				    'options' => ['placeholder' => 'Select a state ...'],
+				    'pluginOptions' => [
+				        'allowClear' => true
+				    ],
+				]);
+			?>
 		</div>
 	</div>
-	
-
-
-	<?php 
-		echo DatePicker::widget([
-		    'name' => 'from_date',
-		    'value' => '2019-02-15',
-		    'type' => DatePicker::TYPE_RANGE,
-		    'name2' => 'to_date',
-		    'value2' => '2019-02-15',
-		    'pluginOptions' => [
-		        'autoclose' => true,
-		        'format' => 'yyyy-mm-dd'
-		    ]
-		]);
-
-	 ?>
 
     <div class="form-group">
         <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>

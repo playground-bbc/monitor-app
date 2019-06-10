@@ -22,7 +22,7 @@ class LiveChatController extends Controller
         $form_model           = new SearchForm();
         $form_model->scenario = 'live-chat';
 
-        $this->render('create',['form_model' => $form_model])
+        return $this->render('create',['form_model' => $form_model]);
 
     }
 
