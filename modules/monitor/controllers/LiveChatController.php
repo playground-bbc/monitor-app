@@ -7,6 +7,7 @@ use app\models\ProductsCategories;
 use app\models\ProductsModels;
 use app\models\SearchForm;
 use yii\web\Controller;
+use yii;
 
 /**
  * Default controller for the `monitor` module
@@ -21,6 +22,11 @@ class LiveChatController extends Controller
     {
         $form_model           = new SearchForm();
         $form_model->scenario = 'live-chat';
+
+        if ($form_model->load(Yii::$app->request->post())) {
+            var_dump(Yii::$app->request->post());
+            die();
+        }
 
         return $this->render('create',['form_model' => $form_model]);
 

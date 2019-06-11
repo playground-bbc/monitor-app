@@ -10,7 +10,6 @@ use Yii;
  * @property int $id
  * @property int $productId
  * @property string $serial_model
- * @property string $name
  * @property int $status
  * @property int $createdAt
  * @property int $updatedAt
@@ -18,9 +17,8 @@ use Yii;
  * @property int $updatedBy
  *
  * @property Products $product
- * @property ProductsModelsAlerts[] $productsModelsAlerts
  */
-class ProductsModels extends \yii\db\ActiveRecord
+class ProductsModels  extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -37,7 +35,7 @@ class ProductsModels extends \yii\db\ActiveRecord
     {
         return [
             [['productId', 'status', 'createdAt', 'updatedAt', 'createdBy', 'updatedBy'], 'integer'],
-            [['serial_model', 'name'], 'string', 'max' => 255],
+            [['serial_model'], 'string', 'max' => 255],
             [['productId'], 'exist', 'skipOnError' => true, 'targetClass' => Products::className(), 'targetAttribute' => ['productId' => 'id']],
         ];
     }
@@ -51,7 +49,6 @@ class ProductsModels extends \yii\db\ActiveRecord
             'id' => 'ID',
             'productId' => 'Product ID',
             'serial_model' => 'Serial Model',
-            'name' => 'Name',
             'status' => 'Status',
             'createdAt' => 'Created At',
             'updatedAt' => 'Updated At',
@@ -66,13 +63,5 @@ class ProductsModels extends \yii\db\ActiveRecord
     public function getProduct()
     {
         return $this->hasOne(Products::className(), ['id' => 'productId']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getProductsModelsAlerts()
-    {
-        return $this->hasMany(ProductsModelsAlerts::className(), ['product_modelId' => 'id']);
     }
 }

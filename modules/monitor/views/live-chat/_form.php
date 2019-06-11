@@ -4,7 +4,9 @@ use yii\widgets\Breadcrumbs;
 use yii\helpers\ArrayHelper;
 use yii\bootstrap\ActiveForm;
 
-use app\models\Resource;
+use app\models\ProductsFamily;
+use app\models\ProductCategory;
+use app\models\ProductsModels;
 
 use kartik\select2\Select2;
 use kartik\date\DatePicker;
@@ -18,10 +20,14 @@ $moduleName = $this->context->action->id;
 $this->title = 'Crear Busqueda';
 $this->params['breadcrumbs'][] = ['label' => $moduleName, 'Alerta', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
-$data = [
-	'1' => 'some'
 
-];
+$family['Products Family'] = ArrayHelper::map(ProductsFamily::find()->andFilterCompare('parentId','null','<>')->all(),'name','name');
+$categories['Product Category'] = ArrayHelper::map(ProductCategory::find()->andFilterCompare('familyId','null','<>')->all(),'name','name');
+$products_models['Product Models'] = ArrayHelper::map(ProductsModels::find()->andFilterCompare('productId','null','<>')->all(),'serial_model','serial_model');
+
+$data = ArrayHelper::merge($family,$categories);
+$data = ArrayHelper::merge($products_models,$data);
+
 ?>
 
 <?php $form = ActiveForm::begin(['id' => 'search-form']); ?>
@@ -45,9 +51,12 @@ $data = [
 		<div class="col-md-6">
 			<?= $form->field($form_model, 'products[]')->widget(Select2::classname(), [
 				   'data' => $data,
-				    'options' => ['placeholder' => 'Select a state ...'],
+				    'options' => [
+				    	'placeholder' => 'Select a state ...',
+				    	'multiple' => true
+					],
 				    'pluginOptions' => [
-				        'allowClear' => true
+				        'allowClear' => true,
 				    ],
 				]);
 			?>

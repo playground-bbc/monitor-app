@@ -5,7 +5,7 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "products_categories".
+ * This is the model class for table "products_family".
  *
  * @property int $id
  * @property int $parentId
@@ -17,18 +17,18 @@ use Yii;
  * @property int $createdBy
  * @property int $updatedBy
  *
- * @property Products[] $products
- * @property ProductsCategories $parent
- * @property ProductsCategories[] $productsCategories
+ * @property ProductCategory[] $productCategories
+ * @property ProductsFamily $parent
+ * @property ProductsFamily[] $productsFamilies
  */
-class ProductsCategories extends \yii\db\ActiveRecord
+class ProductsFamily extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'products_categories';
+        return 'products_family';
     }
 
     /**
@@ -39,7 +39,7 @@ class ProductsCategories extends \yii\db\ActiveRecord
         return [
             [['parentId', 'status', 'createdAt', 'updatedAt', 'createdBy', 'updatedBy'], 'integer'],
             [['name', 'abbreviation_name'], 'string', 'max' => 255],
-            [['parentId'], 'exist', 'skipOnError' => true, 'targetClass' => ProductsCategories::className(), 'targetAttribute' => ['parentId' => 'id']],
+            [['parentId'], 'exist', 'skipOnError' => true, 'targetClass' => ProductsFamily::className(), 'targetAttribute' => ['parentId' => 'id']],
         ];
     }
 
@@ -64,9 +64,9 @@ class ProductsCategories extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getProducts()
+    public function getProductCategories()
     {
-        return $this->hasMany(Products::className(), ['categoryId' => 'id']);
+        return $this->hasMany(ProductCategory::className(), ['familyId' => 'id']);
     }
 
     /**
@@ -74,14 +74,14 @@ class ProductsCategories extends \yii\db\ActiveRecord
      */
     public function getParent()
     {
-        return $this->hasOne(ProductsCategories::className(), ['id' => 'parentId']);
+        return $this->hasOne(ProductsFamily::className(), ['id' => 'parentId']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getProductsCategories()
+    public function getProductsFamilies()
     {
-        return $this->hasMany(ProductsCategories::className(), ['parentId' => 'id']);
+        return $this->hasMany(ProductsFamily::className(), ['parentId' => 'id']);
     }
 }

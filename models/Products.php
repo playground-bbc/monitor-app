@@ -17,7 +17,7 @@ use Yii;
  * @property int $createdBy
  * @property int $updatedBy
  *
- * @property ProductsCategories $category
+ * @property ProductCategory $category
  * @property ProductsModels[] $productsModels
  */
 class Products extends \yii\db\ActiveRecord
@@ -38,7 +38,7 @@ class Products extends \yii\db\ActiveRecord
         return [
             [['categoryId', 'status', 'createdAt', 'updatedAt', 'createdBy', 'updatedBy'], 'integer'],
             [['name', 'abbreviation_name'], 'string', 'max' => 255],
-            [['categoryId'], 'exist', 'skipOnError' => true, 'targetClass' => ProductsCategories::className(), 'targetAttribute' => ['categoryId' => 'id']],
+            [['categoryId'], 'exist', 'skipOnError' => true, 'targetClass' => ProductCategory::className(), 'targetAttribute' => ['categoryId' => 'id']],
         ];
     }
 
@@ -65,13 +65,13 @@ class Products extends \yii\db\ActiveRecord
      */
     public function getCategory()
     {
-        return $this->hasOne(ProductsCategories::className(), ['id' => 'categoryId']);
+        return $this->hasOne(ProductCategory::className(), ['id' => 'categoryId']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getModelos()
+    public function getProductsModels()
     {
         return $this->hasMany(ProductsModels::className(), ['productId' => 'id']);
     }
