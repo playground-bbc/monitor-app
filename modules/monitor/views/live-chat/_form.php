@@ -10,7 +10,8 @@ use app\models\ProductsModels;
 
 use kartik\select2\Select2;
 use kartik\date\DatePicker;
-use faryshta\widgets\JqueryTagsInput;
+use yii\bootstrap\Modal;
+use kartik\widgets\FileInput;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\LiveChat */
@@ -60,6 +61,17 @@ $data = ArrayHelper::merge($products_models,$data);
 				    ],
 				]);
 			?>
+		</div>
+		<div class="col-md-12">
+			<?php 
+				Modal::begin([
+				    'header' => 'Hello world',
+				    'toggleButton' => ['label' => 'click me'],
+				]);
+				echo $this->render('_modal',['form_model' => $form_model]);
+				Modal::end();
+
+			 ?>
 		</div>
 	</div>
 

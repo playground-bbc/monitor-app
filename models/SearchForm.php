@@ -24,6 +24,7 @@ class SearchForm extends Model
     ];
 
     public $query_search;
+    public $categories_dictionary;
    
    
     public $start_date;
@@ -41,7 +42,7 @@ class SearchForm extends Model
         return [
             // text_search  are required
             [['text_search','keywords','web_resource'], 'required', 'on' => 'scraping'],
-            [['products','keywords','start_date','end_date'], 'required', 'on' => 'live-chat'],
+            [['categories_dictionary','products','keywords','start_date','end_date'], 'required', 'on' => 'live-chat'],
             // text_search has to be a valid string
             [['text_search'], 'string'],
             // start date needs to be entered correctly

@@ -32,9 +32,23 @@ class LiveChatController extends Controller
 
     }
 
-    public function actionDefault()
+    public function actionUpload()
     {
-        
+        if (\Yii::$app->request->isAjax) {
+            \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+            $data = \Yii::$app->request->post();
+            var_dump($data);
+            die();
+            return [
+                'data' => [
+                    'success' => true,
+                    'message' => 'Model has been saved.',
+                    'postId'=>$data,
+                ],
+                'code' => 0,
+            ];
+
+        }
     }
 
 }

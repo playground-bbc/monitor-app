@@ -27,7 +27,8 @@
         "filebase/filebase": "^1.0",
         "kartik-v/yii2-widget-datepicker": "dev-master",
         "kartik-v/yii2-field-range": "dev-master",
-        "jasonlam604/stringizer": "^2.14.0"
+        "jasonlam604/stringizer": "^2.14.0",
+        "kartik-v/yii2-widget-fileinput": "@dev"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
