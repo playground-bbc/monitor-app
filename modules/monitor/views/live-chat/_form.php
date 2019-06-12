@@ -10,7 +10,6 @@ use app\models\ProductsModels;
 
 use kartik\select2\Select2;
 use kartik\date\DatePicker;
-use yii\bootstrap\Modal;
 use kartik\widgets\FileInput;
 
 /* @var $this yii\web\View */
@@ -29,27 +28,16 @@ $products_models['Product Models'] = ArrayHelper::map(ProductsModels::find()->an
 $data = ArrayHelper::merge($family,$categories);
 $data = ArrayHelper::merge($products_models,$data);
 
+
 ?>
 
-<?php $form = ActiveForm::begin(['id' => 'search-form']); ?>
+<?php $form = ActiveForm::begin(['id' => 'search-form','options'=>['enctype'=>'multipart/form-data']]); ?>
 	
 	<div class="row">
 		<div class="col-md-12">
-			<?php 
-			    echo DatePicker::widget([
-			        'name' => 'from_date',
-			        'value' => '01-Feb-1996',
-			        'type' => DatePicker::TYPE_RANGE,
-			        'name2' => 'to_date',
-			        'value2' => '27-Feb-1996',
-			        'pluginOptions' => [
-			            'autoclose' => true,
-			            'format' => 'yyyy-mm-dd'
-			        ]
-			    ]);
-			 ?>
+			<?= $form->field($form_model,'name')  ?>
 		</div>
-		<div class="col-md-6">
+		<div class="col-md-12">
 			<?= $form->field($form_model, 'products[]')->widget(Select2::classname(), [
 				   'data' => $data,
 				    'options' => [
@@ -62,15 +50,29 @@ $data = ArrayHelper::merge($products_models,$data);
 				]);
 			?>
 		</div>
-		<div class="col-md-12">
-			<?php 
-				Modal::begin([
-				    'header' => 'Hello world',
-				    'toggleButton' => ['label' => 'click me'],
+		<div class="col-md-6">
+			<?=  $form->field($form_model, 'start_date')->widget(DatePicker::classname(), [
+				    'options' => ['placeholder' => 'Enter start date ...'],
+				    'pluginOptions' => [
+				        'autoclose'=>true
+				    ]
 				]);
-				echo $this->render('_modal',['form_model' => $form_model]);
-				Modal::end();
-
+			    
+			 ?>
+		</div>
+		<div class="col-md-6">
+			<?=  $form->field($form_model, 'end_date')->widget(DatePicker::classname(), [
+				    'options' => ['placeholder' => 'Enter end date ...'],
+				    'pluginOptions' => [
+				        'autoclose'=>true
+				    ]
+				]);
+			    
+			 ?>
+		</div>
+		<div class="col-md-12">
+			<?= 
+				$this->render('_file_form',['form' => $form,'form_model' => $form_model]);
 			 ?>
 		</div>
 	</div>

@@ -7,31 +7,27 @@ use yii\behaviors\BlameableBehavior;
 use yii\db\ActiveRecord;
 
 /**
- * This is the model class for table "dictionary".
+ * This is the model class for table "products_models_alerts".
  *
  * @property int $id
  * @property int $alertId
- * @property int $category_dictionaryId
- * @property string $name
- * @property string $word
+ * @property int $product_modelId
  * @property int $createdAt
  * @property int $updatedAt
  * @property int $createdBy
  * @property int $updatedBy
  *
  * @property Alerts $alert
- * @property CategoriesDictionary $categoryDictionary
+ * @property ProductsModels $productModel
  */
-class Dictionary extends \yii\db\ActiveRecord
+class ProductsModelsAlerts extends \yii\db\ActiveRecord
 {
-    const POSITIVE = 1;
-    const NEGATIVE = 2;
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'dictionary';
+        return 'products_models_alerts';
     }
 
     public function behaviors()
@@ -51,19 +47,19 @@ class Dictionary extends \yii\db\ActiveRecord
             ],
         ];
     }
-
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['alertId', 'category_dictionaryId', 'createdAt', 'updatedAt', 'createdBy', 'updatedBy'], 'integer'],
-            [['word'], 'string', 'max' => 255],
+            [['alertId', 'product_modelId'], 'required'],
+            [['alertId', 'product_modelId', 'createdAt', 'updatedAt', 'createdBy', 'updatedBy'], 'integer'],
             [['alertId'], 'exist', 'skipOnError' => true, 'targetClass' => Alerts::className(), 'targetAttribute' => ['alertId' => 'id']],
-            [['category_dictionaryId'], 'exist', 'skipOnError' => true, 'targetClass' => CategoriesDictionary::className(), 'targetAttribute' => ['category_dictionaryId' => 'id']],
+            [['product_modelId'], 'exist', 'skipOnError' => true, 'targetClass' => ProductsModels::className(), 'targetAttribute' => ['product_modelId' => 'id']],
         ];
     }
+
 
     /**
      * {@inheritdoc}
@@ -73,8 +69,7 @@ class Dictionary extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'alertId' => 'Alert ID',
-            'category_dictionaryId' => 'Category Dictionary ID',
-            'word' => 'Word',
+            'product_modelId' => 'Product Model ID',
             'createdAt' => 'Created At',
             'updatedAt' => 'Updated At',
             'createdBy' => 'Created By',
@@ -93,20 +88,8 @@ class Dictionary extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getCategory()
+    public function getProductModel()
     {
-        return $this->hasOne(CategoriesDictionary::className(), ['id' => 'category_dictionaryId']);
-    }
-
-
-    public function getOrderedWords()
-    {
-        /*$result =[];
-        $words = $this->find()->with('category')->asArray()->all();
-        for ($i=0; $i <sizeof($words) ; $i++) { 
-            $result[$words[$i]['category']['name']][] = $words[$i]['name'] ;
-        }
-        return $result;*/
-        return null;
+        return $this->hasOne(ProductsModels::className(), ['id' => 'product_modelId']);
     }
 }

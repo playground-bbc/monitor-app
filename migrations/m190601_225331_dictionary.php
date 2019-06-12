@@ -25,7 +25,6 @@ class m190601_225331_dictionary extends Migration
             'id'                    => $this->primaryKey(),
             'alertId'               => $this->integer(),
             'category_dictionaryId' => $this->integer(),
-            'name'                  => $this->string(),
             'word'                  => $this->string(),
             'createdAt'             => $this->integer(),
             'updatedAt'             => $this->integer(),
@@ -37,8 +36,7 @@ class m190601_225331_dictionary extends Migration
         $this->insert('{{%dictionary}}', [
             'alertId'               => 1,
             'category_dictionaryId' => 1,
-            'name'                  => 'bueno',
-            'word'                  => '',
+            'word'                  => 'Bueno',
             'createdAt'             => '1488153462',
             'updatedAt'             => '1488153462',
             'createdBy'             => '1',
@@ -48,8 +46,7 @@ class m190601_225331_dictionary extends Migration
         $this->insert('{{%dictionary}}', [
             'alertId'               => 1,
             'category_dictionaryId' => 2,
-            'name'                  => 'malo',
-            'word'                  => '',
+            'word'                  => 'Malo',
             'createdAt'             => '1488153462',
             'updatedAt'             => '1488153462',
             'createdBy'             => '1',
@@ -59,7 +56,7 @@ class m190601_225331_dictionary extends Migration
         $this->insert('{{%dictionary}}', [
             'alertId'               => 1,
             'category_dictionaryId' => 2,
-            'name'                  => 'defecto',
+            'word'                  => 'Mal',
             'createdAt'             => '1488153462',
             'updatedAt'             => '1488153462',
             'createdBy'             => '1',
@@ -69,7 +66,7 @@ class m190601_225331_dictionary extends Migration
         $this->insert('{{%dictionary}}', [
             'alertId'               => 1,
             'category_dictionaryId' => 2,
-            'name'                  => 'tengo un problema',
+            'word'                  => 'Muy malo',
             'createdAt'             => '1488153462',
             'updatedAt'             => '1488153462',
             'createdBy'             => '1',

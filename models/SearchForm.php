@@ -10,21 +10,20 @@ use yii\base\Model;
  */
 class SearchForm extends Model
 {
-    
+    public $name;
     public $keywords = [];
     public $products = [];
     public $web_resource = [];
-    public $negative_words = [
-        'malo',
-        'terrible'
-    ];
+    
+    public $negative_words;
+    public $positive_words;
 
     public $social_resources = [
         'TwitterApi' =>'Twitter',
     ];
 
     public $query_search;
-    public $categories_dictionary;
+    public $categories_dictionary = [];
    
    
     public $start_date;
@@ -42,7 +41,7 @@ class SearchForm extends Model
         return [
             // text_search  are required
             [['text_search','keywords','web_resource'], 'required', 'on' => 'scraping'],
-            [['categories_dictionary','products','keywords','start_date','end_date'], 'required', 'on' => 'live-chat'],
+            [['name','products','positive_words','negative_words','start_date','end_date'], 'required','message' => 'complete the fields', 'on' => 'live-chat'],
             // text_search has to be a valid string
             [['text_search'], 'string'],
             // start date needs to be entered correctly
@@ -54,7 +53,7 @@ class SearchForm extends Model
     {
         $scenarios = parent::scenarios();
         $scenarios['scraping'] = ['text_search','keywords','web_resource'];
-        $scenarios['live-chat'] = ['text_search','keywords','product_family','product_catyegory','product_model'];
+        $scenarios['live-chat'] = ['products','positive_words','negative_words','start_date','end_date'];
         return $scenarios;
     }
 
@@ -64,11 +63,14 @@ class SearchForm extends Model
     public function attributeLabels()
     {
         return [
-            'text_search' => 'texto de Busqueda',
-            'start_date' => 'Fecha de Inicio',
-            'start_end' => 'Fecha Final',
-            'keywords' => 'Palabras Claves',
-            'products' => 'Productos - Modelo - Codigo',
+            'text_search' => 'Search text',
+            'start_date' => 'start date',
+            'start_end' => 'start end',
+            'keywords' => 'keywords',
+            'products' => 'Productos - Model - Code',
+            'categories_dictionary' => 'categories dictionary',
+            'positive_words' => 'positive words',
+            'negative_words' => 'negative words',
         ];
     }
 

@@ -64,7 +64,7 @@ class ProductsFamily extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getProductCategories()
+    public function getCategories()
     {
         return $this->hasMany(ProductCategory::className(), ['familyId' => 'id']);
     }

@@ -15,6 +15,6 @@ return [
     ],
     'liveChat' => [
     	'apiLogin' => 'eduardo@montana-studio.com',
-    	'apiKey' => '019c9698ab9f5ad4ed39ef353a8d45e2'
+    	'apiKey' => 'ad24335143918c8470d4962a1c52866e'
     ]
 ];
