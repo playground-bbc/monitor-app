@@ -82,9 +82,15 @@ class LiveChatController extends Controller
     public function actionView($alertId)
     {
         $alert = Alerts::findOne($alertId);
+
         $products_model_alerts = ArrayHelper::map(ProductsModelsAlerts::find()->where(['alertId' => $alertId])->all(),'product_modelId','alertId');
         $models_products = ArrayHelper::map(ProductsModels::find()->where(['id' => array_keys($products_model_alerts)])->all(),'productId','serial_model');
         $products = ArrayHelper::map(Products::find()->where(['id' => array_keys($models_products)])->all(),'id','name');
+        
+
+        var_dump($products_model_alerts);
+        var_dump($models_products);
+        var_dump($products);
         var_dump(ArrayHelper::merge($models_products,$products));
 
         $params = [
@@ -103,6 +109,10 @@ class LiveChatController extends Controller
     }
 
 
+    public function actionConfig()
+    {
+        return $this->render('config/index');
+    }
 
     public function getModelsProducts($products=[])
     {   
