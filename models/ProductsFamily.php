@@ -39,6 +39,7 @@ class ProductsFamily extends \yii\db\ActiveRecord
         return [
             [['parentId', 'status', 'createdAt', 'updatedAt', 'createdBy', 'updatedBy'], 'integer'],
             [['name', 'abbreviation_name'], 'string', 'max' => 255],
+            [['name'], 'required'],
             [['parentId'], 'exist', 'skipOnError' => true, 'targetClass' => ProductsFamily::className(), 'targetAttribute' => ['parentId' => 'id']],
         ];
     }

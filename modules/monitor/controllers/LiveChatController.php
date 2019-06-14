@@ -88,10 +88,10 @@ class LiveChatController extends Controller
         $products = ArrayHelper::map(Products::find()->where(['id' => array_keys($models_products)])->all(),'id','name');
         
 
-        var_dump($products_model_alerts);
+        /*var_dump($products_model_alerts);
         var_dump($models_products);
         var_dump($products);
-        var_dump(ArrayHelper::merge($models_products,$products));
+        var_dump(ArrayHelper::merge($models_products,$products));*/
 
         $params = [
             'alertId' => $alert->id,

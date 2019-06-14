@@ -1,12 +1,11 @@
 <?php
 namespace app\modules\monitor\controllers;
 
+use yii;
 use yii\web\Controller;
+use app\models\ProductsFamily;
+use yii\helpers\ArrayHelper;
 
-use Goutte\Client;
-use LiveChat\Api\Client as LiveChat;
-use GuzzleHttp\Client as GuzzleClient;
-use Symfony\Component\DomCrawler\Crawler;
 
 /**
  * Default controller for the `monitor` module
@@ -21,6 +20,26 @@ class DefaultController extends Controller
     {
         
         return $this->render('index');
+	}
+
+	public function actionCreate()
+	{
+		return $this->render('create');
+	}
+
+	public function actionCreatefamily()
+	{
+		$model = new ProductsFamily();
+		$parents = ArrayHelper::map(ProductsFamily::find()->where(['or', ['parentId' => 0], ['parentId' => null]])->all(),'id','name'); 
+
+		if ($model->load(Yii::$app->request->post()) && $model->save()) {
+			return null;
+		}
+
+		return $this->render('family/create',[
+			'model' => $model,
+			'parents' => $parents,
+		]);
 	}
 
 }

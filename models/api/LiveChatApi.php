@@ -48,7 +48,7 @@ class LiveChatApi extends Model
     public function getTickets()
     {
         $params = $this->params;
-        var_dump($params);
+        //var_dump($params);
         foreach ($this->params['query'] as $key => $value) {
             do {
                 $page = $this->params['page'];

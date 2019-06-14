@@ -1,3 +1,10 @@
+<?php 
+use kartik\select2\Select2;
+use yii\helpers\Html;
+use yii\widgets\ActiveForm;
+
+
+ ?>
 <div class="monitor-default-index">
     <h1><?= $this->context->action->uniqueId ?></h1>
     <p>
@@ -9,4 +16,8 @@
         You may customize this page by editing the following file:<br>
         <code><?= __FILE__ ?></code>
     </p>
+    <?= Html::a('Crear Familia','createfamily',['class'=> 'btn btn-info']);  ?>
+    <?= Html::a('Crear .. ','create_',['class'=> 'btn btn-info']); ?>
+    <?= Html::a('Crear .. ','create_',['class'=> 'btn btn-info']); ?>
+    <?= Html::a('Crear .. ','create_',['class'=> 'btn btn-info']); ?>
 </div>
