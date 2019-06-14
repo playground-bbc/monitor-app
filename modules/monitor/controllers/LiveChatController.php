@@ -24,6 +24,15 @@ use app\models\CategoriesDictionary;
  */
 class LiveChatController extends Controller
 {
+
+    public function actions()
+    {
+        return [
+            'error' => [
+                'class' => 'yii\web\ErrorAction',
+            ],
+        ];
+    }
     /**
      * Renders the index view for the module
      * @return string
@@ -88,24 +97,42 @@ class LiveChatController extends Controller
         $products = ArrayHelper::map(Products::find()->where(['id' => array_keys($models_products)])->all(),'id','name');
         
 
-        /*var_dump($products_model_alerts);
-        var_dump($models_products);
-        var_dump($products);
-        var_dump(ArrayHelper::merge($models_products,$products));*/
+        $query = ArrayHelper::merge($models_products,$products);
 
-        $params = [
+        /*$params = [
             'alertId' => $alert->id,
             'date_from' => $alert->start_date,
             'date_to' => $alert->end_date,
             'page' => 1,
-            'query' => $models_products
+            'query' => $query
+        ];*/
+
+        $params = [
+            'alertId' => $alert->id,
+            'date_from' => '2018-06-13',
+            'date_to' => '2019-06-13',
+            'page' => 1,
+            'query' => ['query','SMART TV LED 49']
         ];
 
         $live_chat = new LiveChatApi();
-        $tickets = $live_chat->loadParams($params)->getTickets();
+        $tickets = $live_chat->loadParams($params)->getTickets()->saveJson();
+        var_dump($tickets['SMART TV LED 49']['tickets']);
+        die();
+        /*$tickets = $live_chat->loadParams($params)->getTickets()->orderByTickets();*/
 
 
         return $this->render('view');
+    }
+
+
+
+    public function actionError()
+    {
+        $exception = Yii::$app->errorHandler->exception;
+        if ($exception !== null) {
+            return $this->render('error', ['exception' => $exception]);
+        }
     }
 
 

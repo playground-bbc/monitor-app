@@ -1,0 +1,3279 @@
+{
+    "__created_at": 1560552292,
+    "__updated_at": 1560554424,
+    "data": {
+        "query": {
+            "total": 0
+        },
+        "SMART TV LED 49": {
+            "total": 41,
+            "tickets": [
+                {
+                    "assignee": {
+                        "name": "Edgar",
+                        "id": "edgar.pino@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "id": "miguel310870@gmail.com",
+                                "name": "Miguel Jeria",
+                                "type": "client"
+                            },
+                            "date": "2019-04-20T01:07:50Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nQue modelo LG de 43\" tiene entrada auxiliar de 3.5 mm.\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://www.abcdin.cl/tienda/es/abcdin/led-lg-49-4k-ultra-hd-smart-tv-49uk6200-1127783",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2019-04-22T13:39:58Z",
+                            "to": {
+                                "name": "Edgar",
+                                "id": "edgar.pino@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Edgar",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-04-22T13:39:58Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Edgar",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        }
+                    ],
+                    "id": "080SA",
+                    "requester": {
+                        "mail": "miguel310870@gmail.com",
+                        "name": "Miguel Jeria",
+                        "utc_offset": "America/Santiago",
+                        "ip": "191.126.136.225"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "Entrada auxiliar de 3,5 mm",
+                    "modified": "2019-04-22T13:39:58Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.abcdin.cl/tienda/es/abcdin/led-lg-49-4k-ultra-hd-smart-tv-49uk6200-1127783"
+                    },
+                    "opened": [
+                        {
+                            "from": "2019-04-20T01:07:50Z",
+                            "to": "2019-04-22T13:39:58Z"
+                        }
+                    ],
+                    "date": "2019-04-20T01:07:50Z"
+                },
+                {
+                    "assignee": {
+                        "name": "Edgar",
+                        "id": "edgar.pino@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "id": "pvalverde1975@gmail.com",
+                                "name": "Pablo Valverde",
+                                "type": "client"
+                            },
+                            "date": "2019-04-14T22:17:36Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nqueria saber si el modelo LED 49\" 49UK6200 4K Ultra HD Smart TV Plana viene con magic control y ademas si hay algun magic control para  modelos de 43\"\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://www.abcdin.cl/tienda/es/abcdin/led-lg-49-4k-ultra-hd-smart-tv-49uk6200-1127783",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2019-04-15T14:11:55Z",
+                            "to": {
+                                "name": "Edgar",
+                                "id": "edgar.pino@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Edgar",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-04-15T14:11:55Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Edgar",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        }
+                    ],
+                    "id": "IMOL4",
+                    "requester": {
+                        "mail": "pvalverde1975@gmail.com",
+                        "name": "Pablo Valverde",
+                        "utc_offset": "America/Santiago",
+                        "ip": "190.44.93.161"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "magic control",
+                    "modified": "2019-04-15T14:11:55Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.abcdin.cl/tienda/es/abcdin/led-lg-49-4k-ultra-hd-smart-tv-49uk6200-1127783"
+                    },
+                    "opened": [
+                        {
+                            "from": "2019-04-14T22:17:36Z",
+                            "to": "2019-04-15T14:11:55Z"
+                        }
+                    ],
+                    "date": "2019-04-14T22:17:36Z"
+                },
+                {
+                    "assignee": {
+                        "name": "Edgar",
+                        "id": "edgar.pino@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "id": "Villarroelescuti@gmail.com",
+                                "name": "Jose villarroel",
+                                "type": "client"
+                            },
+                            "date": "2019-04-08T01:27:38Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nSe puede conectar por bluetooth a un celular?\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://www.abcdin.cl/tienda/es/abcdin/led-lg-49-4k-ultra-hd-smart-tv-49uk6200-1127783",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2019-04-08T13:09:52Z",
+                            "is_private": false,
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "message": "le indico que este equipo cuenta con salida de Audio BLuetooth, para que desea conectarlo con un celular?",
+                            "type": "message",
+                            "author": {
+                                "name": "Edgar",
+                                "type": "agent",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-04-08T13:09:52Z",
+                            "to": {
+                                "name": "Edgar",
+                                "id": "edgar.pino@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Edgar",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-04-08T13:09:52Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Edgar",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-04-09T13:51:13Z",
+                            "type": "rating_offer_sent"
+                        },
+                        {
+                            "date": "2019-04-09T21:42:53Z",
+                            "is_private": false,
+                            "author": {
+                                "name": "José Villarroel",
+                                "type": "client",
+                                "id": "villarroelescuti@gmail.com"
+                            },
+                            "source": {
+                                "type": "mail"
+                            },
+                            "message": "Perdona la ignorancia Edgar pero es para saber si puedo enlazar el celu con\nla tele para mostrar una imagen o vídeo que tenga guardado en el celu",
+                            "type": "message"
+                        },
+                        {
+                            "date": "2019-04-09T21:42:53Z",
+                            "current": "open",
+                            "previous": "solved",
+                            "type": "status_changed"
+                        },
+                        {
+                            "date": "2019-04-09T21:43:32Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Edgar",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-04-11T14:07:16Z",
+                            "type": "rating_offer_sent"
+                        }
+                    ],
+                    "id": "WUTK8",
+                    "requester": {
+                        "mail": "Villarroelescuti@gmail.com",
+                        "name": "Jose villarroel",
+                        "utc_offset": "America/Santiago",
+                        "ip": "191.125.48.126"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "Tv smart lg 6200",
+                    "modified": "2019-04-11T14:07:16Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.abcdin.cl/tienda/es/abcdin/led-lg-49-4k-ultra-hd-smart-tv-49uk6200-1127783"
+                    },
+                    "opened": [
+                        {
+                            "from": "2019-04-08T01:27:38Z",
+                            "to": "2019-04-08T13:09:52Z"
+                        },
+                        {
+                            "from": "2019-04-09T21:42:53Z",
+                            "to": "2019-04-09T21:43:32Z"
+                        }
+                    ],
+                    "date": "2019-04-08T01:27:38Z"
+                },
+                {
+                    "assignee": {
+                        "name": "Edgar",
+                        "id": "edgar.pino@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "id": "Lg_lg_lg@hotmai.cl",
+                                "name": "Pablo garrido",
+                                "type": "client"
+                            },
+                            "date": "2019-04-09T01:36:49Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nQuiere el tv 49 pulgadas\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://www.abcdin.cl/tienda/es/abcdin/led-lg-49-4k-ultra-hd-smart-tv-49uk6200-1127783?utm_campaign=electro-addToCart3&utm_medium=remarketing&utm_source=facebook",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2019-04-09T13:22:48Z",
+                            "is_private": false,
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "message": "el modelo 49UK6200 es una excelente opción https://www.abcdin.cl/tienda/es/abcdin/led-lg-49-4k-ultra-hd-smart-tv-49uk6200-1127783?utm_campaign=electro-addToCart3&utm_medium=remarketing&utm_source=facebook",
+                            "type": "message",
+                            "author": {
+                                "name": "Edgar",
+                                "type": "agent",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-04-09T13:22:48Z",
+                            "to": {
+                                "name": "Edgar",
+                                "id": "edgar.pino@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Edgar",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-04-09T13:22:48Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Edgar",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-04-10T13:51:45Z",
+                            "type": "rating_offer_sent"
+                        }
+                    ],
+                    "id": "W48P8",
+                    "requester": {
+                        "mail": "Lg_lg_lg@hotmai.cl",
+                        "name": "Pablo garrido",
+                        "utc_offset": "America/Santiago",
+                        "ip": "186.78.199.203"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "LG 49pulgadas 4k",
+                    "modified": "2019-04-10T13:51:45Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.abcdin.cl/tienda/es/abcdin/led-lg-49-4k-ultra-hd-smart-tv-49uk6200-1127783?utm_campaign=electro-addToCart3&utm_medium=remarketing&utm_source=facebook"
+                    },
+                    "opened": [
+                        {
+                            "from": "2019-04-09T01:36:49Z",
+                            "to": "2019-04-09T13:22:48Z"
+                        }
+                    ],
+                    "date": "2019-04-09T01:36:49Z"
+                },
+                {
+                    "assignee": {
+                        "name": "Edgar",
+                        "id": "edgar.pino@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "id": "cvera@puelo.cl",
+                                "name": "claudio",
+                                "type": "client"
+                            },
+                            "date": "2019-04-05T17:50:59Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nsi realizo  mi primera compra por internet con la tarjeta abc din me haran el descuento del 10% en la primera compra\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://www.abcdin.cl/tienda/es/abcdin/televisores-led/led-lg-49-4k-ultra-hd-smart-tv-49uk6200-1127783",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2019-04-05T18:06:59Z",
+                            "to": {
+                                "name": "Edgar",
+                                "id": "edgar.pino@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Edgar",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-04-05T18:06:59Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Edgar",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        }
+                    ],
+                    "id": "EIZS5",
+                    "requester": {
+                        "mail": "cvera@puelo.cl",
+                        "name": "claudio",
+                        "utc_offset": "America/Santiago",
+                        "ip": "190.113.31.254"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "primera compra",
+                    "modified": "2019-04-05T18:06:59Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.abcdin.cl/tienda/es/abcdin/televisores-led/led-lg-49-4k-ultra-hd-smart-tv-49uk6200-1127783"
+                    },
+                    "opened": [
+                        {
+                            "from": "2019-04-05T17:50:59Z",
+                            "to": "2019-04-05T18:06:59Z"
+                        }
+                    ],
+                    "date": "2019-04-05T17:50:59Z"
+                },
+                {
+                    "events": [
+                        {
+                            "author": {
+                                "id": "camila.gutierrezj@gmail.com",
+                                "name": "camila gutierrez",
+                                "type": "client"
+                            },
+                            "date": "2019-03-12T02:52:55Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nNada\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://www.hites.com/led-lg-49lj5500-49-full-hd-smart-tv-744204001",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2019-03-12T12:44:02Z",
+                            "current": "spam",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Edgar",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        }
+                    ],
+                    "id": "3UKLR",
+                    "requester": {
+                        "mail": "camila.gutierrezj@gmail.com",
+                        "name": "camila gutierrez",
+                        "utc_offset": "America/Santiago",
+                        "ip": "186.11.76.5"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "spam",
+                    "subject": "Compra",
+                    "modified": "2019-03-12T12:44:02Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.hites.com/led-lg-49lj5500-49-full-hd-smart-tv-744204001"
+                    },
+                    "opened": [
+                        {
+                            "from": "2019-03-12T02:52:55Z",
+                            "to": "2019-03-12T12:44:02Z"
+                        }
+                    ],
+                    "date": "2019-03-12T02:52:55Z"
+                },
+                {
+                    "events": [
+                        {
+                            "author": {
+                                "id": "j.sandovalcurin@gmail.com",
+                                "name": "Claudia Michelle ",
+                                "type": "client"
+                            },
+                            "date": "2019-02-15T19:48:08Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nJajaja\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://www.hites.com/led-lg-49uj6300-49-ultra-hd-4k-smart-tv-744205001",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2019-02-15T20:05:03Z",
+                            "current": "spam",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        }
+                    ],
+                    "id": "ZLR90",
+                    "requester": {
+                        "mail": "j.sandovalcurin@gmail.com",
+                        "name": "Claudia Michelle ",
+                        "utc_offset": "America/Santiago",
+                        "ip": "181.73.221.122"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "spam",
+                    "subject": "Jajaj",
+                    "modified": "2019-02-15T20:05:03Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.hites.com/led-lg-49uj6300-49-ultra-hd-4k-smart-tv-744205001"
+                    },
+                    "opened": [
+                        {
+                            "from": "2019-02-15T19:48:08Z",
+                            "to": "2019-02-15T20:05:03Z"
+                        }
+                    ],
+                    "date": "2019-02-15T19:48:08Z"
+                },
+                {
+                    "assignee": {
+                        "name": "Edgar Promotor LG Electonics ",
+                        "id": "edgar.pino@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "id": "conivergaradecaso@gmail.com",
+                                "name": "constanza",
+                                "type": "client"
+                            },
+                            "date": "2019-02-12T00:59:07Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nEstimado (a):\nTratando de comprar esta televisiòn en hites, me di cuenta que no hay stock. Cuando estarìa llegando? \nAgradezco su pronta respuesta, \n\nConstanza Vergara\n\n\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://www.hites.com/led-lg-49uj6300-49-ultra-hd-4k-smart-tv-744205001-",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2019-02-12T12:19:13Z",
+                            "to": {
+                                "name": "Edgar Promotor LG Electonics ",
+                                "id": "edgar.pino@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Edgar Promotor LG Electonics ",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-02-12T12:19:13Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Edgar Promotor LG Electonics ",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        }
+                    ],
+                    "id": "9VALI",
+                    "requester": {
+                        "mail": "conivergaradecaso@gmail.com",
+                        "name": "constanza",
+                        "utc_offset": "America/Santiago",
+                        "ip": "200.104.134.221"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "49UJ6300",
+                    "modified": "2019-02-12T12:19:13Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.hites.com/led-lg-49uj6300-49-ultra-hd-4k-smart-tv-744205001-"
+                    },
+                    "opened": [
+                        {
+                            "from": "2019-02-12T00:59:07Z",
+                            "to": "2019-02-12T12:19:13Z"
+                        }
+                    ],
+                    "date": "2019-02-12T00:59:07Z"
+                },
+                {
+                    "assignee": {
+                        "name": "Edgar Promotor LG Electonics ",
+                        "id": "edgar.pino@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "id": "Tublo.garcia@gmail.com",
+                                "name": "Francisco",
+                                "type": "client"
+                            },
+                            "date": "2019-02-11T04:29:27Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nDisponibilidad en copiapo\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://www.hites.com/led-lg-49uj6300-49-ultra-hd-4k-smart-tv-744205001?gclid=EAIaIQobChMIz_Lpoeqy4AIVkAqRCh1BXg76EAQYGSABEgLx-PD_BwE",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2019-02-11T12:49:40Z",
+                            "is_private": false,
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "message": "disponible, si tiene fallas con los aplicativos para realizar la compra, le invito a realizar la compra llamando a VENTA TELEFÓNICA\n600 550 5000",
+                            "type": "message",
+                            "author": {
+                                "name": "Edgar Promotor LG Electonics ",
+                                "type": "agent",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-02-11T12:49:40Z",
+                            "to": {
+                                "name": "Edgar Promotor LG Electonics ",
+                                "id": "edgar.pino@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Edgar Promotor LG Electonics ",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-02-11T12:49:40Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Edgar Promotor LG Electonics ",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-02-12T13:18:00Z",
+                            "type": "rating_offer_sent"
+                        }
+                    ],
+                    "id": "WQ0H6",
+                    "requester": {
+                        "mail": "Tublo.garcia@gmail.com",
+                        "name": "Francisco",
+                        "utc_offset": "America/Santiago",
+                        "ip": "201.222.137.17"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "Tele",
+                    "modified": "2019-02-12T13:18:00Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.hites.com/led-lg-49uj6300-49-ultra-hd-4k-smart-tv-744205001?gclid=EAIaIQobChMIz_Lpoeqy4AIVkAqRCh1BXg76EAQYGSABEgLx-PD_BwE"
+                    },
+                    "opened": [
+                        {
+                            "from": "2019-02-11T04:29:27Z",
+                            "to": "2019-02-11T12:49:40Z"
+                        }
+                    ],
+                    "date": "2019-02-11T04:29:27Z"
+                },
+                {
+                    "assignee": {
+                        "name": "Moises Promotor LG Electonics",
+                        "id": "jorge1.gonzalez@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "id": "Tublo.garcia@gmail.com",
+                                "name": "Francisco",
+                                "type": "client"
+                            },
+                            "date": "2019-02-11T04:33:34Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nDiponibilidad?\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://www.hites.com/led-lg-49uj6300-49-ultra-hd-4k-smart-tv-744205001?gclid=EAIaIQobChMIz_Lpoeqy4AIVkAqRCh1BXg76EAQYGSABEgLx-PD_BwE",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2019-02-11T12:07:52Z",
+                            "is_private": false,
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "message": "para saber disponibilidad debe indicarnos la comuna y el sector",
+                            "type": "message",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "type": "agent",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-02-11T12:07:52Z",
+                            "to": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-02-11T12:07:52Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-02-12T12:18:00Z",
+                            "type": "rating_offer_sent"
+                        }
+                    ],
+                    "id": "P2IS2",
+                    "requester": {
+                        "mail": "Tublo.garcia@gmail.com",
+                        "name": "Francisco",
+                        "utc_offset": "America/Santiago",
+                        "ip": "201.222.137.17"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "Tele",
+                    "modified": "2019-03-28T19:02:57Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.hites.com/led-lg-49uj6300-49-ultra-hd-4k-smart-tv-744205001?gclid=EAIaIQobChMIz_Lpoeqy4AIVkAqRCh1BXg76EAQYGSABEgLx-PD_BwE"
+                    },
+                    "opened": [
+                        {
+                            "from": "2019-02-11T04:33:34Z",
+                            "to": "2019-02-11T12:07:52Z"
+                        }
+                    ],
+                    "date": "2019-02-11T04:33:34Z"
+                },
+                {
+                    "assignee": {
+                        "name": "Edgar Promotor LG Electonics ",
+                        "id": "edgar.pino@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "id": "Dafne.vergara.c@gmail.com",
+                                "name": "Dafne",
+                                "type": "client"
+                            },
+                            "date": "2019-02-07T01:27:37Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nCual es la diferencia entre Full Hd y Full HD 4K\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://www.hites.com/led-lg-49lj5500-49-full-hd-smart-tv-744204001",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2019-02-07T12:25:59Z",
+                            "is_private": false,
+                            "attachments": [
+                                {
+                                    "url": "cdn.livechat-static.com/api/file/v2/lc/att-old/8246671/99328200f60ffe57a9754f2d285cd4d1/TIPO%20DE%20RESOLUCION.jpg",
+                                    "name": "TIPO DE RESOLUCION.jpg",
+                                    "width": 640,
+                                    "height": 360,
+                                    "content_type": "image/jpeg",
+                                    "content_encoding": "binary"
+                                }
+                            ],
+                            "author": {
+                                "name": "Edgar Promotor LG Electonics ",
+                                "type": "agent",
+                                "id": "edgar.pino@lgepartner.com"
+                            },
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "message": "Hola buen día,  le indico que esto guarda relación con el tamaño que es capaz de reproducir el TV, los tamaños serian los siguientes Full HD (FHD)  o Ultra HD 4K (UHD 4K) Adjunto envió una imagen para que valide de manera ilustrativa lo que le estoy comentando bien.\n\nHa sido un placer hablar con usted hoy. Que tenga buen día,",
+                            "type": "message"
+                        },
+                        {
+                            "date": "2019-02-07T12:25:59Z",
+                            "to": {
+                                "name": "Edgar Promotor LG Electonics ",
+                                "id": "edgar.pino@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Edgar Promotor LG Electonics ",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-02-07T12:25:59Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Edgar Promotor LG Electonics ",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-02-08T12:51:35Z",
+                            "type": "rating_offer_sent"
+                        }
+                    ],
+                    "id": "9632Z",
+                    "requester": {
+                        "mail": "Dafne.vergara.c@gmail.com",
+                        "name": "Dafne",
+                        "utc_offset": "America/Santiago",
+                        "ip": "191.125.169.187"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "Consulta",
+                    "modified": "2019-02-08T12:51:35Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.hites.com/led-lg-49lj5500-49-full-hd-smart-tv-744204001"
+                    },
+                    "opened": [
+                        {
+                            "from": "2019-02-07T01:27:37Z",
+                            "to": "2019-02-07T12:25:59Z"
+                        }
+                    ],
+                    "date": "2019-02-07T01:27:37Z"
+                },
+                {
+                    "assignee": {
+                        "name": "Moises Promotor LG Electonics",
+                        "id": "jorge1.gonzalez@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "id": "eramosm@ucentral.cl",
+                                "name": "enrique",
+                                "type": "client"
+                            },
+                            "date": "2019-02-04T23:44:45Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nNo tengo la tarjeta corona y quiero comprar el LED LG 49UJ6560  al precio oferta. Que opción tengo?\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://www.hites.com/led-lg-49uj6560-49-ultra-hd-4k-smart-tv-744206001",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2019-02-05T13:01:40Z",
+                            "is_private": false,
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "message": "el precio oferta no esta sujeto a su tarjeta Hites, es con todo medio de pago on line",
+                            "type": "message",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "type": "agent",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-02-05T13:01:40Z",
+                            "to": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-02-05T13:01:40Z",
+                            "current": "pending",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-02-05T13:01:42Z",
+                            "current": "solved",
+                            "previous": "pending",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-02-05T15:26:06Z",
+                            "is_private": false,
+                            "author": {
+                                "name": "Enrique Eulogio Ramos Meza",
+                                "type": "client",
+                                "id": "eramosm@ucentral.cl"
+                            },
+                            "source": {
+                                "type": "mail"
+                            },
+                            "message": "Ok., gracias por su respuesta. Tienda Ripley donde pueda comprar, vivo en\nla florida y me es cerca moll vespucio y mirador; tambien podría ser moll\ntobalaba. Favor indicar en cual hay existencia.\n\nSaludos",
+                            "type": "message"
+                        },
+                        {
+                            "date": "2019-02-05T15:26:06Z",
+                            "current": "open",
+                            "previous": "solved",
+                            "type": "status_changed"
+                        },
+                        {
+                            "date": "2019-02-05T15:46:28Z",
+                            "is_private": false,
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "message": "los stocks que indicamos corresponden solo para compras on line, en caso de compra presencial o como averiguar stock presencial eso debera hacerlo de manera directa en tiendas",
+                            "type": "message",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "type": "agent",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-02-05T15:46:28Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-02-06T16:45:49Z",
+                            "type": "rating_offer_sent"
+                        }
+                    ],
+                    "id": "LKSM8",
+                    "requester": {
+                        "mail": "eramosm@ucentral.cl",
+                        "name": "enrique",
+                        "utc_offset": "America/Santiago",
+                        "ip": "200.120.6.6"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "smart tv LED LG 49UJ6560 ",
+                    "modified": "2019-03-28T19:02:57Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.hites.com/led-lg-49uj6560-49-ultra-hd-4k-smart-tv-744206001"
+                    },
+                    "opened": [
+                        {
+                            "from": "2019-02-04T23:44:45Z",
+                            "to": "2019-02-05T13:01:40Z"
+                        },
+                        {
+                            "from": "2019-02-05T15:26:06Z",
+                            "to": "2019-02-05T15:46:28Z"
+                        }
+                    ],
+                    "date": "2019-02-04T23:44:45Z"
+                },
+                {
+                    "assignee": {
+                        "name": "Moises Promotor LG Electonics",
+                        "id": "jorge1.gonzalez@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "id": "White_heart_cc@hotmail.com",
+                                "name": "Samuel",
+                                "type": "client"
+                            },
+                            "date": "2019-02-03T23:33:52Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nquisiera comprar por internet\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://www.hites.com/led-lg-49uj6560-49-ultra-hd-4k-smart-tv-744206001",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2019-02-04T12:42:34Z",
+                            "is_private": false,
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "message": "excelente, cual es su consulta?",
+                            "type": "message",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "type": "agent",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-02-04T12:42:34Z",
+                            "to": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-02-04T12:42:34Z",
+                            "current": "pending",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-02-07T12:47:25Z",
+                            "type": "follow_up_sent"
+                        },
+                        {
+                            "date": "2019-02-11T13:06:35Z",
+                            "current": "solved",
+                            "previous": "pending",
+                            "type": "status_changed"
+                        },
+                        {
+                            "date": "2019-02-12T13:18:00Z",
+                            "type": "rating_offer_sent"
+                        }
+                    ],
+                    "id": "BVCTD",
+                    "requester": {
+                        "mail": "White_heart_cc@hotmail.com",
+                        "name": "Samuel",
+                        "utc_offset": "America/Santiago",
+                        "ip": "190.102.251.87"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "compra tv lg 49",
+                    "modified": "2019-03-28T19:02:57Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.hites.com/led-lg-49uj6560-49-ultra-hd-4k-smart-tv-744206001"
+                    },
+                    "opened": [
+                        {
+                            "from": "2019-02-03T23:33:52Z",
+                            "to": "2019-02-04T12:42:34Z"
+                        }
+                    ],
+                    "date": "2019-02-03T23:33:52Z"
+                },
+                {
+                    "events": [
+                        {
+                            "author": {
+                                "id": "White_heart_cc@hotmail.com",
+                                "name": "Samuel",
+                                "type": "client"
+                            },
+                            "date": "2019-02-03T23:39:12Z",
+                            "is_private": false,
+                            "message": "Mensaje:\ncompra internet\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://www.hites.com/led-lg-49uj6560-49-ultra-hd-4k-smart-tv-744206001#;",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2019-02-04T12:31:57Z",
+                            "current": "spam",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Edgar Promotor LG Electonics ",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        }
+                    ],
+                    "id": "VU198",
+                    "requester": {
+                        "mail": "White_heart_cc@hotmail.com",
+                        "name": "Samuel",
+                        "utc_offset": "America/Santiago",
+                        "ip": "190.102.251.87"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "spam",
+                    "subject": "compra tv lg 49",
+                    "modified": "2019-02-04T12:31:57Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.hites.com/led-lg-49uj6560-49-ultra-hd-4k-smart-tv-744206001#;"
+                    },
+                    "opened": [
+                        {
+                            "from": "2019-02-03T23:39:12Z",
+                            "to": "2019-02-04T12:31:57Z"
+                        }
+                    ],
+                    "date": "2019-02-03T23:39:12Z"
+                },
+                {
+                    "assignee": {
+                        "name": "Moises Promotor LG Electonics",
+                        "id": "jorge1.gonzalez@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "id": "Eduardojvasquezm@gmail.com",
+                                "name": "Eduardo Vásquez ",
+                                "type": "client"
+                            },
+                            "date": "2019-01-29T01:56:26Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nQuisiera comprar ek tv modelo 49uj6560 donde lo puedo adquirir y que promociones tiene ?? \n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://www.hites.com/led-lg-49uj6560-49-ultra-hd-4k-smart-tv-744206001",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2019-01-29T12:18:12Z",
+                            "is_private": false,
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "message": "las promociones estan en la web misma, y para mas detalles contactar al 600 550 5000",
+                            "type": "message",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "type": "agent",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-01-29T12:18:12Z",
+                            "to": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-01-29T12:18:12Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-01-30T12:49:07Z",
+                            "type": "rating_offer_sent"
+                        }
+                    ],
+                    "id": "XAA8Q",
+                    "requester": {
+                        "mail": "Eduardojvasquezm@gmail.com",
+                        "name": "Eduardo Vásquez ",
+                        "utc_offset": "America/Santiago",
+                        "ip": "200.120.118.2"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "Tv lg 49 pulgadas ",
+                    "modified": "2019-03-28T19:02:57Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.hites.com/led-lg-49uj6560-49-ultra-hd-4k-smart-tv-744206001"
+                    },
+                    "opened": [
+                        {
+                            "from": "2019-01-29T01:56:26Z",
+                            "to": "2019-01-29T12:18:12Z"
+                        }
+                    ],
+                    "date": "2019-01-29T01:56:26Z"
+                },
+                {
+                    "events": [
+                        {
+                            "author": {
+                                "id": "leonel.h@hotmail.es",
+                                "name": "leonel hidalgo espinoza",
+                                "type": "client"
+                            },
+                            "date": "2019-01-25T04:32:26Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nFAVOR:CUANDO LLEGUEN AVISEME  A MI CORREO,LA NIÑA QUE ME ATENDIÓ ME DIJO QUE SE PODÍA  COMPRAR,Y EN EL MOMENTO YA NO HABÍAMUCHAS GRACIAS POR ATENDER.(991995453).\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://www.hites.com/led-lg-49uj6560-49-ultra-hd-4k-smart-tv-744206001",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2019-01-25T13:23:24Z",
+                            "current": "spam",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        }
+                    ],
+                    "id": "OSBDE",
+                    "requester": {
+                        "mail": "leonel.h@hotmail.es",
+                        "name": "leonel hidalgo espinoza",
+                        "utc_offset": "America/Santiago",
+                        "ip": "152.172.38.62"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "spam",
+                    "subject": "led LG  55UJ6580 (744209001)",
+                    "modified": "2019-01-25T13:23:24Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.hites.com/led-lg-49uj6560-49-ultra-hd-4k-smart-tv-744206001"
+                    },
+                    "opened": [
+                        {
+                            "from": "2019-01-25T04:32:26Z",
+                            "to": "2019-01-25T13:23:24Z"
+                        }
+                    ],
+                    "date": "2019-01-25T04:32:26Z"
+                },
+                {
+                    "assignee": {
+                        "name": "Moises Promotor LG Electonics",
+                        "id": "jorge1.gonzalez@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "id": "clfernandezf@gmail.com",
+                                "name": "Claudia Fernández",
+                                "type": "client"
+                            },
+                            "date": "2019-01-20T21:55:15Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nQuiero comprarlo.\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://www.hites.com/led-lg-49uj6300-49-ultra-hd-4k-smart-tv-744205001",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2019-01-21T12:11:12Z",
+                            "is_private": false,
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "message": "excelente, cual es su consulta?",
+                            "type": "message",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "type": "agent",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-01-21T12:11:12Z",
+                            "to": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-01-21T12:11:12Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        }
+                    ],
+                    "id": "QODFJ",
+                    "requester": {
+                        "mail": "clfernandezf@gmail.com",
+                        "name": "Claudia Fernández",
+                        "utc_offset": "America/Santiago",
+                        "ip": "179.4.255.35"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "Compra",
+                    "modified": "2019-03-28T19:02:57Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.hites.com/led-lg-49uj6300-49-ultra-hd-4k-smart-tv-744205001"
+                    },
+                    "opened": [
+                        {
+                            "from": "2019-01-20T21:55:15Z",
+                            "to": "2019-01-21T12:11:12Z"
+                        }
+                    ],
+                    "date": "2019-01-20T21:55:15Z"
+                },
+                {
+                    "events": [
+                        {
+                            "author": {
+                                "id": "Osvaldo_kine2013@hotmail.com",
+                                "name": "Osvaldo",
+                                "type": "client"
+                            },
+                            "date": "2019-01-11T02:22:40Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nJzjzjzjznz\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://www.hites.com/led-lg-49uj6300-49-ultra-hd-4k-smart-tv-744205001",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2019-01-11T12:17:32Z",
+                            "current": "spam",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        }
+                    ],
+                    "id": "W7DZ2",
+                    "requester": {
+                        "mail": "Osvaldo_kine2013@hotmail.com",
+                        "name": "Osvaldo",
+                        "utc_offset": "America/Santiago",
+                        "ip": "186.9.21.133"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "spam",
+                    "subject": "Kkjsjsjsj",
+                    "modified": "2019-01-11T12:17:32Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.hites.com/led-lg-49uj6300-49-ultra-hd-4k-smart-tv-744205001"
+                    },
+                    "opened": [
+                        {
+                            "from": "2019-01-11T02:22:40Z",
+                            "to": "2019-01-11T12:17:32Z"
+                        }
+                    ],
+                    "date": "2019-01-11T02:22:40Z"
+                },
+                {
+                    "events": [
+                        {
+                            "author": {
+                                "id": "Osvaldo_kine2013@hotmail.com",
+                                "name": "Osvaldo",
+                                "type": "client"
+                            },
+                            "date": "2019-01-11T02:21:29Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nJji\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://www.hites.com/led-lg-49uj6300-49-ultra-hd-4k-smart-tv-744205001",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2019-01-11T12:17:38Z",
+                            "current": "spam",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        }
+                    ],
+                    "id": "5SGU3",
+                    "requester": {
+                        "mail": "Osvaldo_kine2013@hotmail.com",
+                        "name": "Osvaldo",
+                        "utc_offset": "America/Santiago",
+                        "ip": "186.9.21.133"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "spam",
+                    "subject": "Kk",
+                    "modified": "2019-01-11T12:17:38Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.hites.com/led-lg-49uj6300-49-ultra-hd-4k-smart-tv-744205001"
+                    },
+                    "opened": [
+                        {
+                            "from": "2019-01-11T02:21:29Z",
+                            "to": "2019-01-11T12:17:38Z"
+                        }
+                    ],
+                    "date": "2019-01-11T02:21:29Z"
+                },
+                {
+                    "assignee": {
+                        "name": "Moises Promotor LG Electonics",
+                        "id": "jorge1.gonzalez@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "id": "fabiola2183@hotmail.com",
+                                "name": "Karla",
+                                "type": "client"
+                            },
+                            "date": "2019-01-10T03:26:47Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nSale disponible en tienda y domicilio sin embargo nose puede \n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://www.hites.com/led-lg-49uj6300-49-ultra-hd-4k-smart-tv-744205001",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2019-01-10T12:10:14Z",
+                            "is_private": false,
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "message": "le recomiendo contactar en este  caso al 6005505000 para mas orientacion",
+                            "type": "message",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "type": "agent",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-01-10T12:10:14Z",
+                            "to": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-01-10T12:10:14Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-01-11T12:21:54Z",
+                            "type": "rating_offer_sent"
+                        }
+                    ],
+                    "id": "HXMNM",
+                    "requester": {
+                        "mail": "fabiola2183@hotmail.com",
+                        "name": "Karla",
+                        "utc_offset": "America/Bogota",
+                        "ip": "190.22.222.248"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "Quisera ese televisor ",
+                    "modified": "2019-03-28T19:02:57Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.hites.com/led-lg-49uj6300-49-ultra-hd-4k-smart-tv-744205001"
+                    },
+                    "opened": [
+                        {
+                            "from": "2019-01-10T03:26:47Z",
+                            "to": "2019-01-10T12:10:14Z"
+                        }
+                    ],
+                    "date": "2019-01-10T03:26:47Z"
+                },
+                {
+                    "events": [
+                        {
+                            "author": {
+                                "id": "Fuentes.barbara2@hotmail.com",
+                                "name": "Barbara fuentes",
+                                "type": "client"
+                            },
+                            "date": "2019-01-09T14:33:50Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nXx\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://www.hites.com/led-lg-49lj5500-49-full-hd-smart-tv-744204001",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2019-01-09T16:53:24Z",
+                            "current": "spam",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Edgar Promotor LG Electonics ",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        }
+                    ],
+                    "id": "PGN8N",
+                    "requester": {
+                        "mail": "Fuentes.barbara2@hotmail.com",
+                        "name": "Barbara fuentes",
+                        "utc_offset": "America/Santiago",
+                        "ip": "181.43.176.155"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "spam",
+                    "subject": "Tv",
+                    "modified": "2019-01-09T16:53:24Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.hites.com/led-lg-49lj5500-49-full-hd-smart-tv-744204001"
+                    },
+                    "opened": [
+                        {
+                            "from": "2019-01-09T14:33:50Z",
+                            "to": "2019-01-09T16:53:24Z"
+                        }
+                    ],
+                    "date": "2019-01-09T14:33:50Z"
+                },
+                {
+                    "events": [
+                        {
+                            "author": {
+                                "id": "Tatianapaulina25@gmail.com",
+                                "name": "Tatiana ",
+                                "type": "client"
+                            },
+                            "date": "2019-01-06T21:58:58Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nEl hambre no me deja realizar el pago, saquenlo!!!\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://www.hites.com/led-lg-49uj6300-49-ultra-hd-4k-smart-tv-744205001",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2019-01-07T12:26:36Z",
+                            "current": "spam",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Edgar Promotor LG Electonics ",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        }
+                    ],
+                    "id": "KHZ51",
+                    "requester": {
+                        "mail": "Tatianapaulina25@gmail.com",
+                        "name": "Tatiana ",
+                        "utc_offset": "America/Santiago",
+                        "ip": "201.188.125.135"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "spam",
+                    "subject": "Nada",
+                    "modified": "2019-01-07T12:26:36Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.hites.com/led-lg-49uj6300-49-ultra-hd-4k-smart-tv-744205001"
+                    },
+                    "opened": [
+                        {
+                            "from": "2019-01-06T21:58:58Z",
+                            "to": "2019-01-07T12:26:36Z"
+                        }
+                    ],
+                    "date": "2019-01-06T21:58:58Z"
+                },
+                {
+                    "assignee": {
+                        "name": "Edgar Promotor LG Electonics ",
+                        "id": "edgar.pino@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "id": "Josueyalejandra2019@gmail.com",
+                                "name": "Josue olivares",
+                                "type": "client"
+                            },
+                            "date": "2019-01-05T15:43:59Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nNo me peska\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://www.hites.com/led-lg-49uj6300-49-ultra-hd-4k-smart-tv-744205001?gclid=EAIaIQobChMIrr6EuvfW3wIVgtbeCh3gWwd7EAEYASABEgINUPD_BwE",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2019-01-07T12:51:13Z",
+                            "to": {
+                                "name": "Edgar Promotor LG Electonics ",
+                                "id": "edgar.pino@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Edgar Promotor LG Electonics ",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-01-07T12:51:13Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Edgar Promotor LG Electonics ",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        }
+                    ],
+                    "id": "AUJCR",
+                    "requester": {
+                        "mail": "Josueyalejandra2019@gmail.com",
+                        "name": "Josue olivares",
+                        "utc_offset": "America/Santiago",
+                        "ip": "191.119.0.178"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "No me sale el retiro en tienda",
+                    "modified": "2019-01-07T12:51:13Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.hites.com/led-lg-49uj6300-49-ultra-hd-4k-smart-tv-744205001?gclid=EAIaIQobChMIrr6EuvfW3wIVgtbeCh3gWwd7EAEYASABEgINUPD_BwE"
+                    },
+                    "opened": [
+                        {
+                            "from": "2019-01-05T15:43:59Z",
+                            "to": "2019-01-07T12:51:13Z"
+                        }
+                    ],
+                    "date": "2019-01-05T15:43:59Z"
+                },
+                {
+                    "assignee": {
+                        "name": "Moises Promotor LG Electonics",
+                        "id": "jorge1.gonzalez@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "id": "adriqnqmoremozapata@gmail.com",
+                                "name": "Adriana Morenoa",
+                                "type": "client"
+                            },
+                            "date": "2019-01-02T22:30:01Z",
+                            "is_private": false,
+                            "message": "Mensaje:\n el Bluetooth de mi tv desaparecío luego  de una actualización de la tv\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://www.hites.com/led-lg-49lj5500-49-full-hd-smart-tv-744204001?gclid=Cj0KCQiA37HhBRC8ARIsAPWoO0ycHTBsNoSgDUzNo2SgGYIm1nhKR-hKPQbbC0Agyb_sQllWEKdoh_MaAqecEALw_wcB",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2019-01-03T12:27:36Z",
+                            "is_private": false,
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com",
+                                "type": "agent"
+                            },
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "message": "para ese tipo de consultas debe llamar al 800 54 2000",
+                            "type": "message"
+                        },
+                        {
+                            "date": "2019-01-03T12:27:36Z",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "to": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "type": "assignee_changed"
+                        },
+                        {
+                            "date": "2019-01-03T12:27:36Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "type": "status_changed"
+                        },
+                        {
+                            "date": "2019-01-04T12:45:21Z",
+                            "type": "rating_offer_sent"
+                        }
+                    ],
+                    "id": "FTYBK",
+                    "requester": {
+                        "mail": "adriqnqmoremozapata@gmail.com",
+                        "name": "Adriana Morenoa",
+                        "utc_offset": "America/Santiago",
+                        "ip": "186.106.21.200"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "Bluetooth no está en la tv",
+                    "modified": "2019-03-28T19:02:57Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.hites.com/led-lg-49lj5500-49-full-hd-smart-tv-744204001?gclid=Cj0KCQiA37HhBRC8ARIsAPWoO0ycHTBsNoSgDUzNo2SgGYIm1nhKR-hKPQbbC0Agyb_sQllWEKdoh_MaAqecEALw_wcB"
+                    },
+                    "opened": [
+                        {
+                            "from": "2019-01-02T22:30:01Z",
+                            "to": "2019-01-03T12:27:36Z"
+                        }
+                    ],
+                    "date": "2019-01-02T22:30:01Z"
+                },
+                {
+                    "assignee": {
+                        "name": "Moises Promotor LG Electonics",
+                        "id": "jorge1.gonzalez@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "id": "Benjitateamomxo8@gmail.com",
+                                "name": "Antonio2424",
+                                "type": "client"
+                            },
+                            "date": "2019-01-01T21:38:58Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nHola como estas \n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://www.hites.com/led-lg-49uj6560-49-ultra-hd-4k-smart-tv-744206001",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2019-01-02T12:18:54Z",
+                            "is_private": false,
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "message": "bien y ud?",
+                            "type": "message",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "type": "agent",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-01-02T12:18:54Z",
+                            "to": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-01-02T12:18:54Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-01-03T12:34:37Z",
+                            "type": "rating_offer_sent"
+                        }
+                    ],
+                    "id": "55BDE",
+                    "requester": {
+                        "mail": "Benjitateamomxo8@gmail.com",
+                        "name": "Antonio2424",
+                        "utc_offset": "America/Santiago",
+                        "ip": "201.219.236.99"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "Hola precios",
+                    "modified": "2019-03-28T19:02:57Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.hites.com/led-lg-49uj6560-49-ultra-hd-4k-smart-tv-744206001"
+                    },
+                    "opened": [
+                        {
+                            "from": "2019-01-01T21:38:58Z",
+                            "to": "2019-01-02T12:18:54Z"
+                        }
+                    ],
+                    "date": "2019-01-01T21:38:58Z"
+                },
+                {
+                    "assignee": {
+                        "name": "Moises Promotor LG Electonics",
+                        "id": "jorge1.gonzalez@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "id": "Paulina@huyth.cl",
+                                "name": ".",
+                                "type": "client"
+                            },
+                            "date": "2019-01-01T19:45:35Z",
+                            "is_private": false,
+                            "message": "Mensaje:\n.\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://www.hites.com/led-lg-49uj6300-49-ultra-hd-4k-smart-tv-744205001",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2019-01-02T12:18:02Z",
+                            "is_private": false,
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "message": ".",
+                            "type": "message",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "type": "agent",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-01-02T12:18:02Z",
+                            "to": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-01-02T12:18:02Z",
+                            "current": "spam",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        }
+                    ],
+                    "id": "4Y7P2",
+                    "requester": {
+                        "mail": "Paulina@huyth.cl",
+                        "name": ".",
+                        "utc_offset": "America/Santiago",
+                        "ip": "191.119.78.176"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "spam",
+                    "subject": ".",
+                    "modified": "2019-03-28T19:02:57Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.hites.com/led-lg-49uj6300-49-ultra-hd-4k-smart-tv-744205001"
+                    },
+                    "opened": [
+                        {
+                            "from": "2019-01-01T19:45:35Z",
+                            "to": "2019-01-02T12:18:02Z"
+                        }
+                    ],
+                    "date": "2019-01-01T19:45:35Z"
+                },
+                {
+                    "events": [
+                        {
+                            "author": {
+                                "id": "Benjitateamomxo8@gmail.com",
+                                "name": "Antonio2424",
+                                "type": "client"
+                            },
+                            "date": "2019-01-01T21:19:57Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nBuenos y a la mano\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://www.hites.com/led-lg-49uj6300-49-ultra-hd-4k-smart-tv-744205001",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2019-01-02T12:19:01Z",
+                            "current": "spam",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        }
+                    ],
+                    "id": "8KO20",
+                    "requester": {
+                        "mail": "Benjitateamomxo8@gmail.com",
+                        "name": "Antonio2424",
+                        "utc_offset": "America/Santiago",
+                        "ip": "201.219.236.99"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "spam",
+                    "subject": "Hola precios",
+                    "modified": "2019-01-02T12:19:01Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.hites.com/led-lg-49uj6300-49-ultra-hd-4k-smart-tv-744205001"
+                    },
+                    "opened": [
+                        {
+                            "from": "2019-01-01T21:19:57Z",
+                            "to": "2019-01-02T12:19:01Z"
+                        }
+                    ],
+                    "date": "2019-01-01T21:19:57Z"
+                },
+                {
+                    "events": [
+                        {
+                            "author": {
+                                "id": "roxguepla@gmail.com",
+                                "name": "Ju ahhh ",
+                                "type": "client"
+                            },
+                            "date": "2018-12-29T00:45:26Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nH\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://www.hites.com/led-lg-49uj6560-49-ultra-hd-4k-smart-tv-744206001",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2018-12-31T12:08:34Z",
+                            "current": "spam",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        }
+                    ],
+                    "id": "R6EM2",
+                    "requester": {
+                        "mail": "roxguepla@gmail.com",
+                        "name": "Ju ahhh ",
+                        "utc_offset": "America/Santiago",
+                        "ip": "152.173.190.97"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "spam",
+                    "subject": "4",
+                    "modified": "2018-12-31T12:08:34Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.hites.com/led-lg-49uj6560-49-ultra-hd-4k-smart-tv-744206001"
+                    },
+                    "opened": [
+                        {
+                            "from": "2018-12-29T00:45:26Z",
+                            "to": "2018-12-31T12:08:34Z"
+                        }
+                    ],
+                    "date": "2018-12-29T00:45:26Z"
+                },
+                {
+                    "events": [
+                        {
+                            "author": {
+                                "id": "Danix4cmovistar@hotmail.com",
+                                "name": "Daniel ",
+                                "type": "client"
+                            },
+                            "date": "2018-12-21T22:45:56Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nXcf\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://www.hites.com/led-lg-49uj6300-49-ultra-hd-4k-smart-tv-744205001",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2018-12-24T12:24:03Z",
+                            "current": "spam",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        }
+                    ],
+                    "id": "KLVD0",
+                    "requester": {
+                        "mail": "Danix4cmovistar@hotmail.com",
+                        "name": "Daniel ",
+                        "utc_offset": "America/Santiago",
+                        "ip": "200.120.234.140"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "spam",
+                    "subject": "Dfgf",
+                    "modified": "2018-12-24T12:24:03Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.hites.com/led-lg-49uj6300-49-ultra-hd-4k-smart-tv-744205001"
+                    },
+                    "opened": [
+                        {
+                            "from": "2018-12-21T22:45:56Z",
+                            "to": "2018-12-24T12:24:03Z"
+                        }
+                    ],
+                    "date": "2018-12-21T22:45:56Z"
+                },
+                {
+                    "events": [
+                        {
+                            "author": {
+                                "id": "Livna@live.vom",
+                                "name": "Nsg",
+                                "type": "client"
+                            },
+                            "date": "2018-12-17T03:13:53Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nHola\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://www.hites.com/led-lg-49uj6300-49-ultra-hd-4k-smart-tv-744205001",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2018-12-17T12:28:03Z",
+                            "current": "spam",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        }
+                    ],
+                    "id": "44YYU",
+                    "requester": {
+                        "mail": "Livna@live.vom",
+                        "name": "Nsg",
+                        "utc_offset": "America/Santiago",
+                        "ip": "191.126.20.31"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "spam",
+                    "subject": "Jvu",
+                    "modified": "2018-12-17T12:28:03Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.hites.com/led-lg-49uj6300-49-ultra-hd-4k-smart-tv-744205001"
+                    },
+                    "opened": [
+                        {
+                            "from": "2018-12-17T03:13:53Z",
+                            "to": "2018-12-17T12:28:03Z"
+                        }
+                    ],
+                    "date": "2018-12-17T03:13:53Z"
+                },
+                {
+                    "events": [
+                        {
+                            "author": {
+                                "id": "M@gmail.com",
+                                "name": "A",
+                                "type": "client"
+                            },
+                            "date": "2018-12-16T12:39:00Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nA\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://www.hites.com/led-lg-49uj6560-49-ultra-hd-4k-smart-tv-744206001",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2018-12-17T12:26:43Z",
+                            "current": "spam",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Edgar Promotor LG Electonics ",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        }
+                    ],
+                    "id": "SCEHI",
+                    "requester": {
+                        "mail": "M@gmail.com",
+                        "name": "A",
+                        "utc_offset": "America/Santiago",
+                        "ip": "191.126.150.108"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "spam",
+                    "subject": "Djsjdjwk@fkekek.com",
+                    "modified": "2018-12-17T12:26:43Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.hites.com/led-lg-49uj6560-49-ultra-hd-4k-smart-tv-744206001"
+                    },
+                    "opened": [
+                        {
+                            "from": "2018-12-16T12:39:00Z",
+                            "to": "2018-12-17T12:26:43Z"
+                        }
+                    ],
+                    "date": "2018-12-16T12:39:00Z"
+                },
+                {
+                    "events": [
+                        {
+                            "author": {
+                                "id": "lgubedab@gmail.com",
+                                "name": "Luis Ubeda ",
+                                "type": "client"
+                            },
+                            "date": "2018-12-15T16:52:48Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nSeñores en la página de Hites sale un banner de chat que no deja presionar el botón de comprar. . . .nuevanlo o quitenlo . . . Comprare en otra página aquí no puedo hacerlo. . . . \n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://www.hites.com/led-lg-49uj6300-49-ultra-hd-4k-smart-tv-744205001?rt_event_category=RTbannerdinamico&rt_event_action=product&rt_event_label=744205001",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2018-12-17T12:24:48Z",
+                            "current": "spam",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Edgar Promotor LG Electonics ",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        }
+                    ],
+                    "id": "42S67",
+                    "requester": {
+                        "mail": "lgubedab@gmail.com",
+                        "name": "Luis Ubeda ",
+                        "utc_offset": "America/Santiago",
+                        "ip": "201.188.216.27"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "spam",
+                    "subject": "No puedo comprar",
+                    "modified": "2018-12-17T12:24:48Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.hites.com/led-lg-49uj6300-49-ultra-hd-4k-smart-tv-744205001?rt_event_category=RTbannerdinamico&rt_event_action=product&rt_event_label=744205001"
+                    },
+                    "opened": [
+                        {
+                            "from": "2018-12-15T16:52:48Z",
+                            "to": "2018-12-17T12:24:48Z"
+                        }
+                    ],
+                    "date": "2018-12-15T16:52:48Z"
+                },
+                {
+                    "events": [
+                        {
+                            "author": {
+                                "id": "maripaulav@hotmail.com",
+                                "name": "Maripaula",
+                                "type": "client"
+                            },
+                            "date": "2018-12-12T02:43:41Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nsmart tb\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://www.hites.com/led-lg-49uj6300-49-ultra-hd-4k-smart-tv-744205",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2018-12-12T12:19:31Z",
+                            "current": "spam",
+                            "previous": "open",
+                            "author": {
+                                "name": "Edgar Promotor LG Electonics ",
+                                "id": "edgar.pino@lgepartner.com"
+                            },
+                            "type": "status_changed"
+                        }
+                    ],
+                    "id": "GODXM",
+                    "requester": {
+                        "mail": "maripaulav@hotmail.com",
+                        "name": "Maripaula",
+                        "utc_offset": "America/Santiago",
+                        "ip": "186.9.15.101"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "spam",
+                    "subject": "smart tv ",
+                    "modified": "2018-12-12T12:19:31Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.hites.com/led-lg-49uj6300-49-ultra-hd-4k-smart-tv-744205"
+                    },
+                    "opened": [
+                        {
+                            "from": "2018-12-12T02:43:41Z",
+                            "to": "2018-12-12T12:19:31Z"
+                        }
+                    ],
+                    "date": "2018-12-12T02:43:41Z"
+                },
+                {
+                    "assignee": {
+                        "name": "Moises Promotor LG Electonics",
+                        "id": "jorge1.gonzalez@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "id": "ELFOALEJANDRO@HOTMAIL.COM",
+                                "name": "Javier",
+                                "type": "client"
+                            },
+                            "date": "2018-12-06T23:48:37Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nQue modelo de conrol remoto es compatible con el modelo LG 49UJ6300-SA\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://www.hites.com/led-lg-49uj6300-49-ultra-hd-4k-smart-tv-744205001?gclid=Cj0KCQiArqPgBRCRARIsAPwlHoVtGTeJm2phEK2Fp3yWyrm7Ka_mFXUTih49mo2mOAEYBlxGTrD1iMEaAgogEALw_wcB",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2018-12-07T12:21:29Z",
+                            "is_private": false,
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "message": "para saber esto debe contactar al 800 54 2000 desde fijos",
+                            "type": "message",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "type": "agent",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-12-07T12:21:29Z",
+                            "to": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-12-07T12:21:29Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-12-08T13:17:23Z",
+                            "type": "rating_offer_sent"
+                        },
+                        {
+                            "date": "2018-12-08T13:41:38Z",
+                            "current": "bad",
+                            "type": "rated",
+                            "author": {
+                                "name": "Javier",
+                                "type": "client",
+                                "id": "ELFOALEJANDRO@HOTMAIL.COM"
+                            }
+                        },
+                        {
+                            "date": "2018-12-08T14:20:54Z",
+                            "current": "bad",
+                            "type": "rated",
+                            "author": {
+                                "name": "Javier",
+                                "type": "client",
+                                "id": "ELFOALEJANDRO@HOTMAIL.COM"
+                            }
+                        }
+                    ],
+                    "id": "J49ZA",
+                    "requester": {
+                        "mail": "ELFOALEJANDRO@HOTMAIL.COM",
+                        "name": "Javier",
+                        "utc_offset": "America/Santiago",
+                        "ip": "200.74.27.218"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "control remoto",
+                    "modified": "2019-03-28T19:02:57Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.hites.com/led-lg-49uj6300-49-ultra-hd-4k-smart-tv-744205001?gclid=Cj0KCQiArqPgBRCRARIsAPwlHoVtGTeJm2phEK2Fp3yWyrm7Ka_mFXUTih49mo2mOAEYBlxGTrD1iMEaAgogEALw_wcB"
+                    },
+                    "opened": [
+                        {
+                            "from": "2018-12-06T23:48:37Z",
+                            "to": "2018-12-07T12:21:29Z"
+                        }
+                    ],
+                    "date": "2018-12-06T23:48:37Z"
+                },
+                {
+                    "assignee": {
+                        "name": "Moises Promotor LG Electonics",
+                        "id": "jorge1.gonzalez@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "id": "ELFOALEJANDRO@HOTMAIL.COM",
+                                "name": "Javier",
+                                "type": "client"
+                            },
+                            "date": "2018-12-06T23:47:15Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nHola necesito saber el modelo de control remoto que necesito\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://www.hites.com/led-lg-49uj6300-49-ultra-hd-4k-smart-tv-744205001?gclid=Cj0KCQiArqPgBRCRARIsAPwlHoVtGTeJm2phEK2Fp3yWyrm7Ka_mFXUTih49mo2mOAEYBlxGTrD1iMEaAgogEALw_wcB",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2018-12-07T12:21:08Z",
+                            "is_private": false,
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com",
+                                "type": "agent"
+                            },
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "message": "para saber esto debe contactar al 800 54 2000",
+                            "type": "message"
+                        },
+                        {
+                            "date": "2018-12-07T12:21:08Z",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "to": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "type": "assignee_changed"
+                        },
+                        {
+                            "date": "2018-12-07T12:21:08Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "type": "status_changed"
+                        },
+                        {
+                            "date": "2018-12-08T13:17:23Z",
+                            "type": "rating_offer_sent"
+                        },
+                        {
+                            "date": "2018-12-08T13:40:53Z",
+                            "current": "bad",
+                            "author": {
+                                "name": "Javier",
+                                "id": "ELFOALEJANDRO@HOTMAIL.COM",
+                                "type": "client"
+                            },
+                            "type": "rated"
+                        }
+                    ],
+                    "id": "MJRD0",
+                    "requester": {
+                        "mail": "ELFOALEJANDRO@HOTMAIL.COM",
+                        "name": "Javier",
+                        "utc_offset": "America/Santiago",
+                        "ip": "200.74.27.218"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "control remoto",
+                    "modified": "2019-03-28T19:02:57Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.hites.com/led-lg-49uj6300-49-ultra-hd-4k-smart-tv-744205001?gclid=Cj0KCQiArqPgBRCRARIsAPwlHoVtGTeJm2phEK2Fp3yWyrm7Ka_mFXUTih49mo2mOAEYBlxGTrD1iMEaAgogEALw_wcB"
+                    },
+                    "opened": [
+                        {
+                            "from": "2018-12-06T23:47:15Z",
+                            "to": "2018-12-07T12:21:08Z"
+                        }
+                    ],
+                    "date": "2018-12-06T23:47:15Z"
+                },
+                {
+                    "assignee": {
+                        "name": "Promotor_Virtual_LG_01",
+                        "id": "jorge1.gonzalez@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "id": "peterrubioe@gmail.com",
+                                "name": "Pedro",
+                                "type": "client"
+                            },
+                            "date": "2018-08-08T10:24:32Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nBase Smart TV 43\" a la venta y donde dirigirme\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://simple.ripley.cl/led-lg-49uj6560-49-2000363072414p#especificaciones",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2018-08-08T13:45:06Z",
+                            "is_private": false,
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "message": "esto debe consultarlo al 800542000 a nuestro servicio tecnico",
+                            "type": "message",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "type": "agent",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-08-08T13:45:06Z",
+                            "to": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-08-08T13:45:06Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-08-08T13:45:13Z",
+                            "is_private": false,
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "message": "Para cotizar, ver disponibilidad o información de un repuesto  y accesorio a través de la sucursal LG en Santiago, debe escribir al  correo bodega.lg@lge.com, una vez confirmada la información, deberá dirigirse a comprar el producto a la sucursal de LG ubicado en San Patricio #2931, comuna de Las Condes, el horario de atención es de lunes a jueves de 09:00 a 13:00 y de 14:00 a 18:00 horas. El viernes se atiende hasta las 17 horas.",
+                            "type": "message",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_02",
+                                "type": "agent",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-08-09T13:49:54Z",
+                            "type": "rating_offer_sent"
+                        }
+                    ],
+                    "id": "KS4RV",
+                    "requester": {
+                        "mail": "peterrubioe@gmail.com",
+                        "name": "Pedro",
+                        "utc_offset": "America/Argentina/Buenos_Aires",
+                        "ip": "201.219.233.86"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "Repuestos",
+                    "modified": "2019-03-28T19:02:57Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://simple.ripley.cl/led-lg-49uj6560-49-2000363072414p#especificaciones"
+                    },
+                    "opened": [
+                        {
+                            "from": "2018-08-08T10:24:32Z",
+                            "to": "2018-08-08T13:45:06Z"
+                        }
+                    ],
+                    "date": "2018-08-08T10:24:32Z"
+                },
+                {
+                    "assignee": {
+                        "name": "Promotor_Virtual_LG_02",
+                        "id": "edgar.pino@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "id": "Camimardonesm@gmail.com",
+                                "name": "Camila",
+                                "type": "client"
+                            },
+                            "date": "2018-07-28T02:32:07Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nHola una consulta https://simple.ripley.cl/led-lg-49uj7500-49-2000363072421p ese televisor trae el control incorporado?\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://simple.ripley.cl/led-lg-49uj7500-49-2000363072421p",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2018-07-30T13:07:30Z",
+                            "is_private": false,
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "message": "Hola buen día, le indico que todos nuestros TV cuentan con control incorporado, en el caso del modelo 49UJ7500 le indico que cuenta con el magic remote, que es un control especial que funciona como puntero y cuenta con comando de voz para realizar  búsquedas",
+                            "type": "message",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_02",
+                                "type": "agent",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-07-30T13:07:30Z",
+                            "to": {
+                                "name": "Promotor_Virtual_LG_02",
+                                "id": "edgar.pino@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_02",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-07-30T13:07:30Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_02",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-07-31T14:43:51Z",
+                            "type": "rating_offer_sent"
+                        }
+                    ],
+                    "id": "T420K",
+                    "requester": {
+                        "mail": "Camimardonesm@gmail.com",
+                        "name": "Camila",
+                        "utc_offset": "America/Santiago",
+                        "ip": "201.219.234.60"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "Smart tv",
+                    "modified": "2018-07-31T14:43:51Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://simple.ripley.cl/led-lg-49uj7500-49-2000363072421p"
+                    },
+                    "opened": [
+                        {
+                            "from": "2018-07-28T02:32:07Z",
+                            "to": "2018-07-30T13:07:30Z"
+                        }
+                    ],
+                    "date": "2018-07-28T02:32:07Z"
+                },
+                {
+                    "events": [
+                        {
+                            "author": {
+                                "id": "Epozobaeza@gmail.com",
+                                "name": "Eduardo pozo",
+                                "type": "client"
+                            },
+                            "date": "2018-07-30T04:09:43Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nAl pasar el tiempo saben si youtube deja de verse en sus televisores? Les consulto ya que tengo un smart tv Samsung de hace 6 años y hace 8 meses ya no tengo esa app en la tv ya que el modelo es antiguo\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://simple.ripley.cl/led-lg-49uj6300-49-2000363547851p#",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2018-07-30T13:13:11Z",
+                            "current": "spam",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_02",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        }
+                    ],
+                    "id": "JZDQ3",
+                    "requester": {
+                        "mail": "Epozobaeza@gmail.com",
+                        "name": "Eduardo pozo",
+                        "utc_offset": "America/Santiago",
+                        "ip": "200.124.38.80"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "spam",
+                    "subject": "Consulta",
+                    "modified": "2018-07-30T13:13:11Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://simple.ripley.cl/led-lg-49uj6300-49-2000363547851p#"
+                    },
+                    "opened": [
+                        {
+                            "from": "2018-07-30T04:09:43Z",
+                            "to": "2018-07-30T13:13:11Z"
+                        }
+                    ],
+                    "date": "2018-07-30T04:09:43Z"
+                },
+                {
+                    "assignee": {
+                        "name": "Promotor_Virtual_LG_01",
+                        "id": "jorge1.gonzalez@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "id": "alex.cab961@gmail.com",
+                                "name": "alex",
+                                "type": "client"
+                            },
+                            "date": "2018-07-14T14:45:22Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nHola, quisiera saber el precio del smart tv LG uj6560 en soles y si aun sigue disponible . \nGracias \n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://simple.ripley.cl/led-lg-49uj6560-49-2000363072414p",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2018-07-17T16:29:02Z",
+                            "is_private": false,
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "message": "dependera de la comuna pero hasta el momento figura disponible a Normal$599.990\nInternet$339.990",
+                            "type": "message",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "type": "agent",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-07-17T16:29:02Z",
+                            "to": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-07-17T16:29:02Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-07-18T17:27:51Z",
+                            "type": "rating_offer_sent"
+                        }
+                    ],
+                    "id": "BW0FJ",
+                    "requester": {
+                        "mail": "alex.cab961@gmail.com",
+                        "name": "alex",
+                        "utc_offset": "America/Bogota",
+                        "ip": "190.239.16.114"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "consulta ",
+                    "modified": "2019-03-28T19:02:57Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://simple.ripley.cl/led-lg-49uj6560-49-2000363072414p"
+                    },
+                    "opened": [
+                        {
+                            "from": "2018-07-14T14:45:22Z",
+                            "to": "2018-07-17T16:29:02Z"
+                        }
+                    ],
+                    "date": "2018-07-14T14:45:22Z"
+                },
+                {
+                    "assignee": {
+                        "name": "Promotor_Virtual_LG_02",
+                        "id": "edgar.pino@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "id": "enriqueantoniovaleriobautista@gmail.com",
+                                "name": "Enrique ",
+                                "type": "client"
+                            },
+                            "date": "2018-06-22T12:19:02Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nMe interesa un TV LG Smart de 49 ph.\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://simple.ripley.cl/led-lg-49uj6560-49-2000363072414p",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2018-06-22T13:05:43Z",
+                            "to": {
+                                "name": "Promotor_Virtual_LG_02",
+                                "id": "edgar.pino@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_02",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-06-22T13:05:43Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_02",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        }
+                    ],
+                    "id": "BNUUI",
+                    "requester": {
+                        "mail": "enriqueantoniovaleriobautista@gmail.com",
+                        "name": "Enrique ",
+                        "utc_offset": "America/Santiago",
+                        "ip": "191.119.116.24"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": " TV Smallville TV ",
+                    "modified": "2018-06-22T13:05:43Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://simple.ripley.cl/led-lg-49uj6560-49-2000363072414p"
+                    },
+                    "opened": [
+                        {
+                            "from": "2018-06-22T12:19:02Z",
+                            "to": "2018-06-22T13:05:43Z"
+                        }
+                    ],
+                    "date": "2018-06-22T12:19:02Z"
+                },
+                {
+                    "assignee": {
+                        "name": "Promotor_Virtual_LG_02",
+                        "id": "edgar.pino@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "id": "famigoteco@gmail.com",
+                                "name": "Raúl Martínez Pacheco",
+                                "type": "client"
+                            },
+                            "date": "2018-06-21T01:44:52Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nHola quisiera pedirles de favor me informaran Cuál es el modelo de pantalla LG 43 pulgadas más completo espero respuesta muchas gracias....\nHola para preguntar cuál modelo de TV LG Smart 43 pulgadas es el más completo espero respuesta gracias....\n\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://simple.ripley.cl/led-lg-43uj6560-43-2000363072407p",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2018-06-21T14:21:49Z",
+                            "is_private": false,
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "message": "Hola le indico que el equipo mas completo es este https://simple.ripley.cl/led-lg-43uj6560-43-2000363072407p pero le sugiero evaluar el mismo equipo pero en 49\" ya que la diferencia en dinero es muy poca y podria aumentar el tamaño de la pantalla  de forma considerable https://simple.ripley.cl/led-lg-49uj6560-49-2000363072414p",
+                            "type": "message",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_02",
+                                "type": "agent",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-06-21T14:21:49Z",
+                            "to": {
+                                "name": "Promotor_Virtual_LG_02",
+                                "id": "edgar.pino@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_02",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-06-21T14:21:49Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_02",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-06-22T03:03:08Z",
+                            "is_private": false,
+                            "author": {
+                                "name": "Raul Mtz. P. Teco",
+                                "type": "client",
+                                "id": "famigoteco@gmail.com"
+                            },
+                            "source": {
+                                "type": "mail"
+                            },
+                            "message": "Gracias por su respuesta.",
+                            "type": "message"
+                        },
+                        {
+                            "date": "2018-06-22T03:03:08Z",
+                            "current": "open",
+                            "previous": "solved",
+                            "type": "status_changed"
+                        },
+                        {
+                            "date": "2018-06-22T13:05:23Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_02",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-06-23T13:18:23Z",
+                            "type": "rating_offer_sent"
+                        }
+                    ],
+                    "id": "QZZQS",
+                    "requester": {
+                        "mail": "famigoteco@gmail.com",
+                        "name": "Raúl Martínez Pacheco",
+                        "utc_offset": "America/Chicago",
+                        "ip": "70.94.112.78"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "Pregunta",
+                    "modified": "2018-06-23T13:18:23Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://simple.ripley.cl/led-lg-43uj6560-43-2000363072407p"
+                    },
+                    "opened": [
+                        {
+                            "from": "2018-06-21T01:44:52Z",
+                            "to": "2018-06-21T14:21:49Z"
+                        },
+                        {
+                            "from": "2018-06-22T03:03:08Z",
+                            "to": "2018-06-22T13:05:23Z"
+                        }
+                    ],
+                    "date": "2018-06-21T01:44:52Z"
+                }
+            ]
+        }
+    }
+}

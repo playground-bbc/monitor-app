@@ -5,8 +5,11 @@ use Filebase\Database as Filebase;
 use LiveChat\Api\Client as LiveChat;
 use Stringizer\Stringizer;
 use Yii;
+use yii\web\HttpException;
 use yii\base\Model;
 use yii\helpers\ArrayHelper;
+
+
 
 use app\models\ProductsModels;
 use app\models\ProductsCategories;
@@ -26,6 +29,16 @@ class LiveChatApi extends Model
     public $params   = [];
     public $data;
     public $alertId;
+
+    public $exclude = [
+        'resolutionDate',
+        'firstResponse',
+        'ccs',
+        'tags',
+        'rate',
+        'currentGroup'
+
+    ];
 
 
     
@@ -48,29 +61,96 @@ class LiveChatApi extends Model
     public function getTickets()
     {
         $params = $this->params;
-        //var_dump($params);
+        
         foreach ($this->params['query'] as $key => $value) {
             do {
+                
                 $page = $this->params['page'];
                 $params['query'] = $value;
-                $this->data[$value][$page] = $this->_liveChat->tickets->get($params);
+                $params['page'] = $page;
+                $this->_data[$value][$page] = $this->_get($params);
                 $this->params['page'] ++;
 
                 
 
-            } while ($this->params['page'] <= $this->data[$value][$page]->pages);
+            } while ($this->params['page'] <= $this->_data[$value][$page]->pages);
 
             $this->params['page'] = 1;
         }
+   
+        $this->_orderbyTicket();
+        return $this;
+    }
 
-        var_dump($this->data);
-        die();
+
+    public function all()
+    {   
+
+        return $this->data;
+    }
+
+    public function saveJson()
+    {
+        
+        $file = $this->_filebase->get("{$this->baseName}_{$this->alertId}");
+        foreach ($this->data as $key => $value) {
+            $file->$key = $value;
+        }
+        $file->save();
+
+        $data = $this->_filebase->query()->select('SMART TV LED 49.tickets')->results();
+
+        var_dump($data);
+
+
+        
+        
+    }
+
+
+
+    private function _orderbyTicket()
+    {
+        foreach ($this->_data as $key => $value) {
+            foreach ($value as $obj => $property) {
+               //$this->data[$key]['pages'] = $property->pages;
+               $this->data[$key]['total'] = $property->total;
+               foreach ($property->tickets as $ticket ) {
+                   $data = $this->_exclude($ticket);
+                   $this->data[$key]['tickets'][]= $data;
+               }
+            }
+        }
+
+    }
+
+
+    private function _exclude($ticket)
+    {
+        $data = [];
+        for ($i=0; $i <sizeof($this->exclude) ; $i++) { 
+            if (property_exists($ticket, $this->exclude[$i])) {
+                $property = $this->exclude[$i];
+                unset($ticket->$property);
+            }
+        }
+        $data = $ticket;
+        return $data;
+    }
+
+    private function _get($params)
+    {
+
+        if ($this->_liveChat->status->get()) {
+            return $this->_liveChat->tickets->get($params);
+        }
+        throw new HttpException(404, "The requested Api {$this->baseName} could not be found.");
     }
 
     public function __construct()
     {
         $this->_liveChat = new LiveChat(Yii::$app->params['liveChat']['apiLogin'], Yii::$app->params['liveChat']['apiKey']);
-        $this->_filebase = new Filebase([
+        $this->_filebase = new \Filebase\Database([
             'dir'            => Yii::getAlias('@live-chat'),
             'backupLocation' => Yii::getAlias('@backup'),
             'format'         => \Filebase\Format\Json::class,
@@ -88,6 +168,7 @@ class LiveChatApi extends Model
                 */
             ],
         ]);
+
         parent::__construct();
     }
 
