@@ -47,8 +47,8 @@ class LiveChatApi extends Model
     {
 
         $this->alertId = $params['alertId'];
-        $params['date_from'] = Yii::$app->formatter->asDate($params['date_from'],'yyyy-MM-dd');
-        $params['date_to'] = Yii::$app->formatter->asDate($params['date_to'],'yyyy-MM-dd');
+        $params['date_from'] = ($params['date_from']) ?  Yii::$app->formatter->asDate($params['date_from'],'yyyy-MM-dd') : '';
+        $params['date_to'] = ($params['date_to']) ? Yii::$app->formatter->asDate($params['date_to'],'yyyy-MM-dd'): '';
         unset($params['alertId']);
 
         foreach ($params as $key => $value) {
@@ -97,17 +97,17 @@ class LiveChatApi extends Model
             $file->$key = $value;
         }
         $file->save();
-
-        $data = $this->_filebase->query()->select('SMART TV LED 49.tickets')->results();
-
-        var_dump($data);
-
-
-        
-        
     }
 
+    public function getTicketsByProduct($product='')
+    {
+        
+        $data = ArrayHelper::map($this->_filebase->query()->select("{$product}.tickets")->results(),'0',"{$product}.tickets");
+        $value = ArrayHelper::getValue($data, '');
 
+        return $value;
+
+    }
 
     private function _orderbyTicket()
     {

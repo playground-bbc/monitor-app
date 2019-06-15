@@ -1,12 +1,12 @@
 {
     "__created_at": 1560552292,
-    "__updated_at": 1560554424,
+    "__updated_at": 1560557787,
     "data": {
         "query": {
             "total": 0
         },
         "SMART TV LED 49": {
-            "total": 41,
+            "total": 59,
             "tickets": [
                 {
                     "assignee": {
@@ -3272,6 +3272,2754 @@
                         }
                     ],
                     "date": "2018-06-21T01:44:52Z"
+                },
+                {
+                    "assignee": {
+                        "name": "Promotor_Virtual_LG_02",
+                        "id": "edgar.pino@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "id": "chenimv@gmail.com",
+                                "name": "yesenia muñoz",
+                                "type": "client"
+                            },
+                            "date": "2018-05-31T03:50:14Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nquiero comprar un televiso smart tv y al agregarlo al carro me aparece porto disponible, que puedo hacer?\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://simple.ripley.cl/led-lg-49uj6560-49-2000363072414p",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2018-05-31T13:47:19Z",
+                            "is_private": false,
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "message": "Hola buen día le indico que si tiene falla con los aplicativos puede realizar la compra llamando a 600 520 2020\nVentas Telefónicas (opción 2).\nTomar en cuenta que las promociones de Cyber Day fuero hasta el día de ayer 30 de Mayo.",
+                            "type": "message",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_02",
+                                "type": "agent",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-05-31T13:47:19Z",
+                            "to": {
+                                "name": "Promotor_Virtual_LG_02",
+                                "id": "edgar.pino@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_02",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-05-31T13:47:19Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_02",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-05-31T17:22:23Z",
+                            "is_private": false,
+                            "author": {
+                                "name": "cheni muñoz",
+                                "type": "client",
+                                "id": "chenimv@gmail.com"
+                            },
+                            "source": {
+                                "type": "mail"
+                            },
+                            "message": "Ya no me sirve, ya que qu3ria hacer la compra ayer en cyberday, desde las\n23:00 que intentaba comprar y no se podia agregar a la bolsa, al parecer\nustedes cerraron antes de las 00:00 hrs.",
+                            "type": "message"
+                        },
+                        {
+                            "date": "2018-05-31T17:22:23Z",
+                            "current": "open",
+                            "previous": "solved",
+                            "type": "status_changed"
+                        },
+                        {
+                            "date": "2018-05-31T19:20:39Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_02",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-06-01T19:56:57Z",
+                            "type": "rating_offer_sent"
+                        },
+                        {
+                            "date": "2018-06-01T20:26:18Z",
+                            "current": "bad",
+                            "type": "rated",
+                            "author": {
+                                "name": "yesenia muñoz",
+                                "type": "client",
+                                "id": "chenimv@gmail.com"
+                            }
+                        }
+                    ],
+                    "id": "HJQFB",
+                    "requester": {
+                        "mail": "chenimv@gmail.com",
+                        "name": "yesenia muñoz",
+                        "utc_offset": "America/Santiago",
+                        "ip": "186.9.27.123"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "compra",
+                    "modified": "2018-06-01T20:26:18Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://simple.ripley.cl/led-lg-49uj6560-49-2000363072414p"
+                    },
+                    "opened": [
+                        {
+                            "from": "2018-05-31T03:50:14Z",
+                            "to": "2018-05-31T13:47:19Z"
+                        },
+                        {
+                            "from": "2018-05-31T17:22:23Z",
+                            "to": "2018-05-31T19:20:39Z"
+                        }
+                    ],
+                    "date": "2018-05-31T03:50:14Z"
+                },
+                {
+                    "assignee": {
+                        "name": "Promotor_Virtual_LG_02",
+                        "id": "edgar.pino@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "id": "Tutitho1@gmail.com",
+                                "name": "Aldo",
+                                "type": "client"
+                            },
+                            "date": "2018-05-29T01:57:46Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nHola estoy tratando de comprar la oferta del smart tv de 49\" a 149990 y no me reconoce el valor\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://simple.ripley.cl/led-lg-49lj5500-49-2000363547837p?ol-lu-tv-2115",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2018-05-29T17:44:02Z",
+                            "to": {
+                                "name": "Promotor_Virtual_LG_02",
+                                "id": "edgar.pino@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_02",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-05-29T17:44:02Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_02",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        }
+                    ],
+                    "id": "D40W1",
+                    "requester": {
+                        "mail": "Tutitho1@gmail.com",
+                        "name": "Aldo",
+                        "utc_offset": "America/Santiago",
+                        "ip": "186.9.60.65"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "Valor no aplica descuento",
+                    "modified": "2018-05-29T17:44:02Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://simple.ripley.cl/led-lg-49lj5500-49-2000363547837p?ol-lu-tv-2115"
+                    },
+                    "opened": [
+                        {
+                            "from": "2018-05-29T01:57:46Z",
+                            "to": "2018-05-29T17:44:02Z"
+                        }
+                    ],
+                    "date": "2018-05-29T01:57:46Z"
+                },
+                {
+                    "assignee": {
+                        "name": "Promotor_Virtual_LG_01",
+                        "id": "jorge1.gonzalez@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "id": "martin_anduelo@hotmail.com",
+                                "name": "Martín",
+                                "type": "client"
+                            },
+                            "date": "2018-05-09T06:31:10Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nHola qué tal? Soy argentino y quirlq ir a comprar algún Smart tv, Vi que hay varios precios, uno q dice normal, otro internet y el otro tarjeta Ripley, cual es el precio que me saldría si voy a buscarlo en persona, quiero 2 smart tv de 55 si se puede curvo  mejor pero bueno, depende de los valores. Seguramente compré más cosas pero lo principal es conseguir eso. Gracias\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://simple.ripley.cl/led-lg-55uj6300-55-2000363547882p",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2018-05-11T12:59:29Z",
+                            "is_private": false,
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "message": "Don Martin:\n     EL detalle del precio indica Normal$ 799.990 = este es el valor oficial, el que esta en la tienda \nInternet$ 399.990= este es el valor del tv si ud realiza la compra via web, Tarjeta Ripley $319.990= este es el valor del tv si ud compra via web y paga con su tarjeta de credito RIpley para el tv que consulta (55UJ6300)",
+                            "type": "message",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "type": "agent",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-05-11T12:59:29Z",
+                            "to": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-05-11T12:59:29Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-05-12T13:49:48Z",
+                            "type": "rating_offer_sent"
+                        },
+                        {
+                            "date": "2018-05-16T05:23:50Z",
+                            "is_private": false,
+                            "author": {
+                                "name": "Martin Anduelo Tanos",
+                                "type": "client",
+                                "id": "martin_anduelo@hotmail.com"
+                            },
+                            "source": {
+                                "type": "mail"
+                            },
+                            "message": "Entonces lo que me recomienda es que valla con la tarjeta de crédito?? Tengo q ver q impuesto m cobran aca en mi país, y ver hasta cuánto me dejan pasar en la aduana\n________________________________\nDe: 8246671+IBUT5@tickets.livechatinc.com <8246671+IBUT5@tickets.livechatinc.com>\nEnviado: sábado, 12 de mayo de 2018 10:49:51 a.m.\nPara: martin_anduelo@hotmail.com\nAsunto: Re: Ticket #IBUT5: Consulta\n\n## Por favor, concédanos un momento para valorar el servicio de atención al cliente que ha recibido.##\n\n  *   Bueno, estoy satisfecho.<https://my.livechatinc.com/ticket_rating/IBUT5/good/ZTU4ZTdmOTVkMDk2YWRjY2Q1Y2RlOTE5N2VjMGY1NzQ=>\n  *   Malo, no estoy satisfecho.<https://my.livechatinc.com/ticket_rating/IBUT5/bad/ZTU4ZTdmOTVkMDk2YWRjY2Q1Y2RlOTE5N2VjMGY1NzQ=>\n\nA continuación le recordamos brevemente el caso en cuestión:\n\n        [https://livechat.s3.amazonaws.com/8246671/0/logo/f128d44ca26316414dac156d91cd7578.png]  Consulta\n\n        [https://livechat.s3.amazonaws.com/default/avatars/ab5b0666feffd67600206cd519fd77ea.jpg]                Promotor_Virtual_LG_01\n        Fri, 05/11/18 9:59 am\n\n        Don Martin:\nEL detalle del precio indica Normal$ 799.990 = este es el valor oficial, el que esta en la tienda\nInternet$ 399.990= este es el valor del tv si ud realiza la compra via web, Tarjeta Ripley $319.990= este es el valor del tv si ud compra via web y paga con su tarjeta de credito RIpley para el tv que consulta (55UJ6300)\n\n        Martín\n        Wed, 05/09/18 3:31 am\n\n        Mensaje:\nHola qué tal? Soy argentino y quirlq ir a comprar algún Smart tv, Vi que hay varios precios, uno q dice normal, otro internet y el otro tarjeta Ripley, cual es el precio que me saldría si voy a buscarlo en persona, quiero 2 smart tv de 55 si se puede curvo mejor pero bueno, depende de los valores. Seguramente compré más cosas pero lo principal es conseguir eso. Gracias\n\n                Powered by LiveChat<https://www.livechatinc.com/powered-by-livechat/?utm_source=ticket_footer&utm_medium=email&utm_campaign=https%3A%2F%2Fsimple.ripley.cl%2Fled-lg-55uj6300-55-2000363547882p>",
+                            "type": "message"
+                        },
+                        {
+                            "date": "2018-05-16T05:23:50Z",
+                            "current": "open",
+                            "previous": "solved",
+                            "type": "status_changed"
+                        },
+                        {
+                            "date": "2018-05-23T13:39:11Z",
+                            "is_private": false,
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "message": "si cuenta con los metodos de pago necesarios para generar la compra, si podria realizar la compra",
+                            "type": "message",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "type": "agent",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-05-23T13:39:11Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-05-24T13:59:37Z",
+                            "type": "rating_offer_sent"
+                        }
+                    ],
+                    "id": "IBUT5",
+                    "requester": {
+                        "mail": "martin_anduelo@hotmail.com",
+                        "name": "Martín",
+                        "utc_offset": "America/Argentina/Buenos_Aires",
+                        "ip": "190.185.235.12"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "Consulta ",
+                    "modified": "2019-03-28T19:02:57Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://simple.ripley.cl/led-lg-55uj6300-55-2000363547882p"
+                    },
+                    "opened": [
+                        {
+                            "from": "2018-05-09T06:31:10Z",
+                            "to": "2018-05-11T12:59:29Z"
+                        },
+                        {
+                            "from": "2018-05-16T05:23:50Z",
+                            "to": "2018-05-23T13:39:11Z"
+                        }
+                    ],
+                    "date": "2018-05-09T06:31:10Z"
+                },
+                {
+                    "assignee": {
+                        "name": "Promotor_Virtual_LG_01",
+                        "id": "jorge1.gonzalez@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "id": "gonzalez.josse@gmail.com",
+                                "name": "Jose gonzalez",
+                                "type": "client"
+                            },
+                            "date": "2018-04-28T13:16:37Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nFavor sugerir modelo\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://simple.ripley.cl/led-lg-43uj6200-43-2000366626621p",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2018-05-03T19:46:39Z",
+                            "is_private": false,
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "message": "https://simple.ripley.cl/tv-audio/tv/smart-tv?facet=mfName_ntk_cs%253A%2522LG%2522",
+                            "type": "message",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "type": "agent",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-05-03T19:46:39Z",
+                            "to": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-05-03T19:46:39Z",
+                            "current": "pending",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-05-03T19:46:47Z",
+                            "current": "solved",
+                            "previous": "pending",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-05-04T20:05:55Z",
+                            "type": "rating_offer_sent"
+                        }
+                    ],
+                    "id": "9NBD4",
+                    "requester": {
+                        "mail": "gonzalez.josse@gmail.com",
+                        "name": "Jose gonzalez",
+                        "utc_offset": "America/Argentina/Buenos_Aires",
+                        "ip": "186.9.3.15"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "Tv 43 o 49 con magik control",
+                    "modified": "2019-03-28T19:02:57Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://simple.ripley.cl/led-lg-43uj6200-43-2000366626621p"
+                    },
+                    "opened": [
+                        {
+                            "from": "2018-04-28T13:16:37Z",
+                            "to": "2018-05-03T19:46:39Z"
+                        }
+                    ],
+                    "date": "2018-04-28T13:16:37Z"
+                },
+                {
+                    "assignee": {
+                        "name": "Promotor_Virtual_LG_02",
+                        "id": "edgar.pino@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "id": "ldiaz02@ucn.cl",
+                                "name": "leonor diaz",
+                                "type": "client"
+                            },
+                            "date": "2018-04-02T01:18:12Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nQuisiera saber si el modelo de 49 pulg LED Ultra HD Smart TV Webos 3.5. puede ser colgado en la pared.\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://simple.ripley.cl/led-lg-49uj6560-49-2000363072414p",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2018-04-10T12:43:17Z",
+                            "is_private": false,
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "message": "hola buen dia si le indico que este equipo si puede ser colgado en pared bajo un soporte versa",
+                            "type": "message",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_02",
+                                "type": "agent",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-04-10T12:43:17Z",
+                            "to": {
+                                "name": "Promotor_Virtual_LG_02",
+                                "id": "edgar.pino@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_02",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-04-10T12:43:17Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_02",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-04-11T12:51:29Z",
+                            "type": "rating_offer_sent"
+                        },
+                        {
+                            "date": "2018-04-11T13:10:28Z",
+                            "current": "bad",
+                            "type": "rated",
+                            "author": {
+                                "name": "leonor diaz",
+                                "type": "client",
+                                "id": "ldiaz02@ucn.cl"
+                            }
+                        }
+                    ],
+                    "id": "RQY6E",
+                    "requester": {
+                        "mail": "ldiaz02@ucn.cl",
+                        "name": "leonor diaz",
+                        "utc_offset": "America/Santiago",
+                        "ip": "190.164.195.131"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "CONUSLTA TV",
+                    "modified": "2018-04-11T13:10:28Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://simple.ripley.cl/led-lg-49uj6560-49-2000363072414p"
+                    },
+                    "opened": [
+                        {
+                            "from": "2018-04-02T01:18:12Z",
+                            "to": "2018-04-10T12:43:17Z"
+                        }
+                    ],
+                    "date": "2018-04-02T01:18:12Z"
+                },
+                {
+                    "assignee": {
+                        "name": "Promotor_Virtual_LG_02",
+                        "id": "edgar.pino@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "type": "client",
+                                "name": "Andres Melendez",
+                                "id": "amelendez.32@gmail.com"
+                            },
+                            "source": {
+                                "url": "https://www.paris.cl/tienda/es/paris/led-49-lg-49uj6560-4k-ultra-hd-161124-ppp-",
+                                "type": "chat-window"
+                            },
+                            "date": "2017-10-19T11:32:53Z",
+                            "message": "Mensaje:\nEl producto LED 49´´ LG 49]UJ6560 Smart TV UltraHD 4K figura en el listado de productos y en la pagina de inicio del BLACKWEECKENED, con el valor de $259.990.- pero al seleccionar el producto para su compra, figura el valor de $369.990.- . ¿Cual valor corresponde? \n\n",
+                            "type": "message",
+                            "is_private": false
+                        },
+                        {
+                            "author": {
+                                "type": "agent",
+                                "name": "Promotor_Virtual_LG_02",
+                                "id": "edgar.pino@lgepartner.com"
+                            },
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "date": "2017-10-19T19:29:34Z",
+                            "message": "hola buenas tardes le indico que el precio $259.990 es el precio dentro de la promoción siempre y cuando posea tarjeta cencosud, si no posee tarjeta cencosud el precio para compras por internet es de $369.990.\n\nEstamos para servirle y fue un placer atenderle, cualquier otra consulta no dude en contactarnos, gracias por visitar el servicio de Promotor Virtual de LG. Espero poder hablar con usted nuevamente en otra oportunidad. ¡Que pase una excelente tarde!",
+                            "type": "message",
+                            "is_private": false
+                        },
+                        {
+                            "date": "2017-10-19T19:29:34Z",
+                            "to": {
+                                "name": "Promotor_Virtual_LG_02",
+                                "id": "edgar.pino@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_02",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2017-10-19T19:29:34Z",
+                            "current": "solved",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_02",
+                                "id": "edgar.pino@lgepartner.com"
+                            },
+                            "type": "status_changed",
+                            "previous": "open"
+                        },
+                        {
+                            "date": "2017-10-20T20:14:28Z",
+                            "type": "rating_offer_sent"
+                        }
+                    ],
+                    "id": "ZVVSH",
+                    "requester": {
+                        "mail": "amelendez.32@gmail.com",
+                        "utc_offset": "America/Santiago",
+                        "name": "Andres Melendez",
+                        "ip": "200.91.9.221"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "Reclamo/Consulta",
+                    "modified": "2017-10-20T20:14:28Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.paris.cl/tienda/es/paris/led-49-lg-49uj6560-4k-ultra-hd-161124-ppp-"
+                    },
+                    "opened": [
+                        {
+                            "to": "2017-10-19T19:29:34Z",
+                            "from": "2017-10-19T11:32:53Z"
+                        }
+                    ],
+                    "date": "2017-10-19T11:32:53Z"
+                },
+                {
+                    "assignee": {
+                        "name": "Promotor_Virtual_LG_01",
+                        "id": "jorge1.gonzalez@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "type": "client",
+                                "name": "Ejidio Reyes Romo",
+                                "id": "emilan.reyes@gmail.com"
+                            },
+                            "source": {
+                                "url": "https://www.paris.cl/tienda/es/paris/led-49-lg-49uj6300-smart-tv-ultra-hd-175834-ppp-",
+                                "type": "chat-window"
+                            },
+                            "date": "2017-09-12T23:39:38Z",
+                            "message": "Mensaje:\nSiendo un cliente antiguo e comprado varios artículos por años, me encontrado que no me dieron ninguna respuesta sobre un tv que compre .Ellos me fueron a dejar al auto,con sorpresa que al prenderlo en casa aparece unas rayas,se los lleve al otro día lo dejaron para llevarlo a servicio tecnico. Me llamaron para ir a retirarlo por qué la pantalla está quebrada y que no se puede hacer nada más Este tv no es tan barato para dejarlo botado. Espero una respuesta más razonable un cliente descontento\n\n",
+                            "type": "message",
+                            "is_private": false
+                        },
+                        {
+                            "author": {
+                                "type": "agent",
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "date": "2017-09-13T12:20:50Z",
+                            "message": "Muy buenos días, en este caso le indico que una vez que el producto es enviado por la tienda a domicilio usted como cliente debió firmar una guía donde indica que \"recibió conforme\",  antes de dicha firma de conformidad usted debe revisar el producto y posterior a esto firmar el documento. De no ser así la tienda esta en todo el derecho de no responder por esta situación. \n\nPor otro lado le indico que entendemos su molestia por tan incomoda situación pero aclaramos LG no comercializa productos a usuario final o no comercializa sus productos con clientes directamente, siempre se comercializan los productos mediante retail o grandes tiendas entre otros. Por lo tanto en este caso no hay manera de poder responder por dicha situación ya que la Garantía de los producto es únicamente por defectos o fallas de fabricación. \n\nEn base al caso mencionado, entregamos una única solución, LG cuenta con un equipo de técnicos especializados    que podría hacer una visita a su domicilio y evaluar el producto pero esto obviamente tendrá un costo, y se creara un presupuesto para una posible  reparaciones. \n\nsin mas nada que hacer mención me despido.\n\nEstamos para servirle y fue un placer atenderle, cualquier otra consulta no dude en contactarnos, gracias por visitar el servicio de Promotor Virtual de LG. Espero poder hablar con usted nuevamente en otra oportunidad. ¡Que pase una excelente tarde!",
+                            "type": "message",
+                            "is_private": false
+                        },
+                        {
+                            "date": "2017-09-13T12:20:50Z",
+                            "to": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2017-09-13T12:20:50Z",
+                            "current": "solved",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "type": "status_changed",
+                            "previous": "open"
+                        },
+                        {
+                            "date": "2017-09-14T13:02:18Z",
+                            "type": "rating_offer_sent"
+                        },
+                        {
+                            "date": "2017-09-14T19:02:52Z",
+                            "current": "bad",
+                            "type": "rated",
+                            "author": {
+                                "type": "client",
+                                "name": "Ejidio Reyes Romo",
+                                "id": "emilan.reyes@gmail.com"
+                            }
+                        },
+                        {
+                            "date": "2017-09-14T19:03:33Z",
+                            "current": "bad",
+                            "type": "rated",
+                            "author": {
+                                "type": "client",
+                                "name": "Ejidio Reyes Romo",
+                                "id": "emilan.reyes@gmail.com"
+                            }
+                        }
+                    ],
+                    "id": "THT1U",
+                    "requester": {
+                        "mail": "emilan.reyes@gmail.com",
+                        "utc_offset": "America/Santiago",
+                        "name": "Ejidio Reyes Romo",
+                        "ip": "186.79.180.25"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "Tv malo",
+                    "modified": "2019-03-28T19:02:57Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.paris.cl/tienda/es/paris/led-49-lg-49uj6300-smart-tv-ultra-hd-175834-ppp-"
+                    },
+                    "opened": [
+                        {
+                            "to": "2017-09-13T12:20:50Z",
+                            "from": "2017-09-12T23:39:38Z"
+                        }
+                    ],
+                    "date": "2017-09-12T23:39:38Z"
+                },
+                {
+                    "assignee": {
+                        "name": "Promotor_Virtual_LG_01",
+                        "id": "jorge1.gonzalez@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "type": "client",
+                                "name": "italo farfan ",
+                                "id": "im.farafndo@gmail.com"
+                            },
+                            "source": {
+                                "url": "https://www.paris.cl/tienda/es/paris/electro/electro-television-smart-tv/led-49-49lj5500-196897-ppp-",
+                                "type": "chat-window"
+                            },
+                            "date": "2017-08-31T02:59:20Z",
+                            "message": "Mensaje:\ntiene sintonizador dijital  incorporado y los 249.999 se puede con cualquier medio de pago\n\n",
+                            "type": "message",
+                            "is_private": false
+                        },
+                        {
+                            "author": {
+                                "type": "agent",
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "date": "2017-08-31T12:15:40Z",
+                            "message": "Muy buenos días, espero se encuentre muy bien, le comento que este producto posee sintonizador digital incluido. Con respecto al precio este precio es exclusivo con tarjeta cencosud, comprando en internet  y con cualquier medio de pago quedaría en $329.990.\n\nEstamos para servirle y fue un placer atenderle, cualquier otra consulta no dude en contactarnos, gracias por visitar el servicio de Promotor Virtual de LG. Espero poder hablar con usted nuevamente en otra oportunidad. ¡Que pase una excelente tarde!",
+                            "type": "message",
+                            "is_private": false
+                        },
+                        {
+                            "date": "2017-08-31T12:15:40Z",
+                            "to": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2017-08-31T12:15:40Z",
+                            "current": "solved",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "type": "status_changed",
+                            "previous": "open"
+                        },
+                        {
+                            "date": "2017-09-01T13:01:38Z",
+                            "type": "rating_offer_sent"
+                        }
+                    ],
+                    "id": "VFXKG",
+                    "requester": {
+                        "mail": "im.farafndo@gmail.com",
+                        "utc_offset": "America/Santiago",
+                        "name": "italo farfan ",
+                        "ip": "179.4.4.201"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "led 49\"LG 49J5500 Smart TV Full hd",
+                    "modified": "2019-03-28T19:02:57Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.paris.cl/tienda/es/paris/electro/electro-television-smart-tv/led-49-49lj5500-196897-ppp-"
+                    },
+                    "opened": [
+                        {
+                            "to": "2017-08-31T12:15:40Z",
+                            "from": "2017-08-31T02:59:20Z"
+                        }
+                    ],
+                    "date": "2017-08-31T02:59:20Z"
+                },
+                {
+                    "assignee": {
+                        "name": "Promotor_Virtual_LG_01",
+                        "id": "jorge1.gonzalez@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "type": "client",
+                                "name": "alejandro",
+                                "id": "ta.tan_x@hotmail.com"
+                            },
+                            "source": {
+                                "url": "https://www.paris.cl/tienda/es/paris/electro/electro-television-todas-las-tv/led-49-lg-49uj7500-4k-ultra-hd-161141-ppp-?utm_source=LG.com&utm_medium=Referral&utm_campaign=LGDondeComprar",
+                                "type": "chat-window"
+                            },
+                            "date": "2017-08-24T04:53:59Z",
+                            "message": "Mensaje:\nLED 49\" LG 49UJ7500 Smart TV UltraHD 4K\n\nque taza de refresco tiene ?\ny este televisor es SUPER UHD o es  UHD ? \n\n",
+                            "type": "message",
+                            "is_private": false
+                        },
+                        {
+                            "author": {
+                                "type": "agent",
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "date": "2017-08-24T12:19:00Z",
+                            "message": "Muy Buenos Días \nle indico que este es un excelente equipo la tasa de Refresco es de 60Hz y corresponde a la serie  UltraHD 4K de LG permitiendo con esta tecnológica tener mejor definición y resolución.",
+                            "type": "message",
+                            "is_private": false
+                        },
+                        {
+                            "date": "2017-08-24T12:19:00Z",
+                            "to": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2017-08-24T12:19:00Z",
+                            "current": "solved",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "type": "status_changed",
+                            "previous": "open"
+                        },
+                        {
+                            "date": "2017-08-25T13:14:39Z",
+                            "type": "rating_offer_sent"
+                        }
+                    ],
+                    "id": "FD61L",
+                    "requester": {
+                        "mail": "ta.tan_x@hotmail.com",
+                        "utc_offset": "America/Santiago",
+                        "name": "alejandro",
+                        "ip": "190.47.53.233"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "duda",
+                    "modified": "2019-03-28T19:02:57Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.paris.cl/tienda/es/paris/electro/electro-television-todas-las-tv/led-49-lg-49uj7500-4k-ultra-hd-161141-ppp-?utm_source=LG.com&utm_medium=Referral&utm_campaign=LGDondeComprar"
+                    },
+                    "opened": [
+                        {
+                            "to": "2017-08-24T12:19:00Z",
+                            "from": "2017-08-24T04:53:59Z"
+                        }
+                    ],
+                    "date": "2017-08-24T04:53:59Z"
+                },
+                {
+                    "assignee": {
+                        "name": "Promotor_Virtual_LG_01",
+                        "id": "jorge1.gonzalez@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "type": "client",
+                                "name": "Isis",
+                                "id": "isisjhzegers@gmail.com"
+                            },
+                            "source": {
+                                "url": "https://www.paris.cl/tienda/es/paris/led-49-lg-49uj7500-4k-ultra-hd-161141-999-?_ga=2.239487946.854640448.1503182136-1594908588.1468118808",
+                                "type": "chat-window"
+                            },
+                            "date": "2017-08-20T02:50:22Z",
+                            "message": "Mensaje:\nestimad@, deseo saber si el LED 49\" LG 49UJ7500 Smart TV UltraHD 4K, incluye el Magic Control, y  cual es el costo de envío a concon , región de valparaíso\n\n",
+                            "type": "message",
+                            "is_private": false
+                        },
+                        {
+                            "author": {
+                                "type": "agent",
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "date": "2017-08-21T12:23:39Z",
+                            "message": "Hola Buenos Días, le indico que el modelo LG 49UJ7500 Si posee el Magic Remote. en cuanto al costo de envió a Domicilio es de $3.990 y la fecha mas próxima de entrega es el día Martes 22 de Agosto si realiza la compra hoy día.\n\nEstamos para servirle y fue un placer atenderle, cualquier otra consulta no dude en contactarnos, gracias por visitar el servicio de Promotor Virtual de LG. Espero poder hablar con usted nuevamente en otra oportunidad. ¡Que pase una excelente Día!",
+                            "type": "message",
+                            "is_private": false
+                        },
+                        {
+                            "date": "2017-08-21T12:23:39Z",
+                            "to": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2017-08-21T12:23:39Z",
+                            "current": "solved",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "type": "status_changed",
+                            "previous": "open"
+                        },
+                        {
+                            "date": "2017-08-22T12:59:16Z",
+                            "type": "rating_offer_sent"
+                        }
+                    ],
+                    "id": "NSC2K",
+                    "requester": {
+                        "mail": "isisjhzegers@gmail.com",
+                        "utc_offset": "America/Santiago",
+                        "name": "Isis",
+                        "ip": "190.161.157.18"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "compra led, consultas",
+                    "modified": "2019-03-28T19:02:57Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.paris.cl/tienda/es/paris/led-49-lg-49uj7500-4k-ultra-hd-161141-999-?_ga=2.239487946.854640448.1503182136-1594908588.1468118808"
+                    },
+                    "opened": [
+                        {
+                            "to": "2017-08-21T12:23:39Z",
+                            "from": "2017-08-20T02:50:22Z"
+                        }
+                    ],
+                    "date": "2017-08-20T02:50:22Z"
+                },
+                {
+                    "assignee": {
+                        "name": "Promotor_Virtual_LG_01",
+                        "id": "jorge1.gonzalez@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "type": "client",
+                                "name": "carlos ",
+                                "id": "carloscaaex@gmail.com"
+                            },
+                            "source": {
+                                "url": "https://www.paris.cl/tienda/es/paris/electro/electro-television-ultrahd/led-49-lg-49uj6300-smart-tv-ultra-hd-175834-ppp-?utm_medium=social&utm_source=facebook.com&utm_campaign=Dynamic_AO&utm_content=carrito_10_dias",
+                                "type": "chat-window"
+                            },
+                            "date": "2017-08-01T03:28:54Z",
+                            "message": "Mensaje:\nlo compre ayer domingo en tiedas paris.   arica  a nombre de ruben carvajal 3 cu0tas  .....gracias.\n\n\n",
+                            "type": "message",
+                            "is_private": false
+                        },
+                        {
+                            "author": {
+                                "type": "agent",
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "date": "2017-08-01T14:11:51Z",
+                            "message": "cualquier consulta con entrega de productos, véalo por el servicios de ventas telefónicas 600 400 6400",
+                            "type": "message",
+                            "is_private": false
+                        },
+                        {
+                            "date": "2017-08-01T14:11:51Z",
+                            "to": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2017-08-01T14:11:51Z",
+                            "current": "pending",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "type": "status_changed",
+                            "previous": "open"
+                        },
+                        {
+                            "date": "2017-08-04T14:52:06Z",
+                            "type": "follow_up_sent"
+                        },
+                        {
+                            "author": {
+                                "type": "client",
+                                "name": "carlos acuña",
+                                "id": "carloscaaex@gmail.com"
+                            },
+                            "source": {
+                                "type": "mail"
+                            },
+                            "date": "2017-08-04T15:24:24Z",
+                            "message": "Gracias x todo , lo compré el domingo pasado en París  a nombre de ruben\nCarvajal arica..",
+                            "type": "message",
+                            "is_private": false
+                        },
+                        {
+                            "date": "2017-08-04T15:24:24Z",
+                            "current": "open",
+                            "type": "status_changed",
+                            "previous": "pending"
+                        },
+                        {
+                            "date": "2017-08-04T15:29:56Z",
+                            "current": "solved",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "type": "status_changed",
+                            "previous": "open"
+                        },
+                        {
+                            "date": "2017-08-05T15:52:08Z",
+                            "type": "rating_offer_sent"
+                        },
+                        {
+                            "date": "2017-08-05T18:35:48Z",
+                            "current": "good",
+                            "type": "rated",
+                            "author": {
+                                "type": "client",
+                                "name": "carlos ",
+                                "id": "carloscaaex@gmail.com"
+                            }
+                        }
+                    ],
+                    "id": "MB743",
+                    "requester": {
+                        "mail": "carloscaaex@gmail.com",
+                        "utc_offset": "America/Santo_Domingo",
+                        "name": "carlos ",
+                        "ip": "181.201.213.204"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "10 cuotas precio contado se retira en tienda",
+                    "modified": "2019-03-28T19:02:57Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.paris.cl/tienda/es/paris/electro/electro-television-ultrahd/led-49-lg-49uj6300-smart-tv-ultra-hd-175834-ppp-?utm_medium=social&utm_source=facebook.com&utm_campaign=Dynamic_AO&utm_content=carrito_10_dias"
+                    },
+                    "opened": [
+                        {
+                            "to": "2017-08-01T14:11:51Z",
+                            "from": "2017-08-01T03:28:54Z"
+                        },
+                        {
+                            "to": "2017-08-04T15:29:56Z",
+                            "from": "2017-08-04T15:24:24Z"
+                        }
+                    ],
+                    "date": "2017-08-01T03:28:54Z"
+                },
+                {
+                    "events": [
+                        {
+                            "author": {
+                                "type": "client",
+                                "name": "Paola",
+                                "id": "mra@ducci.cl"
+                            },
+                            "source": {
+                                "url": "https://www.paris.cl/tienda/es/paris/electro/electro-television-smart-tv/led-49-lg-49uj6300-smart-tv-ultra-hd-175834-ppp-#",
+                                "type": "chat-window"
+                            },
+                            "date": "2017-08-01T18:47:52Z",
+                            "message": "Mensaje:\nno puedo compraer este producto al precio ofrecido\nSKU: 175834-PPP\n\n",
+                            "type": "message",
+                            "is_private": false
+                        },
+                        {
+                            "date": "2017-08-01T20:11:57Z",
+                            "current": "spam",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "type": "status_changed",
+                            "previous": "open"
+                        },
+                        {
+                            "date": "2017-08-14T16:46:01Z",
+                            "current": "open",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "type": "status_changed",
+                            "previous": "spam"
+                        },
+                        {
+                            "date": "2017-08-14T16:46:37Z",
+                            "current": "spam",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "type": "status_changed",
+                            "previous": "open"
+                        }
+                    ],
+                    "id": "1MH6I",
+                    "requester": {
+                        "mail": "mra@ducci.cl",
+                        "utc_offset": "America/Santiago",
+                        "name": "Paola",
+                        "ip": "200.124.52.178"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "spam",
+                    "subject": "no puedo comprar este producto al precio ofrecido",
+                    "modified": "2017-08-14T16:46:37Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.paris.cl/tienda/es/paris/electro/electro-television-smart-tv/led-49-lg-49uj6300-smart-tv-ultra-hd-175834-ppp-#"
+                    },
+                    "opened": [
+                        {
+                            "to": "2017-08-01T20:11:57Z",
+                            "from": "2017-08-01T18:47:52Z"
+                        },
+                        {
+                            "to": "2017-08-14T16:46:37Z",
+                            "from": "2017-08-14T16:46:01Z"
+                        }
+                    ],
+                    "date": "2017-08-01T18:47:52Z"
+                },
+                {
+                    "events": [
+                        {
+                            "author": {
+                                "type": "client",
+                                "name": "Paola",
+                                "id": "mra@ducci.cl"
+                            },
+                            "source": {
+                                "url": "https://www.paris.cl/tienda/es/paris/electro/electro-television-smart-tv/led-49-lg-49uj6300-smart-tv-ultra-hd-175834-ppp-#",
+                                "type": "chat-window"
+                            },
+                            "date": "2017-08-01T18:47:37Z",
+                            "message": "Mensaje:\nno puedo compraer este producto al precio ofrecido\n\n",
+                            "type": "message",
+                            "is_private": false
+                        },
+                        {
+                            "date": "2017-08-01T20:11:57Z",
+                            "current": "spam",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "type": "status_changed",
+                            "previous": "open"
+                        },
+                        {
+                            "date": "2017-08-14T16:46:01Z",
+                            "current": "open",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "type": "status_changed",
+                            "previous": "spam"
+                        },
+                        {
+                            "date": "2017-08-14T16:46:37Z",
+                            "current": "spam",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "type": "status_changed",
+                            "previous": "open"
+                        }
+                    ],
+                    "id": "YRA98",
+                    "requester": {
+                        "mail": "mra@ducci.cl",
+                        "utc_offset": "America/Santiago",
+                        "name": "Paola",
+                        "ip": "200.124.52.178"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "spam",
+                    "subject": "no puedo comprar este producto al precio ofrecido",
+                    "modified": "2017-08-14T16:46:37Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.paris.cl/tienda/es/paris/electro/electro-television-smart-tv/led-49-lg-49uj6300-smart-tv-ultra-hd-175834-ppp-#"
+                    },
+                    "opened": [
+                        {
+                            "to": "2017-08-01T20:11:57Z",
+                            "from": "2017-08-01T18:47:37Z"
+                        },
+                        {
+                            "to": "2017-08-14T16:46:37Z",
+                            "from": "2017-08-14T16:46:01Z"
+                        }
+                    ],
+                    "date": "2017-08-01T18:47:37Z"
+                },
+                {
+                    "events": [
+                        {
+                            "author": {
+                                "type": "client",
+                                "name": "camila",
+                                "id": "camila.g26@outlook.com"
+                            },
+                            "source": {
+                                "url": "https://www.paris.cl/tienda/es/paris/electro/electro-television-todas-las-tv/led-49-lg-49uj6300-smart-tv-ultra-hd-175834-ppp-",
+                                "type": "chat-window"
+                            },
+                            "date": "2017-08-01T18:09:21Z",
+                            "message": "Mensaje:\nhola, como puedo comprar en 10 cuotas contado? me da varias opciones pero no las 10 cuotas...\n\n",
+                            "type": "message",
+                            "is_private": false
+                        },
+                        {
+                            "date": "2017-08-01T20:11:57Z",
+                            "current": "spam",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "type": "status_changed",
+                            "previous": "open"
+                        },
+                        {
+                            "date": "2017-08-14T16:46:01Z",
+                            "current": "open",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "type": "status_changed",
+                            "previous": "spam"
+                        },
+                        {
+                            "date": "2017-08-14T16:46:37Z",
+                            "current": "spam",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "type": "status_changed",
+                            "previous": "open"
+                        }
+                    ],
+                    "id": "H24J6",
+                    "requester": {
+                        "mail": "camila.g26@outlook.com",
+                        "utc_offset": "America/Santiago",
+                        "name": "camila",
+                        "ip": "201.219.233.135"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "spam",
+                    "subject": "consulta 10 cuotas",
+                    "modified": "2017-08-14T16:46:37Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.paris.cl/tienda/es/paris/electro/electro-television-todas-las-tv/led-49-lg-49uj6300-smart-tv-ultra-hd-175834-ppp-"
+                    },
+                    "opened": [
+                        {
+                            "to": "2017-08-01T20:11:57Z",
+                            "from": "2017-08-01T18:09:21Z"
+                        },
+                        {
+                            "to": "2017-08-14T16:46:37Z",
+                            "from": "2017-08-14T16:46:01Z"
+                        }
+                    ],
+                    "date": "2017-08-01T18:09:21Z"
+                },
+                {
+                    "assignee": {
+                        "name": "Promotor_Virtual_LG_01",
+                        "id": "jorge1.gonzalez@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "type": "client",
+                                "name": "carlos ",
+                                "id": "carloscaaex@gmail.com"
+                            },
+                            "source": {
+                                "url": "https://www.paris.cl/tienda/es/paris/electro/electro-television/led-49-lg-49uj6300-smart-tv-ultra-hd-175834-ppp-",
+                                "type": "chat-window"
+                            },
+                            "date": "2017-07-30T08:58:38Z",
+                            "message": "Mensaje:\n\nLed 49\" LG 49UJ6300 Smart TV 4K Ultra HD\n3,9 de 5\nAbrir muestra de puntuación\nESCRIBE UN COMENTARIO\n \n$279.990\t\nInternet: $349.990\nNormal: $429.990\nAcumula 2.240 Puntos\n12 cuotas de $29.212 con Tarjeta Cencosud \n\n",
+                            "type": "message",
+                            "is_private": false
+                        },
+                        {
+                            "author": {
+                                "type": "agent",
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "date": "2017-07-31T16:01:04Z",
+                            "message": "hola carlos, solamente se hace entrega a domicilio de este producto.\n que tengas excelente dia",
+                            "type": "message",
+                            "is_private": false
+                        },
+                        {
+                            "date": "2017-07-31T16:01:04Z",
+                            "to": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2017-07-31T16:01:04Z",
+                            "current": "pending",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "type": "status_changed",
+                            "previous": "open"
+                        },
+                        {
+                            "date": "2017-08-03T16:51:48Z",
+                            "type": "follow_up_sent"
+                        },
+                        {
+                            "date": "2017-08-07T16:07:00Z",
+                            "current": "solved",
+                            "type": "status_changed",
+                            "previous": "pending"
+                        },
+                        {
+                            "date": "2017-08-08T16:21:44Z",
+                            "type": "rating_offer_sent"
+                        }
+                    ],
+                    "id": "6ZPO6",
+                    "requester": {
+                        "mail": "carloscaaex@gmail.com",
+                        "utc_offset": "America/Santo_Domingo",
+                        "name": "carlos ",
+                        "ip": "181.201.144.32"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "10 cuotas precio contado se retira en tienda",
+                    "modified": "2019-03-28T19:02:57Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.paris.cl/tienda/es/paris/electro/electro-television/led-49-lg-49uj6300-smart-tv-ultra-hd-175834-ppp-"
+                    },
+                    "opened": [
+                        {
+                            "to": "2017-07-31T16:01:04Z",
+                            "from": "2017-07-30T08:58:38Z"
+                        }
+                    ],
+                    "date": "2017-07-30T08:58:38Z"
+                },
+                {
+                    "events": [
+                        {
+                            "author": {
+                                "type": "client",
+                                "name": "Pilar",
+                                "id": "pili307@hotmail.com"
+                            },
+                            "source": {
+                                "url": "https://www.paris.cl/tienda/es/paris/electro/electro-television-smart-tv/led-49-lg-49uj6560-4k-ultra-hd-161124-ppp-",
+                                "type": "chat-window"
+                            },
+                            "date": "2017-06-17T14:12:05Z",
+                            "message": "Mensaje:\nHola quiero saber si LED 49\" LG 49UJ6560 Smart TV Ultra HD 4K es versión 2016 ó 2017\n\n",
+                            "type": "message",
+                            "is_private": false
+                        },
+                        {
+                            "date": "2017-06-20T13:28:42Z",
+                            "current": "spam",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "type": "status_changed",
+                            "previous": "open"
+                        }
+                    ],
+                    "id": "Z21R0",
+                    "requester": {
+                        "mail": "pili307@hotmail.com",
+                        "utc_offset": "America/Santiago",
+                        "name": "Pilar",
+                        "ip": "186.156.143.109"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "spam",
+                    "subject": "año del modelo",
+                    "modified": "2017-06-20T13:28:42Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.paris.cl/tienda/es/paris/electro/electro-television-smart-tv/led-49-lg-49uj6560-4k-ultra-hd-161124-ppp-"
+                    },
+                    "opened": [
+                        {
+                            "to": "2017-06-20T13:28:42Z",
+                            "from": "2017-06-17T14:12:05Z"
+                        }
+                    ],
+                    "date": "2017-06-17T14:12:05Z"
+                },
+                {
+                    "events": [
+                        {
+                            "author": {
+                                "type": "client",
+                                "name": "Gonzalo Davalos",
+                                "id": "gdavalos@photeles.cl"
+                            },
+                            "source": {
+                                "url": "https://www.paris.cl/tienda/es/paris/led-49-lg-lh6000-smart-tv-full-hd-792048-ppp-",
+                                "type": "chat-window"
+                            },
+                            "date": "2017-04-13T17:18:49Z",
+                            "message": "Mensaje:\nLED 49\" LG LH6000 Smart TV Full HD en el inicio de la página esta a 259 mil y al pinchar el banner para comprar aparece en 319 mil\n\n",
+                            "type": "message",
+                            "is_private": false
+                        },
+                        {
+                            "date": "2017-04-13T20:16:20Z",
+                            "current": "spam",
+                            "author": {
+                                "name": "Promotor Virtual LG",
+                                "id": "virtuallg.promotor@lge.com"
+                            },
+                            "type": "status_changed",
+                            "previous": "open"
+                        }
+                    ],
+                    "id": "Z00BY",
+                    "requester": {
+                        "mail": "gdavalos@photeles.cl",
+                        "utc_offset": "America/Santiago",
+                        "name": "Gonzalo Davalos",
+                        "ip": "200.54.214.97"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "spam",
+                    "subject": "Reclamo",
+                    "modified": "2017-04-13T20:16:20Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.paris.cl/tienda/es/paris/led-49-lg-lh6000-smart-tv-full-hd-792048-ppp-"
+                    },
+                    "opened": [
+                        {
+                            "to": "2017-04-13T20:16:20Z",
+                            "from": "2017-04-13T17:18:49Z"
+                        }
+                    ],
+                    "date": "2017-04-13T17:18:49Z"
+                },
+                {
+                    "events": [
+                        {
+                            "author": {
+                                "type": "client",
+                                "name": "Eduardo Rodriguez",
+                                "id": "lalo.rodriguez.m@gmail.com"
+                            },
+                            "source": {
+                                "url": "https://www.paris.cl/tienda/es/paris/electro/electro-television-smart-tv/led-49-lg-lh6000-smart-tv-full-hd-792048-ppp-",
+                                "type": "chat-window"
+                            },
+                            "date": "2017-04-10T18:17:46Z",
+                            "message": "Mensaje:\nBuenas tardes, me podrian indicar si saben el precio del TV LED 49\" LG LH6000 Smart TV Full HD en tienda fisica?\n\nSaludos. \n\n",
+                            "type": "message",
+                            "is_private": false
+                        },
+                        {
+                            "date": "2017-04-10T19:59:02Z",
+                            "current": "spam",
+                            "author": {
+                                "name": "Promotor Virtual LG",
+                                "id": "virtuallg.promotor@lge.com"
+                            },
+                            "type": "status_changed",
+                            "previous": "open"
+                        }
+                    ],
+                    "id": "0Z7D0",
+                    "requester": {
+                        "mail": "lalo.rodriguez.m@gmail.com",
+                        "utc_offset": "America/Argentina/Buenos_Aires",
+                        "name": "Eduardo Rodriguez",
+                        "ip": "190.151.72.106"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "spam",
+                    "subject": "Precio",
+                    "modified": "2017-04-10T19:59:02Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.paris.cl/tienda/es/paris/electro/electro-television-smart-tv/led-49-lg-lh6000-smart-tv-full-hd-792048-ppp-"
+                    },
+                    "opened": [
+                        {
+                            "to": "2017-04-10T19:59:02Z",
+                            "from": "2017-04-10T18:17:46Z"
+                        }
+                    ],
+                    "date": "2017-04-10T18:17:46Z"
+                }
+            ]
+        },
+        "TV OLED 65": {
+            "total": 11,
+            "tickets": [
+                {
+                    "assignee": {
+                        "name": "Mariela",
+                        "id": "promotor.virtual@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "id": "rafm121257@hotmail.com",
+                                "name": "Ricardo Farías Morales",
+                                "type": "client"
+                            },
+                            "date": "2019-06-14T00:56:10Z",
+                            "is_private": false,
+                            "message": "Mensaje: Me interesa comprarlo con tarjeta Ripley.",
+                            "type": "message",
+                            "source": {
+                                "url": "https://simple.ripley.cl/oled-lg-65c8psa-65-2000371726941p",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2019-06-14T13:43:21Z",
+                            "is_private": false,
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "message": "Estimado, buen día.\n\nActualmente, marca precio internet de $1.499.990.\n\nPero bien puede adquirirlo con su Tarjeta Ripley y pagarlo en cómodas cuotas, ademas de acumular puntos Ripley (15000 RipleyPuntos GO)\n\nhttps://simple.ripley.cl/oled-lg-65c8psa-65-2000371726941p\n\nEsperando haber ayudado con su consulta.\n\nSaludos cordiales.",
+                            "type": "message",
+                            "author": {
+                                "name": "Mariela",
+                                "type": "agent",
+                                "id": "promotor.virtual@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-06-14T13:43:21Z",
+                            "to": {
+                                "name": "Mariela",
+                                "id": "promotor.virtual@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Mariela",
+                                "id": "promotor.virtual@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-06-14T13:43:21Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Mariela",
+                                "id": "promotor.virtual@lgepartner.com"
+                            }
+                        }
+                    ],
+                    "id": "FW7R4",
+                    "requester": {
+                        "mail": "rafm121257@hotmail.com",
+                        "name": "Ricardo Farías Morales",
+                        "utc_offset": "UTC",
+                        "ip": "186.79.118.205"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "TV OLED 65\" LGC8",
+                    "modified": "2019-06-14T13:43:21Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://simple.ripley.cl/oled-lg-65c8psa-65-2000371726941p"
+                    },
+                    "opened": [
+                        {
+                            "from": "2019-06-14T00:56:10Z",
+                            "to": "2019-06-14T13:43:21Z"
+                        }
+                    ],
+                    "date": "2019-06-14T00:56:10Z"
+                },
+                {
+                    "assignee": {
+                        "name": "Experto LG",
+                        "id": "edgar.pino@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "id": "gerson.urqueta.rojas@gmail.com",
+                                "name": "Gerson Urqueta",
+                                "type": "client"
+                            },
+                            "date": "2019-05-28T03:28:32Z",
+                            "is_private": false,
+                            "message": "Mensaje: Buenas, quisiera saber la diferencia de los LG Oled, me gusta mucho el de 65W8 65´´\"...Cual es la principal ventaja de este con los otros que tienen otra letra...Gracias",
+                            "type": "message",
+                            "source": {
+                                "url": "https://simple.ripley.cl/oled-lg-55b8-55-2000371747366p",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2019-05-29T15:58:15Z",
+                            "to": {
+                                "name": "Experto LG",
+                                "id": "edgar.pino@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Experto LG",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-05-29T15:58:15Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Experto LG",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        }
+                    ],
+                    "id": "YLZVJ",
+                    "requester": {
+                        "mail": "gerson.urqueta.rojas@gmail.com",
+                        "name": "Gerson Urqueta",
+                        "utc_offset": "UTC",
+                        "ip": "179.9.46.144"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "Compra de TV",
+                    "modified": "2019-05-29T15:58:15Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://simple.ripley.cl/oled-lg-55b8-55-2000371747366p"
+                    },
+                    "opened": [
+                        {
+                            "from": "2019-05-28T03:28:32Z",
+                            "to": "2019-05-29T15:58:15Z"
+                        }
+                    ],
+                    "date": "2019-05-28T03:28:32Z"
+                },
+                {
+                    "assignee": {
+                        "name": "Edgar",
+                        "id": "edgar.pino@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "id": "andres.oscos@gmail.com",
+                                "name": "Andrés",
+                                "type": "client"
+                            },
+                            "date": "2019-05-11T03:09:23Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nLos televisores con Thinq funcionan con Amazon Alexa?\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://simple.ripley.cl/oled-lg-65e8psa-65-2000371610325p?utm_source=soicos",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2019-05-13T14:04:12Z",
+                            "is_private": false,
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "message": "hola buen día le indico que estos TV no tienen ningún vinculo por el momento con el asistente virtual  Alexa",
+                            "type": "message",
+                            "author": {
+                                "name": "Edgar",
+                                "type": "agent",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-05-13T14:04:12Z",
+                            "to": {
+                                "name": "Edgar",
+                                "id": "edgar.pino@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Edgar",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-05-13T14:04:12Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Edgar",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-05-14T14:17:43Z",
+                            "type": "rating_offer_sent"
+                        }
+                    ],
+                    "id": "LJENF",
+                    "requester": {
+                        "mail": "andres.oscos@gmail.com",
+                        "name": "Andrés",
+                        "utc_offset": "America/Santiago",
+                        "ip": "190.160.31.122"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "Amazon Alexa ",
+                    "modified": "2019-05-14T14:17:43Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://simple.ripley.cl/oled-lg-65e8psa-65-2000371610325p?utm_source=soicos"
+                    },
+                    "opened": [
+                        {
+                            "from": "2019-05-11T03:09:23Z",
+                            "to": "2019-05-13T14:04:12Z"
+                        }
+                    ],
+                    "date": "2019-05-11T03:09:23Z"
+                },
+                {
+                    "assignee": {
+                        "name": "Edgar",
+                        "id": "edgar.pino@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "id": "Gerson.mald@gmail.com",
+                                "name": "Gerson ",
+                                "type": "client"
+                            },
+                            "date": "2019-05-07T05:33:33Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nPara cuando le llega la LG C7 oled de 65 pulgadas a la tienda deTarapacá, Iquique ?\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://simple.ripley.cl/oled-lg-65b7p-65-gris-2000363072384p",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2019-05-07T13:36:56Z",
+                            "is_private": false,
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "message": "Hola buen día le indico que actualmente se esta comercializando el modelo C8 y próximamente OLED C9  a continuación envió modelo disponible https://simple.ripley.cl/oled-lg-65c8psa-65-2000371726941p?queryID=cb825998568b854896a0eb64444e58e1&objectID=2000371726941",
+                            "type": "message",
+                            "author": {
+                                "name": "Edgar",
+                                "type": "agent",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-05-07T13:36:56Z",
+                            "to": {
+                                "name": "Edgar",
+                                "id": "edgar.pino@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Edgar",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-05-07T13:36:56Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Edgar",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-05-08T13:40:20Z",
+                            "type": "rating_offer_sent"
+                        }
+                    ],
+                    "id": "KJJPP",
+                    "requester": {
+                        "mail": "Gerson.mald@gmail.com",
+                        "name": "Gerson ",
+                        "utc_offset": "America/Santo_Domingo",
+                        "ip": "181.114.125.87"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "Adquisición de una TV ",
+                    "modified": "2019-05-08T13:40:20Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://simple.ripley.cl/oled-lg-65b7p-65-gris-2000363072384p"
+                    },
+                    "opened": [
+                        {
+                            "from": "2019-05-07T05:33:33Z",
+                            "to": "2019-05-07T13:36:56Z"
+                        }
+                    ],
+                    "date": "2019-05-07T05:33:33Z"
+                },
+                {
+                    "assignee": {
+                        "name": "Edgar",
+                        "id": "edgar.pino@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "id": "Ramirezvargasgilmar@gmail.com",
+                                "name": "Gilmar",
+                                "type": "client"
+                            },
+                            "date": "2019-03-30T01:10:14Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nDuda si esque me entrgan factura o alguna poliza valida por la compra de 1 tv para llevarmela a otro pais \n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://simple.ripley.cl/oled-lg-65c8psa-65-2000371726941p",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2019-04-01T13:03:49Z",
+                            "is_private": false,
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "message": "Hola buen día le indico que el equipo cuenta con 1 año de garantia y es valido con la boleta o factura emitida por la tienda, de la misma manera le indico que la garantia no funciona a nivel internacional por lo que si el equipo es comprado en Chile la garantia funciona solo en Chile. Ha sido un placer hablar con usted hoy. Que tenga buen día.",
+                            "type": "message",
+                            "author": {
+                                "name": "Edgar",
+                                "type": "agent",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-04-01T13:03:49Z",
+                            "to": {
+                                "name": "Edgar",
+                                "id": "edgar.pino@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Edgar",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-04-01T13:03:49Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Edgar",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2019-04-02T13:14:19Z",
+                            "type": "rating_offer_sent"
+                        }
+                    ],
+                    "id": "LOK32",
+                    "requester": {
+                        "mail": "Ramirezvargasgilmar@gmail.com",
+                        "name": "Gilmar",
+                        "utc_offset": "America/Santo_Domingo",
+                        "ip": "186.2.3.212"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "Queria preguntar si al momento de hacer la compra de una tv me dan factura por que en la aduana para llevar a otro pais me la piden.gracias",
+                    "modified": "2019-04-02T13:14:19Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://simple.ripley.cl/oled-lg-65c8psa-65-2000371726941p"
+                    },
+                    "opened": [
+                        {
+                            "from": "2019-03-30T01:10:14Z",
+                            "to": "2019-04-01T13:03:49Z"
+                        }
+                    ],
+                    "date": "2019-03-30T01:10:14Z"
+                },
+                {
+                    "assignee": {
+                        "name": "Moises Promotor LG Electonics",
+                        "id": "jorge1.gonzalez@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "id": "Kenopuelles@yahoo.com",
+                                "name": "Eugenio puelles",
+                                "type": "client"
+                            },
+                            "date": "2018-08-31T03:36:39Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nDiferencias en TV smart\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://simple.ripley.cl/oled-lg-65b7p-65-gris-2000363072384p?utm_campaign=dpa_view3&utm_medium=remarketing_rc&utm_source=facebook.com",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2018-08-31T14:38:26Z",
+                            "is_private": false,
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "message": "entre cuales modelos?",
+                            "type": "message",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "type": "agent",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-08-31T14:38:26Z",
+                            "to": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-08-31T14:38:26Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Moises Promotor LG Electonics",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-09-01T15:33:04Z",
+                            "type": "rating_offer_sent"
+                        }
+                    ],
+                    "id": "OWJD8",
+                    "requester": {
+                        "mail": "Kenopuelles@yahoo.com",
+                        "name": "Eugenio puelles",
+                        "utc_offset": "America/Santiago",
+                        "ip": "186.9.11.168"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "Compra de Tv",
+                    "modified": "2019-03-28T19:02:57Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://simple.ripley.cl/oled-lg-65b7p-65-gris-2000363072384p?utm_campaign=dpa_view3&utm_medium=remarketing_rc&utm_source=facebook.com"
+                    },
+                    "opened": [
+                        {
+                            "from": "2018-08-31T03:36:39Z",
+                            "to": "2018-08-31T14:38:26Z"
+                        }
+                    ],
+                    "date": "2018-08-31T03:36:39Z"
+                },
+                {
+                    "assignee": {
+                        "name": "Promotor_Virtual_LG_01",
+                        "id": "jorge1.gonzalez@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "id": "solanolivias@gmail.com",
+                                "name": "solano livias vilca",
+                                "type": "client"
+                            },
+                            "date": "2018-06-28T02:42:25Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nBuenas noches señores de LG, soy un cliente fidelizado y muy satisfecho con sus productos, pero no logro entender porque hay tanta diferencia de precios en esta página de este país con la de Perú, los precios de las tv lg en Perú es realmente elevado a comparación, no lo veo realmente justo.. ah qué se debe dicha diferencia abismal?\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://simple.ripley.cl/oled-lg-65b7p-65-gris-2000363072384p",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2018-07-03T14:33:15Z",
+                            "is_private": false,
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "message": "esto ya es un tema que esta fuera de nuestro conocimiento, pero eso ya va en temas de estudios de mercado, fabricacion del producto, clientes , ensamblado, importacion etc",
+                            "type": "message",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "type": "agent",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-07-03T14:33:15Z",
+                            "to": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-07-03T14:33:15Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-07-04T15:16:34Z",
+                            "type": "rating_offer_sent"
+                        },
+                        {
+                            "date": "2018-07-04T21:28:16Z",
+                            "current": "bad",
+                            "type": "rated",
+                            "author": {
+                                "name": "solano livias vilca",
+                                "type": "client",
+                                "id": "solanolivias@gmail.com"
+                            }
+                        }
+                    ],
+                    "id": "OJMIT",
+                    "requester": {
+                        "mail": "solanolivias@gmail.com",
+                        "name": "solano livias vilca",
+                        "utc_offset": "America/Bogota",
+                        "ip": "190.232.229.166"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "Precios bien elevados en Perú",
+                    "modified": "2019-03-28T19:02:57Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://simple.ripley.cl/oled-lg-65b7p-65-gris-2000363072384p"
+                    },
+                    "opened": [
+                        {
+                            "from": "2018-06-28T02:42:25Z",
+                            "to": "2018-07-03T14:33:15Z"
+                        }
+                    ],
+                    "date": "2018-06-28T02:42:25Z"
+                },
+                {
+                    "assignee": {
+                        "name": "Promotor_Virtual_LG_01",
+                        "id": "jorge1.gonzalez@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "id": "Kasandra._x14@hotmail.com",
+                                "name": "Kassandra",
+                                "type": "client"
+                            },
+                            "date": "2018-05-05T21:57:41Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nQuisiera saber la.disponibilidad de esta tv\n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://simple.ripley.cl/oled-lg-65b6p-65-2000359744752p",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2018-05-09T20:25:44Z",
+                            "is_private": false,
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "message": "eso dependera de la comuna o de la region",
+                            "type": "message",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "type": "agent",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-05-09T20:25:44Z",
+                            "to": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-05-09T20:25:44Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-05-10T00:24:35Z",
+                            "is_private": false,
+                            "author": {
+                                "name": "kasandra rogel sepulveda",
+                                "type": "client",
+                                "id": "kasandra._x14@hotmail.com"
+                            },
+                            "source": {
+                                "type": "mail"
+                            },
+                            "message": "Tenia la compra lista y avia disponible y e  1 segundo lla no\n\nEl 9 may. 2018 5:25 PM, 8246671+GP806@tickets.livechatinc.com escribió:\n\n## ¡Su ticket está resuelto! ##\n\n        [https://livechat.s3.amazonaws.com/8246671/0/logo/f128d44ca26316414dac156d91cd7578.png]  Comprar tv oled lg 65b6p\n\n        [https://livechat.s3.amazonaws.com/default/avatars/ab5b0666feffd67600206cd519fd77ea.jpg]                Promotor_Virtual_LG_01\n        Wed, 05/09/18 5:25 pm\n\n        eso dependera de la comuna o de la region\n\n        Kassandra\n        Sat, 05/05/18 6:57 pm\n\n        Mensaje:\nQuisiera saber la.disponibilidad de esta tv\n\n                Powered by LiveChat<https://www.livechatinc.com/powered-by-livechat/?utm_source=ticket_footer&utm_medium=email&utm_campaign=https%3A%2F%2Fsimple.ripley.cl%2Foled-lg-65b6p-65-2000359744752p>",
+                            "type": "message"
+                        },
+                        {
+                            "date": "2018-05-10T00:24:35Z",
+                            "current": "open",
+                            "previous": "solved",
+                            "type": "status_changed"
+                        },
+                        {
+                            "date": "2018-05-15T14:51:42Z",
+                            "is_private": false,
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "message": "reitero, para eso debemos sabe a que comuna region o sector corresponde",
+                            "type": "message",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "type": "agent",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-05-15T14:51:42Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_01",
+                                "id": "jorge1.gonzalez@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-05-16T15:11:24Z",
+                            "type": "rating_offer_sent"
+                        }
+                    ],
+                    "id": "GP806",
+                    "requester": {
+                        "mail": "Kasandra._x14@hotmail.com",
+                        "name": "Kassandra",
+                        "utc_offset": "America/Santiago",
+                        "ip": "201.219.237.216"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "Comprar tv oled lg 65b6p",
+                    "modified": "2019-03-28T19:02:57Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://simple.ripley.cl/oled-lg-65b6p-65-2000359744752p"
+                    },
+                    "opened": [
+                        {
+                            "from": "2018-05-05T21:57:41Z",
+                            "to": "2018-05-09T20:25:44Z"
+                        },
+                        {
+                            "from": "2018-05-10T00:24:35Z",
+                            "to": "2018-05-15T14:51:42Z"
+                        }
+                    ],
+                    "date": "2018-05-05T21:57:41Z"
+                },
+                {
+                    "assignee": {
+                        "name": "Promotor_Virtual_LG_02",
+                        "id": "edgar.pino@lgepartner.com"
+                    },
+                    "events": [
+                        {
+                            "author": {
+                                "id": "mbrender@vtr.net",
+                                "name": "Maxi Brender Zwick ",
+                                "type": "client"
+                            },
+                            "date": "2018-04-20T22:42:20Z",
+                            "is_private": false,
+                            "message": "Mensaje:\nEl B7p va a bajar de precio y cuando ya que vienen los modelos 2018, \n\n",
+                            "type": "message",
+                            "source": {
+                                "url": "https://simple.ripley.cl/led-lg-65sj9500-65-2000363548032p#",
+                                "type": "chat-window"
+                            }
+                        },
+                        {
+                            "date": "2018-04-24T14:43:58Z",
+                            "is_private": false,
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "message": "hola buenas tardes le indico que no tenemos información actualmente de cuando ser el nuevo lanzamiento pero le recomiendo esta super oferta. https://simple.ripley.cl/combo-oled-lg-65b7p-65-gris-consola-ps4-uncharted-4-thiefs-end-god-of-war-iii-remastered-horizon-zero-dawn-3000000000554",
+                            "type": "message",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_02",
+                                "type": "agent",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-04-24T14:43:58Z",
+                            "to": {
+                                "name": "Promotor_Virtual_LG_02",
+                                "id": "edgar.pino@lgepartner.com"
+                            },
+                            "type": "assignee_changed",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_02",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-04-24T14:43:58Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_02",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-04-24T14:53:31Z",
+                            "is_private": false,
+                            "author": {
+                                "name": "mbrender",
+                                "type": "client",
+                                "id": "mbrender@vtr.net"
+                            },
+                            "source": {
+                                "type": "mail"
+                            },
+                            "message": "Hola, no tengo niños para que jueguen, lo que quiero es un 65 B7P, cuando tengan una oferta me avisan por favor.Gracias \n\n\nEnviado desde mi Samsung Mobile de Claro\n-------- Mensaje original --------De: 8246671+N2R7P@tickets.livechatinc.com Fecha: 24/4/18  11:43  (GMT-04:00) A: mbrender@vtr.net Asunto: Re: Ticket #N2R7P: Que diferencias hay entre el 65sj9500 y el 65B7p \n##  ¡Su ticket está resuelto! ## \nQue diferencias hay entre el 65sj9500 y el 65B7p\nPromotor_Virtual_LG_02\nTue, 04/24/18 11:43 am\nhola buenas tardes le indico que no tenemos información actualmente de cuando ser el nuevo lanzamiento pero le recomiendo esta super oferta. https://simple.ripley.cl/combo-oled-lg-65b7p-65-gris-consola-ps4-uncharted-4-thiefs-end-god-of-war-iii-remastered-horizon-zero-dawn-3000000000554\nMaxi Brender Zwick \nFri, 04/20/18 7:42 pm\nMensaje:\n\nEl B7p va a bajar de precio y cuando ya que vienen los modelos 2018, \nPowered by LiveChat",
+                            "type": "message"
+                        },
+                        {
+                            "date": "2018-04-24T14:53:31Z",
+                            "current": "open",
+                            "previous": "solved",
+                            "type": "status_changed"
+                        },
+                        {
+                            "date": "2018-04-24T14:56:55Z",
+                            "is_private": false,
+                            "source": {
+                                "type": "lc2"
+                            },
+                            "message": "le indico que actualmente el mejor precio que puede conseguir en este momento es de $1.699.990 https://simple.ripley.cl/oled-lg-65b7p-65-gris-2000363072384p",
+                            "type": "message",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_02",
+                                "type": "agent",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-04-24T14:56:55Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_02",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-04-24T16:29:01Z",
+                            "is_private": false,
+                            "author": {
+                                "name": "mbrender",
+                                "type": "client",
+                                "id": "mbrender@vtr.net"
+                            },
+                            "source": {
+                                "type": "mail"
+                            },
+                            "message": "Estuvo más barato el tv, voy a esperar que bajen y compro, si pueden me avisan para ir a comprar. \n\n\nEnviado desde mi Samsung Mobile de Claro\n-------- Mensaje original --------De: 8246671+N2R7P@tickets.livechatinc.com Fecha: 24/4/18  11:56  (GMT-04:00) A: mbrender@vtr.net Asunto: Re: Ticket #N2R7P: Que diferencias hay entre el 65sj9500 y el 65B7p \n##  ¡Su ticket está resuelto! ## \nQue diferencias hay entre el 65sj9500 y el 65B7p\nPromotor_Virtual_LG_02\nTue, 04/24/18 11:56 am\nle indico que actualmente el mejor precio que puede conseguir en este momento es de $1.699.990 https://simple.ripley.cl/oled-lg-65b7p-65-gris-2000363072384p\nmbrender\nTue, 04/24/18 11:53 am\nHola, no tengo niños para que jueguen, lo que quiero es un 65 B7P, cuando tengan una oferta me avisan por favor.Gracias \nEnviado desde mi Samsung Mobile de Claro\n\n-------- Mensaje original --------De: 8246671+N2R7P@tickets.livechatinc.com Fecha: 24/4/18  11:43  (GMT-04:00) A: mbrender@vtr.net Asunto: Re: Ticket #N2R7P: Que diferencias hay entre el 65sj9500 y el 65B7p \n\n##  ¡Su ticket está resuelto! ## \n\nQue diferencias hay entre el 65sj9500 y el 65B7p\n\nPromotor_Virtual_LG_02\n\nTue, 04/24/18 11:43 am\n\nhola buenas tardes le indico que no tenemos información actualmente de cuando ser el nuevo lanzamiento pero le recomiendo esta super oferta. https://simple.ripley.cl/combo-oled-lg-65b7p-65-gris-consola-ps4-uncharted-4-thiefs-end-god-of-war-iii-remastered-horizon-zero-dawn-3000000000554\n\nMaxi Brender Zwick \n\nFri, 04/20/18 7:42 pm\n\nMensaje:\n\n\n\nEl B7p va a bajar de precio y cuando ya que vienen los modelos 2018, \n\nPowered by LiveChat\nPromotor_Virtual_LG_02\nTue, 04/24/18 11:43 am\nhola buenas tardes le indico que no tenemos información actualmente de cuando ser el nuevo lanzamiento pero le recomiendo esta super oferta. https://simple.ripley.cl/combo-oled-lg-65b7p-65-gris-consola-ps4-uncharted-4-thiefs-end-god-of-war-iii-remastered-horizon-zero-dawn-3000000000554\nMaxi Brender Zwick \nFri, 04/20/18 7:42 pm\nMensaje:\n\nEl B7p va a bajar de precio y cuando ya que vienen los modelos 2018, \nPowered by LiveChat",
+                            "type": "message"
+                        },
+                        {
+                            "date": "2018-04-24T16:29:01Z",
+                            "current": "open",
+                            "previous": "solved",
+                            "type": "status_changed"
+                        },
+                        {
+                            "date": "2018-04-24T16:59:01Z",
+                            "current": "solved",
+                            "previous": "open",
+                            "type": "status_changed",
+                            "author": {
+                                "name": "Promotor_Virtual_LG_02",
+                                "id": "edgar.pino@lgepartner.com"
+                            }
+                        },
+                        {
+                            "date": "2018-04-25T17:08:12Z",
+                            "type": "rating_offer_sent"
+                        },
+                        {
+                            "date": "2018-04-25T22:48:01Z",
+                            "current": "bad",
+                            "type": "rated",
+                            "author": {
+                                "name": "Maxi Brender Zwick ",
+                                "type": "client",
+                                "id": "mbrender@vtr.net"
+                            }
+                        }
+                    ],
+                    "id": "N2R7P",
+                    "requester": {
+                        "mail": "mbrender@vtr.net",
+                        "name": "Maxi Brender Zwick ",
+                        "utc_offset": "America/Santiago",
+                        "ip": "190.96.46.29"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "solved",
+                    "subject": "Que diferencias hay entre el 65sj9500 y el 65B7p",
+                    "modified": "2018-04-25T22:48:01Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://simple.ripley.cl/led-lg-65sj9500-65-2000363548032p#"
+                    },
+                    "opened": [
+                        {
+                            "from": "2018-04-20T22:42:20Z",
+                            "to": "2018-04-24T14:43:58Z"
+                        },
+                        {
+                            "from": "2018-04-24T14:53:31Z",
+                            "to": "2018-04-24T14:56:55Z"
+                        },
+                        {
+                            "from": "2018-04-24T16:29:01Z",
+                            "to": "2018-04-24T16:59:01Z"
+                        }
+                    ],
+                    "date": "2018-04-20T22:42:20Z"
+                },
+                {
+                    "events": [
+                        {
+                            "author": {
+                                "type": "client",
+                                "name": "Luz jorquera",
+                                "id": "luzjorquera@gmail.com"
+                            },
+                            "source": {
+                                "url": "https://www.paris.cl/tienda/es/paris/electro/electro-television-todas-las-tv/oled-65-lg-65e6p-smart-tv-4k-ultrahd-3d-832453-ppp-",
+                                "type": "chat-window"
+                            },
+                            "date": "2017-04-24T06:50:47Z",
+                            "message": "Mensaje:\nTv LG  OLED 65\" LG 65E6P Smart TV 4K UltraHD 3D\nLunes 24 abril es posible y en qué lugar.\nGracias\n\n\n",
+                            "type": "message",
+                            "is_private": false
+                        },
+                        {
+                            "date": "2017-04-24T16:10:12Z",
+                            "current": "spam",
+                            "author": {
+                                "name": "Promotor Virtual LG",
+                                "id": "virtuallg.promotor@lge.com"
+                            },
+                            "type": "status_changed",
+                            "previous": "open"
+                        }
+                    ],
+                    "id": "A5RTO",
+                    "requester": {
+                        "mail": "luzjorquera@gmail.com",
+                        "utc_offset": "America/Santiago",
+                        "name": "Luz jorquera",
+                        "ip": "200.86.82.121"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "spam",
+                    "subject": "Disponibilidad tienda ",
+                    "modified": "2017-04-24T16:10:12Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.paris.cl/tienda/es/paris/electro/electro-television-todas-las-tv/oled-65-lg-65e6p-smart-tv-4k-ultrahd-3d-832453-ppp-"
+                    },
+                    "opened": [
+                        {
+                            "to": "2017-04-24T16:10:12Z",
+                            "from": "2017-04-24T06:50:47Z"
+                        }
+                    ],
+                    "date": "2017-04-24T06:50:47Z"
+                },
+                {
+                    "events": [
+                        {
+                            "author": {
+                                "type": "client",
+                                "name": "Jorge Vidal",
+                                "id": "kona2165@hotmail.com"
+                            },
+                            "source": {
+                                "url": "https://www.paris.cl/tienda/es/paris/oled-65-lg-65e6p-smart-tv-4k-ultrahd-3d-832453-ppp-",
+                                "type": "chat-window"
+                            },
+                            "date": "2017-04-08T02:48:50Z",
+                            "message": "Mensaje:\nPor favor, informar oferta del Oled, respecto del precio actual.\n\n",
+                            "type": "message",
+                            "is_private": false
+                        },
+                        {
+                            "date": "2017-04-10T19:59:02Z",
+                            "current": "spam",
+                            "author": {
+                                "name": "Promotor Virtual LG",
+                                "id": "virtuallg.promotor@lge.com"
+                            },
+                            "type": "status_changed",
+                            "previous": "open"
+                        }
+                    ],
+                    "id": "0ALZZ",
+                    "requester": {
+                        "mail": "kona2165@hotmail.com",
+                        "utc_offset": "America/Santiago",
+                        "name": "Jorge Vidal",
+                        "ip": "186.105.101.162"
+                    },
+                    "groups": [
+                        {
+                            "id": 0,
+                            "name": "General",
+                            "inherited": true
+                        }
+                    ],
+                    "status": "spam",
+                    "subject": "OLED 65\" LG 65E6P Smart TV 4K UltraHD 3D",
+                    "modified": "2017-04-10T19:59:02Z",
+                    "source": {
+                        "type": "chat-window",
+                        "url": "https://www.paris.cl/tienda/es/paris/oled-65-lg-65e6p-smart-tv-4k-ultrahd-3d-832453-ppp-"
+                    },
+                    "opened": [
+                        {
+                            "to": "2017-04-10T19:59:02Z",
+                            "from": "2017-04-08T02:48:50Z"
+                        }
+                    ],
+                    "date": "2017-04-08T02:48:50Z"
                 }
             ]
         }

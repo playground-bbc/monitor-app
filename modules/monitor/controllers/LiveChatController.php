@@ -109,15 +109,15 @@ class LiveChatController extends Controller
 
         $params = [
             'alertId' => $alert->id,
-            'date_from' => '2018-06-13',
-            'date_to' => '2019-06-13',
+            'date_from' => '',
+            'date_to' => '',
             'page' => 1,
-            'query' => ['query','SMART TV LED 49']
+            'query' => ['TV OLED 65','SMART TV LED 49']
         ];
 
         $live_chat = new LiveChatApi();
         $tickets = $live_chat->loadParams($params)->getTickets()->saveJson();
-        var_dump($tickets['SMART TV LED 49']['tickets']);
+        var_dump($live_chat->getTicketsByProduct('TV OLED 65'));
         die();
         /*$tickets = $live_chat->loadParams($params)->getTickets()->orderByTickets();*/
 
