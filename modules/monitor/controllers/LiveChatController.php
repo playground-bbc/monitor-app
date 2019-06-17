@@ -92,36 +92,6 @@ class LiveChatController extends Controller
     {
         $alert = Alerts::findOne($alertId);
 
-        $products_model_alerts = ArrayHelper::map(ProductsModelsAlerts::find()->where(['alertId' => $alertId])->all(),'product_modelId','alertId');
-        $models_products = ArrayHelper::map(ProductsModels::find()->where(['id' => array_keys($products_model_alerts)])->all(),'productId','serial_model');
-        $products = ArrayHelper::map(Products::find()->where(['id' => array_keys($models_products)])->all(),'id','name');
-        
-
-        $query = ArrayHelper::merge($models_products,$products);
-
-        /*$params = [
-            'alertId' => $alert->id,
-            'date_from' => $alert->start_date,
-            'date_to' => $alert->end_date,
-            'page' => 1,
-            'query' => $query
-        ];*/
-
-        $params = [
-            'alertId' => $alert->id,
-            'date_from' => '',
-            'date_to' => '',
-            'page' => 1,
-            'query' => ['TV OLED 65','SMART TV LED 49']
-        ];
-
-        $live_chat = new LiveChatApi();
-        $tickets = $live_chat->loadParams($params)->getTickets()->saveJson();
-        var_dump($live_chat->getTicketsByProduct('TV OLED 65'));
-        die();
-        /*$tickets = $live_chat->loadParams($params)->getTickets()->orderByTickets();*/
-
-
         return $this->render('view');
     }
 
@@ -190,7 +160,7 @@ class LiveChatController extends Controller
                 $dictionary = new Dictionary();
                 $dictionary->alertId = $alertId;
                 $dictionary->category_dictionaryId = $categoryId->id;
-                $dictionary->word = utf8_encode(fgets($file));
+                $dictionary->word = trim(utf8_encode(fgets($file)));
                 if (!$dictionary->save()) {
                     var_dump($file);
                     die();

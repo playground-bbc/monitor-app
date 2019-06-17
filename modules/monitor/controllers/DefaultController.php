@@ -13,14 +13,15 @@ use yii\helpers\ArrayHelper;
 class DefaultController extends Controller
 {
 
-	/*public function actions()
+	public function actions()
 	{
 		return [
             'error' => [
                 'class' => 'yii\web\ErrorAction',
             ],
         ];
-	}*/
+	}
+
     /**
      * Renders the index view for the module
      * @return string
@@ -51,13 +52,15 @@ class DefaultController extends Controller
 		]);
 	}
 
+	
 
-	/*public function actionError()
+
+	public function actionError()
 	{
 	    $exception = Yii::$app->errorHandler->exception;
 	    if ($exception !== null) {
 	        return $this->render('error', ['exception' => $exception]);
 	    }
-	}*/
+	}
 
 }

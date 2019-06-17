@@ -1,6 +1,6 @@
 {
     "__created_at": 1560552292,
-    "__updated_at": 1560557787,
+    "__updated_at": 1560786204,
     "data": {
         "query": {
             "total": 0
@@ -5016,6 +5016,10 @@
                                 "name": "Mariela",
                                 "id": "promotor.virtual@lgepartner.com"
                             }
+                        },
+                        {
+                            "date": "2019-06-15T14:07:58Z",
+                            "type": "rating_offer_sent"
                         }
                     ],
                     "id": "FW7R4",
@@ -5034,7 +5038,7 @@
                     ],
                     "status": "solved",
                     "subject": "TV OLED 65\" LGC8",
-                    "modified": "2019-06-14T13:43:21Z",
+                    "modified": "2019-06-15T14:07:58Z",
                     "source": {
                         "type": "chat-window",
                         "url": "https://simple.ripley.cl/oled-lg-65c8psa-65-2000371726941p"

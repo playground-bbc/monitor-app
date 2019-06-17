@@ -1,19 +1,20 @@
 <?php
 namespace app\models\api;
 
-use Filebase\Database as Filebase;
+//use Filebase\Database as Filebase;
+use Yii;
 use LiveChat\Api\Client as LiveChat;
 use Stringizer\Stringizer;
-use Yii;
 use yii\web\HttpException;
 use yii\base\Model;
 use yii\helpers\ArrayHelper;
 
 
-
 use app\models\ProductsModels;
+use app\models\filebase\Filebase;
 use app\models\ProductsCategories;
 use app\models\CategoriesDictionary;
+use app\models\Dictionary;
 
 /**
  * LiveChatApi is the model behind the login API.
@@ -28,8 +29,10 @@ class LiveChatApi extends Model
     public $baseName = 'live-chat';
     public $params   = [];
     public $data;
+    
     public $alertId;
 
+    
     public $exclude = [
         'resolutionDate',
         'firstResponse',
@@ -40,16 +43,13 @@ class LiveChatApi extends Model
 
     ];
 
-
     
 
     public function loadParams($params)
     {
 
-        $this->alertId = $params['alertId'];
         $params['date_from'] = ($params['date_from']) ?  Yii::$app->formatter->asDate($params['date_from'],'yyyy-MM-dd') : '';
         $params['date_to'] = ($params['date_to']) ? Yii::$app->formatter->asDate($params['date_to'],'yyyy-MM-dd'): '';
-        unset($params['alertId']);
 
         foreach ($params as $key => $value) {
             $this->params[$key] = $value; 
@@ -92,21 +92,31 @@ class LiveChatApi extends Model
     public function saveJson()
     {
         
-        $file = $this->_filebase->get("{$this->baseName}_{$this->alertId}");
-        foreach ($this->data as $key => $value) {
-            $file->$key = $value;
-        }
-        $file->save();
+        $this->_filebase->alertId = $this->alertId;
+        $this->_filebase->save($this->data);
+    }
+
+    public function orderTicketsByWordsMentioned()
+    {
+        
     }
 
     public function getTicketsByProduct($product='')
     {
         
-        $data = ArrayHelper::map($this->_filebase->query()->select("{$product}.tickets")->results(),'0',"{$product}.tickets");
+        $baseName = $this->baseName;
+        $data = ArrayHelper::map($this->_filebase->get()->query()->select("{$product}.{$baseName}.tickets")->results(),'0',"{$product}.{$baseName}.tickets");
         $value = ArrayHelper::getValue($data, '');
 
         return $value;
 
+    }
+
+    public function getWordsToSearch()
+    {
+        $dictionaries = Dictionary::find()->where(['alertId'=> $this->alertId])->with('category')->asArray()->all();
+        $words = ArrayHelper::map($dictionaries,'id','word','category.name');
+        return $words;
     }
 
     private function _orderbyTicket()
@@ -114,16 +124,15 @@ class LiveChatApi extends Model
         foreach ($this->_data as $key => $value) {
             foreach ($value as $obj => $property) {
                //$this->data[$key]['pages'] = $property->pages;
-               $this->data[$key]['total'] = $property->total;
+               $this->data[$key][$this->baseName]['total'] = $property->total;
                foreach ($property->tickets as $ticket ) {
                    $data = $this->_exclude($ticket);
-                   $this->data[$key]['tickets'][]= $data;
+                   $this->data[$key][$this->baseName]['tickets'][]= $data;
                }
             }
         }
 
     }
-
 
     private function _exclude($ticket)
     {
@@ -150,24 +159,7 @@ class LiveChatApi extends Model
     public function __construct()
     {
         $this->_liveChat = new LiveChat(Yii::$app->params['liveChat']['apiLogin'], Yii::$app->params['liveChat']['apiKey']);
-        $this->_filebase = new \Filebase\Database([
-            'dir'            => Yii::getAlias('@live-chat'),
-            'backupLocation' => Yii::getAlias('@backup'),
-            'format'         => \Filebase\Format\Json::class,
-            'cache'          => true,
-            'cache_expires'  => 1800,
-            'pretty'         => true,
-            'safe_filename'  => true,
-            'read_only'      => false,
-            'validate'       => [
-                /* 
-                'name' => [
-                    'valid.type'     => 'string',
-                    'valid.required' => true,
-                ],
-                */
-            ],
-        ]);
+        $this->_filebase = new Filebase();
 
         parent::__construct();
     }
