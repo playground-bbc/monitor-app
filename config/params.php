@@ -6,6 +6,7 @@ $s = DIRECTORY_SEPARATOR;
 //Yii::setAlias('@live-chat', dirname(dirname(__DIR__)) . "{$s}monitor-app{$s}monitor-app-filebase{$s}live-chat");
 Yii::setAlias('@resources', dirname(dirname(__DIR__)) . "{$s}monitor-app{$s}monitor-app-filebase{$s}resources");
 Yii::setAlias('@backup', dirname(dirname(__DIR__)) . "{$s}monitor-app{$s}monitor-app-filebase{$s}backup");
+Yii::setAlias('@service_account', dirname(dirname(__DIR__)) . "{$s}monitor-app{$s}monitor-app-filebase{$s}service_account");
 
 return [
     'twitter' => [
@@ -18,5 +19,10 @@ return [
     	'apiLogin' => 'eduardo@montana-studio.com',
         'apiKey' => 'ad24335143918c8470d4962a1c52866e'
     	/*'apiKey' => 'ad24335143918c8470d4962a1c52866e'*/
+    ],
+    'drive' => [
+        'clientId' => '664489977267-15o8cja0nao16549i567mg6iuh74fuad.apps.googleusercontent.com',
+        'clientSecret' => 'BkerwlfGvd0RdKJo2x_ie7kS',
+        'spreadsheetId' => '14IGcLxkD4uqINWIebmD9_u_iIaPtLo_4moL2TdUyOdo'
     ]
 ];
