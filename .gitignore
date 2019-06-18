@@ -37,3 +37,7 @@ config/db.php
 
 # assest
 /web/assets
+
+# sensitive data
+/monitor-app-data/*
+/config/*
