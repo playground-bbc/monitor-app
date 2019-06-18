@@ -7,22 +7,22 @@ $s = DIRECTORY_SEPARATOR;
 Yii::setAlias('@resources', dirname(dirname(__DIR__)) . "{$s}monitor-app{$s}monitor-app-data{$s}resources");
 Yii::setAlias('@backup', dirname(dirname(__DIR__)) . "{$s}monitor-app{$s}monitor-app-data{$s}backup");
 Yii::setAlias('@service_account', dirname(dirname(__DIR__)) . "{$s}monitor-app{$s}monitor-app-data{$s}service_account");
+Yii::setAlias('@drive_account', dirname(dirname(__DIR__)) . "{$s}monitor-app{$s}monitor-app-data{$s}service_account{$s}montior-app-788bf22b5843.json");
 
 return [
     'twitter' => [
-    	'api_key' => 'o1Ah41T1AhjUs9e2xYJQMuCaE',
-    	'api_secret_key'=> '5U7whZh5KEyOQ3qt6WlwtNsf8g4kriEU1lzUzef9HkT6hOkHoZ',
-    	'access_token' => '305928001-Lr0BCqUYTFetCgejpC0G8U99BtCRi9zVHvz4hCGx',
-    	'access_secret_token'=> 'LxoblFlA0a1AkopN92fVa7ejkQ6HjKwRyRJCpJdARxgIU',
+    	'api_key' => 'oxmyn1WmBKihhfdcQGCTXlgQh',
+    	'api_secret_key'=> 'msPakDIfXECOe6NrgGrAVwkHdCtbDHzeaHMgVqO4R0ioDyPWlh',
+    	'access_token' => '305928001-TTdlPqtbByToHaReoou7LBSOAYPa4uS7WQKqn3xx',
+    	'access_secret_token'=> 'IP9mAjRyK9u3xzysDAw43tKkoRy8mYVxxihhZvqXuuZYO',
     ],
     'liveChat' => [
     	'apiLogin' => 'eduardo@montana-studio.com',
-        'apiKey' => 'ad24335143918c8470d4962a1c52866e'
+        'apiKey' => 'b1f9cbda5e332b55d03fa2a5deb4c037'
     	/*'apiKey' => 'ad24335143918c8470d4962a1c52866e'*/
     ],
     'drive' => [
-        'clientId' => '664489977267-15o8cja0nao16549i567mg6iuh74fuad.apps.googleusercontent.com',
-        'clientSecret' => 'BkerwlfGvd0RdKJo2x_ie7kS',
+        'Drive Diccionario Listening' => '1LBf9kTwPswIQuvNx0xH8RiMBZiXNZeBGi_QjTrHVwAc',
         'spreadsheetId' => '14IGcLxkD4uqINWIebmD9_u_iIaPtLo_4moL2TdUyOdo'
     ]
 ];

@@ -1,10 +1,12 @@
 <?php 
-use yii\widgets\DetailView;
+use yii\grid\GridView;
+use yii\helpers\Html;   
 use yii\helpers\ArrayHelper;
 use app\models\Products;
 use app\models\ProductsCategories;
 use app\models\ProductsModels;
 
+use yii\widgets\Pjax;
 
 
 /*foreach ($modelMC as $key => $value) {
@@ -23,7 +25,36 @@ use app\models\ProductsModels;
         You may customize this page by editing the following file:<br>
         <code><?= __FILE__ ?></code>
     </p>
+    
     <div class="container">
-        
+        <?php Pjax::begin(); ?>
+
+        <?= GridView::widget([
+            'dataProvider' => $dataProvider,
+            'filterModel' => $searchModel,
+            'columns' => [
+                ['class' => 'yii\grid\SerialColumn'],
+
+                'id',
+
+              //  'alertId',
+                [   
+                    'filter' => true,
+                    'header'=> Yii::t('app', 'modelos'),
+                    'value' => function ($model)
+                    {
+                        return $model->productModel->serial_model;
+                    }
+                ],
+                'createdAt',
+                'updatedAt',
+                //'createdBy',
+                //'updatedBy',
+
+                ['class' => 'yii\grid\ActionColumn'],
+            ],
+        ]); ?>
+
+        <?php Pjax::end(); ?>
     </div>
 </div>

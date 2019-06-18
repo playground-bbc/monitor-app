@@ -66,7 +66,7 @@ class DefaultController extends Controller
 		$service = new \Google_Service_Sheets($client);
 
 		// Prints the names and majors of students in a sample spreadsheet:
-		$spreadsheetId = Yii::$app->params['drive']['spreadsheetId'];
+		$spreadsheetId = Yii::$app->params['drive']['Drive Diccionario Listening'];
 
 		$response = $service->spreadsheets->get($spreadsheetId);
 		$sheetNames = ArrayHelper::map($response['sheets'],'properties.index','properties.title');
@@ -91,12 +91,11 @@ class DefaultController extends Controller
 		    'verify' => 'c:\cert\cacert.pem'
 		]);
 		$client->setHttpClient($http);
-	    $client->setAuthConfig(Yii::getAlias('@service_account').'\monitor-app-1c8451be367b.json');
-	    $client->setApplicationName('quickstart-1560471320170');
+	    $client->setAuthConfig(Yii::getAlias('@drive_account'));
+	    $client->setApplicationName('Drive Diccionario Listening');
 	    $client->setScopes(\Google_Service_Sheets::SPREADSHEETS_READONLY);
 	    
 	  
-
 		return $client;
 		
 	}

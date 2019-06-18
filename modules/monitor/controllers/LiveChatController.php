@@ -18,7 +18,7 @@ use app\models\api\LiveChatApi;
 use app\models\ProductCategory;
 use app\models\ProductsModelsAlerts;
 use app\models\CategoriesDictionary;
-
+use app\models\search\ProductsModelsAlertsSearch;
 /**
  * Default controller for the `monitor` module
  */
@@ -91,8 +91,13 @@ class LiveChatController extends Controller
     public function actionView($alertId)
     {
         $alert = Alerts::findOne($alertId);
+        $searchModel = new ProductsModelsAlertsSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams,$alertId);
 
-        return $this->render('view');
+        return $this->render('view',[
+            'dataProvider' => $dataProvider,
+            'searchModel' => $searchModel,
+        ]);
     }
 
 
