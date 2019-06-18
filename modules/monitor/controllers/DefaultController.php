@@ -4,6 +4,7 @@ namespace app\modules\monitor\controllers;
 use yii;
 use yii\web\Controller;
 use app\models\ProductsFamily;
+use app\models\api\DriveProductsApi;
 use yii\helpers\ArrayHelper;
 
 
@@ -60,26 +61,15 @@ class DefaultController extends Controller
 
 	public function actionDrive()
 	{
-		// Get the API client and construct the service object.
 		
-		$client = $this->getClient();
-		$service = new \Google_Service_Sheets($client);
+		return $this->render('drive/index');
+	}
 
-		// Prints the names and majors of students in a sample spreadsheet:
-		$spreadsheetId = Yii::$app->params['drive']['Drive Diccionario Listening'];
-
-		$response = $service->spreadsheets->get($spreadsheetId);
-		$sheetNames = ArrayHelper::map($response['sheets'],'properties.index','properties.title');
-
-		$values = [];
-		foreach ($sheetNames as $id => $sheetName) {
-			$response = $service->spreadsheets_values->get($spreadsheetId, $sheetName);
-			$values[] = $response->getValues();
-		}
-
-		var_dump($values);
-		die();	
-
+	public function actionSync()
+	{
+		$drive = new DriveProductsApi();
+		$data = $drive->contentDocument;
+		
 		return $this->render('drive/index');
 	}
 

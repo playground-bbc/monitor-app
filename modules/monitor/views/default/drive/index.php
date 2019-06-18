@@ -1,6 +1,7 @@
 <?php 
 use kartik\select2\Select2;
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 
 
@@ -12,8 +13,14 @@ use yii\widgets\ActiveForm;
         The action belongs to the controller "<?= get_class($this->context) ?>"
         in the "<?= $this->context->module->id ?>" module.
     </p>
-    <p>
-        You may customize this page by editing the following file:<br>
-        <code><?= __FILE__ ?></code>
-    </p>
+    
+    <div class="row">
+        <div class="col-md-12">
+            <div class="well well-large">
+                <div class="text-center">
+                    <?= Html::a(Html::tag('i', 'Sync Drive', ['class' => 'btn btn-info']) . ' ', ['sync'], ['class' => 'btn btn-black', 'title' => 'Sync']) ?>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
