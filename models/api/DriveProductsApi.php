@@ -64,29 +64,29 @@ class DriveProductsApi extends Model
 			}
 			$models['products'][$index]['SUBCATEGORÍA'] = [];
 			for ($j=1; $j <sizeof($property) ; $j++) {
-				if (!in_array($property[$j][1], $models['products'][$index]['SUBCATEGORÍA'])) {
-				 	$models['products'][$index]['SUBCATEGORÍA'][] = $property[$j][1];
-				 } 
-				
+				if (!in_array(trim($property[$j][1]), $models['products'][$index]['SUBCATEGORÍA'])) {
+				 	$models['products'][$index]['SUBCATEGORÍA'][] = trim($property[$j][1]);
+				}
 			}
-			/*$models['products'][$index]['MODELO'] = [];
-			for ($k=1; $k <sizeof($property) ; $k++) {
-				if (!in_array($property[$k][2], $models['products'][$index]['MODELO'])) {
-				 	$models['products'][$index]['MODELO'][] = $property[$k][2];
-				 } 
-				
-			}
+			
+			$models['products'][$index]['MODELO'] = [];
+			$subIndex = 0;
+			for ($m=1; $m <sizeof($property) ; $m++) {
+				if (!in_array(trim($property[$m][1]), $models['products'][$index]['MODELO'])) {
+				 	$models['products'][$index]['MODELO'][trim($property[$m][1])][] = trim($property[$m][2]);
 
-			$models['products'][$index]['PRODUCTO'] = [];
-			for ($p=1; $p <sizeof($property) ; $p++) {
-				if (!in_array($property[$p][3], $models['products'][$index]['PRODUCTO'])) {
-				 	$models['products'][$index]['PRODUCTO'][$property[$p][3]][] = $property[$p][4];
-				 } 
-				
-			}*/
+				 	/*if (!in_array(trim($property[$m][2]), $models['products'][$index]['MODELO'][trim($property[$m][1])])) {
+				 		$models['products'][$index]['MODELO'][trim($property[$m][1])][] = trim($property[$m][2]);
+				 	}*/
+				}
+				$subIndex++;
+			}
 
 			$index++;
 		}
+
+
+
 		
 		var_dump($models['products']);
 		die();
@@ -99,19 +99,20 @@ class DriveProductsApi extends Model
 		$client = $this->getClient();
 		$service = new \Google_Service_Sheets($client);
 
-		$spreadsheetId = Yii::$app->params['drive']['Drive Diccionario Listening'];
+		$spreadsheetId = Yii::$app->params['drive']['Drive Diccionario Listening test'];
 
-		$response = $service->spreadsheets->get($spreadsheetId);
 		$sheetNames = $this->_productsFamily;
 
 		$values = [];
+		
 		foreach ($sheetNames as $id => $sheetName) {
 			$response = $service->spreadsheets_values->get($spreadsheetId, $sheetName);
 			$values[$sheetName] = $response->getValues();
 		}
 
-		/*var_dump($values);
-		die();*/
+		
+		var_dump($values);
+		die();
 		$this->orderByHeaders($values);
 		
 		/*try {
