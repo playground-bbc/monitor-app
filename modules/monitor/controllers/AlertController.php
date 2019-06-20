@@ -4,9 +4,38 @@ namespace app\modules\monitor\controllers;
 
 use yii;
 use app\models\SearchForm;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 
 class AlertController extends \yii\web\Controller
 {
+    /**
+     * {@inheritdoc}
+     */
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['create'],
+                'rules' => [
+                    [
+                        'actions' => ['create'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'logout' => ['POST'],
+                    'index' => ['GET', 'POST'],
+                    
+                ],
+            ],
+        ];
+    }
    
     public function actions()
     {
@@ -34,8 +63,7 @@ class AlertController extends \yii\web\Controller
         $form_alert->scenario = 'alert';
 
         if ($form_alert->load(Yii::$app->request->post())) {
-            var_dump(Yii::$app->request->post());
-            die();
+            
         }
 
         return $this->render('create',['form_alert' => $form_alert]);
