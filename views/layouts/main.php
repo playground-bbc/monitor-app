@@ -44,8 +44,8 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Home', 'url' => ['index']],
+            ['label' => 'Alert', 'url' => ['/monitor/alert/index']],
             ['label' => 'Default', 'url' => ['/monitor/default/drive']],
-           // ['label' => 'Default', 'url' => ['/monitor/default']],
             ['label' => 'Twitter', 'url' => ['/monitor/twitter']],
             ['label' => 'Scraping', 'url' => ['/monitor/scraping']],
             ['label' => 'Live Chat', 'url' => ['/monitor/live-chat/create']],

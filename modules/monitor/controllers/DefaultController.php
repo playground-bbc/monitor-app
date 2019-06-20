@@ -73,23 +73,7 @@ class DefaultController extends Controller
 		return $this->render('drive/index');
 	}
 
-
-	public function getClient()
-	{
-		$client = new \Google_Client();
-		$http = new \GuzzleHttp\Client([
-		    'verify' => 'c:\cert\cacert.pem'
-		]);
-		$client->setHttpClient($http);
-	    $client->setAuthConfig(Yii::getAlias('@drive_account'));
-	    $client->setApplicationName('Drive Diccionario Listening');
-	    $client->setScopes(\Google_Service_Sheets::SPREADSHEETS_READONLY);
-	    
-	  
-		return $client;
-		
-	}
-
+	
 	public function actionError()
 	{
 	    $exception = Yii::$app->errorHandler->exception;

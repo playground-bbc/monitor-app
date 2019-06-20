@@ -29,7 +29,9 @@
         "kartik-v/yii2-field-range": "dev-master",
         "jasonlam604/stringizer": "^2.14.0",
         "kartik-v/yii2-widget-fileinput": "@dev",
-        "google/apiclient": "^2.0"
+        "google/apiclient": "^2.0",
+        "guzzlehttp/guzzle": "^6.3",
+        "kartik-v/yii2-widget-switchinput": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

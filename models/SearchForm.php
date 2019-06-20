@@ -4,7 +4,14 @@ namespace app\models;
 
 use Yii;
 use yii\base\Model;
+use yii\helpers\ArrayHelper;
 
+use app\models\ProductsFamily;
+use app\models\ProductCategory;
+use app\models\ProductsModels;
+
+
+use app\models\api\DriveProductsApi;
 /**
  * SearchForm is the model behind the search form.
  */
@@ -17,9 +24,11 @@ class SearchForm extends Model
     
     public $negative_words;
     public $positive_words;
+    public $drive_dictionary =[];
 
     public $social_resources = [
         'TwitterApi' =>'Twitter',
+        'LiveChatApi' =>'LiveChat',
     ];
 
     public $query_search;
@@ -30,6 +39,8 @@ class SearchForm extends Model
     public $end_date;
     public $text_search;
 
+    //alert
+    public $is_dictionary;
 
 
 
@@ -39,8 +50,11 @@ class SearchForm extends Model
     public function rules()
     {
         return [
-            // text_search  are required
+            // scraping
             [['text_search','keywords','web_resource'], 'required', 'on' => 'scraping'],
+            // alert
+            [['name','social_resources','products','start_date','end_date'], 'required', 'on' => 'alert'],
+            // live-chat
             [['name','products','positive_words','negative_words','start_date','end_date'], 'required','message' => 'complete the fields', 'on' => 'live-chat'],
             // text_search has to be a valid string
             [['text_search'], 'string'],
@@ -52,9 +66,28 @@ class SearchForm extends Model
     public function scenarios()
     {
         $scenarios = parent::scenarios();
-        $scenarios['scraping'] = ['text_search','keywords','web_resource'];
+        $scenarios['alert'] = ['name','social_resources','products','start_date','end_date'];
         $scenarios['live-chat'] = ['products','positive_words','negative_words','start_date','end_date'];
         return $scenarios;
+    }
+
+    public function getProducts()
+    {
+        $family['Products Family'] = ArrayHelper::map(ProductsFamily::find()->andFilterCompare('parentId','null','<>')->all(),'name','name');
+        $categories['Product Category'] = ArrayHelper::map(ProductCategory::find()->andFilterCompare('familyId','null','<>')->all(),'name','name');
+        $products_models['Product Models'] = ArrayHelper::map(ProductsModels::find()->andFilterCompare('productId','null','<>')->all(),'serial_model','serial_model');
+
+        $data = ArrayHelper::merge($family,$categories);
+        $data = ArrayHelper::merge($products_models,$data);
+        return $data;
+
+    }
+
+    public function getDictionaryNameOnDrive()
+    {
+        $drive = new DriveProductsApi();
+        
+        return $drive->titleDictionary;
     }
 
     /**
@@ -71,31 +104,10 @@ class SearchForm extends Model
             'categories_dictionary' => 'categories dictionary',
             'positive_words' => 'positive words',
             'negative_words' => 'negative words',
+            'is_dictionary' => 'Agregar Diccionario',
         ];
     }
 
 
 
-
-    /**
-     * Sends an email to the specified email address using the information collected by this model.
-     * @param string $email the target email address
-     * @return bool whether the model passes validation
-    
-    public function contact($email)
-    {
-        if ($this->validate()) {
-            Yii::$app->mailer->compose()
-                ->setTo($email)
-                ->setFrom([Yii::$app->params['senderEmail'] => Yii::$app->params['senderName']])
-                ->setReplyTo([$this->email => $this->name])
-                ->setSubject($this->subject)
-                ->setTextBody($this->body)
-                ->send();
-
-            return true;
-        }
-        return false;
-    }
-     */
 }

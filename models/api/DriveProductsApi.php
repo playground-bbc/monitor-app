@@ -15,6 +15,7 @@ class DriveProductsApi extends Model
 	private $_data;
 
 	private $_productsFamily = ['HA','HE','MC','Monitores y proyectores'];
+	
 	private $_headers = [
 		'CATEGORÍA' => 'ProductsFamily',
 		'SUBCATEGORÍA' => 'ProductsFamily',
@@ -124,6 +125,24 @@ class DriveProductsApi extends Model
 
 	}
 
+	public function getTitleDictionary()
+	{
+		// Get the API client and construct the service object.
+		$client = $this->getClient();
+		$service = new \Google_Service_Sheets($client);
+
+		$spreadsheetId = Yii::$app->params['drive']['Drive Diccionario Listening test'];
+		$response = $service->spreadsheets->get($spreadsheetId);
+		$sheetNames = [];
+		for ($i=0; $i <sizeof($response->sheets) ; $i++) { 
+			if (!in_array($response->sheets[$i]->properties->title, $this->_productsFamily)) {
+				$sheetName[$i] = $response->sheets[$i]->properties->title;
+			}
+		}
+		return (count($sheetName)) ? $sheetName : null;
+		
+	}
+
 	private function getClient()
 	{
 		$client = new \Google_Client();
@@ -138,6 +157,10 @@ class DriveProductsApi extends Model
 		return $client;
 		
 	}
+
+
+
+
 	
 }
 
