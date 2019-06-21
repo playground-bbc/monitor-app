@@ -50,7 +50,7 @@ AppAsset::register($this);
             ['label' => 'Scraping', 'url' => ['/monitor/scraping']],
             ['label' => 'Live Chat', 'url' => ['/monitor/live-chat/create']],
            // ['label' => 'Contact', 'url' => ['/site/contact']],
-            /*
+            
                 Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
@@ -63,7 +63,7 @@ AppAsset::register($this);
                 . Html::endForm()
                 . '</li>'
             )
-            */
+            
         ],
     ]);
 

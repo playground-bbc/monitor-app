@@ -59,7 +59,7 @@ class SearchForm extends Model
             // text_search has to be a valid string
             [['text_search'], 'string'],
             // start date needs to be entered correctly
-            [['start_date','end_date'], 'date'],
+            [['start_date','end_date'], 'date','format' => 'mm/dd/yyyy'],
         ];
     }
 
