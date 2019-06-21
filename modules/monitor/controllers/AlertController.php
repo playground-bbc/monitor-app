@@ -61,6 +61,8 @@ class AlertController extends \yii\web\Controller
 
     public function actionDelete()
     {
+        Yii::warning('start warning !!', __METHOD__);
+      //  Yii::error('start error..');
         return $this->render('delete');
     }
 

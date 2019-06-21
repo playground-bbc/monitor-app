@@ -7,6 +7,7 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'timeZone' => 'America/Santiago',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
@@ -40,6 +41,15 @@ $config = [
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
+                 [
+                    'class' => 'yii\log\DbTarget',
+                    'levels' => ['warning','error'],
+                    'prefix' => function ($message) {
+                        $user = Yii::$app->has('user', true) ? Yii::$app->get('user') : null;
+                        $userID = $user ? $user->getId(false) : '-';
+                        return "[$userID]";
+                    }
+                ],
                 [
                     'class' => 'yii\log\FileTarget',
                     'levels' => ['error', 'warning'],

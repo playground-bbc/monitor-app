@@ -6,6 +6,11 @@ use yii\base\Model;
 use yii\helpers\ArrayHelper;
 use yii\base\ErrorException;
 
+use app\models\ProductsFamily;
+use app\models\ProductCategory;
+use app\models\Products;
+use app\models\ProductsModels;
+
 require_once(Yii::getAlias('@vendor').'\autoload.php'); // call google client
 /**
  * class that will be in charge of synchronizing the products with google drive of the document called Drive Listening Dictionary
@@ -94,6 +99,23 @@ class DriveProductsApi extends Model
 
 	}
 
+	public function SaveToDatabase($values)
+	{
+		for ($i=0; $i <sizeof($values) ; $i++) { 
+			for ($j=1; $j <sizeof($values[$i]) ; $j++) { 
+				$id = $this->saveFamily(trim($values[$i][$j][0]));
+				$familyId = $this->saveParent( $id, trim($values[$i][$j][1]));
+				$categoryId = $this->saveProductCategory( $familyId, trim($values[$i][$j][2]));
+				$productId = $this->saveProduct( $familyId, trim($values[$i][$j][3]));
+				$modelId = $this->saveProductsModel( $productId, trim($values[$i][$j][4]));
+				/*$familyId = $this->saveParent( $id, trim($values[$i][$j][1]));
+				$categoryId = $this->saveProductCategory( $familyId, trim($values[$i][$j][2]));
+				$productId = $this->saveProduct( $familyId, trim($values[$i][$j][3]));
+				$modelId = $this->saveProductsModel( $productId, trim($values[$i][$j][4]));*/
+			}
+		}
+	}
+
 	public function getContentDocument()
 	{
 		// Get the API client and construct the service object.
@@ -108,13 +130,12 @@ class DriveProductsApi extends Model
 		
 		foreach ($sheetNames as $id => $sheetName) {
 			$response = $service->spreadsheets_values->get($spreadsheetId, $sheetName);
-			$values[$sheetName] = $response->getValues();
+			$values[] = $response->getValues();
 		}
 
 		
-		var_dump($values);
-		die();
-		$this->orderByHeaders($values);
+		
+		$this->SaveToDatabase($values);
 		
 		/*try {
 			$this->orderByHeaders($values);
@@ -123,6 +144,90 @@ class DriveProductsApi extends Model
 		}*/
 		//return $values;
 
+	}
+
+	
+
+	public function saveFamily($value)
+	{
+		$params = [
+			'abbreviation_name' => $value
+		];
+		$model = ProductsFamily::findOne($params);
+		if (is_null($model)) {
+			$model = new ProductsFamily;
+			$model->name = $value;
+			$model->abbreviation_name = $value;
+			$model->save();
+		}
+		return $model->id;
+	}
+
+	public function saveParent($familyId,$value)
+	{
+		$params = [
+			'parentId' => $familyId,
+			'name' => $value,
+		];
+		$model = ProductsFamily::findOne($params);
+		if (is_null($model)) {
+			$model = new ProductsFamily;
+			$model->parentId = $familyId;
+			$model->name = $value;
+			$model->save();
+			$familyId = $model->id;
+		}
+		return $model->id;
+	}
+
+	public function saveProductCategory($familyId,$value)
+	{
+		$params = [
+			'familyId' => $familyId,
+			'name' => $value,
+		];
+		$model = ProductCategory::findOne($params);
+		if (is_null($model)) {
+			$model = new ProductCategory;
+			$model->familyId = $familyId;
+			$model->name = $value;
+			$model->save();
+		}
+		return $model->id;
+	}
+
+	public function saveProduct($categoryId,$value)
+	{
+		$params = [
+			'categoryId' => $categoryId,
+			'name' => $value,
+		];
+		$model = Products::findOne($params);
+		if (is_null($model)) {
+			$model = new Products;
+			$model->categoryId = $categoryId;
+			$model->name = $value;
+			$model->save();
+		}
+		return $model->id;
+		
+	}
+
+	public function saveProductsModel($productId,$value)
+	{
+		$params = [
+			'productId' => $productId,
+			'serial_model' => $value,
+		];
+		$model = ProductsModels::findOne($params);
+		if (is_null($model)) {
+			$model = new ProductsModels;
+			$model->productId = $productId;
+			$model->serial_model = $value;
+			$model->save();
+			$modelId = $model->id;
+		}
+		return $model->id;
 	}
 
 	public function getTitleDictionary()

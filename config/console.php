@@ -21,6 +21,10 @@ $config = [
             'targets' => [
                 [
                     'class' => 'yii\log\FileTarget',
+                 //   'levels' => ['info','error', 'warning'],
+                ],
+                [
+                    'class' => 'yii\log\DbTarget',
                     'levels' => ['error', 'warning'],
                 ],
             ],
