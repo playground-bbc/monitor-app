@@ -32,7 +32,7 @@ class m190531_234734_products extends Migration
         ], $tableOptions);
         // Televisores
         //1
-        $this->insert('{{%products}}', [
+        /*$this->insert('{{%products}}', [
             'categoryId'         => 1,
             'name'              => 'SMART TV LED 32" HD 720p',
             'abbreviation_name' => '',
@@ -96,7 +96,7 @@ class m190531_234734_products extends Migration
             'updatedAt'         => '1488153462',
             'createdBy'         => '1',
             'updatedBy'         => '1',
-        ]);
+        ]);*/
         // end Televisores
 
         

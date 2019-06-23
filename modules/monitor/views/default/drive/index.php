@@ -18,7 +18,7 @@ use yii\widgets\ActiveForm;
         <div class="col-md-12">
             <div class="well well-large">
                 <div class="text-center">
-                    <?= Html::a(Html::tag('i', 'Sync Drive', ['class' => 'btn btn-info']) . ' ', ['sync'], ['class' => 'btn btn-black', 'title' => 'Sync']) ?>
+                    <?= Html::a(Html::tag('i', 'Sync Drive', ['class' => 'btn btn-info']) . ' ', ['sync'], ['title' => 'Sync','data'=>['method'=>'post']]) ?>
                 </div>
             </div>
         </div>

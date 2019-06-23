@@ -31,7 +31,7 @@ class m190531_234725_products_family extends Migration
 
         ], $tableOptions);
         // Home Entertainment
-        $this->insert('{{%products_family}}', [
+        /*$this->insert('{{%products_family}}', [
             'parentId'          => null,
             'name'              => 'Home Entertainment',
             'abbreviation_name' => 'HE',
@@ -169,7 +169,7 @@ class m190531_234725_products_family extends Migration
             'updatedAt'         => '1488153462',
             'createdBy'         => '1',
             'updatedBy'         => '1',
-        ]);
+        ]);*/
         // end Monitors and Projectors
 
         // creates index for column `parentId`

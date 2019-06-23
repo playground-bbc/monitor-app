@@ -30,7 +30,7 @@ class m190531_234728_product_category extends Migration
 
         ], $tableOptions);
         //1
-        $this->insert('{{%product_category}}', [
+        /*$this->insert('{{%product_category}}', [
             'familyId'  => 2,
             'name'      => 'HD',
             'status'    => 1,
@@ -78,7 +78,7 @@ class m190531_234728_product_category extends Migration
             'updatedAt' => '1488153462',
             'createdBy' => '1',
             'updatedBy' => '1',
-        ]);
+        ]);*/
 
 
         // index

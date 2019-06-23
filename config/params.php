@@ -7,7 +7,7 @@ $s = DIRECTORY_SEPARATOR;
 Yii::setAlias('@resources', dirname(dirname(__DIR__)) . "{$s}monitor-app{$s}monitor-app-data{$s}resources");
 Yii::setAlias('@backup', dirname(dirname(__DIR__)) . "{$s}monitor-app{$s}monitor-app-data{$s}backup");
 Yii::setAlias('@service_account', dirname(dirname(__DIR__)) . "{$s}monitor-app{$s}monitor-app-data{$s}service_account");
-Yii::setAlias('@drive_account', dirname(dirname(__DIR__)) . "{$s}monitor-app{$s}monitor-app-data{$s}service_account{$s}montior-app-788bf22b5843.json");
+Yii::setAlias('@drive_account', dirname(dirname(__DIR__)) . "{$s}monitor-app{$s}monitor-app-data{$s}service_account{$s}montior-app-3b32a12c52f8.json");
 
 return [
     'twitter' => [

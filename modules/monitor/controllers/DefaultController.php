@@ -8,7 +8,7 @@ use app\models\api\DriveProductsApi;
 use yii\helpers\ArrayHelper;
 
 
-require_once(Yii::getAlias('@vendor').'\autoload.php');
+require_once(Yii::getAlias('@vendor').'/autoload.php');
 //require_once Yii::getAlias('@vendor').'\google\apiclient\src\Google\Client.php'  ;
 
 
@@ -44,21 +44,6 @@ class DefaultController extends Controller
 		return $this->render('create');
 	}
 
-	public function actionCreatefamily()
-	{
-		$model = new ProductsFamily();
-		$parents = ArrayHelper::map(ProductsFamily::find()->where(['or', ['parentId' => 0], ['parentId' => null]])->all(),'id','name'); 
-
-		if ($model->load(Yii::$app->request->post()) && $model->save()) {
-			return null;
-		}
-
-		return $this->render('family/create',[
-			'model' => $model,
-			'parents' => $parents,
-		]);
-	}
-
 	public function actionDrive()
 	{
 		
@@ -67,9 +52,10 @@ class DefaultController extends Controller
 
 	public function actionSync()
 	{
-		$drive = new DriveProductsApi();
-		$data = $drive->contentDocument;
-		
+		if (Yii::$app->request->post()) {
+			$drive = new DriveProductsApi();
+			$data = $drive->getContentDocument();
+		}
 		return $this->render('drive/index');
 	}
 

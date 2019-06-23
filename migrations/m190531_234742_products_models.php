@@ -30,7 +30,7 @@ class m190531_234742_products_models extends Migration
 
         ], $tableOptions);
         // tv
-        $this->insert('{{%products_models}}', [
+        /*$this->insert('{{%products_models}}', [
             'productId'    => 1,
             'serial_model' => 'LG 49LK5400PSA',
             'status'       => 1,
@@ -98,7 +98,7 @@ class m190531_234742_products_models extends Migration
             'updatedAt'    => '1488153462',
             'createdBy'    => '1',
             'updatedBy'    => '1',
-        ]);
+        ]);*/
         //end tv
 
         // Audio
