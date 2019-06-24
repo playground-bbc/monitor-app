@@ -6,25 +6,25 @@ use Yii;
 use yii\behaviors\BlameableBehavior;
 use yii\db\ActiveRecord;
 /**
- * This is the model class for table "categories_dictionary".
+ * This is the model class for table "alert_resources".
  *
  * @property int $id
- * @property string $name
+ * @property int $idAlert
+ * @property int $idResources
+ * @property array $data_json
  * @property int $createdAt
  * @property int $updatedAt
  * @property int $createdBy
  * @property int $updatedBy
- *
- * @property Dictionary[] $dictionaries
  */
-class CategoriesDictionary extends \yii\db\ActiveRecord
+class AlertResources extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'categories_dictionary';
+        return 'alert_resources';
     }
 
     public function behaviors()
@@ -43,8 +43,7 @@ class CategoriesDictionary extends \yii\db\ActiveRecord
                 'updatedByAttribute' => 'updatedBy',
             ],
         ];
-    }       
-      
+    }
 
     /**
      * {@inheritdoc}
@@ -52,8 +51,9 @@ class CategoriesDictionary extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['createdAt', 'updatedAt', 'createdBy', 'updatedBy'], 'integer'],
-            [['name'], 'string', 'max' => 255],
+            [['idAlert', 'idResources'], 'required'],
+            [['idAlert', 'idResources', 'createdAt', 'updatedAt', 'createdBy', 'updatedBy'], 'integer'],
+            [['data_json'], 'safe'],
         ];
     }
 
@@ -64,19 +64,13 @@ class CategoriesDictionary extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
+            'idAlert' => 'Id Alert',
+            'idResources' => 'Id Resources',
+            'data_json' => 'Data Json',
             'createdAt' => 'Created At',
             'updatedAt' => 'Updated At',
             'createdBy' => 'Created By',
             'updatedBy' => 'Updated By',
         ];
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getDictionaries()
-    {
-        return $this->hasMany(Dictionary::className(), ['category_dictionaryId' => 'id']);
     }
 }

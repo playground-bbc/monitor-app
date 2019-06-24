@@ -4,7 +4,7 @@ namespace app\modules\monitor\controllers;
 use Yii;
 use yii\web\Controller;
 
-use app\models\TwitterApi;
+use app\models\api\TwitterApi;
 
 use \Codebird\Codebird;
 

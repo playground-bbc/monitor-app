@@ -6,9 +6,11 @@ use Yii;
 use yii\base\Model;
 use yii\helpers\ArrayHelper;
 
+use app\models\Resource;
+use app\models\TypeResource;
 use app\models\ProductsFamily;
-use app\models\ProductCategory;
 use app\models\ProductsModels;
+use app\models\ProductCategory;
 
 
 use app\models\api\DriveProductsApi;
@@ -17,6 +19,9 @@ use app\models\api\DriveProductsApi;
  */
 class SearchForm extends Model
 {
+
+    const TYPE_SOCIAL = 'Social Media';
+
     public $name;
     public $keywords = [];
     public $products = [];
@@ -54,10 +59,11 @@ class SearchForm extends Model
             [['text_search','keywords','web_resource'], 'required', 'on' => 'scraping'],
             // alert
             [['name','social_resources','products','start_date','end_date'], 'required', 'on' => 'alert'],
+           // [['drive_dictionary','negative_words','positive_words'], 'safe', 'on' => 'alert'],
             // live-chat
             [['name','products','positive_words','negative_words','start_date','end_date'], 'required','message' => 'complete the fields', 'on' => 'live-chat'],
             // text_search has to be a valid string
-            [['text_search'], 'string'],
+            [['negative_words','positive_words'], 'string'],
             // start date needs to be entered correctly
             [['start_date','end_date'], 'date','format' => 'mm/dd/yyyy'],
         ];
@@ -66,7 +72,7 @@ class SearchForm extends Model
     public function scenarios()
     {
         $scenarios = parent::scenarios();
-        $scenarios['alert'] = ['name','social_resources','products','start_date','end_date'];
+        $scenarios['alert'] = ['name','social_resources','products','drive_dictionary','negative_words','positive_words','start_date','end_date'];
         $scenarios['live-chat'] = ['products','positive_words','negative_words','start_date','end_date'];
         return $scenarios;
     }
@@ -88,6 +94,13 @@ class SearchForm extends Model
         $drive = new DriveProductsApi();
         
         return $drive->titleDictionary;
+    }
+
+    public function getSocialResources()
+    {
+       $type = TypeResource::findOne(['name'=> self::TYPE_SOCIAL]);
+       $model = Resource::find()->where(['typeResourceId' => $type->id])->all();
+       return ($model) ? ArrayHelper::map($model,'id','name') : []; 
     }
 
     /**

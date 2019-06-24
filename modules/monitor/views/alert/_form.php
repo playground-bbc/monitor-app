@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\Breadcrumbs;
 use yii\helpers\ArrayHelper;
 use yii\bootstrap\ActiveForm;
@@ -7,6 +8,7 @@ use yii\bootstrap\ActiveForm;
 use app\models\ProductsFamily;
 use app\models\ProductCategory;
 use app\models\ProductsModels;
+use app\models\api\TwitterApi;
 
 use kartik\select2\Select2;
 use kartik\date\DatePicker;
@@ -38,14 +40,18 @@ $this->params['breadcrumbs'][] = $this->title;
 			</div>
 			<div class="col-md-6">
 				<?= $form->field($form_alert, 'social_resources[]')->widget(Select2::classname(), [
-					   'data' => ['LiveChatApi' => 'LiveChat','TwitterApi' => 'Twitter'],
+					   'data' => $form_alert->socialResources,
 					    'options' => [
+					    	'id' => 'social_resources',
 					    	'placeholder' => 'Select a state ...',
 					    	'multiple' => true
 						],
 					    'pluginOptions' => [
 					        'allowClear' => true,
 					    ],
+					    'pluginEvents' => [
+					       "select2:select" => "function(e) { populateClientCode(e.params.data.id); }",
+					    ]
 					]);
 				?>
 			</div>
@@ -160,10 +166,26 @@ $( document ).ready(function() {
 });	
 
 
-
 ',
     View::POS_READY
 );
+
+
+if (!\Yii::$app->session->has('oauth_token_twitter')) {
+	$url = Url::to('twitter');
+
+	$this->registerJs('
+		function populateClientCode(params){
+			if(params == 4){
+			window.location.replace("'.$url.'");
+			}
+		}
+
+	');
+
+}
+
+
 
 
  ?>

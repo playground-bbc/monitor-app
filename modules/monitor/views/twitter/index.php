@@ -19,7 +19,7 @@ if (\Yii::$app->request->get('page')) {
 
         <p class="lead">Get started Social Media.</p>
 
-        <p><?= Html::a('Logout', Url::to('logout'), ['class' => 'btn btn-lg btn-success']) ?></p>
+        <p><?= Html::a('Logout', Url::to(['twitter/logout']), ['class' => 'btn btn-lg btn-success']) ?></p>
     </div>
     <h1><?= $this->context->action->uniqueId ?></h1>
     <p>

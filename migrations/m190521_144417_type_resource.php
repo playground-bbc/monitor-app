@@ -35,6 +35,14 @@ class m190521_144417_type_resource extends Migration
             'updatedBy'=> '1',
         ]);
 
+        $this->insert('{{%type_resource}}', [
+            'name' => 'Social Media',
+            'createdAt'=> '1488153462',
+            'updatedAt'=> '1488153462',
+            'createdBy'=> '1',
+            'updatedBy'=> '1',
+        ]);
+
     }
 
     /**

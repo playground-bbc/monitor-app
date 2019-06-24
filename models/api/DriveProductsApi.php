@@ -1,12 +1,14 @@
 <?php
 namespace app\models\api;
 
-use app\models\ProductCategory;
-use app\models\Products;
-use app\models\ProductsFamily;
-use app\models\ProductsModels;
 use Yii;
 use yii\base\Model;
+
+use app\models\Products;
+use app\models\ProductsModels;
+use app\models\ProductsFamily;
+use app\models\ProductCategory;
+use app\models\CategoriesDictionary;
 
 require_once Yii::getAlias('@vendor') . '/autoload.php'; // call google client
 /**
@@ -93,8 +95,12 @@ class DriveProductsApi extends Model
         $sheetNames    = [];
         for ($i = 0; $i < sizeof($response->sheets); $i++) {
             if (!in_array($response->sheets[$i]->properties->title, $this->_productsFamily)) {
-                $sheetName[$i] = $response->sheets[$i]->properties->title;
+                $title = $response->sheets[$i]->properties->title;
+                $sheetName[$title] = $title;
             }
+        }
+        if (count($sheetName)) {
+            $this->saveCategoriesDictionary($sheetName);
         }
         return (count($sheetName)) ? $sheetName : null;
 
@@ -180,6 +186,18 @@ class DriveProductsApi extends Model
             $modelId = $model->id;
         }
         return $model->id;
+    }
+
+    public function saveCategoriesDictionary($categoryTitles)
+    {
+        foreach ($categoryTitles as $category) {
+            $model = CategoriesDictionary::findOne(['name' => $category]);
+            if (is_null($model)) {
+               $model = new CategoriesDictionary();
+               $model->name = $category;
+               $model->save();
+            }
+        }
     }
 
     private function _getClient()

@@ -1,5 +1,5 @@
 <?php 
-namespace app\models;
+namespace app\models\api;
 
 use Yii;
 use yii\base\Model;
@@ -30,7 +30,6 @@ class TwitterApi extends Model
         $reply = $this->twitter->oauth_requestToken([
           'oauth_callback' => 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']
         ]);
-        
         // store the token
         $this->twitter->setToken($reply->oauth_token, $reply->oauth_token_secret);
         Yii::$app->session->set('oauth_token_twitter',$reply->oauth_token);
@@ -38,6 +37,7 @@ class TwitterApi extends Model
         Yii::$app->session->set('oauth_verify_twitter',true);
 
         $this->redirect_to_auth_website();
+        //return $this->redirect_to_auth_website_to_view();
     }
 
     public function logout()
@@ -57,7 +57,17 @@ class TwitterApi extends Model
         die();
     }
 
+    public function redirect_to_auth_website_to_view()
+    {   
+        $auth_url = $this->twitter->oauth_authorize();
+        header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
+        header('Access-Control-Max-Age: 604800');
+        header('Access-Control-Allow-Headers: x-requested-with');
+        //header('Access-Control-Allow-Origin: {$auth_url}');
+        return $auth_url;
+    }
 
+    
     public function redirect_to_monitor()
     {
         $cb->setToken(Yii::$app->session->get('oauth_token_twitter'), Yii::$app->session->get('oauth_token_secret_twitter'));

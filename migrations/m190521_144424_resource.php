@@ -41,6 +41,28 @@ class m190521_144424_resource extends Migration
             'updatedBy'=> '1',
         ]);
 
+        $this->insert('{{%resource}}', [
+            'name' => 'Twitter',
+            'url' => '',
+            'typeResourceId'  => 2,
+            'status'  => 1,
+            'createdAt'=> '1488153462',
+            'updatedAt'=> '1488153462',
+            'createdBy'=> '1',
+            'updatedBy'=> '1',
+        ]);
+
+        $this->insert('{{%resource}}', [
+            'name' => 'Live Chat',
+            'url' => '',
+            'typeResourceId'  => 2,
+            'status'  => 1,
+            'createdAt'=> '1488153462',
+            'updatedAt'=> '1488153462',
+            'createdBy'=> '1',
+            'updatedBy'=> '1',
+        ]);
+
         // creates index for column `typeResourceId`
         $this->createIndex(
             'idx-type-ResourceId',
