@@ -7,8 +7,9 @@ use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
 
-use app\models\api\LiveChatApi;
+use app\models\api\BaseApi;
 use app\models\api\TwitterApi;
+use app\models\api\LiveChatApi;
 
 use app\models\Alerts;
 use app\models\AlertResources;
@@ -107,6 +108,43 @@ class AlertController extends \yii\web\Controller
 
     public function actionView($alertId)
     {
+        $alert = Alerts::findOne($alertId);
+
+        $products_models = [];
+        // models products
+        foreach (ProductsModelsAlerts::find()->where(['alertId' => $alertId])->with('productModel')->each() as $product) {
+            // batch query with eager loading
+            $products_models[] = $product->productModel->serial_model;
+        }
+        $words = [];
+        // words
+        foreach ($alert->dictionaries as $key => $value) {
+            $words[$value->category->name][] = $value->word;
+        }
+
+        $start_date = $alert->start_date;
+        $end_date = $alert->end_date;
+        $resources = [];
+        // resources
+        foreach ($alert->alertResources as $alert => $alert_value) {
+            foreach ($alert_value->resources as $key => $value) {
+                $resources[] = $value->name;
+            }
+        }
+
+        $params = [
+            'words' => $words,
+            'products_models' => $products_models,
+            'resources' => $resources,
+            'start_date' => $start_date,
+            'end_date' => $end_date,
+        ]; 
+
+        $baseApi = new BaseApi($params);
+
+        var_dump($baseApi);
+        die();     
+
         return $this->render('view');
     }
 

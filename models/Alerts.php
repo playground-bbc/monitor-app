@@ -102,4 +102,12 @@ class Alerts extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Dictionary::className(), ['alertId' => 'id']);
     }
+
+     /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAlertResources()
+    {
+        return $this->hasMany(AlertResources::className(), ['idAlert' => 'id']);
+    }
 }

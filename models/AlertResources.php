@@ -73,4 +73,21 @@ class AlertResources extends \yii\db\ActiveRecord
             'updatedBy' => 'Updated By',
         ];
     }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getResources()
+    {
+        return $this->hasMany(Resource::className(), ['id' => 'idResources']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAlerts()
+    {
+        return $this->hasMany(Alerts::className(), ['idAlert' => 'id']);
+    }
+
 }
