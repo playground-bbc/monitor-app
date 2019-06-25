@@ -31,10 +31,8 @@ class SearchForm extends Model
     public $positive_words;
     public $drive_dictionary =[];
 
-    public $social_resources = [
-        'TwitterApi' =>'Twitter',
-        'LiveChatApi' =>'LiveChat',
-    ];
+    public $social_resources = ['TwitterApi' =>'Twitter',
+        'LiveChatApi' =>'LiveChat'];
 
     public $query_search;
     public $categories_dictionary = [];
@@ -46,6 +44,9 @@ class SearchForm extends Model
 
     //alert
     public $is_dictionary;
+    public $awario_file;
+    // only to lookup file
+    public $path;
 
 
 
@@ -59,6 +60,7 @@ class SearchForm extends Model
             [['text_search','keywords','web_resource'], 'required', 'on' => 'scraping'],
             // alert
             [['name','social_resources','products','start_date','end_date'], 'required', 'on' => 'alert'],
+            [['awario_file'], 'file','skipOnEmpty' => false,'extensions' => 'csv','maxSize' => 20000000, 'on' => 'alert'], // see php ini upload_max_filesize and post_max_size values 
            // [['drive_dictionary','negative_words','positive_words'], 'safe', 'on' => 'alert'],
             // live-chat
             [['name','products','positive_words','negative_words','start_date','end_date'], 'required','message' => 'complete the fields', 'on' => 'live-chat'],
@@ -72,7 +74,7 @@ class SearchForm extends Model
     public function scenarios()
     {
         $scenarios = parent::scenarios();
-        $scenarios['alert'] = ['name','social_resources','products','drive_dictionary','negative_words','positive_words','start_date','end_date'];
+        $scenarios['alert'] = ['name','social_resources','products','drive_dictionary','negative_words','positive_words','start_date','end_date','awario_file'];
         $scenarios['live-chat'] = ['products','positive_words','negative_words','start_date','end_date'];
         return $scenarios;
     }
@@ -117,7 +119,8 @@ class SearchForm extends Model
             'categories_dictionary' => 'categories dictionary',
             'positive_words' => 'positive words',
             'negative_words' => 'negative words',
-            'is_dictionary' => 'Agregar Diccionario',
+            'is_dictionary' => 'Add Dictionary',
+            'awario_file' => 'Add Awario File',
         ];
     }
 

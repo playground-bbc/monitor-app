@@ -6,6 +6,9 @@ use yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
+use yii\web\UploadedFile;
+use yii\helpers\FileHelper;
+
 
 use app\models\api\BaseApi;
 use app\models\api\TwitterApi;
@@ -53,7 +56,9 @@ class AlertController extends \yii\web\Controller
             ],
         ];
     }
-   
+    /**
+     * @return [array]
+     */
     public function actions()
     {
         return [
@@ -62,18 +67,26 @@ class AlertController extends \yii\web\Controller
             ],
         ];
     }
-
+    /**
+     * @param  string
+     * @param  string
+     * @return view
+     */
     public function actionError($message,$id = '')
     {
         Yii::error('Upps error .. !!', __METHOD__);
         return $this->render('delete',['message' => $message,'id' =>$id]);
     }
-
+    /**
+     * @return view
+     */
     public function actionIndex()
     {
         return $this->render('index');
     }
-
+    /**
+     * @return view
+     */
     public function actionCreate()
     {
         $alert = new Alerts();
@@ -94,6 +107,10 @@ class AlertController extends \yii\web\Controller
                 }
                 $this->setDictionariesAlert($form_alert,$alert->id);
                 $this->setSocialResources($form_alert,$alert->id);
+               
+                if (!$this->setAwarioFile($form_alert,$alert->id)) {
+                    return $this->redirect(['error', 'message' => Yii::t('app','Error save Awario File'),'id' => $alert->id]);
+                }
 
                 // send to view
                 $this->redirect(['view', 'alertId' => $alert->id]);
@@ -105,7 +122,10 @@ class AlertController extends \yii\web\Controller
         return $this->render('create',['form_alert' => $form_alert]);
     }
 
-
+    /**
+     * @param  int
+     * @return view
+     */
     public function actionView($alertId)
     {
         $alert = Alerts::findOne($alertId);
@@ -142,12 +162,13 @@ class AlertController extends \yii\web\Controller
 
         $baseApi = new BaseApi($params);
 
-        var_dump($baseApi);
-        die();     
+           
 
         return $this->render('view');
     }
-
+    /**
+     * @return view
+     */
     public function actionTwitter()
     {
         $twitterApi = new TwitterApi();
@@ -161,7 +182,10 @@ class AlertController extends \yii\web\Controller
         return $this->redirect('create');
     }
 
-
+    /**
+     * @param  array
+     * @return [array]
+     */
     public function getModelsProducts($products=[])
     {   
         $models_products = [];
@@ -199,7 +223,10 @@ class AlertController extends \yii\web\Controller
         
         return $models_products;
     }
-
+    /**
+     * @param array
+     * @param int
+     */
     public function setProductsModelsAlert($models_products,$alertId)
     {
        if (count($models_products)) {
@@ -216,7 +243,10 @@ class AlertController extends \yii\web\Controller
         }
         return (count($models_products) && empty($products_alerts->errors)) ? true : false;
     }
-
+    /**
+     * @param array
+     * @param int
+     */
     public function setDictionariesAlert($form_alert = [],$alertId)
     {
        $drive = new DriveProductsApi();
@@ -261,7 +291,10 @@ class AlertController extends \yii\web\Controller
        }
 
     }
-
+    /**
+     * @param array
+     * @param int
+     */
     public function setSocialResources($form_alert = [],$alertId)
     {
         
@@ -277,6 +310,49 @@ class AlertController extends \yii\web\Controller
             $model->save();
         }
 
+    }
+    /**
+     * @param array
+     * @param id
+     */
+    public function setAwarioFile($form_alert = [],$alertId)
+    {
+        if (UploadedFile::getInstance($form_alert, 'awario_file')) {
+            $file = UploadedFile::getInstance($form_alert, 'awario_file');
+            $resourceName = 'awario';
+
+            $folderOptions = [
+                'name' => $alertId,
+                'path' => '@monitor',
+                'resource' => $resourceName,
+            ];
+            $path = $this->setFolderPath($folderOptions);
+            $fileName = $alertId . '.' . $file->extension;
+            if (!$file->saveAs($path . $fileName)) {
+                Yii::warning("problems when saving the awario file in the alert with id: {$alertId}", __METHOD__);
+            }
+            return $path;
+        }
+        return false;
+    }
+
+    /**
+     * @return $path string or boolean
+     * create or return the  valid path for save images
+     */
+    public function setFolderPath($folderOptions)
+    {
+
+        $path = \Yii::getAlias($folderOptions['path']).'/'.$folderOptions['resource'].'/'. $folderOptions['name']. '/';
+        
+        
+        if (!is_dir($path)) {
+           $folder = FileHelper::createDirectory($path, $mode = 0775,$recursive = true);
+           
+           return ($folder) ? $path : false; 
+        }
+
+        return $path;
     }
 
 }

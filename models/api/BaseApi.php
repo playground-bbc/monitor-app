@@ -21,6 +21,8 @@ class BaseApi extends Model
 			$this->$key = $value;
 		}
 	}
+
+	
 }
 
  ?>

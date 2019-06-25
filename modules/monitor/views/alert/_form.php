@@ -12,7 +12,7 @@ use app\models\api\TwitterApi;
 
 use kartik\select2\Select2;
 use kartik\date\DatePicker;
-use kartik\widgets\FileInput;
+use kartik\file\FileInput;
 use kartik\switchinput\SwitchInput;
 use faryshta\widgets\JqueryTagsInput;
 
@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 ?>
 
-<?php $form = ActiveForm::begin(['id' => 'search-form','options'=>['enctype'=>'multipart/form-data']]); ?>
+<?php $form = ActiveForm::begin(['id' => 'search-form','options' => ['enctype' => 'multipart/form-data']]); ?>
 	
 	<div class="container">
 		<div class="row">
@@ -57,7 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-12">
+			<div class="col-md-6">
 				<?= $form->field($form_alert, 'products[]')->widget(Select2::classname(), [
 					   'data' => $form_alert->Products,
 					    'options' => [
@@ -67,6 +67,19 @@ $this->params['breadcrumbs'][] = $this->title;
 					    'pluginOptions' => [
 					        'allowClear' => true,
 					    ],
+					]);
+				?>
+			</div>
+			<div class="col-md-6">
+				<?= $form->field($form_alert, 'awario_file')->widget(FileInput::classname(), [
+					    'options' => ['accept' => 'text/csv'],
+					    'pluginOptions' => [
+					        'showPreview' => false,
+					        'showCaption' => true,
+					        'showRemove' => true,
+					        'showUpload' => false
+	    				]
+
 					]);
 				?>
 			</div>
