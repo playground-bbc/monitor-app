@@ -74,7 +74,7 @@ class SearchForm extends Model
     public function scenarios()
     {
         $scenarios = parent::scenarios();
-        $scenarios['alert'] = ['name','social_resources','products','drive_dictionary','negative_words','positive_words','start_date','end_date','awario_file'];
+        $scenarios['alert'] = ['name','social_resources','products','drive_dictionary','negative_words','positive_words','start_date','end_date'];
         $scenarios['live-chat'] = ['products','positive_words','negative_words','start_date','end_date'];
         return $scenarios;
     }

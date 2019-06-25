@@ -148,7 +148,7 @@ $this->params['breadcrumbs'][] = $this->title;
 						    'pluginOptions' => [
 						        'autoclose'=>true,
 						        'format' => 'mm/dd/yyyy',
-						        'startDate' => date(Yii::$app->formatter->dateFormat, strtotime('today')),
+						        //'startDate' => date(Yii::$app->formatter->dateFormat, strtotime('today')),
 		                    	'todayHighlight' => true
 						    ]
 						]);

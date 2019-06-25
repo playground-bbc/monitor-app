@@ -39,7 +39,10 @@ class LiveChatApi extends Model
         'ccs',
         'tags',
         'rate',
-        'currentGroup'
+        'currentGroup',
+        'opened',
+        'modified',
+        'groups'
 
     ];
 
@@ -48,9 +51,10 @@ class LiveChatApi extends Model
     public function loadParams($params)
     {
 
-        $params['date_from'] = ($params['date_from']) ?  Yii::$app->formatter->asDate($params['date_from'],'yyyy-MM-dd') : '';
-        $params['date_to'] = ($params['date_to']) ? Yii::$app->formatter->asDate($params['date_to'],'yyyy-MM-dd'): '';
+        $params['date_from'] = (isset($params['date_from'])) ?  Yii::$app->formatter->asDate($params['date_from'],'yyyy-MM-dd') : '';
+        $params['date_to'] = (isset($params['date_to'])) ? Yii::$app->formatter->asDate($params['date_to'],'yyyy-MM-dd'): '';
 
+        
         foreach ($params as $key => $value) {
             $this->params[$key] = $value; 
         }
@@ -77,7 +81,7 @@ class LiveChatApi extends Model
 
             $this->params['page'] = 1;
         }
-   
+        
         $this->_orderbyTicket();
         return $this;
     }
@@ -124,10 +128,10 @@ class LiveChatApi extends Model
         foreach ($this->_data as $key => $value) {
             foreach ($value as $obj => $property) {
                //$this->data[$key]['pages'] = $property->pages;
-               $this->data[$key][$this->baseName]['total'] = $property->total;
+               $this->data[$key]['total'] = $property->total;
                foreach ($property->tickets as $ticket ) {
                    $data = $this->_exclude($ticket);
-                   $this->data[$key][$this->baseName]['tickets'][]= $data;
+                   $this->data[$key]['tickets'][]= $data;
                }
             }
         }

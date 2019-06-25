@@ -75,6 +75,9 @@ class AlertController extends \yii\web\Controller
     public function actionError($message,$id = '')
     {
         Yii::error('Upps error .. !!', __METHOD__);
+        var_dump($message);
+        var_dump($id);
+        die();
         return $this->render('delete',['message' => $message,'id' =>$id]);
     }
     /**
@@ -107,13 +110,10 @@ class AlertController extends \yii\web\Controller
                 }
                 $this->setDictionariesAlert($form_alert,$alert->id);
                 $this->setSocialResources($form_alert,$alert->id);
-               
-                if (!$this->setAwarioFile($form_alert,$alert->id)) {
-                    return $this->redirect(['error', 'message' => Yii::t('app','Error save Awario File'),'id' => $alert->id]);
-                }
+                $this->setAwarioFile($form_alert,$alert->id);
 
                 // send to view
-                $this->redirect(['view', 'alertId' => $alert->id]);
+                return $this->redirect(['view', 'alertId' => $alert->id]);
             }
             
         }
@@ -134,7 +134,7 @@ class AlertController extends \yii\web\Controller
         // models products
         foreach (ProductsModelsAlerts::find()->where(['alertId' => $alertId])->with('productModel')->each() as $product) {
             // batch query with eager loading
-            $products_models[] = $product->productModel->serial_model;
+            $products_models[$product->productModel->product->category->name][$product->productModel->product->name] = $product->productModel->serial_model;
         }
         $words = [];
         // words
@@ -153,6 +153,7 @@ class AlertController extends \yii\web\Controller
         }
 
         $params = [
+            'alertId' => $alertId,
             'words' => $words,
             'products_models' => $products_models,
             'resources' => $resources,
@@ -161,6 +162,7 @@ class AlertController extends \yii\web\Controller
         ]; 
 
         $baseApi = new BaseApi($params);
+       
 
            
 
