@@ -83,9 +83,11 @@ class SearchForm extends Model
     {
         $family['Products Family'] = ArrayHelper::map(ProductsFamily::find()->andFilterCompare('parentId','null','<>')->all(),'name','name');
         $categories['Product Category'] = ArrayHelper::map(ProductCategory::find()->andFilterCompare('familyId','null','<>')->all(),'name','name');
+        $products['Product'] = ArrayHelper::map(Products::find()->andFilterCompare('categoryId','null','<>')->all(),'name','name');
         $products_models['Product Models'] = ArrayHelper::map(ProductsModels::find()->andFilterCompare('productId','null','<>')->all(),'serial_model','serial_model');
 
         $data = ArrayHelper::merge($family,$categories);
+        $data = ArrayHelper::merge($products,$data);
         $data = ArrayHelper::merge($products_models,$data);
         return $data;
 

@@ -19,7 +19,6 @@ class DriveProductsApi extends Model
     private $_data;
 
     private $_productsFamily = ['HA', 'HE', 'MC', 'Monitores y proyectores'];
-    //private $_productsFamily = ['MC'];
 
     public function SaveToDatabase($values)
     {

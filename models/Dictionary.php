@@ -98,15 +98,5 @@ class Dictionary extends \yii\db\ActiveRecord
         return $this->hasOne(CategoriesDictionary::className(), ['id' => 'category_dictionaryId']);
     }
 
-
-    public function getOrderedWords()
-    {
-        /*$result =[];
-        $words = $this->find()->with('category')->asArray()->all();
-        for ($i=0; $i <sizeof($words) ; $i++) { 
-            $result[$words[$i]['category']['name']][] = $words[$i]['name'] ;
-        }
-        return $result;*/
-        return null;
-    }
+   
 }
