@@ -3,7 +3,7 @@
 namespace app\models\filebase;
 
 use yii;
-use Filebase\Database;
+
 /**
  * Filebase wrapper
  */
@@ -13,18 +13,32 @@ class Filebase
 	private $_filebase;
 	public $alertId;
 
+    /**
+     * [save save data in a json by name to alertid]
+     * @param  [array] $data [data to save]
+     * @return [null] 
+     */
 	public function save($data)
 	{
-        $file = $this->_filebase->get("{$this->alertId}");
+        $file = $this->getFilebase();
 		foreach ($data as $key => $value) {
             $file->$key = $value;
         }
 	    $file->save();
 	}
-	
+
+    /**
+     * [getFilebase return object filebase]
+     * @return [obj] [Filebase\Database]
+     */
+    public function getFilebase()
+    {
+        return $this->_filebase->get($this->alertId);
+    }
+
 	function __construct()
 	{
-		$this->_filebase = new Database([
+		$this->_filebase = new \Filebase\Database([
             'dir'            => Yii::getAlias('@resources'),
             'backupLocation' => Yii::getAlias('@backup'),
             'format'         => \Filebase\Format\Json::class,

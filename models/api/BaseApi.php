@@ -58,11 +58,14 @@ class BaseApi extends Model
 		}
 		$resource = array_flip($this->resources);
 		
-		if (!$this->lastUpdateJsonFile()) {
+		
+		/*if (!$this->lastUpdateJsonFile()) {
 			$tweets = [];
 			if (isset($resource['Twitter'])) {
+
 				$data = $this->getSearchTwitter();
 				$tweets = $this->setSearchDataTwitter($data);
+
 				$this->saveJsonFile($tweets);
 			}
 			
@@ -81,7 +84,7 @@ class BaseApi extends Model
 				
 				$this->saveJsonFile($model);
 			}
-		}
+		}*/
 
 		$this->countAndSearchWords();
 		
@@ -92,31 +95,31 @@ class BaseApi extends Model
 	private function getSearchTwitter()
 	{
 		$twitterApi = new TwitterApi();
+		
 		$params = [
-           // 'q' => $key,
             'lang' => 'es',
             'result_type' => 'recent',
             'count' => '100',
-            'until' => date('yyyy-MM-dd'),
+            'until' => Yii::$app->formatter->asDate($this->start_date,'yyyy-MM-dd'),
 
         ];
-        /*var_dump(Yii::$app->formatter->asDate($this->start_date,'yyyy-MM-dd'));
-        die();*/
+        
 
         $data = [];
         $categories = array_keys($this->products_models);
         
         foreach ($categories as $key) {
         	$params['q'] = $key;
-        	$data[$key] = $twitterApi->search_tweets($params,true);
+        	$data[$key] = $twitterApi->search_tweets($params);
         	if ($data[$key]['rate']['remaining'] < $this->twitter_limit) {
         		break;
         	}
         }
+
         foreach ($this->products_models as $key => $value) {
         	foreach ($value as $model => $serial_model) {
         		$params['q'] = $model;
-        	    $data[$model] = $twitterApi->search_tweets($params,true);
+        	    $data[$model] = $twitterApi->search_tweets($params);
         	    if ($data[$key]['rate']['remaining'] < $this->twitter_limit) {
 	        		break;
 	        	}
@@ -352,14 +355,16 @@ class BaseApi extends Model
 		// we go through the json 
 		$data = $db->field('data');
 		
+		$countWords = $this->addWordsInTweet($data);
+		/*$countByCategoryInTweet = $this->countWordsInTweetsByCategory($data);
+		
+		if (!is_null($countByCategoryInTweet)) {
+			
+			$sentences = $this->addTagsSentenceFoundInTweets($data);
+			
+		}*/
 
-		$countByCategory = $this->countWordsInTweetsByCategory($data);
-		var_dump($countByCategory);
-		if (!is_null($countByCategory)) {
-			$sentence = $this->addTagsSentenceFoundInTweets($data);
-			var_dump($sentence);
-			die();
-		}
+		//$countByCategoryInLiveChat = $this->countWordsInLiveChatByCategory($data);
 		
 		
 	}
@@ -428,10 +433,48 @@ class BaseApi extends Model
 	}
 
 
-	private function addCounts($value='')
+	private function addWordsInTweet($data)
 	{
+		// set array analisys Model => dictionary_title => word
+		$products = array_keys($data);
+		$countByWords = [];
+		for ($i=0; $i <sizeof($products) ; $i++) { 
+			foreach ($this->words as $categories => $words) {
+                for ($j=0; $j <sizeof($words) ; $j++) { 
+                	$countByWords[$products[$i]][$categories][$words[$j]] = 0;
+                }
+            }
+		}
+
+		foreach ($data as $products => $value) {
+			for ($i=0; $i <sizeof($value) ; $i++) { 
+				if ($value[$i]['source'] == self::TWITTER) {
+					$stringizer = new Stringizer($value[$i]['post_from']);
+					foreach ($this->words as $categories => $words) {
+		                for ($j=0; $j <sizeof($words) ; $j++) { 
+		                	if ($stringizer->contains($words[$j]) && isset($countByWords[$products][$categories][$words[$j]])) {
+		                		$countByWords[$products][$categories][$words[$j]] += $stringizer->containsCount($words[$j]) ;
+		                	}
+		                }
+		            }
+				}
+			}
+		}
+
 		
-		return null;
+		$data = [];
+		foreach ($countByWords as $products => $categories_words) {
+			foreach ($categories_words as $words => $word) {
+				foreach ($word as $key => $value) {
+					if ($value) {
+						$data[$products][$words][$key] = $value;
+					}
+				}
+			}
+		}
+		unset($countByWords);
+
+		return $data;
 
 	}
 	/**

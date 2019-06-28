@@ -123,6 +123,12 @@ class LiveChatApi extends Model
         return $words;
     }
 
+    public function countTicketsAll()
+    {
+        $tickets =  $this->_liveChat->tickets->get($params = array());
+        return $tickets->total;
+    }
+
     private function _orderbyTicket()
     {
         foreach ($this->_data as $key => $value) {

@@ -189,7 +189,7 @@ if (!\Yii::$app->session->has('oauth_token_twitter')) {
 
 	$this->registerJs('
 		function populateClientCode(params){
-			if(params == 4){
+			if(params == 2){
 			window.location.replace("'.$url.'");
 			}
 		}

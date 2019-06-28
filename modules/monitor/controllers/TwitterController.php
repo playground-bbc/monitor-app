@@ -33,8 +33,8 @@ class TwitterController extends Controller
             $params = [
                 'q' => $key,
                 'lang' => 'es',
-                'result_type' => 'recent',
-                'count' => '20',
+               // 'result_type' => 'recent',
+                'count' => '100',
 
             ];
              

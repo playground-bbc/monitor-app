@@ -8,12 +8,6 @@ use app\models\api\DriveProductsApi;
 use yii\helpers\ArrayHelper;
 
 
-require_once(Yii::getAlias('@vendor').'/autoload.php');
-//require_once Yii::getAlias('@vendor').'\google\apiclient\src\Google\Client.php'  ;
-
-
-
-
 /**
  * Default controller for the `monitor` module
  */

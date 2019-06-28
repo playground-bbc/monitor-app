@@ -13,6 +13,7 @@ use yii\helpers\FileHelper;
 use app\models\api\BaseApi;
 use app\models\api\TwitterApi;
 use app\models\api\LiveChatApi;
+use app\models\filebase\Filebase;
 
 use app\models\Alerts;
 use app\models\AlertResources;
@@ -75,9 +76,6 @@ class AlertController extends \yii\web\Controller
     public function actionError($message,$id = '')
     {
         Yii::error('Upps error .. !!', __METHOD__);
-        var_dump($message);
-        var_dump($id);
-        die();
         return $this->render('delete',['message' => $message,'id' =>$id]);
     }
     /**
@@ -129,6 +127,9 @@ class AlertController extends \yii\web\Controller
     public function actionView($alertId)
     {
         $alert = Alerts::findOne($alertId);
+     //   $this->syncDictionaryByAlertId($alertId);
+        
+        
 
         $products_models = [];
         // models products
@@ -162,7 +163,7 @@ class AlertController extends \yii\web\Controller
         ]; 
 
         $baseApi = new BaseApi($params);
-       
+
 
            
 
@@ -202,6 +203,11 @@ class AlertController extends \yii\web\Controller
             $categoryId = ArrayHelper::map(ProductCategory::find()->where(['name' => $products[$i]])->all(),'id','familyId');
             if ($categoryId) {
                 $productsId = ArrayHelper::map(Products::find()->where(['categoryId' => array_keys($categoryId)])->all(),'id','categoryId');
+                $modelsId  =  ArrayHelper::map(ProductsModels::find()->where(['productId' => array_keys($productsId)])->all(),'id','serial_model');
+            }
+
+            $productsId = ArrayHelper::map(Products::find()->where(['name' => $products[$i]])->all(),'id','categoryId');
+            if ($productsId) {
                 $modelsId  =  ArrayHelper::map(ProductsModels::find()->where(['productId' => array_keys($productsId)])->all(),'id','serial_model');
             }
 
@@ -293,6 +299,29 @@ class AlertController extends \yii\web\Controller
        }
 
     }
+
+    public function syncDictionaryByAlertId($alertId)
+    {
+        $drive = new DriveProductsApi();
+        
+        $dictionaries_title = $drive->titleDictionary;
+        /*$dictionaries_words = $drive->getContentDictionaryByTitle($dictionaries_title);
+        var_dump($dictionaries_words);*/
+
+        foreach ($dictionaries_title as $dictionary) {
+            $categoryId = CategoriesDictionary::find()->where(['name' => $dictionary])->select('id')->one();
+            $data = $drive->getContentDictionaryByTitle([$dictionary]);
+           
+            foreach ($data[$dictionary] as $key => $word) {
+                $models[] = [$alertId,$categoryId->id,$word];
+                
+             }
+            
+        } 
+        // save words from drive 
+        Yii::$app->db->createCommand()->batchInsert('dictionary', ['alertId','category_dictionaryId', 'word'],$models)
+        ->execute();
+    }
     /**
      * @param array
      * @param int
@@ -344,8 +373,10 @@ class AlertController extends \yii\web\Controller
      */
     public function setFolderPath($folderOptions)
     {
+        // path to folder flat archives
+        $s = DIRECTORY_SEPARATOR;
 
-        $path = \Yii::getAlias($folderOptions['path']).'/'.$folderOptions['resource'].'/'. $folderOptions['name']. '/';
+        $path = \Yii::getAlias($folderOptions['path'])."{$s}".$folderOptions['resource']."{$s}". $folderOptions['name']. "{$s}";
         
         
         if (!is_dir($path)) {

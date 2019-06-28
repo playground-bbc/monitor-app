@@ -69,6 +69,15 @@ class m190624_205707_log_init extends Migration
 
             $this->createIndex('idx_log_level', $target->logTable, 'level');
             $this->createIndex('idx_log_category', $target->logTable, 'category');
+
+            // for session 
+            // https://www.yiiframework.com/doc/guide/2.0/en/tutorial-performance-tuning#optimizing-session
+            $this->createTable('session_monitor', [
+                'id' => $this->bigPrimaryKey(),
+                'expire ' => $this->integer(),
+                'data' => $this->binary(),
+            ], $tableOptions);
+
         }
     }
 
