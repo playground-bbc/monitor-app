@@ -52,30 +52,40 @@ use yii\data\ArrayDataProvider;
 			<div class="col-md-12">
 				<h2> Total por palabras</h2>
 				<?php if (!is_null($model['tweets']['countWords'])): ?>
-					<?php 
-					var_dump($model['tweets']['countWords']);
-					 ?>
 					<table class="table">
 		              <thead>
 		                <tr>
 		                 <th>Product</th>
-		                 <th>Type Dictionary</th>	
+		                 <th>Type Dictionary</th>
 		                 <th>Word</th>	
-		                 <th>total</th>	
+		                 <th>total</th>
+		                 <!-- <th>Word</th>	
+		                 <th>total</th>	 -->
 		                </tr>
 		              </thead>
 		              <tbody>
-		                <?php foreach ($model['tweets']['countWords'] as $key => $value): ?>
 		                <tr class="">
+		                <?php foreach ($model['tweets']['countWords'] as $key => $value): ?>
 			                  <td><?= $key  ?></td>
-			                  <?php foreach ($value as $array => $category): ?>
-				                  	<?php foreach ($category as $word => $count): ?>
-				                  		<td><?= $array  ?></td>
-				                  		<td><?= $word  ?></td>
-				                  		<td><?= $count  ?></td>
-				                  	<?php endforeach ?>
-
-			                  <?php endforeach ?>
+			                  <td>
+				                  <?php foreach ($value as $array => $category): ?>
+										<li><?= $array ?></li>
+				                  <?php endforeach ?>
+			                  </td>
+			                  <td>
+			                  	<?php foreach ($value as $array => $category): ?>
+			                  		<?php foreach ($category as $word => $total): ?>
+			                  			<li><?= $word  ?></li>
+			                  		<?php endforeach ?>
+			                  	<?php endforeach ?>
+			                  </td>
+			                  <td>
+			                  	<?php foreach ($value as $array => $category): ?>
+			                  		<?php foreach ($category as $word => $total): ?>
+			                  			<li><?= $total  ?></li>
+			                  		<?php endforeach ?>
+			                  	<?php endforeach ?>
+			                  </td>
 			            </tr>
 		                <?php endforeach ?>
 		              </tbody>
@@ -215,25 +225,35 @@ use yii\data\ArrayDataProvider;
 		                <tr>
 		                  <th>#</th>
 		                  <th>Product</th>
-		                 
-		                  <?php foreach ($model['liveChat']['countWords_live'] as $key => $value): ?>
-			                  	<?php foreach ($value as $key => $value): ?>
-			                  		<th><?= $key  ?></th>
-			                  	<?php endforeach ?>
-		                  <?php endforeach ?>
+		                  <th>Type Dictionary</th>
+		                  <th>Word</th>	
+		                  <th>total</th>
 		                </tr>
 		              </thead>
 		              <tbody>
+		               <tr class="">
 		                <?php foreach ($model['liveChat']['countWords_live'] as $key => $value): ?>
-		                	<tr class="">
-			                  <td>1</td>
 			                  <td><?= $key  ?></td>
-			                  <?php foreach ($value as $array => $category): ?>
-				                  	<?php foreach ($category as $word => $count): ?>
-				                  		<td><?= $word  ?></td>
-				                  	<?php endforeach ?>
-			                  <?php endforeach ?>
-			                </tr>
+			                  <td>
+				                  <?php foreach ($value as $array => $category): ?>
+										<li><?= $array ?></li>
+				                  <?php endforeach ?>
+			                  </td>
+			                  <td>
+			                  	<?php foreach ($value as $array => $category): ?>
+			                  		<?php foreach ($category as $word => $total): ?>
+			                  			<li><?= $word  ?></li>
+			                  		<?php endforeach ?>
+			                  	<?php endforeach ?>
+			                  </td>
+			                  <td>
+			                  	<?php foreach ($value as $array => $category): ?>
+			                  		<?php foreach ($category as $word => $total): ?>
+			                  			<li><?= $total  ?></li>
+			                  		<?php endforeach ?>
+			                  	<?php endforeach ?>
+			                  </td>
+			            </tr>
 		                <?php endforeach ?>
 		              </tbody>
 		            </table>
