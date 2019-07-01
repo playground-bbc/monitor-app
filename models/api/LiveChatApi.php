@@ -32,6 +32,8 @@ class LiveChatApi extends Model
     
     public $alertId;
 
+    public $totalByQuery = [];
+
     
     public $exclude = [
         'resolutionDate',
@@ -73,6 +75,7 @@ class LiveChatApi extends Model
                 $params['query'] = $value;
                 $params['page'] = $page;
                 $this->_data[$value][$page] = $this->_get($params);
+                $this->totalByQuery[$value] =  $this->_data[$value][$page]->total;
                 $this->params['page'] ++;
 
                 
@@ -127,6 +130,11 @@ class LiveChatApi extends Model
     {
         $tickets =  $this->_liveChat->tickets->get($params = array());
         return $tickets->total;
+    }
+
+    public function gettotalByQuery()
+    {
+        return $this->totalByQuery;
     }
 
     private function _orderbyTicket()

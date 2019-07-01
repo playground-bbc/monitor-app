@@ -40,12 +40,12 @@ class BaseApi extends Model
 	const LIVECHAT = 'LIVECHAT';
 
 	const COLOR = [
-		'Buenas' => 'green',
-		'Malas' => 'red',
-		'Kws Positivos' => 'blue',
-		'Kws Negativos' => 'orange',
-		'Frases Negativas' => 'blue',
-		'Frases Positivas' => 'yellow',
+		'Buenas' => '#9BDFE7',
+		'Malas' => '#E17A6A',
+		'Kws Positivos' => '#85C8D1',
+		'Kws Negativos' => '#4E1B13',
+		'Frases Negativas' => '#D64933',
+		'Frases Positivas' => '#E7E7E7',
 	];
 	
 	/**
@@ -153,7 +153,7 @@ class BaseApi extends Model
 				// get url from tweet
 				if (count($value['statuses'][$i]['entities']['urls'])) {
 					$tweets[$key][$i]['url'] = $value['statuses'][$i]['entities']['urls'][0]['url'];
-				}
+				}else{$tweets[$key][$i]['url'] = '-';}
 				// get created_at from tweet
 				if (isset($value['statuses'][$i]['created_at'])) {
 					$tweets[$key][$i]['created_at'] = $value['statuses'][$i]['created_at'];
@@ -203,7 +203,7 @@ class BaseApi extends Model
 
 
        $data = $liveChat->loadParams($params)->getTickets()->all();
-       
+
        return $data;
 
 
@@ -212,10 +212,24 @@ class BaseApi extends Model
 	 * [getTotalTicket total of tickets since the beginning of time]
 	 * @return [int] 
 	 */
-	private function getTotalTicket()
+	private function getTotalTicket($sentences_live)
 	{
 		$liveChat = new LiveChatApi();
-        $total = $liveChat->countTicketsAll();
+        $total['total'] = $liveChat->countTicketsAll();
+
+        $status= ['pending' => 0, 'pending'=> 0, ' spam'=> 0 ,' spam'=> 0,'solved' => 0];
+
+        $tickets = ArrayHelper::getValue($sentences_live,'sentences_live');
+        if ($tickets) {
+        	$total['tickets'] = count($tickets);
+        	for ($i=0; $i <sizeof($tickets) ; $i++) { 
+        		if (in_array($tickets[$i]['status'], $status)) {
+        			$status[$tickets[$i]['status']] += 1;
+        		}
+        	}
+        }
+
+        $total = ArrayHelper::merge($total,$status);
         
         return $total;
 	}
@@ -241,6 +255,7 @@ class BaseApi extends Model
 			for ($i=0; $i <sizeof($obj) ; $i++) { 
 				$model_ticket[$model][$i]['source'] = self::LIVECHAT;
 				$model_ticket[$model][$i]['id'] = $obj[$i]->id;
+				$model_ticket[$model][$i]['status'] = $obj[$i]->status;
 				$model_ticket[$model][$i]['created_at'] = $obj[$i]->date;
 				$model_ticket[$model][$i]['author_name'] = $obj[$i]->requester->name;
 				$model_ticket[$model][$i]['username'] = $obj[$i]->requester->mail;
@@ -256,7 +271,6 @@ class BaseApi extends Model
 			}
 		}
 
-		
 		return $model_ticket;
 		
 	}
@@ -313,6 +327,7 @@ class BaseApi extends Model
 				$model[$source][$index]['created_at']  = mb_convert_encoding($data[$i][2], 'UTF-8', 'UTF-8');
 				$model[$source][$index]['author_name'] = mb_convert_encoding($data[$i][3], 'UTF-8', 'UTF-8');
 				$model[$source][$index]['username']    = mb_convert_encoding($data[$i][4], 'UTF-8', 'UTF-8');
+				$model[$source][$index]['author_username'] = mb_convert_encoding($data[$i][4], 'UTF-8', 'UTF-8');
 				$model[$source][$index]['title']       = mb_convert_encoding($data[$i][5], 'UTF-8', 'UTF-8');
 				$model[$source][$index]['post_from']   = mb_convert_encoding($data[$i][6], 'UTF-8', 'UTF-8');
 				$model[$source][$index]['reach']       = mb_convert_encoding($data[$i][7], 'UTF-8', 'UTF-8');
@@ -383,7 +398,7 @@ class BaseApi extends Model
 				$model['liveChat'] = ArrayHelper::merge($sentences_live,$countWords_live);
 				$model['liveChat'] = ArrayHelper::merge($countByCategoryInLiveChat,$model['liveChat']);
 				// total ticket
-				$total_tickets['total'] = $this->getTotalTicket(); 
+				$total_tickets['total'] = $this->getTotalTicket($sentences_live); 
 				$model['liveChat'] = ArrayHelper::merge($total_tickets,$model['liveChat']);
 			}
 		}
@@ -392,9 +407,10 @@ class BaseApi extends Model
 			$awario_data = $this->searchProdductsInAwario($data);
 
 			if (!is_null($awario_data)) {
-				$countByCategoryInLive['countByCategoryInAwario'] = $this->countWordsInLiveByCategory($awario_data);
+				$countByCategoryInLive['countByCategoryInAwario'] = $this->countWordsInAwarioByCategory($awario_data);
 			
 				$model['awario'] = ArrayHelper::merge($awario_data,$countByCategoryInLive);
+
 			}
 		}
 
@@ -455,7 +471,8 @@ class BaseApi extends Model
 		                		$background = self::COLOR[$categories];
 		                		$sentence = (array) $stringizer->replaceIncaseSensitive($words[$j], "<span style='background: {$background}'>{$words[$j]}</span>");
 		                		$value[$i]['post_from'] = array_values($sentence);
-		                		$tweets[$model][] = $value[$i];
+		                		$value[$i]['product'] = $model;
+		                		$tweets[] = $value[$i];
 		                	}
 		                }
 		            }
@@ -563,7 +580,8 @@ class BaseApi extends Model
 				                		$background = self::COLOR[$categories];
 				                		$sentence = (array) $stringizer->replaceIncaseSensitive($words[$j], "<span style='background: {$background}'>{$words[$j]}</span>");
 				                		$value[$i]['post_from'] = array_values($sentence);
-				                		$live[$model][] = $value[$i];
+				                		$value[$i]['product'] = $model;
+				                		$live[] = $value[$i];
 				                	}
 				                }
 				            }
@@ -591,7 +609,7 @@ class BaseApi extends Model
 		foreach ($data as $products => $value) {
 			for ($i=0; $i <sizeof($value) ; $i++) { 
 				if ($value[$i]['source'] == self::LIVECHAT) {
-					for ($p=0; $p <sizeof($value[$i]['source']) ; $p++) { 
+					for ($p=0; $p <sizeof($value[$i]['post_from']) ; $p++) { 
 						if (isset($value[$i]['post_from'][$p]['client'])) {
 							$stringizer = new Stringizer($value[$i]['post_from'][$p]['client']);
 							foreach ($this->words as $categories => $words) {
@@ -646,6 +664,7 @@ class BaseApi extends Model
 					$stringizer = new Stringizer($data['AWARIO'][$i]['post_from']);
 					for ($p=0; $p <sizeof($products) ; $p++) { 
 						if ($stringizer->containsCountIncaseSensitive($products[$p])) {
+	                		$data['AWARIO'][$i]['products'] = $products[$p];
 	                		$content = $data['AWARIO'][$i];
 	                		$awario_data['AWARIO'][$products[$p]][] = $content;
 	                	}
@@ -656,10 +675,11 @@ class BaseApi extends Model
 		return (count($awario_data)) ? $awario_data : null;
 	}
 
-	private function countWordsInLiveByCategory($awario_data)
+	private function countWordsInAwarioByCategory($awario_data)
 	{
         // get products
 		$products = ArrayHelper::getValue($awario_data, 'AWARIO');
+
 		// get the sources
 		$sources = [];
 		foreach ($products as $key => $value) {

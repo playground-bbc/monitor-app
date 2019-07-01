@@ -162,15 +162,29 @@ class AlertController extends \yii\web\Controller
         ]; 
 
         $baseApi = new BaseApi($params);
-
+        $color = $baseApi::COLOR;
         $model = $baseApi->countAndSearchWords();
+
+        $providerTwitter = new ArrayDataProvider([
+          'allModels' => $model['tweets']['sentences'],
+          'keys' => array_keys($model['tweets']['sentences']),
+          'pagination' => [
+                  'pageSize' => 10,
+              ],
+            'totalCount' => count($model['tweets']['sentences']),
+          ]);
+
         
 
-        //$tweetsCountWords = $this->setDataTwitterWords($models);  
+
+
+        
 
 
         return $this->render('view',[
             'model' => $model,
+            'providerTwitter' => $providerTwitter,
+            'color' => $color
 
         ]);
     }
