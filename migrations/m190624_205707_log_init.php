@@ -74,7 +74,7 @@ class m190624_205707_log_init extends Migration
             // https://www.yiiframework.com/doc/guide/2.0/en/tutorial-performance-tuning#optimizing-session
             $this->createTable('session_monitor', [
                 'id' => $this->bigPrimaryKey(),
-                'expire ' => $this->integer(),
+                'expire' => $this->integer(),
                 'data' => $this->binary(),
             ], $tableOptions);
 

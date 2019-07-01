@@ -59,7 +59,7 @@ class BaseApi extends Model
 		$resource = array_flip($this->resources);
 		
 		
-		/*if (!$this->lastUpdateJsonFile()) {
+		if ($this->lastUpdateJsonFile()) {
 			$tweets = [];
 			if (isset($resource['Twitter'])) {
 
@@ -84,7 +84,7 @@ class BaseApi extends Model
 				
 				$this->saveJsonFile($model);
 			}
-		}*/
+		}
 
 		$this->countAndSearchWords();
 		
@@ -346,7 +346,7 @@ class BaseApi extends Model
 		return true;
 	}
 
-	private function countAndSearchWords()
+	public function countAndSearchWords()
 	{
 		$filebase = new Filebase();
 		$filebase->alertId = $this->alertId;
@@ -354,18 +354,53 @@ class BaseApi extends Model
 
 		// we go through the json 
 		$data = $db->field('data');
-		
-		$countWords = $this->addWordsInTweet($data);
-		/*$countByCategoryInTweet = $this->countWordsInTweetsByCategory($data);
-		
-		if (!is_null($countByCategoryInTweet)) {
-			
-			$sentences = $this->addTagsSentenceFoundInTweets($data);
-			
-		}*/
+		$model = [];
 
-		//$countByCategoryInLiveChat = $this->countWordsInLiveChatByCategory($data);
+		$resource = array_flip($this->resources);
+
+		if (isset($resource['Twitter'])) {
+			$countByCategoryInTweet['countByCategoryInTweet'] = $this->countWordsInTweetsByCategory($data);
 		
+			if (!is_null($countByCategoryInTweet)) {
+				
+				$sentences['sentences'] = $this->addTagsSentenceFoundInTweets($data);
+				$countWords['countWords'] = $this->addWordsInTweet($data);
+
+				//join tweets
+				$model['tweets'] = ArrayHelper::merge($sentences,$countWords);
+				$model['tweets'] = ArrayHelper::merge($countByCategoryInTweet,$model['tweets']);
+			}
+		}
+		
+		if (isset($resource['Live Chat'])) {
+			$countByCategoryInLiveChat['countByCategoryInLiveChat'] = $this->countWordsInLiveChatByCategory($data);
+			if (!is_null($countByCategoryInLiveChat)) {
+				
+				$sentences_live['sentences_live'] = $this->addTagsSentenceFoundInLive($data);
+				$countWords_live['countWords_live'] = $this->addWordsInLive($data);
+
+				//join Live
+				$model['liveChat'] = ArrayHelper::merge($sentences_live,$countWords_live);
+				$model['liveChat'] = ArrayHelper::merge($countByCategoryInLiveChat,$model['liveChat']);
+				// total ticket
+				$total_tickets['total'] = $this->getTotalTicket(); 
+				$model['liveChat'] = ArrayHelper::merge($total_tickets,$model['liveChat']);
+			}
+		}
+
+		if ($this->isAwarioFile()) {
+			$awario_data = $this->searchProdductsInAwario($data);
+
+			if (!is_null($awario_data)) {
+				$countByCategoryInLive['countByCategoryInAwario'] = $this->countWordsInLiveByCategory($awario_data);
+			
+				$model['awario'] = ArrayHelper::merge($awario_data,$countByCategoryInLive);
+			}
+		}
+
+		
+		
+		return $model;
 		
 	}
 	/**
@@ -380,9 +415,7 @@ class BaseApi extends Model
 		$countByCategory = [];
 		for ($i=0; $i <sizeof($products) ; $i++) { 
 			foreach ($this->words as $categories => $words) {
-                for ($j=0; $j <sizeof($words) ; $j++) { 
-                	$countByCategory[$products[$i]][$categories] = 0;
-                }
+                $countByCategory[$products[$i]][$categories] = 0;
             }
 		}
 		foreach ($data as $model => $value) {
@@ -476,6 +509,204 @@ class BaseApi extends Model
 
 		return $data;
 
+	}
+
+	private function countWordsInLiveChatByCategory($data)
+	{
+		// set array analisys Model => dictionary_title => word
+
+		$products = array_keys($data);
+		$countByCategory = [];
+		for ($i=0; $i <sizeof($products) ; $i++) { 
+			foreach ($this->words as $categories => $words) {
+                for ($j=0; $j <sizeof($words) ; $j++) { 
+                	$countByCategory[$products[$i]][$categories] = 0;
+                }
+            }
+		}
+
+		foreach ($data as $model => $value) {
+			for ($i=0; $i <sizeof($value) ; $i++) { 
+				if ($value[$i]['source'] == self::LIVECHAT) {
+					for ($p=0; $p <sizeof($value[$i]['post_from']) ; $p++) { 
+						if (isset($value[$i]['post_from'][$p]['client'])) {
+							$stringizer = new Stringizer($value[$i]['post_from'][$p]['client']);
+							foreach ($this->words as $categories => $words) {
+				                for ($j=0; $j <sizeof($words) ; $j++) { 
+				                	if ($stringizer->contains($words[$j])) {
+				                		$countByCategory[$model][$categories] += $stringizer->containsCount($words[$j]) ;
+				                	}
+				                }
+				            }
+						}
+					}
+				}
+			}
+		}
+		unset($countByCategory['AWARIO']);
+		return (count($countByCategory)) ? $countByCategory : null;
+
+	}
+
+	private function addTagsSentenceFoundInLive($data)
+	{
+		$live = [];
+		foreach ($data as $model => $value) {
+			for ($i=0; $i <sizeof($value) ; $i++) { 
+				if ($value[$i]['source'] == self::LIVECHAT) {
+					for ($p=0; $p <sizeof($value[$i]['post_from']) ; $p++) { 
+						if (isset($value[$i]['post_from'][$p]['client'])) {
+							$stringizer = new Stringizer($value[$i]['post_from'][$p]['client']);
+							foreach ($this->words as $categories => $words) {
+				                for ($j=0; $j <sizeof($words) ; $j++) { 
+				                	if ($stringizer->contains($words[$j])) {
+				                		$background = self::COLOR[$categories];
+				                		$sentence = (array) $stringizer->replaceIncaseSensitive($words[$j], "<span style='background: {$background}'>{$words[$j]}</span>");
+				                		$value[$i]['post_from'] = array_values($sentence);
+				                		$live[$model][] = $value[$i];
+				                	}
+				                }
+				            }
+						}
+					}
+				}
+			}
+		}
+		return $live;
+	}
+
+	private function addWordsInLive($data)
+	{
+		// set array analisys Model => dictionary_title => word
+		$products = array_keys($data);
+		$countByWords = [];
+		for ($i=0; $i <sizeof($products) ; $i++) { 
+			foreach ($this->words as $categories => $words) {
+                for ($j=0; $j <sizeof($words) ; $j++) { 
+                	$countByWords[$products[$i]][$categories][$words[$j]] = 0;
+                }
+            }
+		}
+
+		foreach ($data as $products => $value) {
+			for ($i=0; $i <sizeof($value) ; $i++) { 
+				if ($value[$i]['source'] == self::LIVECHAT) {
+					for ($p=0; $p <sizeof($value[$i]['source']) ; $p++) { 
+						if (isset($value[$i]['post_from'][$p]['client'])) {
+							$stringizer = new Stringizer($value[$i]['post_from'][$p]['client']);
+							foreach ($this->words as $categories => $words) {
+				                for ($j=0; $j <sizeof($words) ; $j++) { 
+				                	if ($stringizer->contains($words[$j]) && isset($countByWords[$products][$categories][$words[$j]])) {
+				                		$countByWords[$products][$categories][$words[$j]] += $stringizer->containsCount($words[$j]) ;
+				                	}
+				                }
+				            }
+						}
+					}
+				}
+			}
+		}
+
+		
+		$data = [];
+		foreach ($countByWords as $products => $categories_words) {
+			foreach ($categories_words as $words => $word) {
+				foreach ($word as $key => $value) {
+					if ($value) {
+						$data[$products][$words][$key] = $value;
+					}
+				}
+			}
+		}
+		unset($countByWords);
+
+		return $data;
+	}
+
+	private function searchProdductsInAwario($data)
+	{
+		$awario_data =[];
+		if (isset($data['AWARIO'])) {
+			// set array analisys Model => dictionary_title => word
+			$products = [];
+			foreach ($this->products_models as $key => $value) {
+				$products[] = $key;
+				foreach ($value as $model => $serial_model) {
+					$products[] = $model;
+					$products[] = $serial_model;
+				}
+			}
+
+
+			
+			$content = [];
+			
+			for ($i=0; $i <sizeof($data['AWARIO']) ; $i++) { 
+				if (isset($data['AWARIO'][$i]['post_from'])) {
+					$stringizer = new Stringizer($data['AWARIO'][$i]['post_from']);
+					for ($p=0; $p <sizeof($products) ; $p++) { 
+						if ($stringizer->containsCountIncaseSensitive($products[$p])) {
+	                		$content = $data['AWARIO'][$i];
+	                		$awario_data['AWARIO'][$products[$p]][] = $content;
+	                	}
+					}
+				}
+			}
+		}
+		return (count($awario_data)) ? $awario_data : null;
+	}
+
+	private function countWordsInLiveByCategory($awario_data)
+	{
+        // get products
+		$products = ArrayHelper::getValue($awario_data, 'AWARIO');
+		// get the sources
+		$sources = [];
+		foreach ($products as $key => $value) {
+			for ($i=0; $i <sizeof($value) ; $i++) { 
+				if (!in_array($value[$i]['source'], $sources)) {
+					$sources[] = $value[$i]['source'];
+				}
+			}
+		}
+		// set array analisys Model => dictionary_title => word
+		$countByCategory = [];
+		foreach (array_keys($products) as $product) {
+			for ($s=0; $s <sizeof($sources) ; $s++) { 
+				foreach ($this->words as $categories => $words) {
+		            $countByCategory[$product][$sources[$s]][$categories] = [];
+		        }
+			}
+		}
+		// lets find out
+        foreach ($awario_data['AWARIO'] as $products => $product ) {
+        	for ($i=0; $i <sizeof($product) ; $i++) { 
+        		$stringizer = new Stringizer($product[$i]['post_from']);
+        		foreach ($this->words as $categories => $words) {
+	                for ($j=0; $j <sizeof($words) ; $j++) { 
+	                	if ($stringizer->contains($words[$j])) {
+	                		$background = self::COLOR[$categories];
+	                		$sentence = (array) $stringizer->replaceIncaseSensitive($words[$j], "<span style='background: {$background}'>{$words[$j]}</span>");
+	                		$product[$i]['post_from'] = array_shift($sentence);
+	                		$countByCategory[$products][$product[$i]['source']][$categories][]  = $product[$i]; 
+	                	}
+	                }
+	            }
+
+        	}
+        }
+
+        $data = [];
+		foreach ($countByCategory as $products => $sources) {
+			foreach ($sources as $source => $categories) {
+				foreach ($categories as $key => $value) {
+					if ($value) {
+						$data[$products][$source][$key] = $value;
+					}
+				}
+			}
+		}
+        return $data;
 	}
 	/**
 	 * @param  array

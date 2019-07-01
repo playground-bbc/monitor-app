@@ -8,6 +8,7 @@ use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
 use yii\web\UploadedFile;
 use yii\helpers\FileHelper;
+use yii\data\ArrayDataProvider;
 
 
 use app\models\api\BaseApi;
@@ -129,8 +130,6 @@ class AlertController extends \yii\web\Controller
         $alert = Alerts::findOne($alertId);
      //   $this->syncDictionaryByAlertId($alertId);
         
-        
-
         $products_models = [];
         // models products
         foreach (ProductsModelsAlerts::find()->where(['alertId' => $alertId])->with('productModel')->each() as $product) {
@@ -164,10 +163,16 @@ class AlertController extends \yii\web\Controller
 
         $baseApi = new BaseApi($params);
 
+        $model = $baseApi->countAndSearchWords();
+        
 
-           
+        //$tweetsCountWords = $this->setDataTwitterWords($models);  
 
-        return $this->render('view');
+
+        return $this->render('view',[
+            'model' => $model,
+
+        ]);
     }
     /**
      * @return view
@@ -387,5 +392,18 @@ class AlertController extends \yii\web\Controller
 
         return $path;
     }
+
+    public function setDataTwitterWords($models)
+    {
+        $countWord = [];
+        if (ArrayHelper::keyExists('tweets', $models, false)) {
+            $tweets = ArrayHelper::getValue($models,'tweets');
+            if (ArrayHelper::keyExists('countWords', $tweets, false)) {
+                $countWord = ArrayHelper::getValue($tweets,'countWords');
+            }
+        }
+        return (!empty($countWord)) ? $countWord : false;
+    }
+
 
 }
