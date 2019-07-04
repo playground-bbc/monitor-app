@@ -43,7 +43,7 @@ class BaseApi extends Model
 		'Buenas' => '#9BDFE7',
 		'Malas' => '#E17A6A',
 		'Kws Positivos' => '#85C8D1',
-		'Kws Negativos' => '#4E1B13',
+		'Kws Negativos' => '#E17A6A',
 		'Frases Negativas' => '#D64933',
 		'Frases Positivas' => '#E7E7E7',
 	];
@@ -56,10 +56,8 @@ class BaseApi extends Model
 		foreach ($params as $key => $value) {
 			$this->$key = $value;
 		}
-		$resource = array_flip($this->resources);
-		
-		
-		if ($this->lastUpdateJsonFile()) {
+
+		/*if (!$this->lastUpdateJsonFile()) {
 			$tweets = [];
 			if (isset($resource['Twitter'])) {
 
@@ -84,11 +82,42 @@ class BaseApi extends Model
 				
 				$this->saveJsonFile($model);
 			}
-		}
+		}*/
 
-		$this->countAndSearchWords();
+		//$this->countAndSearchWords();
 		
 	}
+
+	public function callApiResources()
+	{
+		$resource = array_flip($this->resources);
+
+		$tweets = [];
+		if (isset($resource['Twitter'])) {
+
+			$data = $this->getSearchTwitter();
+			$tweets = $this->setSearchDataTwitter($data);
+
+			$this->saveJsonFile($tweets);
+		}
+		
+		$tickets = [];
+		if (isset($resource['Live Chat'])) {
+			$data = $this->getSearchLiveChat();
+			$tickets = $this->setSearchDataTickets($data);
+		}
+		
+		$this->saveJsonFile(ArrayHelper::merge($tweets,$tickets));
+
+		if ($this->isAwarioFile()) {
+			$path =  $this->isAwarioFile();
+			$data =  $this->getSearchDataAwario($path);
+			$model = $this->setSearchDataAwario($data);
+			
+			$this->saveJsonFile($model);
+		}
+	}
+
 	/**
 	 * @return array
 	 */
@@ -107,6 +136,7 @@ class BaseApi extends Model
 
         $data = [];
         $categories = array_keys($this->products_models);
+
         
         foreach ($categories as $key) {
         	$params['q'] = $key;
@@ -133,6 +163,7 @@ class BaseApi extends Model
 	        	}
         	}*/
         }
+        
         return $data;
 	}
 	/**
@@ -189,10 +220,11 @@ class BaseApi extends Model
 			$models_products_all[] = $key;
 			foreach ($value as $model => $serial_model) {
 				$models_products_all[] = $model;
-				$models_products_all[] = $serial_model;
+				foreach ($serial_model as $key => $value) {
+					$models_products_all[] = $value;
+				}
 			}
 		}
-		 
 
 		$params = [
             'date_to' => Yii::$app->formatter->asDate($this->start_date,'yyyy-MM-dd'),
@@ -322,18 +354,43 @@ class BaseApi extends Model
 		$index = 0;
 		for ($i = 1; $i < sizeof($data); $i++) {
 			if (sizeof($data[0]) == sizeof($data[$i])) {
-				$model[$source][$index]['source']      = mb_convert_encoding($data[$i][0], 'UTF-8', 'UTF-8');
-				$model[$source][$index]['url']         = mb_convert_encoding($data[$i][1], 'UTF-8', 'UTF-8');
-				$model[$source][$index]['created_at']  = mb_convert_encoding($data[$i][2], 'UTF-8', 'UTF-8');
-				$model[$source][$index]['author_name'] = mb_convert_encoding($data[$i][3], 'UTF-8', 'UTF-8');
-				$model[$source][$index]['username']    = mb_convert_encoding($data[$i][4], 'UTF-8', 'UTF-8');
-				$model[$source][$index]['author_username'] = mb_convert_encoding($data[$i][4], 'UTF-8', 'UTF-8');
-				$model[$source][$index]['title']       = mb_convert_encoding($data[$i][5], 'UTF-8', 'UTF-8');
-				$model[$source][$index]['post_from']   = mb_convert_encoding($data[$i][6], 'UTF-8', 'UTF-8');
-				$model[$source][$index]['reach']       = mb_convert_encoding($data[$i][7], 'UTF-8', 'UTF-8');
-				$model[$source][$index]['sentiment']   = mb_convert_encoding($data[$i][8], 'UTF-8', 'UTF-8');
-				$model[$source][$index]['starred']     = mb_convert_encoding($data[$i][9], 'UTF-8', 'UTF-8');
-				$model[$source][$index]['done']        = mb_convert_encoding($data[$i][10], 'UTF-8', 'UTF-8');
+				if (isset($data[$i][0])) {
+					$model[$source][$index]['source']      = mb_convert_encoding($data[$i][0], 'UTF-8', 'UTF-8');
+				}
+				if (isset($data[$i][1])) {
+					$model[$source][$index]['url']         = mb_convert_encoding($data[$i][1], 'UTF-8', 'UTF-8');
+				}
+				if (isset($data[$i][2])) {
+					$model[$source][$index]['created_at']  = mb_convert_encoding($data[$i][2], 'UTF-8', 'UTF-8');
+				}
+				if (isset($data[$i][3])) {
+					$model[$source][$index]['author_name'] = mb_convert_encoding($data[$i][3], 'UTF-8', 'UTF-8');
+				}
+				if (isset($data[$i][4])) {
+					$model[$source][$index]['username']    = mb_convert_encoding($data[$i][4], 'UTF-8', 'UTF-8');
+				}
+				if (isset($data[$i][4])) {
+					$model[$source][$index]['author_username'] = mb_convert_encoding($data[$i][4], 'UTF-8', 'UTF-8');
+				}
+				if (isset($data[$i][5])) {
+					$model[$source][$index]['title']       = mb_convert_encoding($data[$i][5], 'UTF-8', 'UTF-8');
+				}
+				if (isset($data[$i][6])) {
+					$model[$source][$index]['post_from']   = mb_convert_encoding($data[$i][6], 'UTF-8', 'UTF-8');
+				}
+				if (isset($data[$i][7])) {
+					$model[$source][$index]['reach']       = mb_convert_encoding($data[$i][7], 'UTF-8', 'UTF-8');
+				}
+				if (isset($data[$i][8])) {
+					$model[$source][$index]['sentiment']   = mb_convert_encoding($data[$i][8], 'UTF-8', 'UTF-8');
+				}
+				if (isset($data[$i][9])) {
+					$model[$source][$index]['starred']     = mb_convert_encoding($data[$i][9], 'UTF-8', 'UTF-8');
+				}
+				if (isset($data[$i][10])) {
+					$model[$source][$index]['done']     = mb_convert_encoding($data[$i][10], 'UTF-8', 'UTF-8');
+				}
+
 				// only index -1 to conserve index
 			}else{ $index -= 1;}
 			

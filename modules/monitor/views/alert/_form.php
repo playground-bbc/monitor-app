@@ -67,6 +67,10 @@ $this->params['breadcrumbs'][] = $this->title;
 					    'pluginOptions' => [
 					        'allowClear' => true,
 					    ],
+					    'pluginEvents' => [
+					       "select2:select" => "function(e) { sendProducts(e.params.data.id) }",
+					       "select2:unselect" => "function(e) { removeProducts(e.params.data) }",
+					    ]
 					]);
 				?>
 			</div>
@@ -167,6 +171,11 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php
 
 use yii\web\View; 
+
+$urlModelsAlert = Url::to(['models']);
+$uuid = '';
+
+
 $this->registerJs('
 
 $( document ).ready(function() {
@@ -178,6 +187,45 @@ $( document ).ready(function() {
 	});
 });	
 
+function removeProducts(id){
+	console.log(id);
+}
+
+function sendProducts(name){
+	var product_name = name;
+	var  alert_name = $("#searchform-name").val()
+	var  resource = $("#social_resources").val()
+	var  start_date = $("#searchform-start_date").val()
+	var  start_end = $("#searchform-end_date").val()
+
+	$.ajax({
+        url:"'.$urlModelsAlert.'",
+        type:"post",
+        dataType: "json",
+        data: {
+            product_name: product_name,
+            alert_name: alert_name,
+            resource: resource,
+            start_date: start_date,
+            start_end: start_end,
+           
+        }
+
+    })
+    .done(function(response) {
+                if (response.data.success == true) {
+                    console.log(response.data);
+                }
+            })
+    .fail(function() {
+        console.log("error");
+    });	
+
+
+	 
+
+	 
+}
 
 ',
     View::POS_READY

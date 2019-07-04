@@ -75,7 +75,6 @@ class LiveChatApi extends Model
                 $params['query'] = $value;
                 $params['page'] = $page;
                 $this->_data[$value][$page] = $this->_get($params);
-                $this->totalByQuery[$value] =  $this->_data[$value][$page]->total;
                 $this->params['page'] ++;
 
                 
@@ -167,6 +166,7 @@ class LiveChatApi extends Model
 
     private function _get($params)
     {
+        
 
         if ($this->_liveChat->status->get()) {
             return $this->_liveChat->tickets->get($params);

@@ -73,7 +73,7 @@ class m190624_205707_log_init extends Migration
             // for session 
             // https://www.yiiframework.com/doc/guide/2.0/en/tutorial-performance-tuning#optimizing-session
             $this->createTable('session_monitor', [
-                'id' => $this->bigPrimaryKey(),
+                'id' => $this->char( $length = 40 ),
                 'expire' => $this->integer(),
                 'data' => $this->binary(),
             ], $tableOptions);
@@ -87,6 +87,7 @@ class m190624_205707_log_init extends Migration
             $this->db = $target->db;
 
             $this->dropTable($target->logTable);
+            $this->dropTable('{{%session_monitor}}');
         }
     }
     

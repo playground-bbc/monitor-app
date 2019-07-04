@@ -44,12 +44,12 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Home', 'url' => ['index']],
-            ['label' => 'Alert', 'url' => ['/monitor/alert/index']],
-            ['label' => 'Default', 'url' => ['/monitor/default/drive']],
+            ['label' => 'Alert', 'url' => ['/monitor/alert/create']],
+            ['label' => 'Drive', 'url' => ['/monitor/default/drive']],
             ['label' => 'Twitter', 'url' => ['/monitor/twitter']],
-            ['label' => 'Scraping', 'url' => ['/monitor/scraping']],
+            /*['label' => 'Scraping', 'url' => ['/monitor/scraping']],
             ['label' => 'Live Chat', 'url' => ['/monitor/live-chat/create']],
-           // ['label' => 'Contact', 'url' => ['/site/contact']],
+            ['label' => 'Contact', 'url' => ['/site/contact']],*/
             
                 Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]

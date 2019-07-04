@@ -3,6 +3,7 @@
 namespace app\modules\monitor\controllers;
 
 use yii;
+use  yii\web\Session;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
@@ -15,6 +16,7 @@ use app\models\api\BaseApi;
 use app\models\api\TwitterApi;
 use app\models\api\LiveChatApi;
 use app\models\filebase\Filebase;
+use app\models\chart\CountByCategory;
 
 use app\models\Alerts;
 use app\models\AlertResources;
@@ -96,12 +98,13 @@ class AlertController extends \yii\web\Controller
 
         $form_alert->name = 'alert_'.uniqid();
         $form_alert->scenario = 'alert';
-       
-
+        
         if ($form_alert->load(Yii::$app->request->post()) && $alert->load(Yii::$app->request->post(),'SearchForm')) {
             $alert->start_date = strtotime($form_alert->start_date);
             $alert->end_date = strtotime($form_alert->end_date);
             $alert->userId = \Yii::$app->user->identity->id;
+
+
             if ($alert->save()) {
                 $models_products = $this->getModelsProducts(Yii::$app->request->post('SearchForm')['products']);
                 if (!$this->setProductsModelsAlert($models_products,$alert->id)) {
@@ -112,7 +115,9 @@ class AlertController extends \yii\web\Controller
                 $this->setAwarioFile($form_alert,$alert->id);
 
                 // send to view
-                return $this->redirect(['view', 'alertId' => $alert->id]);
+                //return $this->redirect(['view', 'alertId' => $alert->id]);
+                
+                return $this->redirect(['show', 'alertId' => $alert->id]);
             }
             
         }
@@ -127,15 +132,17 @@ class AlertController extends \yii\web\Controller
      */
     public function actionView($alertId)
     {
-        $alert = Alerts::findOne($alertId);
+      $alert = Alerts::findOne($alertId);
+      $nameAlert = $alert->name;
+
      //   $this->syncDictionaryByAlertId($alertId);
         
         $products_models = [];
         // models products
-        foreach (ProductsModelsAlerts::find()->where(['alertId' => $alertId])->with('productModel')->each() as $product) {
+        /*foreach (ProductsModelsAlerts::find()->where(['alertId' => $alertId])->with('productModel')->each() as $product) {
             // batch query with eager loading
             $products_models[$product->productModel->product->category->name][$product->productModel->product->name] = $product->productModel->serial_model;
-        }
+        }*/
         $words = [];
         // words
         foreach ($alert->dictionaries as $key => $value) {
@@ -153,40 +160,85 @@ class AlertController extends \yii\web\Controller
         }
 
         $params = [
-            'alertId' => $alertId,
+            'alertId' => $nameAlert,
             'words' => $words,
-            'products_models' => $products_models,
+            //'products_models' => $products_models,
             'resources' => $resources,
-            'start_date' => $start_date,
-            'end_date' => $end_date,
+            /*'start_date' => $start_date,
+            'end_date' => $end_date,*/
         ]; 
 
         $baseApi = new BaseApi($params);
         $color = $baseApi::COLOR;
-        $model = $baseApi->countAndSearchWords();
-
-        $providerTwitter = new ArrayDataProvider([
-          'allModels' => $model['tweets']['sentences'],
-          'keys' => array_keys($model['tweets']['sentences']),
-          'pagination' => [
-                  'pageSize' => 10,
-              ],
-            'totalCount' => count($model['tweets']['sentences']),
-          ]);
-
         
+        //$model = $baseApi->countAndSearchWords();
 
-
-
-        
+        $cache = Yii::$app->cache; // Could be Yii::$app->cache
+        $model =  $cache->getOrSet($alertId, function () use ($baseApi) {
+            return $baseApi->countAndSearchWords();;
+        }, 1000);
 
 
         return $this->render('view',[
             'model' => $model,
-            'providerTwitter' => $providerTwitter,
             'color' => $color
 
         ]);
+    }
+
+
+    public function actionShow($alertId)
+    {
+      $alert = Alerts::findOne($alertId);
+      $nameAlert = $alert->name;
+
+      $words = [];
+      // words
+      foreach ($alert->dictionaries as $key => $value) {
+          $words[$value->category->name][] = $value->word;
+      }
+
+      $start_date = $alert->start_date;
+      $end_date = $alert->end_date;
+      $resources = [];
+      // resources
+      foreach ($alert->alertResources as $alert => $alert_value) {
+          foreach ($alert_value->resources as $key => $value) {
+              $resources[] = $value->name;
+          }
+      }
+
+      $params = [
+          'alertId' => $nameAlert,
+          'words' => $words,
+          'resources' => $resources,
+      ]; 
+
+      /*$baseApi = new BaseApi($params);
+      $color = $baseApi::COLOR;
+      
+
+      $cache = Yii::$app->cache; 
+      $model =  $cache->getOrSet($alertId, function () use ($baseApi) {
+          return $baseApi->countAndSearchWords();;
+      }, 1000);
+
+      $chartCategories = new CountByCategory($model);*/
+
+      $baseApi = new BaseApi($params);
+
+      $cache = Yii::$app->cache; 
+      $model =  $cache->getOrSet($alertId, function () use ($baseApi) {
+          return $baseApi->countAndSearchWords();;
+      }, 1000);
+
+      $chartCategories = new CountByCategory($model);
+
+      return $this->render('show',[
+        'model' => $model,
+        'chartCategories' => $chartCategories,
+      ]);
+      
     }
     /**
      * @return view
@@ -247,9 +299,11 @@ class AlertController extends \yii\web\Controller
             }
         }
         $models_products = $temp;
-        
         return $models_products;
     }
+
+
+
     /**
      * @param array
      * @param int
@@ -269,6 +323,45 @@ class AlertController extends \yii\web\Controller
             }
         }
         return (count($models_products) && empty($products_alerts->errors)) ? true : false;
+    }
+
+
+    public function actionModels()
+    {
+      if (Yii::$app->request->isAjax) {
+        $data = \Yii::$app->request->post();
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        
+        $product = $data['product_name'];
+
+        $models_products = $this->getModelsProducts([$product]);
+
+        $products_models = [];
+        foreach (ProductsModels::find()->where(['serial_model' => $models_products])->with('product')->each() as $model) {
+            // batch query with eager loading
+            $products_models[$model->product->category->name][$model->product->name][] = $model->serial_model;
+        }
+
+        
+        $params = [
+            'alertId' => $data['alert_name'],
+            'products_models' => $products_models,
+            'resources' => ['Twitter','Live Chat'],
+            'start_date' => $data['start_date'],
+            'end_date' => $data['start_end'],
+        ];
+
+        $baseApi = new BaseApi($params);
+        $baseApi->callApiResources();
+
+        return [
+          'data' => [
+              'message' => 'some',
+          ],
+          'code' => 0,
+      ];
+
+      }
     }
     /**
      * @param array
@@ -324,8 +417,6 @@ class AlertController extends \yii\web\Controller
         $drive = new DriveProductsApi();
         
         $dictionaries_title = $drive->titleDictionary;
-        /*$dictionaries_words = $drive->getContentDictionaryByTitle($dictionaries_title);
-        var_dump($dictionaries_words);*/
 
         foreach ($dictionaries_title as $dictionary) {
             $categoryId = CategoriesDictionary::find()->where(['name' => $dictionary])->select('id')->one();

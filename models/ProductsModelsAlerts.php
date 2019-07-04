@@ -55,7 +55,7 @@ class ProductsModelsAlerts extends \yii\db\ActiveRecord
         return [
             [['alertId', 'product_modelId'], 'required'],
             [['alertId', 'product_modelId', 'createdAt', 'updatedAt', 'createdBy', 'updatedBy'], 'integer'],
-            [['alertId'], 'exist', 'skipOnError' => true, 'targetClass' => Alerts::className(), 'targetAttribute' => ['alertId' => 'id']],
+            //[['alertId'], 'exist', 'skipOnError' => true, 'targetClass' => Alerts::className(), 'targetAttribute' => ['alertId' => 'id']],
             [['product_modelId'], 'exist', 'skipOnError' => true, 'targetClass' => ProductsModels::className(), 'targetAttribute' => ['product_modelId' => 'id']],
         ];
     }

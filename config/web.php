@@ -22,7 +22,9 @@ $config = [
             'cookieValidationKey' => 'TIs1CLBNDAOODflclj-LsqP_KtAadATQ',
         ],
         'cache' => [
-            'class' => 'yii\caching\FileCache',
+            'class' => 'yii\caching\DbCache',
+            'db' => $db,
+            'cacheTable' => 'monitor_cache',
         ],
         'user' => [
             'identityClass' => 'app\models\Users',
@@ -59,12 +61,7 @@ $config = [
         'db' => $db,
         'session' => [
             'class' => 'yii\web\DbSession',
-
-            // Set the following if you want to use DB component other than
-            // default 'db'.
             'db' => $db,
-
-            // To override default session table, set the following
             'sessionTable' => 'session_monitor',
         ],
         /*
