@@ -1,70 +1,36 @@
 <?php 
-
 use miloschuman\highcharts\Highcharts;
-
 
  ?>
 
-
-<div class="row">
-	<div class="col-md-12">
-		 <?php 
- 	echo Highcharts::widget([
-	 	'scripts' => [
-		      'modules/exporting',
-		      'themes/sand-signika',
-		  ],   
-		'options' => [
-	   	'chart' => ['type' => 'column'],
-	      'title' => ['text' => Yii::t('app','word numbers by products / dictionaries')],
-	      'subtitle' => ['text' => Yii::t('app','Subtitle ....')],
-	      'xAxis' => [
-	         'categories' => $chartCategories->getCategories('countByCategoryInTweet'),
-	         'crosshair' => true,
-	      ],
-	      'yAxis' => [
-	         'title' => ['text' => 'Twitter Data'],
-	         'labels' => ['overflow' => 'justify']
-	      ],
-	     'tooltip' => [
-	     	'valueSuffix' => ' und',
-	     	'headerFormat'=> '<span style="font-size:10px">{point.key}</span><table>',
-	        
-	        'footerFormat'=> '</table>',
-	        'footerFormat'=> true,
-	        'useHTML'=> true
-	     ],
-		'series' => $chartCategories->getSeries('countByCategoryInTweet'),
-		'credits' => ['enabled' => false],     
-	   		]
-		]);
-
-	  ?>
-
-	</div>
-</div>
-<br>
-<div class="row">
-	<div class="col-md-12">
-		 <?php 
-		  	echo Highcharts::widget([
+<div class="well">
+	<div class="row">
+		<div class="col-md-12">
+		<h1>Tweets Data</h1>
+		<h2> Total por categoria de palabras</h2>	
+		<?=  Highcharts::widget([
+		 	'scripts' => [
+			      'modules/exporting',
+			      'themes/sand-signika',
+			  ],   
 			'options' => [
-			'scripts' => [
-			      'themes/unica',
-			  ],	
 		   	'chart' => ['type' => 'column'],
-			      'title' => ['text' => Yii::t('app','word numbers by products / dictionaries')],
-			      'xAxis' => [
-			         'categories' => $chartCategories->getCategories('countByCategoryInLiveChat'),
-			      ],
-			      'yAxis' => [
-			         'title' => ['text' => 'Live Chat Data']
-			      ],
-			      'series' => $chartCategories->getSeries('countByCategoryInLiveChat'),
+		      'title' => ['text' => Yii::t('app','word numbers by products / dictionaries')],
+		      'subtitle' => ['text' => Yii::t('app','Subtitle ....')],
+		      'xAxis' => [
+		         'categories' => $chartCategories->getCategories('countByCategoryInTweet'),
+		         'crosshair' => true,
+		      ],
+		      'yAxis' => [
+		         'title' => ['text' => 'Twitter Data'],
+		         'labels' => ['overflow' => 'justify']
+		      ],
+			'series' => $chartCategories->getSeries('countByCategoryInTweet'),
 			'credits' => ['enabled' => false],     
 		   		]
 			]);
+		  ?>
 
-		   ?>
+		</div>
 	</div>
 </div>

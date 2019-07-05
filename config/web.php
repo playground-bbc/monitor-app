@@ -59,11 +59,11 @@ $config = [
             ],
         ],
         'db' => $db,
-        'session' => [
+        /*'session' => [
             'class' => 'yii\web\DbSession',
             'db' => $db,
             'sessionTable' => 'session_monitor',
-        ],
+        ],*/
         /*
         */
         'urlManager' => [

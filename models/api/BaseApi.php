@@ -83,6 +83,12 @@ class BaseApi extends Model
 				$this->saveJsonFile($model);
 			}
 		}*/
+		if ($this->isAwarioFile()) {
+			$path =  $this->isAwarioFile();
+			$data =  $this->getSearchDataAwario($path);
+			$model = $this->setSearchDataAwario($data);
+			$this->saveJsonFile($model);
+		}
 
 		//$this->countAndSearchWords();
 		
@@ -109,14 +115,8 @@ class BaseApi extends Model
 		
 		$this->saveJsonFile(ArrayHelper::merge($tweets,$tickets));
 
-		if ($this->isAwarioFile()) {
-			$path =  $this->isAwarioFile();
-			$data =  $this->getSearchDataAwario($path);
-			$model = $this->setSearchDataAwario($data);
-			
-			$this->saveJsonFile($model);
-		}
 	}
+
 
 	/**
 	 * @return array
@@ -138,6 +138,7 @@ class BaseApi extends Model
         $categories = array_keys($this->products_models);
 
         
+        
         foreach ($categories as $key) {
         	$params['q'] = $key;
         	$data[$key] = $twitterApi->search_tweets($params);
@@ -153,7 +154,18 @@ class BaseApi extends Model
         	    if ($data[$key]['rate']['remaining'] < $this->twitter_limit) {
 	        		break;
 	        	}
+	        	// new serial_model
+	        	for ($i=0; $i <sizeof($serial_model) ; $i++) { 
+	        		$params['q'] = $serial_model[$i];
+	        		$data[$serial_model[$i]] = $twitterApi->search_tweets($params);
+	        	    if ($data[$serial_model[$i]]['rate']['remaining'] < $this->twitter_limit) {
+		        		break;
+		        	}
+	        	}
         	}
+
+
+
         	// serial_model
         	/*foreach ($value as $model => $serial_model) {
         		$params['q'] = $serial_model;
@@ -162,6 +174,8 @@ class BaseApi extends Model
 	        		break;
 	        	}
         	}*/
+
+
         }
         
         return $data;
@@ -712,8 +726,6 @@ class BaseApi extends Model
 				}
 			}
 
-
-			
 			$content = [];
 			
 			for ($i=0; $i <sizeof($data['AWARIO']) ; $i++) { 

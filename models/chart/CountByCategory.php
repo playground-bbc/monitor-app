@@ -38,25 +38,27 @@ class CountByCategory extends Model
 		$dictionaries = [];
 		$color = BaseApi::COLOR;
 
-		// get dictionary name
-		foreach ($this->model_data[$target] as $product => $categories) {
-			foreach ($categories as $category => $value) {
-				if (!in_array($category, $dictionaries)) {
-					$dictionaries[] = $category;
-				}				
-			}
-		}
-		// set series
-		$index = 0;
-		foreach ($dictionaries as $dictionary) {
-			$series[$index]['name'] = $dictionary;
-			$series[$index]['color'] = $color[$dictionary];
-			foreach ($this->model_data[$target] as $product => $categories) {
-				$series[$index]['data'][] = $categories[$dictionary];
-			}
-			$index++;
-		}
+		if (isset($this->model_data[$target])) {
+				// get dictionary name
+				foreach ($this->model_data[$target] as $product => $categories) {
+					foreach ($categories as $category => $value) {
+						if (!in_array($category, $dictionaries)) {
+							$dictionaries[] = $category;
+						}				
+					}
+				}
+				// set series
+				$index = 0;
+				foreach ($dictionaries as $dictionary) {
+					$series[$index]['name'] = $dictionary;
+					$series[$index]['color'] = $color[$dictionary];
+					foreach ($this->model_data[$target] as $product => $categories) {
+						$series[$index]['data'][] = $categories[$dictionary];
+					}
+					$index++;
+				}
 
+		}
 		return $series;
 	}
 
@@ -64,9 +66,11 @@ class CountByCategory extends Model
 	public function getCategories($target)
 	{
 		$products = [];
-		// get dictionary name
-		foreach ($this->model_data[$target] as $product => $categories) {
-			$products[] = $product;
+		if (isset($this->model_data[$target])) {
+			// get dictionary name
+			foreach ($this->model_data[$target] as $product => $categories) {
+				$products[] = $product;
+			}
 		}
 		return $products;
 	}

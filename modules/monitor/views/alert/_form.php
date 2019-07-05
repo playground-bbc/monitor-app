@@ -25,8 +25,9 @@ $this->title = 'Crear Busqueda';
 $this->params['breadcrumbs'][] = ['label' => $moduleName, 'Alerta', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
-
-
+/*
+var_dump(\Yii::$app->session->has('oauth_token_twitter'));
+die();*/
 
 
 ?>
@@ -78,6 +79,11 @@ $this->params['breadcrumbs'][] = $this->title;
 				<?= $form->field($form_alert, 'awario_file')->widget(FileInput::classname(), [
 					    'options' => ['accept' => 'text/csv'],
 					    'pluginOptions' => [
+					    	'uploadUrl' => Url::to(['awario']),
+					    	'uploadExtraData' => [
+					            'album_id' => 20,
+					            'cat_id' => 'Nature'
+					        ],
 					        'showPreview' => false,
 					        'showCaption' => true,
 					        'showRemove' => true,
@@ -221,8 +227,6 @@ function sendProducts(name){
         console.log("error");
     });	
 
-
-	 
 
 	 
 }

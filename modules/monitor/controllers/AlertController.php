@@ -15,8 +15,11 @@ use yii\data\ArrayDataProvider;
 use app\models\api\BaseApi;
 use app\models\api\TwitterApi;
 use app\models\api\LiveChatApi;
+
 use app\models\filebase\Filebase;
+
 use app\models\chart\CountByCategory;
+use app\models\chart\CountWords;
 
 use app\models\Alerts;
 use app\models\AlertResources;
@@ -112,7 +115,7 @@ class AlertController extends \yii\web\Controller
                 }
                 $this->setDictionariesAlert($form_alert,$alert->id);
                 $this->setSocialResources($form_alert,$alert->id);
-                $this->setAwarioFile($form_alert,$alert->id);
+                $this->setAwarioFile($form_alert,$alert->name);
 
                 // send to view
                 //return $this->redirect(['view', 'alertId' => $alert->id]);
@@ -207,36 +210,40 @@ class AlertController extends \yii\web\Controller
               $resources[] = $value->name;
           }
       }
+      $products_models = [];
+        // models products
+        foreach (ProductsModelsAlerts::find()->where(['alertId' => $alertId])->with('productModel')->each() as $product) {
+            // batch query with eager loading
+            $products_models[$product->productModel->product->category->name][$product->productModel->product->name] = $product->productModel->serial_model;
+        }
 
       $params = [
           'alertId' => $nameAlert,
           'words' => $words,
           'resources' => $resources,
+          'products_models' => $products_models,
       ]; 
 
-      /*$baseApi = new BaseApi($params);
-      $color = $baseApi::COLOR;
-      
-
-      $cache = Yii::$app->cache; 
-      $model =  $cache->getOrSet($alertId, function () use ($baseApi) {
-          return $baseApi->countAndSearchWords();;
-      }, 1000);
-
-      $chartCategories = new CountByCategory($model);*/
 
       $baseApi = new BaseApi($params);
 
       $cache = Yii::$app->cache; 
       $model =  $cache->getOrSet($alertId, function () use ($baseApi) {
-          return $baseApi->countAndSearchWords();;
+          return $baseApi->countAndSearchWords();
       }, 1000);
 
+
       $chartCategories = new CountByCategory($model);
+      $chartWords = new CountWords($model);
+
+      var_dump($model['awario']['countByCategoryInAwario']);
+      die();
+
 
       return $this->render('show',[
         'model' => $model,
         'chartCategories' => $chartCategories,
+        'chartWords' => $chartWords,
       ]);
       
     }
@@ -252,7 +259,7 @@ class AlertController extends \yii\web\Controller
         }elseif (isset($_GET['oauth_verifier']) && isset($_SESSION['oauth_verify'])) {
            $twitterApi->redirect_to_monitor();
         }
-
+        
         return $this->redirect('create');
     }
 
@@ -476,6 +483,7 @@ class AlertController extends \yii\web\Controller
         }
         return false;
     }
+
 
     /**
      * @return $path string or boolean

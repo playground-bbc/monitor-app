@@ -4,36 +4,26 @@ use yii\data\ArrayDataProvider;
  ?>
 
 
+ 
+
  <div class="container">
- 	<?=$this->render('charts/_countByCategoryInTweet',['chartCategories' => $chartCategories]); ?>
+ 	<!-- count categories tweet </!-->
+	<?php if ($chartCategories->getCategories('countByCategoryInTweet')): ?>
+		<?=$this->render('charts/_countByCategoryInTweet',['chartCategories' => $chartCategories]); ?>
+ 	<?php endif ?>
+ 	<!-- count words tweet </!-->
+ 	<?php if ($chartWords->getSeries('countWords')): ?>
+		<?=$this->render('charts/_countWordsTweet',['chartWords' => $chartWords]); ?>
+ 	<?php endif ?>
+
+ 	<!-- Live chat countByCategory </!-->
+ 	<?php if ($chartCategories->getCategories('countByCategoryInLiveChat')): ?>
+		<?=$this->render('charts/_countByCategoryInLive',['chartCategories' => $chartCategories]); ?>
+ 	<?php endif ?>
+ 	<!-- count words live </!-->
+ 	<?php if ($chartWords->getSeries('countWords_live')): ?>
+		<?=$this->render('charts/_countWordsLive',['chartWords' => $chartWords]); ?>
+ 	<?php endif ?>
  </div>
- <div class="container">
- 	
- 	<?php 
-
- 		$providerTwitter = new ArrayDataProvider([
-	      'allModels' => $model['tweets']['sentences'],
-	      'keys' => array_keys($model['tweets']['sentences']),
-	      'pagination' => [
-	              'pageSize' => 10,
-	          ],
-	        'totalCount' => count($model['tweets']['sentences']),
-	      ]);
-
-
- 	 ?>
-
- 	 <?= \nullref\datatable\DataTable::widget([
-	    'data' => $providerTwitter->getModels(),
-	    'columns' => [
-	        'product',
-	        'source',
-	        'post_from',
-	        'created_at',
-	        'author_name',
-	        'author_username',
-	        'url',
-	    ],
-	]) ?>
- </div>
+ 
 
