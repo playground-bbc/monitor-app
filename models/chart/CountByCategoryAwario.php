@@ -51,23 +51,23 @@ class CountByCategoryAwario extends Model
 				}
 				// set series
 				$index = 0;
-				
 				foreach ($dictionaries as $dictionary) {
 					$series[$index]['name'] = $dictionary;
 					$series[$index]['color'] = $color[$dictionary];
+					$subIndex = 0;
 					foreach ($this->model_data[$target] as $product => $resources) {
-						$subIndex = 0;
 						$series[$index]['data'][$subIndex] = 0;
 						foreach ($resources as $resource => $categories) {
 							$series[$index]['data'][$subIndex] += count($categories);
 						}
 						$subIndex++;
-						
 					}
 					$index++;
 				}
 
 		}
+		
+		
 		return $series;
 	}
 

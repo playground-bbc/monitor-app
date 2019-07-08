@@ -102,9 +102,6 @@ die();*/
 			</div>
 		</div>
 		<div class="row">
-			
-		</div>
-		<div class="row">
 			<div class="col-md-6">
 				<?= $form->field($form_alert, 'drive_dictionary[]')->widget(Select2::classname(), [
 					   'data' => $form_alert->dictionaryNameOnDrive,
@@ -137,7 +134,14 @@ die();*/
 			</div>
 		</div>
 		<div class="row">
-			
+			<div class="col-md-6">
+				<?= 
+					// with ActiveForm
+					$form->field($form_alert, 'positive_words')->widget(JqueryTagsInput::className(), [
+					    // extra configuration
+					]);
+				 ?>
+			</div>
 		</div>
 		
 	    <div class="form-group">

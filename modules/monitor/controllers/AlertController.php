@@ -228,11 +228,15 @@ class AlertController extends \yii\web\Controller
 
 
       $baseApi = new BaseApi($params);
+      $alert = Alerts::findOne($alertId);
+      
 
       $cache = Yii::$app->cache; 
       $model =  $cache->getOrSet($alertId, function () use ($baseApi) {
           return $baseApi->countAndSearchWords();
       }, 1000);
+
+
 
 
       $chartCategories = new CountByCategory($model);
@@ -242,6 +246,7 @@ class AlertController extends \yii\web\Controller
       
 
       return $this->render('show',[
+        'alert' => $alert,
         'model' => $model,
         'chartCategories' => $chartCategories,
         'chartWords' => $chartWords,
@@ -352,11 +357,17 @@ class AlertController extends \yii\web\Controller
             $products_models[$model->product->category->name][$model->product->name][] = $model->serial_model;
         }
 
+        $social = [2 => 'Twitter', 3 => 'Live Chat'];
+        $res = [];
+        foreach ($data['resource'] as $key => $resource) {
+          $res[] = $social[$resource];
+        }
+        
         
         $params = [
             'alertId' => $data['alert_name'],
             'products_models' => $products_models,
-            'resources' => ['Twitter','Live Chat'],
+            'resources' => $res,
             'start_date' => $data['start_date'],
             'end_date' => $data['start_end'],
         ];

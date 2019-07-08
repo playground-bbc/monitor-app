@@ -16,7 +16,13 @@ use yii\data\ArrayDataProvider;
             'filter' => ['true' => 'Yes', 'false' => 'No'],
         ],*/
         'source',
-        'post_from',
+        [
+            'data' => 'post_from',
+            'title' => \Yii::t('app', 'post_from'),
+            'render' => new \yii\web\JsExpression('function(data, type, row, meta) { 
+                return row.post_from[0];
+        }'),
+        ],
         'created_at',
         'author_name',
         'author_username',

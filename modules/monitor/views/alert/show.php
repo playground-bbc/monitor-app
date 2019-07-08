@@ -1,10 +1,22 @@
 <?php 
 use yii\helpers\ArrayHelper;
+use yii\helpers\Html;
 use yii\data\ArrayDataProvider;
 
-
+//var_dump($alert);
  ?>
  <div class="container">
+ 	<div class="row">
+ 		<div class="col-md-12" style="padding-bottom: 20px ">
+ 			<?= Html::a('New Alert', ['alert/create'], ['class' => 'btn btn-info pull-right']) ?>
+ 		</div>
+ 	</div>
+ 	
+ 	<!-- detail alert </!-->
+	<?php if ($alert): ?>
+		<?=$this->render('tables/_detailAlert',['alert' => $alert]); ?>
+ 	<?php endif ?>
+ 	<!-- detail alert </!-->
  	<!-- count categories tweet </!-->
 	<?php if ($chartCategories->getCategories('countByCategoryInTweet')): ?>
 		<?=$this->render('charts/_countByCategoryInTweet',['chartCategories' => $chartCategories]); ?>

@@ -63,7 +63,7 @@ class SearchForm extends Model
             [['awario_file'], 'file','skipOnEmpty' => false,'extensions' => 'csv','maxSize' => 20000000, 'on' => 'alert'], // see php ini upload_max_filesize and post_max_size values 
            // [['drive_dictionary','negative_words','positive_words'], 'safe', 'on' => 'alert'],
             // live-chat
-            [['name','products','positive_words','negative_words','start_date','end_date'], 'required','message' => 'complete the fields', 'on' => 'live-chat'],
+            [['name','products','positive_words','start_date','end_date'], 'required','message' => 'complete the fields', 'on' => 'live-chat'],
             // text_search has to be a valid string
             [['negative_words','positive_words'], 'string'],
             // start date needs to be entered correctly
@@ -74,7 +74,7 @@ class SearchForm extends Model
     public function scenarios()
     {
         $scenarios = parent::scenarios();
-        $scenarios['alert'] = ['name','social_resources','products','drive_dictionary','negative_words','positive_words','start_date','end_date'];
+        $scenarios['alert'] = ['name','social_resources','products','drive_dictionary','positive_words','start_date','end_date'];
         $scenarios['live-chat'] = ['products','positive_words','negative_words','start_date','end_date'];
         return $scenarios;
     }
@@ -119,8 +119,8 @@ class SearchForm extends Model
             'keywords' => 'keywords',
             'products' => 'Productos - Model - Code',
             'categories_dictionary' => 'categories dictionary',
-            'positive_words' => 'positive words',
-            'negative_words' => 'negative words',
+            'positive_words' => 'free words',
+           // 'negative_words' => 'negative words',
             'is_dictionary' => 'Add Dictionary',
             'awario_file' => 'Add Awario File',
         ];

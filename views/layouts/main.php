@@ -46,7 +46,7 @@ AppAsset::register($this);
             ['label' => 'Home', 'url' => ['index']],
             ['label' => 'Alert', 'url' => ['/monitor/alert/create']],
             ['label' => 'Drive', 'url' => ['/monitor/default/drive']],
-            ['label' => 'Twitter', 'url' => ['/monitor/twitter']],
+          //  ['label' => 'Twitter', 'url' => ['/monitor/twitter']],
             /*['label' => 'Scraping', 'url' => ['/monitor/scraping']],
             ['label' => 'Live Chat', 'url' => ['/monitor/live-chat/create']],
             ['label' => 'Contact', 'url' => ['/site/contact']],*/

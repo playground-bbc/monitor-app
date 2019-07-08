@@ -40,12 +40,13 @@ class BaseApi extends Model
 	const LIVECHAT = 'LIVECHAT';
 
 	const COLOR = [
-		'Buenas' => '#9BDFE7',
+		'Palabras Libres' => '#9BDFE7',
 		'Malas' => '#E17A6A',
 		'Kws Positivos' => '#85C8D1',
 		'Kws Negativos' => '#E17A6A',
 		'Frases Negativas' => '#D64933',
 		'Frases Positivas' => '#E7E7E7',
+		//'Palabras Libres' => '#E7E7E7',
 	];
 	
 	/**
@@ -240,6 +241,7 @@ class BaseApi extends Model
 			}
 		}
 
+
 		$params = [
             'date_to' => Yii::$app->formatter->asDate($this->start_date,'yyyy-MM-dd'),
             'date_from' => Yii::$app->formatter->asDate($this->end_date,'yyyy-MM-dd'),
@@ -249,7 +251,7 @@ class BaseApi extends Model
 
 
        $data = $liveChat->loadParams($params)->getTickets()->all();
-
+       
        return $data;
 
 
@@ -263,7 +265,7 @@ class BaseApi extends Model
 		$liveChat = new LiveChatApi();
         $total['total'] = $liveChat->countTicketsAll();
 
-        $status= ['pending' => 0, 'pending'=> 0, ' spam'=> 0 ,' spam'=> 0,'solved' => 0];
+        $status= ['open' => 0, 'pending'=> 0, 'solved'=> 0 ,'spam'=> 0];
 
         $tickets = ArrayHelper::getValue($sentences_live,'sentences_live');
         if ($tickets) {
@@ -369,40 +371,40 @@ class BaseApi extends Model
 		for ($i = 1; $i < sizeof($data); $i++) {
 			if (sizeof($data[0]) == sizeof($data[$i])) {
 				if (isset($data[$i][0])) {
-					$model[$source][$index]['source']      = mb_convert_encoding($data[$i][0], 'UTF-8', 'UTF-8');
+					$model[$source][$index]['source']      = mb_convert_encoding($data[$i][0], 'UTF-8');
 				}
 				if (isset($data[$i][1])) {
-					$model[$source][$index]['url']         = mb_convert_encoding($data[$i][1], 'UTF-8', 'UTF-8');
+					$model[$source][$index]['url']         = mb_convert_encoding($data[$i][1], 'UTF-8');
 				}
 				if (isset($data[$i][2])) {
-					$model[$source][$index]['created_at']  = mb_convert_encoding($data[$i][2], 'UTF-8', 'UTF-8');
+					$model[$source][$index]['created_at']  = mb_convert_encoding($data[$i][2], 'UTF-8');
 				}
 				if (isset($data[$i][3])) {
-					$model[$source][$index]['author_name'] = mb_convert_encoding($data[$i][3], 'UTF-8', 'UTF-8');
+					$model[$source][$index]['author_name'] = mb_convert_encoding($data[$i][3], 'UTF-8');
 				}
 				if (isset($data[$i][4])) {
-					$model[$source][$index]['username']    = mb_convert_encoding($data[$i][4], 'UTF-8', 'UTF-8');
+					$model[$source][$index]['username']    = mb_convert_encoding($data[$i][4], 'UTF-8');
 				}
 				if (isset($data[$i][4])) {
-					$model[$source][$index]['author_username'] = mb_convert_encoding($data[$i][4], 'UTF-8', 'UTF-8');
+					$model[$source][$index]['author_username'] = mb_convert_encoding($data[$i][4], 'UTF-8');
 				}
 				if (isset($data[$i][5])) {
-					$model[$source][$index]['title']       = mb_convert_encoding($data[$i][5], 'UTF-8', 'UTF-8');
+					$model[$source][$index]['title']       = mb_convert_encoding($data[$i][5], 'UTF-8');
 				}
 				if (isset($data[$i][6])) {
-					$model[$source][$index]['post_from']   = mb_convert_encoding($data[$i][6], 'UTF-8', 'UTF-8');
+					$model[$source][$index]['post_from']   = mb_convert_encoding($data[$i][6], 'UTF-8');
 				}
 				if (isset($data[$i][7])) {
-					$model[$source][$index]['reach']       = mb_convert_encoding($data[$i][7], 'UTF-8', 'UTF-8');
+					$model[$source][$index]['reach']       = mb_convert_encoding($data[$i][7], 'UTF-8');
 				}
 				if (isset($data[$i][8])) {
-					$model[$source][$index]['sentiment']   = mb_convert_encoding($data[$i][8], 'UTF-8', 'UTF-8');
+					$model[$source][$index]['sentiment']   = mb_convert_encoding($data[$i][8], 'UTF-8');
 				}
 				if (isset($data[$i][9])) {
-					$model[$source][$index]['starred']     = mb_convert_encoding($data[$i][9], 'UTF-8', 'UTF-8');
+					$model[$source][$index]['starred']     = mb_convert_encoding($data[$i][9], 'UTF-8');
 				}
 				if (isset($data[$i][10])) {
-					$model[$source][$index]['done']     = mb_convert_encoding($data[$i][10], 'UTF-8', 'UTF-8');
+					$model[$source][$index]['done']     = mb_convert_encoding($data[$i][10], 'UTF-8');
 				}
 
 				// only index -1 to conserve index
@@ -477,6 +479,7 @@ class BaseApi extends Model
 		if ($this->isAwarioFile()) {
 			$awario_data = $this->searchProdductsInAwario($data);
 
+
 			if (!is_null($awario_data)) {
 				$countByCategoryInLive['countByCategoryInAwario'] = $this->countWordsInAwarioByCategory($awario_data);
 			
@@ -485,7 +488,6 @@ class BaseApi extends Model
 			}
 		}
 
-		
 		
 		return $model;
 		
@@ -661,6 +663,7 @@ class BaseApi extends Model
 				}
 			}
 		}
+
 		return $live;
 	}
 
@@ -768,6 +771,7 @@ class BaseApi extends Model
 			}
 		}
 		// lets find out
+		set_time_limit(500);
         foreach ($awario_data['AWARIO'] as $products => $product ) {
         	for ($i=0; $i <sizeof($product) ; $i++) { 
         		$stringizer = new Stringizer($product[$i]['post_from']);

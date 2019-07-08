@@ -5,21 +5,12 @@ $data = [];
 foreach ($sentences as $product => $resources) {
     foreach ($resources as $resource => $categories) {
         foreach ($categories as $category => $words) {
-            $data[] = $words;
+            $data[] = array_shift($words);
+            /*var_dump($words);*/
         }
     }
 }
-$providerAwario = new ArrayDataProvider([
-  'allModels' => $data,
- // 'keys' => $data,
-  'pagination' => [
-          'pageSize' => 10,
-      ],
-    'totalCount' => count($data),
-  ]);
-/*
-echo "<pre>";
-var_dump($providerAwario->getModels());*/
+
  ?>
 
  <?= \nullref\datatable\DataTable::widget([
@@ -35,10 +26,15 @@ var_dump($providerAwario->getModels());*/
             'filter' => ['true' => 'Yes', 'false' => 'No'],
         ],*/
         'source',
-        'post_from',
+        [
+            'data' => 'post_from',
+            'title' => \Yii::t('app', 'post_from'),
+            'render' => new \yii\web\JsExpression('function(data, type, row, meta) { 
+                return row.post_from;
+        }'),
+        ],
         'created_at',
         'author_name',
-        'author_username',
         'url'
     ],
 ]) ?>
