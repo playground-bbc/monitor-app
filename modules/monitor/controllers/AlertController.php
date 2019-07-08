@@ -20,6 +20,8 @@ use app\models\filebase\Filebase;
 
 use app\models\chart\CountByCategory;
 use app\models\chart\CountWords;
+use app\models\chart\CountTicket;
+use app\models\chart\CountByCategoryAwario;
 
 use app\models\Alerts;
 use app\models\AlertResources;
@@ -235,15 +237,16 @@ class AlertController extends \yii\web\Controller
 
       $chartCategories = new CountByCategory($model);
       $chartWords = new CountWords($model);
-
-      var_dump($model['awario']['countByCategoryInAwario']);
-      die();
-
+      $chartLive = new CountTicket($model);
+      $chartAwario = new CountByCategoryAwario($model);
+      
 
       return $this->render('show',[
         'model' => $model,
         'chartCategories' => $chartCategories,
         'chartWords' => $chartWords,
+        'chartLive' => $chartLive,
+        'chartAwario' => $chartAwario,
       ]);
       
     }
@@ -477,6 +480,8 @@ class AlertController extends \yii\web\Controller
             $path = $this->setFolderPath($folderOptions);
             $fileName = $alertId . '.' . $file->extension;
             if (!$file->saveAs($path . $fileName)) {
+              var_dump("expression");
+              die();
                 Yii::warning("problems when saving the awario file in the alert with id: {$alertId}", __METHOD__);
             }
             return $path;

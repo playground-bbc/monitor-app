@@ -77,6 +77,12 @@ class m190624_205707_log_init extends Migration
                 'expire' => $this->integer(),
                 'data' => $this->binary(),
             ], $tableOptions);
+            //https://www.yiiframework.com/doc/api/2.0/yii-caching-dbcache#$cacheTable-detail
+            $this->createTable('cache_monitor', [
+                'id' => $this->char( $length = 128 ),
+                'expire' => $this->integer($length = 11),
+                'data' => $this->binary(),
+            ], $tableOptions);
 
         }
     }
@@ -88,6 +94,7 @@ class m190624_205707_log_init extends Migration
 
             $this->dropTable($target->logTable);
             $this->dropTable('{{%session_monitor}}');
+            $this->dropTable('{{%cache_monitor}}');
         }
     }
     

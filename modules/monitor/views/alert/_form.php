@@ -36,8 +36,52 @@ die();*/
 	
 	<div class="container">
 		<div class="row">
+			<?= $form->field($form_alert,'name')->hiddenInput()->label(false);  ?>
 			<div class="col-md-6">
-				<?= $form->field($form_alert,'name')  ?>
+					<?=  $form->field($form_alert, 'start_date')->widget(DatePicker::classname(), [
+						    'options' => ['placeholder' => 'Enter start date! ...'],
+						    'pluginOptions' => [
+						        'autoclose'=>true,
+						        'format' => 'mm/dd/yyyy',
+						        //'startDate' => date(Yii::$app->formatter->dateFormat, strtotime('today')),
+		                    	'todayHighlight' => true
+						    ]
+						]);
+					    
+					 ?>
+			</div>
+			<div class="col-md-6">
+					<?=  $form->field($form_alert, 'end_date')->widget(DatePicker::classname(), [
+						    'options' => ['placeholder' => 'Enter end date ...'],
+						    'pluginOptions' => [
+						        'autoclose'=>true,
+						        'format' => 'mm/dd/yyyy',
+						        //'startDate' => date(Yii::$app->formatter->dateFormat, strtotime('today')),
+		                    	'todayHighlight' => true
+						    ]
+						]);
+					    
+					 ?>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<?= $form->field($form_alert, 'awario_file')->widget(FileInput::classname(), [
+					    'options' => ['accept' => 'text/csv'],
+					    'pluginOptions' => [
+					    	/*'uploadUrl' => Url::to(['awario']),
+					    	'uploadExtraData' => [
+					            'album_id' => 20,
+					            'cat_id' => 'Nature'
+					        ],*/
+					        'showPreview' => false,
+					        'showCaption' => true,
+					        'showRemove' => true,
+					        'showUpload' => false
+	    				]
+
+					]);
+				?>
 			</div>
 			<div class="col-md-6">
 				<?= $form->field($form_alert, 'social_resources[]')->widget(Select2::classname(), [
@@ -58,6 +102,22 @@ die();*/
 			</div>
 		</div>
 		<div class="row">
+			
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<?= $form->field($form_alert, 'drive_dictionary[]')->widget(Select2::classname(), [
+					   'data' => $form_alert->dictionaryNameOnDrive,
+					    'options' => [
+					    	'placeholder' => 'Select a state ...',
+					    	'multiple' => true
+						],
+					    'pluginOptions' => [
+					        'allowClear' => true,
+					    ],
+					]);
+				?>
+			</div>
 			<div class="col-md-6">
 				<?= $form->field($form_alert, 'products[]')->widget(Select2::classname(), [
 					   'data' => $form_alert->Products,
@@ -75,101 +135,15 @@ die();*/
 					]);
 				?>
 			</div>
-			<div class="col-md-6">
-				<?= $form->field($form_alert, 'awario_file')->widget(FileInput::classname(), [
-					    'options' => ['accept' => 'text/csv'],
-					    'pluginOptions' => [
-					    	'uploadUrl' => Url::to(['awario']),
-					    	'uploadExtraData' => [
-					            'album_id' => 20,
-					            'cat_id' => 'Nature'
-					        ],
-					        'showPreview' => false,
-					        'showCaption' => true,
-					        'showRemove' => true,
-					        'showUpload' => false
-	    				]
-
-					]);
-				?>
-			</div>
 		</div>
 		<div class="row">
-			<div id="checkbox" class="col-md-3">
-				 <?= $form->field($form_alert, 'is_dictionary')->checkbox(array(
-					'id'=>'dicto',
-					//'labelOptions'=>array('style'=>'padding:5px;'),
-					//'disabled'=>true
-					)); ?>
-			</div>
+			
 		</div>
-		<div id="dictionary" class="row">
-			<div class="col-md-3">
-				<?= $form->field($form_alert, 'drive_dictionary[]')->widget(Select2::classname(), [
-					   'data' => $form_alert->dictionaryNameOnDrive,
-					    'options' => [
-					    	'placeholder' => 'Select a state ...',
-					    	'multiple' => true
-						],
-					    'pluginOptions' => [
-					        'allowClear' => true,
-					    ],
-					]);
-				?>
-			</div>
-			<div class="col-md-4" style="margin-left: 40px">
-				<?= $form->field($form_alert, 'positive_words')->widget(JqueryTagsInput::className(), [
-					    'clientOptions'=>[
-					    	'height'=>'35px',
-   							'width'=>'300px',
-					    ]
-					]);
-
-				?>
-			</div>
-			<div class="col-md-4">
-				<?= $form->field($form_alert, 'negative_words')->widget(JqueryTagsInput::className(), [
-					    'clientOptions'=>[
-					    	'height'=>'35px',
-   							'width'=>'300px',
-					    ]
-					]);
-
-				?>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-6">
-					<?=  $form->field($form_alert, 'start_date')->widget(DatePicker::classname(), [
-						    'options' => ['placeholder' => 'Enter start date! ...'],
-						    'pluginOptions' => [
-						        'autoclose'=>true,
-						        'format' => 'mm/dd/yyyy',
-						        //'startDate' => date(Yii::$app->formatter->dateFormat, strtotime('today')),
-		                    	'todayHighlight' => true
-						    ]
-						]);
-					    
-					 ?>
-				</div>
-				<div class="col-md-6">
-					<?=  $form->field($form_alert, 'end_date')->widget(DatePicker::classname(), [
-						    'options' => ['placeholder' => 'Enter end date ...'],
-						    'pluginOptions' => [
-						        'autoclose'=>true,
-						        'format' => 'mm/dd/yyyy',
-						        //'startDate' => date(Yii::$app->formatter->dateFormat, strtotime('today')),
-		                    	'todayHighlight' => true
-						    ]
-						]);
-					    
-					 ?>
-				</div>
-			</div>
-		    <div class="form-group">
-		        <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
-		    </div>
-		</div>
+		
+	    <div class="form-group">
+	        <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
+	    </div>
+	</div>
 
 
 <?php ActiveForm::end(); ?>
