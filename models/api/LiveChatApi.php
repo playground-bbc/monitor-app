@@ -102,10 +102,7 @@ class LiveChatApi extends Model
         $this->_filebase->save($this->data);
     }
 
-    public function orderTicketsByWordsMentioned()
-    {
-        
-    }
+   
 
     public function getTicketsByProduct($product='')
     {

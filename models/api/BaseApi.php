@@ -465,6 +465,9 @@ class BaseApi extends Model
 			if (!is_null($countByCategoryInLiveChat)) {
 				
 				$sentences_live['sentences_live'] = $this->addTagsSentenceFoundInLive($data);
+				echo "<pre>";
+				var_dump($sentences_live['sentences_live']);
+				die();
 				$countWords_live['countWords_live'] = $this->addWordsInLive($data);
 
 				//join Live
@@ -649,7 +652,7 @@ class BaseApi extends Model
 							$stringizer = new Stringizer($value[$i]['post_from'][$p]['client']);
 							foreach ($this->words as $categories => $words) {
 				                for ($j=0; $j <sizeof($words) ; $j++) { 
-				                	if ($stringizer->contains($words[$j])) {
+				                	if ($stringizer->containsCountIncaseSensitive($words[$j])) {
 				                		$background = self::COLOR[$categories];
 				                		$sentence = (array) $stringizer->replaceIncaseSensitive($words[$j], "<span style='background: {$background}'>{$words[$j]}</span>");
 				                		$value[$i]['post_from'] = array_values($sentence);
@@ -688,8 +691,8 @@ class BaseApi extends Model
 							$stringizer = new Stringizer($value[$i]['post_from'][$p]['client']);
 							foreach ($this->words as $categories => $words) {
 				                for ($j=0; $j <sizeof($words) ; $j++) { 
-				                	if ($stringizer->contains($words[$j]) && isset($countByWords[$products][$categories][$words[$j]])) {
-				                		$countByWords[$products][$categories][$words[$j]] += $stringizer->containsCount($words[$j]) ;
+				                	if ($stringizer->containsCountIncaseSensitive($words[$j]) && isset($countByWords[$products][$categories][$words[$j]])) {
+				                		$countByWords[$products][$categories][$words[$j]] += $stringizer->containsCountIncaseSensitive($words[$j]) ;
 				                	}
 				                }
 				            }
