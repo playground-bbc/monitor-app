@@ -242,6 +242,7 @@ class BaseApi extends Model
 		}
 
 
+
 		$params = [
             'date_to' => Yii::$app->formatter->asDate($this->start_date,'yyyy-MM-dd'),
             'date_from' => Yii::$app->formatter->asDate($this->end_date,'yyyy-MM-dd'),
@@ -251,7 +252,7 @@ class BaseApi extends Model
 
 
        $data = $liveChat->loadParams($params)->getTickets()->all();
-       
+      
        return $data;
 
 
@@ -309,6 +310,7 @@ class BaseApi extends Model
 				$model_ticket[$model][$i]['username'] = $obj[$i]->requester->mail;
 				$model_ticket[$model][$i]['title'] = $obj[$i]->subject;
 				$model_ticket[$model][$i]['url'] = $obj[$i]->source->url;
+				$model_ticket[$model][$i]['url_retail'] = parse_url($obj[$i]->source->url,PHP_URL_HOST);
 				
 				// get post_from
 				for ($j=0; $j <sizeof($obj[$i]->events) ; $j++) { 
@@ -462,12 +464,11 @@ class BaseApi extends Model
 		
 		if (isset($resource['Live Chat'])) {
 			$countByCategoryInLiveChat['countByCategoryInLiveChat'] = $this->countWordsInLiveChatByCategory($data);
+
 			if (!is_null($countByCategoryInLiveChat)) {
 				
 				$sentences_live['sentences_live'] = $this->addTagsSentenceFoundInLive($data);
-				echo "<pre>";
-				var_dump($sentences_live['sentences_live']);
-				die();
+				
 				$countWords_live['countWords_live'] = $this->addWordsInLive($data);
 
 				//join Live
@@ -604,6 +605,11 @@ class BaseApi extends Model
 
 	}
 
+	/**
+	 * [countWordsInLiveChatByCategory account the words grouping by the name of the dictionaries]
+	 * @param  [array] $data 
+	 * @return [array]       
+	 */
 	private function countWordsInLiveChatByCategory($data)
 	{
 		// set array analisys Model => dictionary_title => word
@@ -621,55 +627,98 @@ class BaseApi extends Model
 		foreach ($data as $model => $value) {
 			for ($i=0; $i <sizeof($value) ; $i++) { 
 				if ($value[$i]['source'] == self::LIVECHAT) {
+					// count by title
+					$stringizer_title = new Stringizer($value[$i]['title']);
+					foreach ($this->words as $categories => $words) {
+		                for ($j=0; $j <sizeof($words) ; $j++) { 
+		                	if ($stringizer_title->containsCountIncaseSensitive($words[$j])) {
+		                		$countByCategory[$model][$categories] += $stringizer_title->containsCountIncaseSensitive($words[$j]) ;
+		                	}
+		                }
+		            }
+		            // count by post_form
 					for ($p=0; $p <sizeof($value[$i]['post_from']) ; $p++) { 
-						if (isset($value[$i]['post_from'][$p]['client'])) {
-							$stringizer = new Stringizer($value[$i]['post_from'][$p]['client']);
-							foreach ($this->words as $categories => $words) {
-				                for ($j=0; $j <sizeof($words) ; $j++) { 
-				                	if ($stringizer->contains($words[$j])) {
-				                		$countByCategory[$model][$categories] += $stringizer->containsCount($words[$j]) ;
-				                	}
-				                }
-				            }
-						}
+						$said = array_values($value[$i]['post_from'][$p]);
+						$stringizer = new Stringizer($said[0]);
+						foreach ($this->words as $categories => $words) {
+			                for ($j=0; $j <sizeof($words) ; $j++) { 
+			                	if ($stringizer->containsCountIncaseSensitive($words[$j])) {
+			                		$countByCategory[$model][$categories] += $stringizer->containsCountIncaseSensitive($words[$j]) ;
+			                	}
+			                }
+			            }
 					}
 				}
 			}
 		}
+
+
 		unset($countByCategory['AWARIO']);
+		
+		
 		return (count($countByCategory)) ? $countByCategory : null;
 
 	}
 
+	/**
+	 * [addTagsSentenceFoundInLive add html tags to words that match]
+	 * @param [array] $data 
+	 */
 	private function addTagsSentenceFoundInLive($data)
 	{
 		$live = [];
+
 		foreach ($data as $model => $value) {
 			for ($i=0; $i <sizeof($value) ; $i++) { 
 				if ($value[$i]['source'] == self::LIVECHAT) {
-					for ($p=0; $p <sizeof($value[$i]['post_from']) ; $p++) { 
-						if (isset($value[$i]['post_from'][$p]['client'])) {
-							$stringizer = new Stringizer($value[$i]['post_from'][$p]['client']);
-							foreach ($this->words as $categories => $words) {
-				                for ($j=0; $j <sizeof($words) ; $j++) { 
-				                	if ($stringizer->containsCountIncaseSensitive($words[$j])) {
-				                		$background = self::COLOR[$categories];
-				                		$sentence = (array) $stringizer->replaceIncaseSensitive($words[$j], "<span style='background: {$background}'>{$words[$j]}</span>");
-				                		$value[$i]['post_from'] = array_values($sentence);
-				                		$value[$i]['product'] = $model;
-				                		$live[] = $value[$i];
-				                	}
-				                }
-				            }
-						}
-					}
-				}
+					// check by title
+					$stringizer_title = new Stringizer($value[$i]['title']);
+					foreach ($this->words as $categories => $words) {
+		                for ($j=0; $j <sizeof($words) ; $j++) { 
+		                	if ($stringizer_title->containsCountIncaseSensitive($words[$j])) {
+		                		$background = self::COLOR[$categories];
+		                		$sentence = (array) $stringizer_title->replaceIncaseSensitive($words[$j], "<span style='background: {$background}'>{$words[$j]}</span>");
+		                		$title_tags = array_values($sentence);
+		                		$value[$i]['title'] = $title_tags[0];
+		                		
+		                	}// end if contains word
+		                } // for each words
+		            } // for each dictionaries
+
+		            //check by post_from
+		            for ($p=0; $p <sizeof($value[$i]['post_from']) ; $p++) { 
+	            		$entity = array_keys($value[$i]['post_from'][$p]);
+	            		$said = array_values($value[$i]['post_from'][$p]);
+
+	            		$stringizer_sentences = new Stringizer($said[0]);
+
+	            		foreach ($this->words as $categories => $words) {
+			                for ($j=0; $j <sizeof($words) ; $j++) { 
+			                	if ($stringizer_sentences->containsCountIncaseSensitive($words[$j])) {
+			                		$background = self::COLOR[$categories];
+			                		$sentence = (array) $stringizer_sentences->replaceIncaseSensitive($words[$j], "<span style='background: {$background}'>{$words[$j]}</span>");
+			                		$sentence = array_values($sentence);
+			                		$value[$i]['sentence'] = $sentence[0];
+			                		$value[$i]['entity'] = $entity[0];
+			                		$value[$i]['product'] = $model;
+			                		$live[] = $value[$i];
+			                	}// end if contains word
+			                }// for each words
+			            } // for each dictionaries
+
+	            	} // for each post_from
+
+				} // if livechat source
 			}
 		}
 
+		
 		return $live;
 	}
-
+	/**
+	 * [addWordsInLive add the occurrences individually]
+	 * @param [array] $data
+	 */
 	private function addWordsInLive($data)
 	{
 		// set array analisys Model => dictionary_title => word
@@ -686,17 +735,29 @@ class BaseApi extends Model
 		foreach ($data as $products => $value) {
 			for ($i=0; $i <sizeof($value) ; $i++) { 
 				if ($value[$i]['source'] == self::LIVECHAT) {
+
+					// check by title
+					$stringizer_title = new Stringizer($value[$i]['title']);
+					//count title
+					foreach ($this->words as $categories => $words) {
+		                for ($j=0; $j <sizeof($words) ; $j++) { 
+		                	if ($stringizer_title->containsCountIncaseSensitive($words[$j]) && isset($countByWords[$products][$categories][$words[$j]])) {
+		                		$countByWords[$products][$categories][$words[$j]] += $stringizer_title->containsCountIncaseSensitive($words[$j]) ;
+		                	}
+		                }
+		            }
+
+
 					for ($p=0; $p <sizeof($value[$i]['post_from']) ; $p++) { 
-						if (isset($value[$i]['post_from'][$p]['client'])) {
-							$stringizer = new Stringizer($value[$i]['post_from'][$p]['client']);
-							foreach ($this->words as $categories => $words) {
-				                for ($j=0; $j <sizeof($words) ; $j++) { 
-				                	if ($stringizer->containsCountIncaseSensitive($words[$j]) && isset($countByWords[$products][$categories][$words[$j]])) {
-				                		$countByWords[$products][$categories][$words[$j]] += $stringizer->containsCountIncaseSensitive($words[$j]) ;
-				                	}
-				                }
-				            }
-						}
+						$said = array_values($value[$i]['post_from'][$p]);
+						$stringizer = new Stringizer($said[0]);
+						foreach ($this->words as $categories => $words) {
+			                for ($j=0; $j <sizeof($words) ; $j++) { 
+			                	if ($stringizer->containsCountIncaseSensitive($words[$j]) && isset($countByWords[$products][$categories][$words[$j]])) {
+			                		$countByWords[$products][$categories][$words[$j]] += $stringizer->containsCountIncaseSensitive($words[$j]) ;
+			                	}
+			                }
+			            }
 					}
 				}
 			}

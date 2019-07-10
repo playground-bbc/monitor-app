@@ -12,23 +12,19 @@ use yii\data\ArrayDataProvider;
     ],
     'columns' => [
         'product',
+        'title',
         /*[
             'data' => 'active',
             'title' => \Yii::t('app', 'Is active'),
             'filter' => ['true' => 'Yes', 'false' => 'No'],
         ],*/
         'source',
-       // 'post_from',
-        [
-            'data' => 'post_from',
-            'title' => \Yii::t('app', 'post_from'),
-            'render' => new \yii\web\JsExpression('function(data, type, row, meta) { 
-                return row.post_from[0];
-        }'),
-        ],
+        'sentence',
         'created_at',
         'author_name',
+        'entity',
         'status',
+        'url_retail',
        // 'url',
     ],
 ]) ?>
