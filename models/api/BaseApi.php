@@ -486,8 +486,10 @@ class BaseApi extends Model
 
 			if (!is_null($awario_data)) {
 				$countByCategoryInLive['countByCategoryInAwario'] = $this->countWordsInAwarioByCategory($awario_data);
+				
 			
 				$model['awario'] = ArrayHelper::merge($awario_data,$countByCategoryInLive);
+				
 
 			}
 		}
@@ -794,20 +796,20 @@ class BaseApi extends Model
 			}
 
 			$content = [];
-			
-			for ($i=0; $i <sizeof($data['AWARIO']) ; $i++) { 
-				if (isset($data['AWARIO'][$i]['post_from'])) {
-					$stringizer = new Stringizer($data['AWARIO'][$i]['post_from']);
-					for ($p=0; $p <sizeof($products) ; $p++) { 
-						if ($stringizer->containsCountIncaseSensitive($products[$p])) {
-	                		$data['AWARIO'][$i]['products'] = $products[$p];
-	                		$content = $data['AWARIO'][$i];
-	                		$awario_data['AWARIO'][$products[$p]][] = $content;
-	                	}
+
+			for ($a=0; $a <sizeof($data['AWARIO']) ; $a++) { 
+				$stringizer = new Stringizer($data['AWARIO'][$a]['post_from']);
+				for ($p=0; $p <sizeof($products) ; $p++) { 
+					if ($stringizer->containsCountIncaseSensitive($products[$p])) {
+						$data['AWARIO'][$a]['products'] = $products[$p];
+						$awario_data['AWARIO'][$products[$p]][] = $data['AWARIO'][$a];
 					}
 				}
 			}
+
+			
 		}
+		
 		return (count($awario_data)) ? $awario_data : null;
 	}
 
@@ -841,7 +843,7 @@ class BaseApi extends Model
         		$stringizer = new Stringizer($product[$i]['post_from']);
         		foreach ($this->words as $categories => $words) {
 	                for ($j=0; $j <sizeof($words) ; $j++) { 
-	                	if ($stringizer->contains($words[$j])) {
+	                	if ($stringizer->containsCountIncaseSensitive($words[$j])) {
 	                		$background = self::COLOR[$categories];
 	                		$sentence = (array) $stringizer->replaceIncaseSensitive($words[$j], "<span style='background: {$background}'>{$words[$j]}</span>");
 	                		$product[$i]['post_from'] = array_shift($sentence);
