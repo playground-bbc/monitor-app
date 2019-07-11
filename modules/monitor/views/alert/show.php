@@ -55,15 +55,16 @@ use yii\data\ArrayDataProvider;
  	<!-- total awario categories </!-->
  	<?php if (isset($model['awario'])): ?>
  		<?php if (isset($model['awario']['countByCategoryInAwario'])): ?>
-			<?=$this->render('charts/_countByCategoryInAwario',['chartAwario' => $chartAwario]) ?>
+			<?=$this->render('charts/_countByCategoryInAwario',['chartAwario' => $chartCategories]) ?>
  		<?php endif ?>
  	<?php endif ?>
  	<!-- sentences awario </!-->
  	<?php if (isset($model['awario'])): ?>
- 		<?php if (isset($model['awario']['countByCategoryInAwario'])): ?>
-			<?=$this->render('tables/_sentencesAwario',['sentences' => $model['awario']['countByCategoryInAwario']]) ?>
+ 		<?php if (isset($model['awario']['sentence_awario'])): ?>
+			<?=$this->render('tables/_sentencesAwario',['sentences' => $model['awario']['sentence_awario']]) ?>
  		<?php endif ?>
  	<?php endif ?>
+ 	
  </div>
  
 

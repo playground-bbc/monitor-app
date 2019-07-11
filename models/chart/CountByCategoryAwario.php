@@ -67,7 +67,9 @@ class CountByCategoryAwario extends Model
 
 		}
 		
-		
+		/*var_dump($this->model_data[$target]);
+		var_dump($series);
+		die();*/
 		return $series;
 	}
 

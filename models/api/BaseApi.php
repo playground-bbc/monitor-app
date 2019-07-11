@@ -189,6 +189,9 @@ class BaseApi extends Model
 		
 		$tweets = [];
 		$source = 'TWITTER';
+
+		var_dump($data);
+		die();
 		
 		foreach ($data as $key => $value) {
 			for ($i=0; $i <sizeof($value['statuses']) ; $i++) { 
@@ -485,7 +488,10 @@ class BaseApi extends Model
 
 
 			if (!is_null($awario_data)) {
-				$countByCategoryInLive['countByCategoryInAwario'] = $this->countWordsInAwarioByCategory($awario_data);
+				
+				$countByCategoryInLive['countByCategoryInAwario'] = $this->countByCategoryAwario($awario_data);
+				
+				$countByCategoryInLive['sentence_awario'] = $this->addTagsSentenceFoundInAwario($awario_data);
 				
 			
 				$model['awario'] = ArrayHelper::merge($awario_data,$countByCategoryInLive);
@@ -784,6 +790,8 @@ class BaseApi extends Model
 	private function searchProdductsInAwario($data)
 	{
 		$awario_data =[];
+		// lets find out
+		set_time_limit(500);
 		if (isset($data['AWARIO'])) {
 			// set array analisys Model => dictionary_title => word
 			$products = [];
@@ -795,78 +803,110 @@ class BaseApi extends Model
 				}
 			}
 
-			$content = [];
 
 			for ($a=0; $a <sizeof($data['AWARIO']) ; $a++) { 
+				// search by title 
+				$stringizer_title = new Stringizer($data['AWARIO'][$a]['title']);
+
+				// search by post_from
 				$stringizer = new Stringizer($data['AWARIO'][$a]['post_from']);
+				
 				for ($p=0; $p <sizeof($products) ; $p++) { 
+
+					if ($stringizer_title->containsCountIncaseSensitive($products[$p])) {
+						$data['AWARIO'][$a]['products'] = $products[$p];
+						$awario_data['AWARIO'][$products[$p]][] = $data['AWARIO'][$a];
+					}
+
 					if ($stringizer->containsCountIncaseSensitive($products[$p])) {
 						$data['AWARIO'][$a]['products'] = $products[$p];
 						$awario_data['AWARIO'][$products[$p]][] = $data['AWARIO'][$a];
 					}
 				}
 			}
-
 			
 		}
 		
 		return (count($awario_data)) ? $awario_data : null;
 	}
 
-	private function countWordsInAwarioByCategory($awario_data)
-	{
-        // get products
-		$products = ArrayHelper::getValue($awario_data, 'AWARIO');
 
-		// get the sources
-		$sources = [];
-		foreach ($products as $key => $value) {
-			for ($i=0; $i <sizeof($value) ; $i++) { 
-				if (!in_array($value[$i]['source'], $sources)) {
-					$sources[] = $value[$i]['source'];
-				}
-			}
-		}
+	private function countByCategoryAwario($awario_data)
+	{
 		// set array analisys Model => dictionary_title => word
+		$products = array_keys($awario_data['AWARIO']);
 		$countByCategory = [];
-		foreach (array_keys($products) as $product) {
-			for ($s=0; $s <sizeof($sources) ; $s++) { 
-				foreach ($this->words as $categories => $words) {
-		            $countByCategory[$product][$sources[$s]][$categories] = [];
-		        }
-			}
+		for ($i=0; $i <sizeof($products) ; $i++) { 
+			foreach ($this->words as $categories => $words) {
+                for ($j=0; $j <sizeof($words) ; $j++) { 
+                	$countByCategory[$products[$i]][$categories] = 0;
+                }
+            }
 		}
-		// lets find out
-		set_time_limit(500);
-        foreach ($awario_data['AWARIO'] as $products => $product ) {
-        	for ($i=0; $i <sizeof($product) ; $i++) { 
-        		$stringizer = new Stringizer($product[$i]['post_from']);
-        		foreach ($this->words as $categories => $words) {
+
+		foreach ($awario_data['AWARIO'] as $product => $value) {
+			for ($i=0; $i <sizeof($value) ; $i++) { 
+				// count by title
+				$stringizer_title = new Stringizer($value[$i]['title']);
+				foreach ($this->words as $categories => $words) {
 	                for ($j=0; $j <sizeof($words) ; $j++) { 
-	                	if ($stringizer->containsCountIncaseSensitive($words[$j])) {
-	                		$background = self::COLOR[$categories];
-	                		$sentence = (array) $stringizer->replaceIncaseSensitive($words[$j], "<span style='background: {$background}'>{$words[$j]}</span>");
-	                		$product[$i]['post_from'] = array_shift($sentence);
-	                		$countByCategory[$products][$product[$i]['source']][$categories][]  = $product[$i]; 
+	                	if ($stringizer_title->containsCountIncaseSensitive($words[$j])) {
+	                		$countByCategory[$product][$categories] += $stringizer_title->containsCountIncaseSensitive($words[$j]) ;
 	                	}
 	                }
 	            }
-
-        	}
-        }
-
-        $data = [];
-		foreach ($countByCategory as $products => $sources) {
-			foreach ($sources as $source => $categories) {
-				foreach ($categories as $key => $value) {
-					if ($value) {
-						$data[$products][$source][$key] = $value;
-					}
-				}
+	            // count by post_form
+	            $stringizer = new Stringizer($value[$i]['post_from']);
+	            foreach ($this->words as $categories => $words) {
+	                for ($j=0; $j <sizeof($words) ; $j++) { 
+	                	if ($stringizer->containsCountIncaseSensitive($words[$j])) {
+	                		$countByCategory[$product][$categories] += $stringizer->containsCountIncaseSensitive($words[$j]) ;
+	                	}
+	                }
+	            }
 			}
 		}
+
+		return (count($countByCategory)) ? $countByCategory : null;
+
+	}
+
+	private function addTagsSentenceFoundInAwario($awario_data)
+	{
+        $data = [];
+		// lets find out
+		set_time_limit(500);
+        foreach ($awario_data['AWARIO'] as $products => $value ) {
+        	for ($i=0; $i <sizeof($value) ; $i++) { 
+        		// search by title
+        		$stringizer_title = new Stringizer($value[$i]['title']);
+        		// search by post_form
+        		$stringizer = new Stringizer($value[$i]['post_from']);
+        		
+        		foreach ($this->words as $categories => $words) {
+	                for ($j=0; $j <sizeof($words) ; $j++) { 
+	                	
+	                	if ($stringizer_title->containsCountIncaseSensitive($words[$j])) {
+	                		$background = self::COLOR[$categories];
+	                		$sentence = (array) $stringizer_title->replaceIncaseSensitive($words[$j], "<span style='background: {$background}'>{$words[$j]}</span>");
+	                		$value[$i]['title'] = array_shift($sentence);
+	                	}
+
+	                	if ($stringizer->containsCountIncaseSensitive($words[$j])) {
+	                		$background = self::COLOR[$categories];
+	                		$sentence = (array) $stringizer->replaceIncaseSensitive($words[$j], "<span style='background: {$background}'>{$words[$j]}</span>");
+	                		$value[$i]['post_from'] = array_shift($sentence);
+	                	}
+	                }// for each words
+	            } // for each dictionary
+	            $data[] = $value[$i];
+        	} // for records awario
+        } // for each prodcuts awario
         return $data;
 	}
+
+
+	
 	/**
 	 * @param  array
 	 * @return null

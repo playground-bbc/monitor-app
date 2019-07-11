@@ -13,7 +13,7 @@ use app\models\api\BaseApi;
  */
 class CountByCategory extends Model
 {
-	private $targets = ['countByCategoryInTweet','countByCategoryInLiveChat'];
+	private $targets = ['countByCategoryInTweet','countByCategoryInLiveChat','countByCategoryInAwario'];
 	private $model_data;
 
 

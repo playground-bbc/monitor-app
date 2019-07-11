@@ -5,6 +5,8 @@ use yii\data\ArrayDataProvider;
 
  <?= \nullref\datatable\DataTable::widget([
     'data' => $sentences,
+    'scrollY' => '400px',
+    'scrollCollapse' => true,
     'tableOptions' => [
         'class' => 'table table-striped',
     ],
