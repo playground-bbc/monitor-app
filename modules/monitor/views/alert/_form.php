@@ -39,7 +39,11 @@ die();*/
 			<?= $form->field($form_alert,'name')->hiddenInput()->label(false);  ?>
 			<div class="col-md-6">
 					<?=  $form->field($form_alert, 'start_date')->widget(DatePicker::classname(), [
-						    'options' => ['placeholder' => 'Enter start date! ...'],
+						    'options' => [
+						    	'placeholder' => 'Enter start date! ...',
+						    	'value' => date('m/d/Y'),
+
+						    ],
 						    'pluginOptions' => [
 						        'autoclose'=>true,
 						        'format' => 'mm/dd/yyyy',
@@ -52,7 +56,9 @@ die();*/
 			</div>
 			<div class="col-md-6">
 					<?=  $form->field($form_alert, 'end_date')->widget(DatePicker::classname(), [
-						    'options' => ['placeholder' => 'Enter end date ...'],
+						    'options' => ['placeholder' => 'Enter end date ...',
+						    'value' => date('m/d/Y')
+						],
 						    'pluginOptions' => [
 						        'autoclose'=>true,
 						        'format' => 'mm/dd/yyyy',
@@ -120,10 +126,12 @@ die();*/
 					   'data' => $form_alert->Products,
 					    'options' => [
 					    	'placeholder' => 'Select a product! ...',
-					    	'multiple' => true
+					    	'multiple' => true,
+					    	//'disabled' => true
 						],
 					    'pluginOptions' => [
 					        'allowClear' => true,
+
 					    ],
 					    'pluginEvents' => [
 					       "select2:select" => "function(e) { sendProducts(e.params.data.id) }",
@@ -151,7 +159,7 @@ die();*/
 
 
 <?php ActiveForm::end(); ?>
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <?php
 
 use yii\web\View; 
@@ -169,6 +177,8 @@ $( document ).ready(function() {
 	        $("#dictionary").show();
 
 	});
+
+	
 });	
 
 function removeProducts(id){
@@ -176,34 +186,55 @@ function removeProducts(id){
 }
 
 function sendProducts(name){
+	
+	var flag = false;
+	
 	var product_name = name;
+
 	var  alert_name = $("#searchform-name").val()
 	var  resource = $("#social_resources").val()
+	
+	
 	var  start_date = $("#searchform-start_date").val()
 	var  start_end = $("#searchform-end_date").val()
 
-	$.ajax({
+	if( resource.length && start_date.length && start_end.length ){
+		flag = true;
+	}else{
+		
+		swal("Upps!", "you need to fill in the fields of resources and dates!", "error");
+		
+
+		$("#searchform-products").val("").trigger("change");
+	}
+
+	
+
+	if(flag){
+
+		$.ajax({
         url:"'.$urlModelsAlert.'",
         type:"post",
         dataType: "json",
-        data: {
-            product_name: product_name,
-            alert_name: alert_name,
-            resource: resource,
-            start_date: start_date,
-            start_end: start_end,
-           
-        }
+	        data: {
+	            product_name: product_name,
+	            alert_name: alert_name,
+	            resource: resource,
+	            start_date: start_date,
+	            start_end: start_end,
+	           
+	        }
 
-    })
-    .done(function(response) {
-                if (response.data.success == true) {
-                    console.log(response.data);
-                }
-            })
-    .fail(function() {
-        console.log("error");
-    });	
+	    })
+	    .done(function(response) {
+	                if (response.data.success == true) {
+	                    console.log(response.data);
+	                }
+	            })
+	    .fail(function() {
+	        console.log("error");
+	    });	
+	}
 
 
 	 
