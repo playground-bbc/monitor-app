@@ -25,7 +25,7 @@ class SearchForm extends Model
     public $name;
     public $keywords = [];
     public $products = [];
-    public $web_resource = [];
+    public $web_resource;
     
     public $negative_words;
     public $positive_words;
@@ -57,7 +57,9 @@ class SearchForm extends Model
     {
         return [
             // scraping
-            [['text_search','keywords','web_resource'], 'required', 'on' => 'scraping'],
+            [['name','products','web_resource'], 'required', 'on' => 'scraping'],
+            
+
             // alert
             [['name','social_resources','products','start_date','end_date'], 'required', 'on' => 'alert'],
             [['awario_file'], 'file','skipOnEmpty' => false,'extensions' => 'csv','maxSize' => 20000000, 'on' => 'alert'], // see php ini upload_max_filesize and post_max_size values 
