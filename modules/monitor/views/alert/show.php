@@ -3,7 +3,7 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\data\ArrayDataProvider;
 
-//var_dump($alert);
+
  ?>
  <div class="container">
  	<div class="row">

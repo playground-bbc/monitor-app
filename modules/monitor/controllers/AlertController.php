@@ -230,11 +230,15 @@ class AlertController extends \yii\web\Controller
       $baseApi = new BaseApi($params);
       $alert = Alerts::findOne($alertId);
       
+      //$baseApi->countAndSearchWords();
 
       $cache = Yii::$app->cache; 
       $model =  $cache->getOrSet($alertId, function () use ($baseApi) {
           return $baseApi->countAndSearchWords();
       }, 1000);
+		
+	  //$cache->delete($alertId);	
+      
 
 
 
@@ -341,7 +345,7 @@ class AlertController extends \yii\web\Controller
     }
 
 
-    public function actionModels()
+    public function actionInsertProduct()
     {
       if (Yii::$app->request->isAjax) {
         $data = \Yii::$app->request->post();
@@ -384,6 +388,22 @@ class AlertController extends \yii\web\Controller
 
       }
     }
+    
+    public function actionDeleteProduct(){
+		
+		if (Yii::$app->request->isAjax){
+			$data = \Yii::$app->request->post();
+			\Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+			return [
+			  'data' => [
+				  'message' => $data['product_name'],
+				  'success' => true
+			  ],
+			  'code' => 0,
+		  ];
+		}
+	
+	}
     /**
      * @param array
      * @param int

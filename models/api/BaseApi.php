@@ -130,7 +130,7 @@ class BaseApi extends Model
             'lang' => 'es',
             'result_type' => 'recent',
             'count' => '100',
-            'until' => Yii::$app->formatter->asDate($this->start_date,'yyyy-MM-dd'),
+            //'until' => Yii::$app->formatter->asDate($this->start_date,'yyyy-MM-dd'),
 
         ];
         
@@ -178,7 +178,7 @@ class BaseApi extends Model
 
 
         }
-        
+     
         return $data;
 	}
 	/**
@@ -245,8 +245,8 @@ class BaseApi extends Model
 
 
 		$params = [
-            'date_to' => Yii::$app->formatter->asDate($this->start_date,'yyyy-MM-dd'),
-            'date_from' => Yii::$app->formatter->asDate($this->end_date,'yyyy-MM-dd'),
+			'date_from' => Yii::$app->formatter->asDate($this->start_date,'yyyy-MM-dd'),
+            'date_to' => Yii::$app->formatter->asDate($this->end_date,'yyyy-MM-dd'),
             'query' => $models_products_all,
             'page' => $this->live_chat_page,
         ];
@@ -254,6 +254,7 @@ class BaseApi extends Model
 
        $data = $liveChat->loadParams($params)->getTickets()->all();
       
+       
        return $data;
 
 
@@ -303,6 +304,7 @@ class BaseApi extends Model
 		$model_ticket = [];
 		foreach ($tickets as $model => $obj) {
 			for ($i=0; $i <sizeof($obj) ; $i++) { 
+				
 				$model_ticket[$model][$i]['source'] = self::LIVECHAT;
 				$model_ticket[$model][$i]['id'] = $obj[$i]->id;
 				$model_ticket[$model][$i]['status'] = $obj[$i]->status;
@@ -673,8 +675,51 @@ class BaseApi extends Model
 	private function addTagsSentenceFoundInLive($data)
 	{
 		$live = [];
-
+		
 		foreach ($data as $model => $value) {
+			for ($i=0; $i <sizeof($value) ; $i++) { 
+				if ($value[$i]['source'] == self::LIVECHAT) {
+					// check by title
+					$stringizer_title = new Stringizer($value[$i]['title']);
+				
+		            //check by post_from
+		            for ($p=0; $p <sizeof($value[$i]['post_from']) ; $p++) { 
+	            		$entity = array_keys($value[$i]['post_from'][$p]);
+	            		$said = array_values($value[$i]['post_from'][$p]);
+
+	            		$stringizer_sentences = new Stringizer($said[0]);
+
+	            		foreach ($this->words as $categories => $words) {
+							$background = self::COLOR[$categories];
+			                for ($j=0; $j <sizeof($words) ; $j++) {
+								if ($stringizer_title->containsCountIncaseSensitive($words[$j])){
+									$sentence_title = (array) $stringizer_title->replaceIncaseSensitive($words[$j], "<span style='background: {$background}'>{$words[$j]}</span>");
+									$title_tags = array_values($sentence_title);
+									$value[$i]['title'] = $title_tags[0];
+								} 
+			                	if ($stringizer_sentences->containsCountIncaseSensitive($words[$j])) {
+			                		
+			                		$sentence = (array) $stringizer_sentences->replaceIncaseSensitive($words[$j], "<span style='background: {$background}'>{$words[$j]}</span>");
+			                		$sentence = array_values($sentence);
+			                		$value[$i]['sentence'] = $sentence[0];
+			                		$value[$i]['entity'] = $entity[0];
+			                		$value[$i]['product'] = $model;
+			                		$live[] = $value[$i];
+			                		
+			                	}// end if contains word
+			                }// for each words
+							
+			            } // for each dictionaries
+						
+	            	} // for each post_from
+
+				} // if livechat source
+			}
+		}
+		
+
+		/*
+		 * foreach ($data as $model => $value) {
 			for ($i=0; $i <sizeof($value) ; $i++) { 
 				if ($value[$i]['source'] == self::LIVECHAT) {
 					// check by title
@@ -686,6 +731,8 @@ class BaseApi extends Model
 		                		$sentence = (array) $stringizer_title->replaceIncaseSensitive($words[$j], "<span style='background: {$background}'>{$words[$j]}</span>");
 		                		$title_tags = array_values($sentence);
 		                		$value[$i]['title'] = $title_tags[0];
+			                	$value[$i]['product'] = $model;
+			                	$live[] = $value[$i];
 		                		
 		                	}// end if contains word
 		                } // for each words
@@ -717,7 +764,9 @@ class BaseApi extends Model
 				} // if livechat source
 			}
 		}
-
+		 * 
+		 * 
+		 * */
 		
 		return $live;
 	}

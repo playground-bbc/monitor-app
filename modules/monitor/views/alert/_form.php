@@ -90,7 +90,7 @@ die();*/
 				?>
 			</div>
 			<div class="col-md-6">
-				<?= $form->field($form_alert, 'social_resources[]')->widget(Select2::classname(), [
+				<?= $form->field($form_alert, 'social_resources')->widget(Select2::classname(), [
 					   'data' => $form_alert->socialResources,
 					    'options' => [
 					    	'id' => 'social_resources',
@@ -135,7 +135,7 @@ die();*/
 					    ],
 					    'pluginEvents' => [
 					       "select2:select" => "function(e) { sendProducts(e.params.data.id) }",
-					       "select2:unselect" => "function(e) { removeProducts(e.params.data) }",
+					       "select2:unselect" => "function(e) { removeProducts(e.params.data.id) }",
 					    ]
 					]);
 				?>
@@ -164,11 +164,13 @@ die();*/
 
 use yii\web\View; 
 
-$urlModelsAlert = Url::to(['models']);
+$urlModelsAlert = Url::to(['insert-product']);
+$urlModelsAlertDelete = Url::to(['delete-product']);
 $uuid = '';
 
 
 $this->registerJs('
+
 
 $( document ).ready(function() {
     $("#dictionary").hide();  
@@ -181,8 +183,26 @@ $( document ).ready(function() {
 	
 });	
 
-function removeProducts(id){
-	console.log(id);
+function removeProducts(name){
+	var product_name = name;
+	
+	$.ajax({
+        url:"'.$urlModelsAlertDelete.'",
+        type:"post",
+        dataType: "json",
+	        data: {
+	            product_name: product_name,  
+	        }
+
+	    })
+	    .done(function(response) {
+	                if (response.data.success == true) {
+	                    console.log(response.data);
+	                }
+	            })
+	    .fail(function() {
+	        console.log("error");
+	    });	
 }
 
 function sendProducts(name){

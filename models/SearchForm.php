@@ -31,8 +31,7 @@ class SearchForm extends Model
     public $positive_words;
     public $drive_dictionary =[];
 
-    public $social_resources = ['TwitterApi' =>'Twitter',
-        'LiveChatApi' =>'LiveChat'];
+    public $social_resources;
 
     public $query_search;
     public $categories_dictionary = [];
@@ -59,17 +58,27 @@ class SearchForm extends Model
             // scraping
             [['text_search','keywords','web_resource'], 'required', 'on' => 'scraping'],
             // alert
-            [['name','social_resources','products','start_date','end_date'], 'required', 'on' => 'alert'],
+            [['name','products','start_date','end_date'], 'required', 'on' => 'alert'],
+            // awario validator
             [['awario_file'], 'file','skipOnEmpty' => false,'extensions' => 'csv','maxSize' => 20000000, 'on' => 'alert'], // see php ini upload_max_filesize and post_max_size values 
-           // [['drive_dictionary','negative_words','positive_words'], 'safe', 'on' => 'alert'],
-            // live-chat
-            [['name','products','positive_words','start_date','end_date'], 'required','message' => 'complete the fields', 'on' => 'live-chat'],
-            // text_search has to be a valid string
-            [['negative_words','positive_words'], 'string'],
-            // start date needs to be entered correctly
-            [['start_date','end_date'], 'date','format' => 'mm/dd/yyyy'],
+			// date validator
+			['start_date','compare','compareAttribute'=>'end_date','operator'=>'<=','on' => 'alert'],
+            ['end_date','compare','compareAttribute'=>'start_date','operator'=>'>=','on' => 'alert'],
+            [['start_date','end_date'], 'date','format' => 'mm/dd/yyyy','on' => 'alert'],
+            
+             ['social_resources', function ($attribute, $params, $validator) {
+                if (!ctype_alnum($this->$attribute)) {
+                    $this->addError($attribute, 'The token must contain letters or digits.');
+                }
+            }]
         ];
     }
+    
+    public function validateDates($attribute, $params, $validator){
+		if (!in_array($this->$attribute, ['USA', 'Indonesia'])) {
+            $this->addError($attribute, 'The country must be either "USA" or "Indonesia".');
+        }
+	}
 
     public function scenarios()
     {
