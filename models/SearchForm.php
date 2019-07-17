@@ -25,7 +25,7 @@ class SearchForm extends Model
     public $name;
     public $keywords = [];
     public $products = [];
-    public $web_resource = [];
+    public $web_resource;
     
     public $negative_words;
     public $positive_words;
@@ -56,7 +56,9 @@ class SearchForm extends Model
     {
         return [
             // scraping
-            [['text_search','keywords','web_resource'], 'required', 'on' => 'scraping'],
+            [['name','products','web_resource'], 'required', 'on' => 'scraping'],
+            
+
             // alert
             [['name','products','start_date','end_date'], 'required', 'on' => 'alert'],
             // awario validator
