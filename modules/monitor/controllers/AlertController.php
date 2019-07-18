@@ -24,12 +24,13 @@ use app\models\chart\CountTicket;
 use app\models\chart\CountByCategoryAwario;
 
 use app\models\Alerts;
-use app\models\AlertResources;
 use app\models\Products;
+use app\models\Resource;
 use app\models\SearchForm;
 use app\models\Dictionary;
 use app\models\ProductsFamily;
 use app\models\ProductsModels;
+use app\models\AlertResources;
 use app\models\ProductCategory;
 use app\models\api\DriveProductsApi;
 use app\models\ProductsModelsAlerts;
@@ -196,6 +197,8 @@ class AlertController extends \yii\web\Controller
     {
       $alert = Alerts::findOne($alertId);
       $nameAlert = $alert->name;
+      $start_date = $alert->start_date;
+      $end_date = $alert->end_date;
 
       $words = [];
       // words
@@ -216,7 +219,7 @@ class AlertController extends \yii\web\Controller
         // models products
         foreach (ProductsModelsAlerts::find()->where(['alertId' => $alertId])->with('productModel')->each() as $product) {
             // batch query with eager loading
-            $products_models[$product->productModel->product->category->name][$product->productModel->product->name] = $product->productModel->serial_model;
+            $products_models[$product->productModel->product->category->name][$product->productModel->product->name][] = $product->productModel->serial_model;
         }
 
       $params = [
@@ -224,10 +227,13 @@ class AlertController extends \yii\web\Controller
           'words' => $words,
           'resources' => $resources,
           'products_models' => $products_models,
+          'start_date' => $start_date,
+          'end_date' => $end_date,
       ]; 
 
 
       $baseApi = new BaseApi($params);
+      // $baseApi->callApiResources();
       $alert = Alerts::findOne($alertId);
       
       //$baseApi->countAndSearchWords();
@@ -237,7 +243,7 @@ class AlertController extends \yii\web\Controller
           return $baseApi->countAndSearchWords();
       }, 1000);
 		
-	  //$cache->delete($alertId);	
+	    //$cache->delete($alertId);	
       
 
 
@@ -391,19 +397,19 @@ class AlertController extends \yii\web\Controller
     
     public function actionDeleteProduct(){
 		
-		if (Yii::$app->request->isAjax){
-			$data = \Yii::$app->request->post();
-			\Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-			return [
-			  'data' => [
-				  'message' => $data['product_name'],
-				  'success' => true
-			  ],
-			  'code' => 0,
-		  ];
-		}
+  		if (Yii::$app->request->isAjax){
+  			$data = \Yii::$app->request->post();
+  			\Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+  			return [
+  			  'data' => [
+  				  'message' => $data['product_name'],
+  				  'success' => true
+  			  ],
+  			  'code' => 0,
+  		  ];
+  		}
 	
-	}
+	  }
     /**
      * @param array
      * @param int
@@ -479,10 +485,32 @@ class AlertController extends \yii\web\Controller
      */
     public function setSocialResources($form_alert = [],$alertId)
     {
-        
+
+
         if (empty($form_alert->social_resources)) {
             Yii::warning("problems when saving the social resources in the alert with id: {$alertId}", __METHOD__);
             return $this->redirect(['error', 'message' => Yii::t('app','Error save Products Models Products'),'id' => $alert->id]);      
+        }
+
+        if (!empty($form_alert->web_resource)) {
+          $web_resources = explode(',', $form_alert->web_resource);
+          foreach ($web_resources as $web_resource) {
+            $name_web = parse_url($web_resource,PHP_URL_HOST);
+            
+            if (!Resource::find()->where(['name' => $name_web,'url' => $web_resource ])->exists()) {
+              $model_resource = new Resource();
+              // asign
+              $model_resource->name = $name_web;
+              $model_resource->url = $web_resource;
+              $model_resource->typeResourceId = Resource::TYPE_WEB;
+              if ($model_resource->save()) {
+                array_push($form_alert->social_resources, $model_resource->id);
+              }
+            }else{
+              $model_resource = Resource::find()->where(['name' => $name_web])->select('id')->one();
+              array_push($form_alert->social_resources, $model_resource->id);
+            }
+          }
         }
 
         for ($i=0; $i <sizeof($form_alert->social_resources) ; $i++) { 

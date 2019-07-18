@@ -21,6 +21,9 @@ use Yii;
  */
 class Resource extends \yii\db\ActiveRecord
 {
+
+    const TYPE_WEB = 1;
+    const TYPE_SOCIAL = 2;
     /**
      * {@inheritdoc}
      */
@@ -38,6 +41,7 @@ class Resource extends \yii\db\ActiveRecord
             [['typeResourceId'], 'required'],
             [['typeResourceId', 'status', 'createdAt', 'updatedAt', 'createdBy', 'updatedBy'], 'integer'],
             [['name', 'url'], 'string', 'max' => 255],
+            [['url'],'url','defaultScheme' => 'https://'],
             [['typeResourceId'], 'exist', 'skipOnError' => true, 'targetClass' => TypeResource::className(), 'targetAttribute' => ['typeResourceId' => 'id']],
         ];
     }

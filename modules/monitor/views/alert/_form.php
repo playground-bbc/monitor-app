@@ -31,7 +31,9 @@ die();*/
 
 
 ?>
-
+<hr>
+<br>
+<br>
 <?php $form = ActiveForm::begin(['id' => 'search-form','options' => ['enctype' => 'multipart/form-data']]); ?>
 	
 	<div class="container">
@@ -142,6 +144,14 @@ die();*/
 			</div>
 		</div>
 		<div class="row">
+			<div class="col-md-6">
+				<?= 
+                    // with ActiveForm
+                    $form->field($form_alert, 'web_resource')->widget(JqueryTagsInput::className(), [
+                        // extra configuration
+                    ]);
+                 ?>
+			</div>
 			<div class="col-md-6">
 				<?= 
 					// with ActiveForm

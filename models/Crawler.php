@@ -15,8 +15,6 @@ use Goutte\Client;
  */
 class Crawler extends Model
 {
-    public $keywords = [];
-    public $web_resource = [];
     
 
     public $data = [];
@@ -30,40 +28,13 @@ class Crawler extends Model
     public function rules()
     {
         return [
-            // text_search  are required
-            [['text_search','keywords','web_resource'], 'required'],
-         //   [['keywords','web_resource'], 'save'],
-            
         ];
     }
 
     public function scraping()
     {
       $crawler = $this->_client->request('GET','https://www.yiiframework.com/doc/guide/2.0/en/db-migrations');
-       /*
-      $resource = Resource::findOne($id);
-      $client = new Client();
-      $crawler = $client->request('GET', 'https://www.yiiframework.com/doc/guide/2.0/en/db-migrations');
-       //var_dump($crawler);
-       //die();
-    
-      $name = $resource->name;
-      $searchword = "Tim";
-      //$out = [];
-      //$out = $crawler->evaluate("//p[text()[contains(.,".$searchword .")]]")->each(function ($node) use($searchword)
-      $out = $crawler->evaluate("//p[text()[contains(.,".$searchword .")]]")->each(function ($node) use($searchword)
-      {
-        if (preg_match("/".$searchword."/i",$node->text())) {
-          return $node->text();
-        }
-        
-      });
-     // $stripped = preg_replace('/\s+/', ' ', $out[0]);
-      echo "<pre>";
-      var_dump(array_filter($out));
-      echo "</pre>";
-      die();
-      */
+      
       return $this->data;
     }
 

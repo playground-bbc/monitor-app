@@ -130,7 +130,9 @@ class BaseApi extends Model
             'lang' => 'es',
             'result_type' => 'recent',
             'count' => '100',
-            //'until' => Yii::$app->formatter->asDate($this->start_date,'yyyy-MM-dd'),
+           // 'since' => Yii::$app->formatter->asDate($this->start_date,'yyyy-MM-dd'),
+            //'until' => Yii::$app->formatter->asDate($this->end_date,'yyyy-MM-dd'),
+            'max_id' => 0,
 
         ];
         
@@ -138,7 +140,7 @@ class BaseApi extends Model
         $data = [];
         $categories = array_keys($this->products_models);
 
-        
+
         
         foreach ($categories as $key) {
         	$params['q'] = $key;
@@ -178,7 +180,8 @@ class BaseApi extends Model
 
 
         }
-     
+     	
+     	
         return $data;
 	}
 	/**
@@ -189,6 +192,7 @@ class BaseApi extends Model
 		
 		$tweets = [];
 		$source = 'TWITTER';
+
 
 		
 		foreach ($data as $key => $value) {
@@ -250,6 +254,7 @@ class BaseApi extends Model
             'query' => $models_products_all,
             'page' => $this->live_chat_page,
         ];
+
 
 
        $data = $liveChat->loadParams($params)->getTickets()->all();
@@ -846,10 +851,13 @@ class BaseApi extends Model
 				$products[] = $key;
 				foreach ($value as $model => $serial_model) {
 					$products[] = $model;
-					$products[] = $serial_model;
+					foreach ($serial_model as $serial => $model_value) {
+						$products[] = $model_value;
+					}
 				}
 			}
-
+			
+			
 
 			for ($a=0; $a <sizeof($data['AWARIO']) ; $a++) { 
 				// search by title 

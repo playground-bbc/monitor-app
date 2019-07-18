@@ -87,6 +87,35 @@ class TwitterApi extends Model
          
     }
 
+    public function search_tweets_by_date($params)
+    {
+        $data =[];
+        $index = 0;
+
+        do {
+                $data[$index]  = $this->search_tweets($params);
+                
+                if (isset($data[$index]['search_metadata']['next_results'])) {
+                    parse_str($data[$index]['search_metadata']['next_results'], $output);
+                    $params['max_id'] = $output['?max_id'];
+
+
+                }else{
+                    $data['max_id'] = $params['max_id'];
+                }
+
+
+                     
+                $index ++;
+
+        } while ($params['max_id'] != $data[$index-1]['search_metadata']['max_id']);
+
+        
+
+        return $data;
+
+    }
+
 
     public function __construct() {
         Codebird::setConsumerKey(Yii::$app->params['twitter']['api_key'], Yii::$app->params['twitter']['api_secret_key']);

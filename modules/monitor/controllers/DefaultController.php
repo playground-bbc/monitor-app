@@ -270,7 +270,9 @@ class DefaultController extends Controller
        // var_dump(ArrayHelper::index($data['lgonline.cl']['http://localhost/blog/home-page.html'],null,'_text'));
         print_r($data);*/
         
-       // print_r($data);
+        /*echo "<pre>";
+        print_r($data);
+        die();*/
 
         $model = [];
 
@@ -311,7 +313,8 @@ class DefaultController extends Controller
         				$sentence = new Stringizer($data[$d]['_text']);
         				foreach ($products as $product) {
         					if ($sentence->containsCountIncaseSensitive($product)) {
-        						$search[$domain][$webpage][$label][] = $data[$d];
+        						$data[$d]['product'] = $product;
+                                $search[$domain][$webpage][$label][] = $data[$d];
         					}
         				}
         			}
@@ -319,9 +322,9 @@ class DefaultController extends Controller
         	}
         }
        
-        /*echo "<pre>";
+        echo "<pre>";
         print_r($search);
-        die();*/
+        die();
 
 
         $contains = [];
@@ -383,5 +386,12 @@ class DefaultController extends Controller
 	        return $this->render('error', ['exception' => $exception]);
 	    }
 	}
+
+    public function actionUrl()
+    {
+       $url = '?max_id=1151159575204257793&q=Full%20HD%20since%3A2019-07-15%20until%3A2019-07-17&lang=es&count=100&include_entities=1&result_type=recent';
+       parse_str($url, $output);
+       var_dump($output['?max_id']);
+    }
 
 }
