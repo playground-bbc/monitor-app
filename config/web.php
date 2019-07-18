@@ -24,7 +24,7 @@ $config = [
         'cache' => [
             'class' => 'yii\caching\DbCache',
             'db' => $db,
-            'cacheTable' => 'monitor_cache',
+            'cacheTable' => 'cache_monitor',
         ],
         'user' => [
             'identityClass' => 'app\models\Users',

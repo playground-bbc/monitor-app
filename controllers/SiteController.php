@@ -129,6 +129,10 @@ class SiteController extends Controller
      */
     public function actionAbout()
     {
+
+        /*$password_hash = Yii::$app->security->generatePasswordHash("lgcristobal");
+        var_dump($password_hash);
+        die();*/   
         return $this->render('about');
     }
 }

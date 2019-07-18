@@ -83,6 +83,7 @@ class TwitterApi extends Model
     {
 
         $this->twitter->setReturnFormat(CODEBIRD_RETURNFORMAT_ARRAY);
+        set_time_limit(500); // 
         return $this->twitter->search_tweets($params,true);
          
     }
@@ -93,22 +94,25 @@ class TwitterApi extends Model
         $index = 0;
 
         do {
-                $data[$index]  = $this->search_tweets($params);
+                $temp = $this->search_tweets($params);
+                if (!empty($temp['statuses'])) {
+                    sleep(1);
+                    $data[$index]  = $this->search_tweets($params);
+                }
+                
                 
                 if (isset($data[$index]['search_metadata']['next_results'])) {
                     parse_str($data[$index]['search_metadata']['next_results'], $output);
                     $params['max_id'] = $output['?max_id'];
 
 
-                }else{
-                    $data['max_id'] = $params['max_id'];
                 }
 
 
                      
                 $index ++;
 
-        } while ($params['max_id'] != $data[$index-1]['search_metadata']['max_id']);
+        } while ($params['max_id'] != $temp['search_metadata']['max_id']);
 
         
 

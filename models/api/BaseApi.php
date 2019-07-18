@@ -130,8 +130,9 @@ class BaseApi extends Model
             'lang' => 'es',
             'result_type' => 'recent',
             'count' => '100',
-           // 'since' => Yii::$app->formatter->asDate($this->start_date,'yyyy-MM-dd'),
-            //'until' => Yii::$app->formatter->asDate($this->end_date,'yyyy-MM-dd'),
+            //'since' => Yii::$app->formatter->asDate($this->start_date,'yyyy-MM-dd'),
+           // 'until' => Yii::$app->formatter->asDate($this->end_date,'yyyy-MM-dd'),
+            'until' => Yii::$app->formatter->asDate($this->end_date,'yyyy-MM-dd'),
             'max_id' => 0,
 
         ];
@@ -144,26 +145,26 @@ class BaseApi extends Model
         
         foreach ($categories as $key) {
         	$params['q'] = $key;
-        	$data[$key] = $twitterApi->search_tweets($params);
-        	if ($data[$key]['rate']['remaining'] < $this->twitter_limit) {
+        	$data[$key] = $twitterApi->search_tweets_by_date($params);
+        	/*if ($data[$key]['rate']['remaining'] < $this->twitter_limit) {
         		break;
-        	}
+        	}*/
         }
 
         foreach ($this->products_models as $key => $value) {
         	foreach ($value as $model => $serial_model) {
         		$params['q'] = $model;
-        	    $data[$model] = $twitterApi->search_tweets($params);
-        	    if ($data[$key]['rate']['remaining'] < $this->twitter_limit) {
+        	    $data[$model] = $twitterApi->search_tweets_by_date($params);
+        	   /* if ($data[$key]['rate']['remaining'] < $this->twitter_limit) {
 	        		break;
-	        	}
+	        	}*/
 	        	// new serial_model
 	        	for ($i=0; $i <sizeof($serial_model) ; $i++) { 
 	        		$params['q'] = $serial_model[$i];
-	        		$data[$serial_model[$i]] = $twitterApi->search_tweets($params);
-	        	    if ($data[$serial_model[$i]]['rate']['remaining'] < $this->twitter_limit) {
+	        		$data[$serial_model[$i]] = $twitterApi->search_tweets_by_date($params);
+	        	    /*if ($data[$serial_model[$i]]['rate']['remaining'] < $this->twitter_limit) {
 		        		break;
-		        	}
+		        	}*/
 	        	}
         	}
 
@@ -193,9 +194,44 @@ class BaseApi extends Model
 		$tweets = [];
 		$source = 'TWITTER';
 
+		/*var_dump($data);
+		die();*/
 
-		
 		foreach ($data as $key => $value) {
+			if (!empty($value)) {
+				for ($v=0; $v <sizeof($value) ; $v++) { 
+					for ($i=0; $i <sizeof($value[$v]['statuses']) ; $i++) { 
+						
+						// set source
+						$tweets[$key][$i]['source'] = self::TWITTER;
+
+						// get url from tweet
+						if (count($value[$v]['statuses'][$i]['entities']['urls'])) {
+							$tweets[$key][$i]['url'] = $value[$v]['statuses'][$i]['entities']['urls'][0]['url'];
+						}else{$tweets[$key][$i]['url'] = '-';}
+						// get created_at from tweet
+						if (isset($value[$v]['statuses'][$i]['created_at'])) {
+							$tweets[$key][$i]['created_at'] = $value[$v]['statuses'][$i]['created_at'];
+						}
+						// get author_name from tweet
+						if (isset($value[$v]['statuses'][$i]['user']['name'])) {
+							$tweets[$key][$i]['author_name'] = $value[$v]['statuses'][$i]['user']['name'];
+						}
+						// get author_username from tweet
+						if (isset($value[$v]['statuses'][$i]['user']['screen_name'])) {
+							$tweets[$key][$i]['author_username'] = $value[$v]['statuses'][$i]['user']['screen_name'];
+						}
+
+						// get Post from tweet
+						if (isset($value[$v]['statuses'][$i]['text'])) {
+							$tweets[$key][$i]['post_from'] = $value[$v]['statuses'][$i]['text'];
+						}
+					}
+				}
+			}
+		}
+		
+		/*foreach ($data as $key => $value) {
 			for ($i=0; $i <sizeof($value['statuses']) ; $i++) { 
 				
 				// set source
@@ -223,7 +259,7 @@ class BaseApi extends Model
 					$tweets[$key][$i]['post_from'] = $value['statuses'][$i]['text'];
 				}
 			}
-		}
+		}*/
 
 		return $tweets;
 

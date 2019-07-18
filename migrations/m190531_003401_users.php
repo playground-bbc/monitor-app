@@ -48,6 +48,28 @@ class m190531_003401_users extends Migration
             'created_at'    => 0,
             'updated_at'    => 0,
         ]);
+
+        $this->insert('{{%users}}', [
+            'username'      => 'dafne',
+            'auth_key'      => 'tPwo4kDpN7JAz8Rrm9EwNAQ7q8F1p7FN',
+            // lgdafne
+            'password_hash' => '$2y$13$szhao4QHkBT0IFhzqeb0seRdGOPr3UDWmdvTe1XRENMyxYaM6FoX6',
+            'email'         => 'Dafne@example.com',
+            'status'        => 10,
+            'created_at'    => 0,
+            'updated_at'    => 0,
+        ]);
+
+        $this->insert('{{%users}}', [
+            'username'      => 'cristobal',
+            'auth_key'      => 'tPwo4kDpN7JAz8Rrm9EwNAQ7q8F1p7FN',
+            // lgcristobal
+            'password_hash' => '$2y$13$q0QI6ocpOpe/t9FxmyuKQufKQO5ncqwkdZgkQRqWpIhySjKzQ4kZS',
+            'email'         => 'cristobal@example.com',
+            'status'        => 10,
+            'created_at'    => 0,
+            'updated_at'    => 0,
+        ]);
     }
 
     public function down()

@@ -30,7 +30,7 @@ class m190601_223716_categories_dictionary extends Migration
         ], $tableOptions);
 
         $this->insert('{{%categories_dictionary}}', [
-            'name'      => 'Buenas',
+            'name'      => 'Palabras Libres',
             'updatedAt' => '1488153462',
             'createdBy' => '1',
             'updatedBy' => '1',
