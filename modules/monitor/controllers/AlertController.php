@@ -18,6 +18,8 @@ use app\models\api\LiveChatApi;
 
 use app\models\filebase\Filebase;
 
+use app\models\scraping\Crawler;
+
 use app\models\chart\CountByCategory;
 use app\models\chart\CountWords;
 use app\models\chart\CountTicket;
@@ -231,8 +233,10 @@ class AlertController extends \yii\web\Controller
           'end_date' => $end_date,
       ]; 
 
+      
 
       $baseApi = new BaseApi($params);
+      
       // $baseApi->callApiResources();
       $alert = Alerts::findOne($alertId);
       
@@ -242,8 +246,11 @@ class AlertController extends \yii\web\Controller
       $model =  $cache->getOrSet($alertId, function () use ($baseApi) {
           return $baseApi->countAndSearchWords();
       }, 1000);
-		
+
 	    //$cache->delete($alertId);	
+      
+      $crawling = new Crawler($params); 
+		
       
 
 
@@ -494,8 +501,9 @@ class AlertController extends \yii\web\Controller
 
         if (!empty($form_alert->web_resource)) {
           $web_resources = explode(',', $form_alert->web_resource);
+
           foreach ($web_resources as $web_resource) {
-            $name_web = parse_url($web_resource,PHP_URL_HOST);
+            $name_web = Resource::get_domain($web_resource);
             
             if (!Resource::find()->where(['name' => $name_web,'url' => $web_resource ])->exists()) {
               $model_resource = new Resource();

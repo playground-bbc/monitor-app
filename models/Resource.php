@@ -41,7 +41,8 @@ class Resource extends \yii\db\ActiveRecord
             [['typeResourceId'], 'required'],
             [['typeResourceId', 'status', 'createdAt', 'updatedAt', 'createdBy', 'updatedBy'], 'integer'],
             [['name', 'url'], 'string', 'max' => 255],
-            [['url'],'url','defaultScheme' => 'https://'],
+            //[['url'],'url','defaultScheme' => 'https://'],
+            [['url'],'url'],
             [['typeResourceId'], 'exist', 'skipOnError' => true, 'targetClass' => TypeResource::className(), 'targetAttribute' => ['typeResourceId' => 'id']],
         ];
     }
@@ -62,6 +63,23 @@ class Resource extends \yii\db\ActiveRecord
             'createdBy' => 'Created By',
             'updatedBy' => 'Updated By',
         ];
+    }
+
+    public static function get_domain($url)
+    {
+        $urlobj = parse_url($url);
+        $domain = $urlobj['host'];
+        if (preg_match('/(?P<domain>[a-z0-9][a-z0-9\-]{1,63}\.[a-z\.]{2,6})$/i', $domain, $regs)){
+            return strtok($regs['domain'], '.');
+        }
+
+        return false;
+    }
+
+    public static function isWebResource($resource)
+    {
+        $resource = Resource::find()->where(['name' => $resource,'typeResourceId' => self::TYPE_WEB])->exists();
+        return $resource;
     }
 
     /**

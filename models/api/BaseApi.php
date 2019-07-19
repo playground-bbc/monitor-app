@@ -194,9 +194,7 @@ class BaseApi extends Model
 		$tweets = [];
 		$source = 'TWITTER';
 
-		/*var_dump($data);
-		die();*/
-
+	
 		foreach ($data as $key => $value) {
 			if (!empty($value)) {
 				for ($v=0; $v <sizeof($value) ; $v++) { 
