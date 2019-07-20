@@ -589,6 +589,7 @@ class BaseApi extends Model
 			for ($i=0; $i <sizeof($value) ; $i++) { 
 				if ($value[$i]['source'] == self::TWITTER) {
 					$stringizer = new Stringizer($value[$i]['post_from']);
+					$tmp = [];
 					foreach ($this->words as $categories => $words) {
 		                for ($j=0; $j <sizeof($words) ; $j++) { 
 		                	if ($stringizer->contains($words[$j])) {
@@ -596,11 +597,14 @@ class BaseApi extends Model
 		                		$sentence = (array) $stringizer->replaceIncaseSensitive($words[$j], "<span style='background: {$background}'>{$words[$j]}</span>");
 		                		$value[$i]['post_from'] = array_values($sentence);
 		                		$value[$i]['product'] = $model;
-		                		$tweets[] = $value[$i];
+		                		$tmp[] = $value[$i];
 		                	}
 		                }
 		            }
 				}
+		        if (!empty($tmp)) {
+		        	$tweets[] = end($tmp);
+		        }
 			}
 		}
 		return $tweets;
@@ -727,13 +731,14 @@ class BaseApi extends Model
 	            		$said = array_values($value[$i]['post_from'][$p]);
 
 	            		$stringizer_sentences = new Stringizer($said[0]);
-
+						$tmp = [];
 	            		foreach ($this->words as $categories => $words) {
 							$background = self::COLOR[$categories];
 			                for ($j=0; $j <sizeof($words) ; $j++) {
 								if ($stringizer_title->containsCountIncaseSensitive($words[$j])){
 									$sentence_title = (array) $stringizer_title->replaceIncaseSensitive($words[$j], "<span style='background: {$background}'>{$words[$j]}</span>");
 									$title_tags = array_values($sentence_title);
+									
 									$value[$i]['title'] = $title_tags[0];
 								} 
 			                	if ($stringizer_sentences->containsCountIncaseSensitive($words[$j])) {
@@ -743,7 +748,8 @@ class BaseApi extends Model
 			                		$value[$i]['sentence'] = $sentence[0];
 			                		$value[$i]['entity'] = $entity[0];
 			                		$value[$i]['product'] = $model;
-			                		$live[] = $value[$i];
+			                		//$live[] = $value[$i];
+			                		$tmp[] = $value[$i];
 			                		
 			                	}// end if contains word
 			                }// for each words
@@ -753,10 +759,14 @@ class BaseApi extends Model
 	            	} // for each post_from
 
 				} // if livechat source
+				if (!empty($tmp))
+				{
+					$live[] = end($tmp);
+				}
 			}
 		}
 		
-
+	
 		/*
 		 * foreach ($data as $model => $value) {
 			for ($i=0; $i <sizeof($value) ; $i++) { 
