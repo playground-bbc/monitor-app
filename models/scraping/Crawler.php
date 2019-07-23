@@ -14,12 +14,11 @@ use GuzzleHttp\Client as GuzzleClient;
 use app\models\filebase\Filebase;
 
 use app\models\Resource;
+use app\models\api\BaseApi;
 
 
 /**
- * LoginForm is the model behind the login form.
- *
- * @property User|null $user This property is read-only.
+ * Crawler is the model behind the logic from web scrapping.
  *
  */
 class Crawler extends Model
@@ -38,6 +37,38 @@ class Crawler extends Model
     private $_client;
     private $_filebase;
 
+    // own Crawler search
+    const WEB = 'WEB';
+
+    /**
+     * [countAndSearchWords call methods to count data for graphics]
+     * @return [array] [return array with the data of the different methods]
+     */
+    public function countAndSearchWords()
+    {
+        $filebase = new Filebase();
+        $filebase->alertId = $this->alertId;
+        $db = $filebase->getFilebase();
+
+        // we go through the json 
+        $data = $db->field('data');
+        // get WEB del Array
+        $data = ArrayHelper::getValue($data,'WEB');
+        
+        $model = [];
+
+        if ($data) {
+            $countByCategoryInWeb['countByCategoryInWeb'] = $this->countWordsInWebByCategory($data);
+            if (!is_null($countByCategoryInWeb['countByCategoryInWeb'])) {
+                $sentences['sentences_web'] = $this->addTagsSentenceFoundInWeb($data);
+                $countWords['countWords_web'] = $this->addWordsInWeb($data);
+                //join webs
+                $model['web'] = ArrayHelper::merge($sentences,$countWords);
+                $model['web'] = ArrayHelper::merge($countByCategoryInWeb,$model['web']);
+            }
+        }
+        return $model;
+    }
 
     /**
      * [rules for scrapping a webpage]
@@ -268,6 +299,7 @@ class Crawler extends Model
                         if (!in_array($value[$v]['product'], $this->data)) {
                            // $this->data[] = $value[$v]['product'];
                             $temp['source'] = 'WEB';
+                            $temp['tag'] = $label;
                             $temp['url'] = $uri;
                             $temp['created_at'] = "-";
                             $temp['author_name'] = "-";
@@ -280,11 +312,15 @@ class Crawler extends Model
                 }
             }
         }
-        //return $this->data;
+        
+        return $this->data;
     }
 
-
-    public function getData()
+    /**
+     * [getData return all data filter]
+     * @return [array]
+     */
+    private function getData()
     {
         return $this->data;
     }
@@ -307,16 +343,133 @@ class Crawler extends Model
         return $products;
     }
 
-
     /**
-     * @param  array
-     * @return null
+     * [saveJsonFile save content in a json file]
      */
     private function saveJsonFile()
     {
         $data = $this->getData();
         $this->_filebase->save($data);
     }
+
+    /**
+     * [countWordsInWebByCategory add word in to category]
+     * @param  [array] $data [data in json file section WEB]
+     * @return [array]       ['products or models' => 'dictionary_category_1' => int 1,'dictionary_category_2' => int 0]
+     */
+    private function countWordsInWebByCategory($data)
+    {
+        // set array analisys Model => dictionary_title => word
+        $products = array_keys($data);
+        $countByCategory = [];
+        for ($i=0; $i <sizeof($products) ; $i++) { 
+            foreach ($this->words as $categories => $words) {
+                $countByCategory[$products[$i]][$categories] = 0;
+            }
+        }
+
+        foreach ($data as $model => $value) {
+            for ($i=0; $i <sizeof($value) ; $i++) { 
+                if ($value[$i]['source'] == self::WEB) {
+                    $stringizer = new Stringizer($value[$i]['post_from']);
+                    foreach ($this->words as $categories => $words) {
+                        for ($j=0; $j <sizeof($words) ; $j++) { 
+                            if ($stringizer->contains($words[$j])) {
+                                $countByCategory[$model][$categories] += $stringizer->containsCount($words[$j]) ;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+       return (count($countByCategory)) ? $countByCategory : null;
+    }
+    /**
+     * [addTagsSentenceFoundInWeb add tags html in post_from]
+     * @param [array] $data 
+     * @return [array] $sentences
+     */
+    private function addTagsSentenceFoundInWeb($data)
+    {
+        $sentences = [];
+        foreach ($data as $model => $value) {
+            
+            for ($i=0; $i <sizeof($value) ; $i++) { 
+                if ($value[$i]['source'] == self::WEB) {
+                    $stringizer = new Stringizer($value[$i]['post_from']);
+                    $tmp = [];
+                    foreach ($this->words as $categories => $words) {
+                        for ($w=0; $w <sizeof($words) ; $w++) { 
+                            if ($stringizer->containsIncaseSensitive($words[$w])) {
+                                $background = BaseApi::COLOR[$categories];
+                                $sentence = (array) $stringizer->replaceIncaseSensitive($words[$w], "<span style='background: {$background}'>{$words[$w]}</span>");
+                                $value[$i]['post_from'] = array_values($sentence);
+                                $value[$i]['product'] = $model;
+                                $tmp[] = $value[$i];
+                            }
+                        }
+                    }
+                 if (!empty($tmp)) {
+                        $sentences[] = end($tmp);
+                    }   
+                }
+            }
+        }
+        
+        return $sentences;
+    }
+
+    /**
+     * [addWordsInWeb add words found]
+     * @param [array] $data 
+     * @return [array] $model ['products or models' => 'dictionary_category_1' => word_name => 1,'dictionary_category_2' => word_name => 4]
+     */
+    private function addWordsInWeb($data)
+    {
+        // set array analisys Model => dictionary_title => word
+        $products = array_keys($data);
+        $countByWords = [];
+        for ($i=0; $i <sizeof($products) ; $i++) { 
+            foreach ($this->words as $categories => $words) {
+                for ($j=0; $j <sizeof($words) ; $j++) { 
+                    $countByWords[$products[$i]][$categories][$words[$j]] = 0;
+                }
+            }
+        }
+
+        foreach ($data as $products => $value) {
+            for ($i=0; $i <sizeof($value) ; $i++) { 
+                if ($value[$i]['source'] == self::WEB) {
+                    $stringizer = new Stringizer($value[$i]['post_from']);
+                    foreach ($this->words as $categories => $words) {
+                        for ($j=0; $j <sizeof($words) ; $j++) { 
+                            if ($stringizer->contains($words[$j]) && isset($countByWords[$products][$categories][$words[$j]])) {
+                                $countByWords[$products][$categories][$words[$j]] += $stringizer->containsCount($words[$j]) ;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        
+        $model = [];
+        foreach ($countByWords as $products => $categories_words) {
+            foreach ($categories_words as $words => $word) {
+                foreach ($word as $key => $value) {
+                    if ($value) {
+                        $model[$products][$words][$key] = $value;
+                    }
+                }
+            }
+        }
+        unset($countByWords);
+
+        return $model;
+    }
+
+
 
     public function __construct($params) {
         
@@ -333,6 +486,7 @@ class Crawler extends Model
         $resources = $this->getResouceUri();
         
         if ($resources) {
+
             $crawler  = $this->getRequest($resources);
             $contents = $this->getContent($crawler);
             $model    = $this->setContent($contents);

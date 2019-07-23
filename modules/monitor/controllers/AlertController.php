@@ -236,31 +236,62 @@ class AlertController extends \yii\web\Controller
       
 
       $baseApi = new BaseApi($params);
-      
+      $crawling = new Crawler($params); 
       // $baseApi->callApiResources();
-      $alert = Alerts::findOne($alertId);
       
-      //$baseApi->countAndSearchWords();
+      
 
-      $cache = Yii::$app->cache; 
-      $model =  $cache->getOrSet($alertId, function () use ($baseApi) {
-          return $baseApi->countAndSearchWords();
+      $cache = Yii::$app->cache;
+      $model =  $cache->getOrSet($alertId, function () use ($baseApi,$crawling) {
+          $model_api = $baseApi->countAndSearchWords();
+          $model_web = $crawling->countAndSearchWords();
+          return ArrayHelper::merge($model_api,$model_web);
+          //return $baseApi->countAndSearchWords();
       }, 1000);
+
 
 	    //$cache->delete($alertId);	
       
-      $crawling = new Crawler($params); 
+      
+     // $crawlingModel = $crawling->countAndSearchWords(); 
 		
       
-
-
-
-
       $chartCategories = new CountByCategory($model);
-      $chartWords = new CountWords($model);
-      $chartLive = new CountTicket($model);
-      $chartAwario = new CountByCategoryAwario($model);
+      $chartWords      = new CountWords($model);
+      $chartLive       = new CountTicket($model);
+      $chartAwario     = new CountByCategoryAwario($model);
       
+      $alert = Alerts::findOne($alertId);
+
+     
+      $data = [];
+      $sentences = $model['tweets']['sentences'];
+      for ($s=0; $s <sizeof($sentences) ; $s++) { 
+
+          $data[] = [
+              'source' => $sentences[$s]['source'],
+              'url' => $sentences[$s]['url'],
+              'created_at' => $sentences[$s]['created_at'],
+              'author_name' => $sentences[$s]['author_name'],
+              'author_username' => $sentences[$s]['author_username'],
+              'post_from' => trim($sentences[$s]['post_from'][1]),
+              'product' => $sentences[$s]['product'],
+          ];
+      }
+
+      $data[0] = ['source','url','created_at','author_name','author_username','post_from','product'];
+      
+      $url = Yii::getAlias('@live-chat').'\file.csv';
+      
+      $fp = fopen($url, 'wb');
+      foreach ($data as $fields) {
+          fputcsv($fp, $fields);
+      }
+
+      fclose($fp);
+
+
+
 
       return $this->render('show',[
         'alert' => $alert,
@@ -272,6 +303,9 @@ class AlertController extends \yii\web\Controller
       ]);
       
     }
+
+
+
     /**
      * @return view
      */

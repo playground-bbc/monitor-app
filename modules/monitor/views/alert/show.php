@@ -52,6 +52,8 @@ use yii\data\ArrayDataProvider;
 			<?=$this->render('charts/_totalTicektLive',['chartLive' => $chartLive]) ?>
  		<?php endif ?>
  	<?php endif ?>
+
+ 	
  	<!-- total awario categories </!-->
  	<?php if (isset($model['awario'])): ?>
  		<?php if (isset($model['awario']['countByCategoryInAwario'])): ?>
@@ -64,6 +66,22 @@ use yii\data\ArrayDataProvider;
 			<?=$this->render('tables/_sentencesAwario',['sentences' => $model['awario']['sentence_awario']]) ?>
  		<?php endif ?>
  	<?php endif ?>
+
+	<!-- count categories web </!-->
+	<?php if ($chartCategories->getCategories('countByCategoryInWeb')): ?>
+		<?=$this->render('charts/_countByCategoryInWeb',['chartCategories' => $chartCategories]); ?>
+ 	<?php endif ?>
+ 	<!-- count words web </!-->
+ 	<?php if ($chartWords->getSeries('countWords_web')): ?>
+		<?=$this->render('charts/_countWordsWeb',['chartWords' => $chartWords]); ?>
+ 	<?php endif ?>
+ 	<!-- sentences web </!-->
+ 	<?php if (isset($model['web'])): ?>
+ 		<?php if (isset($model['web']['sentences_web'])): ?>
+			<?=$this->render('tables/_sentencesWeb',['sentences' => $model['web']['sentences_web']]) ?>
+ 		<?php endif ?>
+ 	<?php endif ?>
+
  	
  </div>
  

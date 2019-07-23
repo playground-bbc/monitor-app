@@ -1,7 +1,29 @@
 <?php 
 use yii\data\ArrayDataProvider;
 
+use kartik\export\ExportMenu;
+$gridColumns = [
+    'product',
+    'title',
+    'source',
+    'sentence',
+    'created_at',
+    'author_name',
+    'entity',
+    'status',
+    'url_retail',
+];
 
+$provider = new ArrayDataProvider([
+    'allModels' => $sentences,
+    
+]);
+
+// Renders a export dropdown menu
+echo ExportMenu::widget([
+    'dataProvider' => $provider,
+    'columns' => $gridColumns
+]);
 
  ?>
 
@@ -12,21 +34,5 @@ use yii\data\ArrayDataProvider;
     'tableOptions' => [
         'class' => 'table table-striped',
     ],
-    'columns' => [
-        'product',
-        'title',
-        /*[
-            'data' => 'active',
-            'title' => \Yii::t('app', 'Is active'),
-            'filter' => ['true' => 'Yes', 'false' => 'No'],
-        ],*/
-        'source',
-        'sentence',
-        'created_at',
-        'author_name',
-        'entity',
-        'status',
-        'url_retail',
-       // 'url',
-    ],
+    'columns' => $gridColumns,
 ]) ?>

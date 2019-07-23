@@ -1,12 +1,63 @@
 <?php 
 use yii\data\ArrayDataProvider;
+use yii2tech\spreadsheet\Spreadsheet;
+
+
+
+
+
+/*$exporter = new Spreadsheet([
+    'dataProvider' => new ArrayDataProvider([
+        'allModels' => $data
+    ]),
+    'columns' => [
+        [
+            'attribute' => 'source',
+        ],
+        [
+            'attribute' => 'url',
+
+        ],
+        [
+            'attribute' => 'created_at',
+
+        ],
+        [
+            'attribute' => 'author_name',
+
+        ],
+        [
+            'attribute' => 'author_username',
+
+        ],
+        [
+            'attribute' => 'post_from',
+
+        ],
+        [
+            'attribute' => 'product',
+            'contentOptions' => [
+                'alignment' => [
+                    'horizontal' => 'center',
+                    'vertical' => 'center',
+                ],
+            ],
+        ],
+        
+        
+    ],
+]);
+
+$exporter->save('C:\wamp64\www\playground\monitor-app\monitor-app-data\live-chat/file.xls');
+*/
+
 
  ?>
 
  <?= \nullref\datatable\DataTable::widget([
     'data' => $sentences,
-    'scrollY' => '400px',
-    'scrollCollapse' => true,
+    /*'scrollY' => '400px',
+    'scrollCollapse' => true,*/
     'tableOptions' => [
         'class' => 'table table-striped',
     ],

@@ -16,7 +16,7 @@ use app\models\api\BaseApi;
  */
 class CountWords extends Model
 {
-	private $targets = ['countWords','countWords_live'];
+	private $targets = ['countWords','countWords_live','countWords_web'];
 	private $model_data;
 
 	//chart type

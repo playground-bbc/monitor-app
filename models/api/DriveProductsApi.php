@@ -38,7 +38,7 @@ class DriveProductsApi extends Model
     {
         $service = $this->_getServices();
 
-        $spreadsheetId = Yii::$app->params['drive']['Drive Diccionario Listening test'];
+        $spreadsheetId = Yii::$app->params['drive']['Drive Diccionario Listening'];
 
         $sheetNames = $this->_productsFamily;
 
@@ -64,7 +64,7 @@ class DriveProductsApi extends Model
     {
         $service = $this->_getServices();
 
-        $spreadsheetId = Yii::$app->params['drive']['Drive Diccionario Listening test'];
+        $spreadsheetId = Yii::$app->params['drive']['Drive Diccionario Listening'];
         $response      = $service->spreadsheets->get($spreadsheetId);
 
         $values = [];
@@ -89,7 +89,7 @@ class DriveProductsApi extends Model
         // Get the API client and construct the service object.
         $service = $this->_getServices();
 
-        $spreadsheetId = Yii::$app->params['drive']['Drive Diccionario Listening test'];
+        $spreadsheetId = Yii::$app->params['drive']['Drive Diccionario Listening'];
         $response      = $service->spreadsheets->get($spreadsheetId);
         $sheetNames    = [];
         for ($i = 0; $i < sizeof($response->sheets); $i++) {

@@ -6,7 +6,7 @@ use miloschuman\highcharts\Highcharts;
 <div class="well">
 	<div class="row">
 		<div class="col-md-12">
-		<h1>Tweets Data</h1>
+		<h1>Web Data</h1>
 		<h2> Total por categoria de palabras</h2>	
 		<?=  Highcharts::widget([
 		 	'scripts' => [
@@ -15,24 +15,17 @@ use miloschuman\highcharts\Highcharts;
 			  ],   
 			'options' => [
 		   	'chart' => ['type' => 'column'],
-		      'title' => ['text' => Yii::t('app','word numbers by products / dictionaries in twitter')],
-		     // 'subtitle' => ['text' => Yii::t('app','Subtitle ....')],
+		      'title' => ['text' => Yii::t('app','word numbers by products / dictionaries')],
+		      'subtitle' => ['text' => Yii::t('app','Subtitle ....')],
 		      'xAxis' => [
-		         'categories' => $chartCategories->getCategories('countByCategoryInTweet'),
+		         'categories' => $chartCategories->getCategories('countByCategoryInWeb'),
 		         'crosshair' => true,
-		      ],
-		      'plotOptions' => [
-		      	'series' => [
-		      		'dataLabels' => [
-		      			'enabled' => true
-		      		]
-		      	],
 		      ],
 		      'yAxis' => [
 		         'title' => ['text' => 'Twitter Data'],
 		         'labels' => ['overflow' => 'justify']
 		      ],
-			'series' => $chartCategories->getSeries('countByCategoryInTweet'),
+			'series' => $chartCategories->getSeries('countByCategoryInWeb'),
 			'credits' => ['enabled' => false],     
 		   		]
 			]);

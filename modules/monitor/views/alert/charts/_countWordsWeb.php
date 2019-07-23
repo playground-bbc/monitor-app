@@ -11,8 +11,8 @@ use miloschuman\highcharts\Highcharts;
 			'scripts' => ['modules/drilldown'],	
 			  'options' => [
 			  	'chart' => ['type' => 'pie'],
-				'title' => ['text' => Yii::t('app','numbers of words twitter')],
-				//'subtitle' => ['text' => Yii::t('app','subtitle ... of words')],
+				'title' => ['text' => Yii::t('app','numbers of words')],
+				'subtitle' => ['text' => Yii::t('app','subtitle ... of words')],
 				'plotOptions' =>  [
 					'series' => [
 						'dataLabels' => [
@@ -30,11 +30,11 @@ use miloschuman\highcharts\Highcharts;
 			      		[
 			      			'name' => "Browsers",
 			        		'colorByPoint' => true,
-			        		'data' => $chartWords->getSeries('countWords') ,
+			        		'data' => $chartWords->getSeries('countWords_web') ,
 			      		],
 			    ],
 		      	'drilldown' => [
-		      		'series' => $chartWords->getDrilldownSeries('countWords'),
+		      		'series' => $chartWords->getDrilldownSeries('countWords_web'),
 
 		      	],
 		      	

@@ -40,13 +40,16 @@ class BaseApi extends Model
 	const LIVECHAT = 'LIVECHAT';
 
 	const COLOR = [
-		'Palabras Libres' => '#9BDFE7',
-		'Malas' => '#E17A6A',
-		'Kws Positivos' => '#85C8D1',
-		'Kws Negativos' => '#E17A6A',
-		'Frases Negativas' => '#D64933',
-		'Frases Positivas' => '#E7E7E7',
-		//'Palabras Libres' => '#E7E7E7',
+		'Palabras Libres' => '#14112C',
+		'MH Series' => '#FF6B6B',
+		'Positivos MH Series' => '#89E62D',
+		'Negativos MH Series' => '#AE1E11',
+		'Buenas' => '#6454D8',
+		'Malas' => '#570F09',
+		'Kws Positivos' => '#7A6AEE',
+		'Kws Negativos' => '#8C3131',
+		'Frases Negativas' => '#5D2A00',
+		'Frases Positivas' => '#89E62D',
 	];
 	
 	/**
@@ -127,11 +130,10 @@ class BaseApi extends Model
 		$twitterApi = new TwitterApi();
 		
 		$params = [
+			//'geocode' => '-33.459229,-70.645348,50000km',
             'lang' => 'es',
-            'result_type' => 'recent',
+            'result_type' => 'mixed',
             'count' => '100',
-            //'since' => Yii::$app->formatter->asDate($this->start_date,'yyyy-MM-dd'),
-           // 'until' => Yii::$app->formatter->asDate($this->end_date,'yyyy-MM-dd'),
             'until' => Yii::$app->formatter->asDate($this->end_date,'yyyy-MM-dd'),
             'max_id' => 0,
 
@@ -486,6 +488,8 @@ class BaseApi extends Model
 
 		// we go through the json 
 		$data = $db->field('data');
+		// delete web
+		unset($data['WEB']);
 		$model = [];
 
 		$resource = array_flip($this->resources);
@@ -493,7 +497,7 @@ class BaseApi extends Model
 		if (isset($resource['Twitter'])) {
 			$countByCategoryInTweet['countByCategoryInTweet'] = $this->countWordsInTweetsByCategory($data);
 		
-			if (!is_null($countByCategoryInTweet)) {
+			if (!is_null($countByCategoryInTweet['countByCategoryInTweet'])) {
 				
 				$sentences['sentences'] = $this->addTagsSentenceFoundInTweets($data);
 				$countWords['countWords'] = $this->addWordsInTweet($data);
@@ -507,7 +511,7 @@ class BaseApi extends Model
 		if (isset($resource['Live Chat'])) {
 			$countByCategoryInLiveChat['countByCategoryInLiveChat'] = $this->countWordsInLiveChatByCategory($data);
 
-			if (!is_null($countByCategoryInLiveChat)) {
+			if (!is_null($countByCategoryInLiveChat['countByCategoryInLiveChat'])) {
 				
 				$sentences_live['sentences_live'] = $this->addTagsSentenceFoundInLive($data);
 				
@@ -524,8 +528,7 @@ class BaseApi extends Model
 
 		if ($this->isAwarioFile()) {
 			$awario_data = $this->searchProdductsInAwario($data);
-
-
+			
 			if (!is_null($awario_data)) {
 				
 				$countByCategoryInLive['countByCategoryInAwario'] = $this->countByCategoryAwario($awario_data);
@@ -601,10 +604,10 @@ class BaseApi extends Model
 		                	}
 		                }
 		            }
+		            if (!empty($tmp)) {
+			        	$tweets[] = end($tmp);
+			        }
 				}
-		        if (!empty($tmp)) {
-		        	$tweets[] = end($tmp);
-		        }
 			}
 		}
 		return $tweets;
@@ -674,6 +677,9 @@ class BaseApi extends Model
                 }
             }
 		}
+		unset($countByCategory['WEB']);
+		unset($countByCategory['AWARIO']);
+
 
 		foreach ($data as $model => $value) {
 			for ($i=0; $i <sizeof($value) ; $i++) { 
@@ -704,7 +710,7 @@ class BaseApi extends Model
 		}
 
 
-		unset($countByCategory['AWARIO']);
+		
 		
 		
 		return (count($countByCategory)) ? $countByCategory : null;
@@ -755,14 +761,14 @@ class BaseApi extends Model
 			                }// for each words
 							
 			            } // for each dictionaries
-						
+						if (!empty($tmp))
+						{
+							$live[] = end($tmp);
+						}
 	            	} // for each post_from
 
 				} // if livechat source
-				if (!empty($tmp))
-				{
-					$live[] = end($tmp);
-				}
+				
 			}
 		}
 		

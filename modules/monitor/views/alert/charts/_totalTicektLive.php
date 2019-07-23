@@ -1,5 +1,7 @@
 <?php 
 use miloschuman\highcharts\Highcharts;
+
+
  ?>
 
 <div class="well">
@@ -17,6 +19,11 @@ use miloschuman\highcharts\Highcharts;
 			      	'y' => 40,
 			      ],
 			      'plotOptions' =>  [
+			      		'series' => [
+				      		'dataLabels' => [
+				      			'enabled' => true
+				      		]
+				      	],
 						'pie' => [
 							'dataLabels' => [
 								'enabled' => true,

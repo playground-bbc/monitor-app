@@ -33,7 +33,10 @@
         "guzzlehttp/guzzle": "^6.3",
         "kartik-v/yii2-widget-switchinput": "dev-master",
         "miloschuman/yii2-highcharts-widget": "^7.0",
-        "nullref/yii2-datatables": "^1.1"
+        "kartik-v/yii2-export": "@dev",
+        "yii2tech/spreadsheet": "*",
+        "nullref/yii2-datatables": "^1.1",
+        "phpoffice/phpspreadsheet": "^1.8"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
