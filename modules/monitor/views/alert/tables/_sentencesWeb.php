@@ -28,6 +28,7 @@ use yii\data\ArrayDataProvider;
         'created_at',
         'author_name',
         'author_username',
+        'tag',
         'url'
     ],
 ]) ?>

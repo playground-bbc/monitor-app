@@ -3,10 +3,6 @@ use yii\widgets\DetailView;
 use app\models\ProductsModelsAlerts;
 use app\models\Dictionary;
 
-var_dump($alert->start_date);
-var_dump(Yii::$app->formatter->asDate($alert->end_date,'yyyy-MM-dd')
-);
-
 echo DetailView::widget([
     'model' => $alert,
     'attributes' => [

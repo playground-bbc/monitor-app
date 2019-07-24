@@ -67,20 +67,11 @@ class SearchForm extends Model
 			['start_date','compare','compareAttribute'=>'end_date','operator'=>'<=','on' => 'alert'],
             ['end_date','compare','compareAttribute'=>'start_date','operator'=>'>=','on' => 'alert'],
             [['start_date','end_date'], 'date','format' => 'mm/dd/yyyy','on' => 'alert'],
-            
-             ['social_resources', function ($attribute, $params, $validator) {
-                if (!ctype_alnum($this->$attribute)) {
-                    $this->addError($attribute, 'The token must contain letters or digits.');
-                }
-            }]
+           
         ];
     }
     
-    public function validateDates($attribute, $params, $validator){
-		if (!in_array($this->$attribute, ['USA', 'Indonesia'])) {
-            $this->addError($attribute, 'The country must be either "USA" or "Indonesia".');
-        }
-	}
+   
 
     public function scenarios()
     {

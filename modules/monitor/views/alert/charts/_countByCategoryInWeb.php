@@ -1,6 +1,8 @@
 <?php 
 use miloschuman\highcharts\Highcharts;
 
+
+
  ?>
 
 <div class="well">

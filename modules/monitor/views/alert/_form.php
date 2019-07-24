@@ -13,8 +13,7 @@ use app\models\api\TwitterApi;
 use kartik\select2\Select2;
 use kartik\date\DatePicker;
 use kartik\file\FileInput;
-use kartik\switchinput\SwitchInput;
-use faryshta\widgets\JqueryTagsInput;
+use pudinglabs\tagsinput\TagsinputWidget;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\LiveChat */
@@ -143,20 +142,23 @@ $this->params['breadcrumbs'][] = $this->title;
 		</div>
 		<div class="row">
 			<div class="col-md-6">
-				<?= 
-                    // with ActiveForm
-                    $form->field($form_alert, 'web_resource')->widget(JqueryTagsInput::className(), [
-                        // extra configuration
-                    ]);
-                 ?>
+				<?= $form->field($form_alert, 'positive_words')->widget(TagsinputWidget::classname(), [
+			            'options' => [
+			            	'width' => '10px',
+			            ],
+			            'clientOptions' => [],
+			            'clientEvents' => []
+			         ]);
+				 ?>
+				
 			</div>
 			<div class="col-md-6">
-				<?= 
-					// with ActiveForm
-					$form->field($form_alert, 'positive_words')->widget(JqueryTagsInput::className(), [
-					    // extra configuration
-					]);
-				 ?>
+				<?=  $form->field($form_alert, 'web_resource')->widget(TagsinputWidget::classname(), [
+			            'options' => [],
+			            'clientOptions' => [],
+			            'clientEvents' => []
+			         ]);
+                 ?>
 				 
 			</div>
 		</div>
@@ -215,10 +217,11 @@ function sendProducts(name){
 	var  resource = $("#social_resources").val()
 	
 	
+	
 	var  start_date = $("#searchform-start_date").val()
 	var  start_end = $("#searchform-end_date").val()
 
-	if( resource.length && start_date.length && start_end.length ){
+	if( resource && start_date.length && start_end.length ){
 		flag = true;
 	}else{
 		

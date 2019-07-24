@@ -30,6 +30,7 @@ class CountByCategory extends Model
 				}
 			}
 		}
+		
 	}
 
 	public function getSeries($target)

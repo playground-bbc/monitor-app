@@ -8,7 +8,7 @@ Yii::setAlias('@monitor', dirname(dirname(__DIR__)) . "{$s}monitor-app{$s}monito
 Yii::setAlias('@resources', dirname(dirname(__DIR__)) . "{$s}monitor-app{$s}monitor-app-data{$s}resources");
 Yii::setAlias('@backup', dirname(dirname(__DIR__)) . "{$s}monitor-app{$s}monitor-app-data{$s}backup");
 Yii::setAlias('@service_account', dirname(dirname(__DIR__)) . "{$s}monitor-app{$s}monitor-app-data{$s}service_account");
-Yii::setAlias('@drive_account', dirname(dirname(__DIR__)) . "{$s}monitor-app{$s}monitor-app-data{$s}service_account{$s}montior-app-788bf22b5843.json");
+Yii::setAlias('@drive_account', dirname(dirname(__DIR__)) . "{$s}monitor-app{$s}monitor-app-data{$s}service_account{$s}monitor-app-96f0293a0153.json");
 
 return [
     'twitter' => [

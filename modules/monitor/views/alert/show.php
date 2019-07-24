@@ -63,7 +63,7 @@ use yii\data\ArrayDataProvider;
  	<!-- sentences awario </!-->
  	<?php if (isset($model['awario'])): ?>
  		<?php if (isset($model['awario']['sentence_awario'])): ?>
-			<?=$this->render('tables/_sentencesAwario',['sentences' => $model['awario']['sentence_awario']]) ?>
+			<?=$this->render('tables/_sentencesAwario',['sentences' => $model['awario']['sentence_awario'],'alertId' => $alert->id]) ?>
  		<?php endif ?>
  	<?php endif ?>
 

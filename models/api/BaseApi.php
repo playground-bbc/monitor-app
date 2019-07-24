@@ -999,12 +999,14 @@ class BaseApi extends Model
 	                	if ($stringizer_title->containsCountIncaseSensitive($words[$j])) {
 	                		$background = self::COLOR[$categories];
 	                		$sentence = (array) $stringizer_title->replaceIncaseSensitive($words[$j], "<span style='background: {$background}'>{$words[$j]}</span>");
+	                		$value[$i]['title_orign'] = $value[$i]['title'];
 	                		$value[$i]['title'] = array_shift($sentence);
 	                	}
 
 	                	if ($stringizer->containsCountIncaseSensitive($words[$j])) {
 	                		$background = self::COLOR[$categories];
 	                		$sentence = (array) $stringizer->replaceIncaseSensitive($words[$j], "<span style='background: {$background}'>{$words[$j]}</span>");
+	                		$value[$i]['post_from_orign'] = $value[$i]['post_from'];
 	                		$value[$i]['post_from'] = array_shift($sentence);
 	                	}
 	                }// for each words
