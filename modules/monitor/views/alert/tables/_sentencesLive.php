@@ -1,7 +1,7 @@
 <?php 
-use yii\data\ArrayDataProvider;
+use yii\helpers\Html;
+use yii\helpers\Url;
 
-use kartik\export\ExportMenu;
 $gridColumns = [
     'product',
     'title',
@@ -14,19 +14,9 @@ $gridColumns = [
     'url_retail',
 ];
 
-$provider = new ArrayDataProvider([
-    'allModels' => $sentences,
-    
-]);
-
-// Renders a export dropdown menu
-echo ExportMenu::widget([
-    'dataProvider' => $provider,
-    'columns' => $gridColumns
-]);
-
  ?>
-
+<?= Html::a('Export Excel', ['excel-live','alertId' => $alertId,'resource_name' => 'livechat'], ['class' => 'btn btn-success','target' => '_blank']) ?>
+<hr>
  <?= \nullref\datatable\DataTable::widget([
     'data' => $sentences,
     'scrollY' => '400px',

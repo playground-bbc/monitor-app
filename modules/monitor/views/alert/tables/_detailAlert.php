@@ -3,12 +3,15 @@ use yii\widgets\DetailView;
 use app\models\ProductsModelsAlerts;
 use app\models\Dictionary;
 
+var_dump($alert->start_date);
+var_dump(Yii::$app->formatter->asDate($alert->end_date,'yyyy-MM-dd')
+);
 
 echo DetailView::widget([
     'model' => $alert,
     'attributes' => [
        'start_date:datetime', // creation date formatted as datetime
-        'end_date:datetime', // creation date formatted as datetime           
+        'end_date:datetime', // end date formatted as datetime           
        // 'description:html',    // description attribute in HTML
         [     
             'format' => 'html',                 // the owner name of the model

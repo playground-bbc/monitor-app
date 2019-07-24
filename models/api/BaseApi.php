@@ -138,6 +138,10 @@ class BaseApi extends Model
             'max_id' => 0,
 
         ];
+        $dates = [
+        	'start_date' => $this->start_date,
+        	'end_date' => $this->end_date,
+        ];
         
 
         $data = [];
@@ -754,6 +758,7 @@ class BaseApi extends Model
 			                		$value[$i]['sentence'] = $sentence[0];
 			                		$value[$i]['entity'] = $entity[0];
 			                		$value[$i]['product'] = $model;
+			                		$value[$i]['sentence_said'] = $said[0];
 			                		//$live[] = $value[$i];
 			                		$tmp[] = $value[$i];
 			                		

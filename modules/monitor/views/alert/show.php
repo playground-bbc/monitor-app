@@ -28,7 +28,7 @@ use yii\data\ArrayDataProvider;
  	<!-- count sentences tweet </!-->
  	<?php if (isset($model['tweets'])): ?>
  		<?php if (isset($model['tweets']['sentences'])): ?>
-			<?=$this->render('tables/_sentencesTweet',['sentences' => $model['tweets']['sentences']]); ?>
+			<?=$this->render('tables/_sentencesTweet',['sentences' => $model['tweets']['sentences'],'alertId' => $alert->id]); ?>
  		<?php endif ?>
  	<?php endif ?>
 
@@ -43,7 +43,7 @@ use yii\data\ArrayDataProvider;
  	<!-- count sentences Live </!-->
  	<?php if (isset($model['liveChat'])): ?>
  		<?php if (isset($model['liveChat']['sentences_live'])): ?>
-			<?=$this->render('tables/_sentencesLive',['sentences' => $model['liveChat']['sentences_live']]); ?>
+			<?=$this->render('tables/_sentencesLive',['sentences' => $model['liveChat']['sentences_live'],'alertId' => $alert->id]); ?>
  		<?php endif ?>
  	<?php endif ?>
  	<!-- total ticket Live </!-->

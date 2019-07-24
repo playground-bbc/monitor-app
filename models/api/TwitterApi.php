@@ -3,6 +3,8 @@ namespace app\models\api;
 
 use Yii;
 use yii\base\Model;
+use yii\helpers\ArrayHelper;
+
 use Codebird\Codebird;
 /**
  * TwitterApi is the model behind the login API.
@@ -94,25 +96,22 @@ class TwitterApi extends Model
         $index = 0;
 
         do {
-                $temp = $this->search_tweets($params);
-                if (!empty($temp['statuses'])) {
-                    sleep(1);
-                    $data[$index]  = $this->search_tweets($params);
-                }
-                
-                
-                if (isset($data[$index]['search_metadata']['next_results'])) {
+                 
+                $data[$index]  = $this->search_tweets($params);
+
+                if (ArrayHelper::keyExists('next_results', $data[$index]['search_metadata'], false)) {
                     parse_str($data[$index]['search_metadata']['next_results'], $output);
                     $params['max_id'] = $output['?max_id'];
-
-
+                    $next_results = $data[$index]['search_metadata']['max_id_str'];
+                }else{
+                    $params['max_id'] =  $data[$index]['search_metadata']['max_id_str'];
+                    $next_results = $data[$index]['search_metadata']['max_id_str'];
                 }
 
-
-                     
                 $index ++;
 
-        } while ($params['max_id'] != $temp['search_metadata']['max_id']);
+
+        } while ($params['max_id'] != $next_results);
 
         
 

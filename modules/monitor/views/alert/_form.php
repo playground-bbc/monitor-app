@@ -25,9 +25,7 @@ $this->title = 'Crear Busqueda';
 $this->params['breadcrumbs'][] = ['label' => $moduleName, 'Alerta', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
-/*
-var_dump(\Yii::$app->session->has('oauth_token_twitter'));
-die();*/
+
 
 
 ?>
@@ -159,6 +157,7 @@ die();*/
 					    // extra configuration
 					]);
 				 ?>
+				 
 			</div>
 		</div>
 		
@@ -182,16 +181,7 @@ $uuid = '';
 $this->registerJs('
 
 
-$( document ).ready(function() {
-    $("#dictionary").hide();  
-	    $("#dicto").click(function(){
-	        $("#checkbox").hide();
-	        $("#dictionary").show();
 
-	});
-
-	
-});	
 
 function removeProducts(name){
 	var product_name = name;
