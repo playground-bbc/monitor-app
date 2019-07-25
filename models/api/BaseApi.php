@@ -749,8 +749,9 @@ class BaseApi extends Model
 								if ($stringizer_title->containsCountIncaseSensitive($words[$j])){
 									$sentence_title = (array) $stringizer_title->replaceIncaseSensitive($words[$j], "<span style='background: {$background}'>{$words[$j]}</span>");
 									$title_tags = array_values($sentence_title);
-									
+									$value[$i]['product'] = $model;
 									$value[$i]['title'] = $title_tags[0];
+									$tmp[] = $value[$i];
 								} 
 			                	if ($stringizer_sentences->containsCountIncaseSensitive($words[$j])) {
 			                		
@@ -828,7 +829,7 @@ class BaseApi extends Model
 		 * 
 		 * 
 		 * */
-		
+		  
 		return $live;
 	}
 	/**
