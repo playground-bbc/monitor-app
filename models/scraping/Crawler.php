@@ -367,21 +367,23 @@ class Crawler extends Model
                 $countByCategory[$products[$i]][$categories] = 0;
             }
         }
-
+       
+        
         foreach ($data as $model => $value) {
             for ($i=0; $i <sizeof($value) ; $i++) { 
                 if ($value[$i]['source'] == self::WEB) {
                     $stringizer = new Stringizer($value[$i]['post_from']);
                     foreach ($this->words as $categories => $words) {
                         for ($j=0; $j <sizeof($words) ; $j++) { 
-                            if ($stringizer->contains($words[$j])) {
-                                $countByCategory[$model][$categories] += $stringizer->containsCount($words[$j]) ;
+                            if ($stringizer->containsCountIncaseSensitive($words[$j])) {
+                               $countByCategory[$model][$categories] += $stringizer->containsCountIncaseSensitive($words[$j]) ;
                             }
                         }
                     }
                 }
             }
         }
+
 
        return (count($countByCategory)) ? $countByCategory : null;
     }
@@ -444,8 +446,8 @@ class Crawler extends Model
                     $stringizer = new Stringizer($value[$i]['post_from']);
                     foreach ($this->words as $categories => $words) {
                         for ($j=0; $j <sizeof($words) ; $j++) { 
-                            if ($stringizer->contains($words[$j]) && isset($countByWords[$products][$categories][$words[$j]])) {
-                                $countByWords[$products][$categories][$words[$j]] += $stringizer->containsCount($words[$j]) ;
+                            if ($stringizer->containsCountIncaseSensitive($words[$j]) && isset($countByWords[$products][$categories][$words[$j]])) {
+                                $countByWords[$products][$categories][$words[$j]] += $stringizer->containsCountIncaseSensitive($words[$j]) ;
                             }
                         }
                     }

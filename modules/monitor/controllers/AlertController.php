@@ -12,6 +12,7 @@ use yii\helpers\FileHelper;
 use yii\data\ArrayDataProvider;
 
 use yii2tech\spreadsheet\Spreadsheet;
+use Stringizer\Stringizer;
 
 use app\models\api\BaseApi;
 use app\models\api\TwitterApi;
@@ -454,7 +455,13 @@ class AlertController extends \yii\web\Controller
               [
                   'label' => 'post_from',
                   'value' => function($model) {
-                    return preg_replace('/[[:^print:]]/', '', $model['post_from_orign']);
+                    if(ArrayHelper::keyExists('post_from_orign',$model)){
+                      $sentences = preg_replace('/[[:^print:]]/', '', $model['post_from_orign']);
+                    }else{
+                      $sentences = preg_replace('/[[:^print:]]/', '', $model['post_from']);
+                    }
+
+                    return $sentences;
                   },
 
               ],
@@ -558,7 +565,9 @@ class AlertController extends \yii\web\Controller
               [
                   'label' => 'author_username',
                   'value' => function($model) {
-                    return preg_replace('/[[:^print:]]/', '', $model['author_username']);
+                    // replace emojis
+                    $author_name = preg_replace('/[[:^print:]]/', '', $model['author_username']);
+                    return $author_name;
                   },
 
               ],
@@ -765,19 +774,12 @@ class AlertController extends \yii\web\Controller
             ->execute();
        }
 
-       $positive_words = ($form_alert->positive_words != '') ? explode(',', $form_alert->positive_words) : null;
-       $negative_words = ($form_alert->negative_words != '') ? explode(',', $form_alert->negative_words) : null;
+       $neutral_words = ($form_alert->positive_words != '') ? explode(',', $form_alert->positive_words) : null;
 
        $models = [];
-       if (!is_null($positive_words)) {
-           for ($i=0; $i <sizeof($positive_words) ; $i++) { 
-               $models[] = [$alertId,1,$positive_words[$i]];
-           }
-       }
-
-       if (!is_null($negative_words)) {
-           for ($i=0; $i <sizeof($negative_words) ; $i++) { 
-               $models[] = [$alertId,2,$negative_words[$i]];
+       if (!is_null($neutral_words)) {
+           for ($i=0; $i <sizeof($neutral_words) ; $i++) { 
+               $models[] = [$alertId,2,$neutral_words[$i]];
            }
        }
 

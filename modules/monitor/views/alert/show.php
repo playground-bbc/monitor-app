@@ -3,7 +3,6 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\data\ArrayDataProvider;
 
-
  ?>
  <div class="container">
  	<div class="row">
@@ -59,6 +58,10 @@ use yii\data\ArrayDataProvider;
  		<?php if (isset($model['awario']['countByCategoryInAwario'])): ?>
 			<?=$this->render('charts/_countByCategoryInAwario',['chartAwario' => $chartCategories]) ?>
  		<?php endif ?>
+ 	<?php endif ?>
+ 	<!-- count words awario </!-->
+ 	<?php if (isset($model['awario']['countWords_awario'])): ?>
+		<?=$this->render('charts/_countWordsAwario',['chartWords' => $chartWords]); ?>
  	<?php endif ?>
  	<!-- sentences awario </!-->
  	<?php if (isset($model['awario'])): ?>

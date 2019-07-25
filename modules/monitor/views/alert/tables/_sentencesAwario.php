@@ -15,6 +15,7 @@ use yii\helpers\Url;
     'columns' => [
         //'product',
         'source',
+        'title',
         [
             'class' => 'nullref\datatable\DataTableColumn', // can be omitted
             'data' => 'post_from',

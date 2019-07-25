@@ -535,12 +535,13 @@ class BaseApi extends Model
 			
 			if (!is_null($awario_data)) {
 				
-				$countByCategoryInLive['countByCategoryInAwario'] = $this->countByCategoryAwario($awario_data);
-				
-				$countByCategoryInLive['sentence_awario'] = $this->addTagsSentenceFoundInAwario($awario_data);
+				$awarioFile['countByCategoryInAwario'] = $this->countByCategoryAwario($awario_data);
+				$awarioFile['sentence_awario'] = $this->addTagsSentenceFoundInAwario($awario_data);
+				$awarioFile['countWords_awario'] = $this->addWordsInAwario($awario_data);
 				
 			
-				$model['awario'] = ArrayHelper::merge($awario_data,$countByCategoryInLive);
+				//$model['awario'] = ArrayHelper::merge($awario_data,$countByCategoryInLive);
+				$model['awario'] = $awarioFile;
 				
 
 			}
@@ -1017,6 +1018,48 @@ class BaseApi extends Model
         return $data;
 	}
 
+
+	private function addWordsInAwario($awario_data){
+
+		// set array analisys Model => dictionary_title => word
+		$products = array_keys($awario_data['AWARIO']);
+		$countByWords = [];
+		for ($i=0; $i <sizeof($products) ; $i++) { 
+			foreach ($this->words as $categories => $words) {
+                for ($j=0; $j <sizeof($words) ; $j++) { 
+                	$countByWords[$products[$i]][$categories][$words[$j]] = 0;
+                }
+            }
+		}
+
+		foreach ($awario_data['AWARIO'] as $product => $value) {
+			for ($i=0; $i <sizeof($value) ; $i++) { 
+				// count by title
+				$stringizer_title = new Stringizer($value[$i]['title']);
+				foreach ($this->words as $categories => $words) {
+	                for ($j=0; $j <sizeof($words) ; $j++) { 
+	                	if ($stringizer_title->containsCountIncaseSensitive($words[$j])) {
+	                		$countByWords[$product][$categories][$words[$j]] += $stringizer_title->containsCountIncaseSensitive($words[$j]) ;
+	                	}
+	                }
+	            }
+	            // count by post_form
+	            $stringizer = new Stringizer($value[$i]['post_from']);
+	            foreach ($this->words as $categories => $words) {
+	                for ($j=0; $j <sizeof($words) ; $j++) { 
+	                	if ($stringizer->containsCountIncaseSensitive($words[$j])) {
+	                		$countByWords[$product][$categories][$words[$j]] += $stringizer->containsCountIncaseSensitive($words[$j]) ;
+	                	}
+	                }
+	            }
+			}
+		}
+
+		return (count($countByWords)) ? $countByWords : null;
+
+
+
+	}
 
 	
 	/**

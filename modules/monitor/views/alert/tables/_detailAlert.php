@@ -49,7 +49,7 @@ echo DetailView::widget([
             'label' => 'Palabras Libres',
             'value' => function ($model)
             {
-                $words = Dictionary::find()->where(['alertId' => $model->id,'category_dictionaryId' => 1])->select('word')->all();
+                $words = Dictionary::find()->where(['alertId' => $model->id,'category_dictionaryId' => 2])->select('word')->all();
                 $html = '';
                 for ($i=0; $i <sizeof($words) ; $i++) { 
                    $html .= " <span class='label label-warning'>{$words[$i]->word}</span>";
