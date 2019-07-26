@@ -237,13 +237,16 @@ class AlertController extends \yii\web\Controller
 
       
 
-      $baseApi = new BaseApi($params);
+      $baseApi  = new BaseApi($params);
       $crawling = new Crawler($params); 
+      $chats    = new LiveChatApi($params); 
+
       // $baseApi->callApiResources();
       
       
 
       $cache = Yii::$app->cache;
+      $cache->delete($alertId); 
       $model =  $cache->getOrSet($alertId, function () use ($baseApi,$crawling) {
           $model_api = $baseApi->countAndSearchWords();
           $model_web = $crawling->countAndSearchWords();
@@ -706,10 +709,12 @@ class AlertController extends \yii\web\Controller
             $products_models[$model->product->category->name][$model->product->name][] = $model->serial_model;
         }
 
-        $social = [2 => 'Twitter', 3 => 'Live Chat'];
+        $social = [2 => 'Twitter', 3 => 'Live Chat',15 => 'Live Chat Conversations'];
         $res = [];
         foreach ($data['resource'] as $key => $resource) {
-          $res[] = $social[$resource];
+            if(array_key_exists($resource,$social)){
+             $res[] = $social[$resource]; 
+            }
         }
         
         

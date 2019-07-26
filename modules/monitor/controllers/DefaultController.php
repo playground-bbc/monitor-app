@@ -3,22 +3,19 @@ namespace app\modules\monitor\controllers;
 
 use yii;
 use yii\web\Controller;
-use app\models\ProductsFamily;
-use app\models\api\DriveProductsApi;
 use yii\helpers\ArrayHelper;
 
+use app\models\Alerts;
 use app\models\SearchForm;
-
-
-use LiveChat\Api\Client as LiveChat;
-use GuzzleHttp\Client as GuzzleClient;
-use Stringizer\Stringizer;
-
+use app\models\ProductsFamily;
+use app\models\api\LiveChatApi;
+use app\models\api\DriveProductsApi;
 
 use Goutte\Client;
-
 use GuzzleHttp\Promise;
-
+use Stringizer\Stringizer;
+use LiveChat\Api\Client as LiveChat;
+use GuzzleHttp\Client as GuzzleClient;
 use Symfony\Component\DomCrawler\Crawler;
 
 
@@ -44,103 +41,8 @@ class DefaultController extends Controller
      */
     public function actionIndex()
     {
-		$node = [];
-		$html = '';
 
-		$client = new Client();
-		$guzzleClient = new GuzzleClient([
-			'timeout' => 60,
-			'allow_redirects' => false
-		]);
-		$client->setClient($guzzleClient);
-		$type = 'GET';
-		$urls = [
-			'lgblog'=> 'https://www.lgblog.cl/novedades/tutoriales-lg/descubre-como-preparar-mac-cheese-en-casa/',
-		
-		];
-		
-		$rules = [
-        	'title'=> "//title",
-        	'h1'=> "//h1",
-        	'h2'=> "//h2",
-        	'h3'=> "//h3",
-        	'h4'=> "//h4",
-        	'h5'=> "//h5",
-    		'strong'=> "//strong",
-    		'a' => "//a",
-    		'span' => '//span',
-    		'li' => '//li',
-    		'address' => '//address',
-    		'article' => '//div/article',
-    		'aside' => '//aside',
-    		'hgroup' => '//hgroup',
-        	'p'=> "//p",
-    		'footer' => '//footer/div',
-        ];
-
-       
-        $resource = [];
-        $crawler = [];
-        foreach ($urls as $domain => $url) {
-        	$resource[$domain] = $client->request($type,$url);
-        	$status_code = $client->getResponse()->getStatus();
-        	if ($status_code == 200) {
-        		$content_type = $client->getResponse()->getHeader('Content-Type');
-        		if (strpos($content_type, 'text/html') !== false) {
-        			$crawler[$domain] = $resource[$domain];
-        		}
-        	}
-        }
-        $data = [];
-        $attributes = ['_name', '_text', 'id'];
-        foreach ($crawler as $domain => $craw) {
-        	foreach ($rules as $title => $rule) {
-        		$data[$domain][] = $craw->filterXpath($rule)->each(function (Crawler $node,$i)
-        		{
-        			return [
-	    				'id' => $node->extract(['id']),
-						'_text' =>  $node->text(),
-					];
-        		});
-        	}
-        }
-
-       
-
-        $rowData = [];
-       
-
-
-        $index = 0;
-        foreach ($urls as $domain => $url) {
-        	for ($i=0; $i <sizeof($data[$domain]) ; $i++) { 
-        		for ($j=0; $j <sizeof($data[$domain][$i]) ; $j++) { 
-        			$s = new Stringizer($data[$domain][$i][$j]['_text']);
-        			if (!$s->isEmpty()) {
-        				$text = trim($data[$domain][$i][$j]['_text']);
-        			    $rowData[$domain][$index]['text'] = $text;
-        			    if ($data[$domain][$i][$j]['id'][0] != '') {
-        			    	$id = $data[$domain][$i][$j]['id'][0];
-        			    	$rowData[$domain][$index]['id'] = $id;
-        			    }
-        			    $index ++;
-        			}
-        			
-        		}
-        	}
-        }
-        
-    
-
-		
-
-		echo "<pre>";
-		print_r($rowData);
-		echo "</pre>";
-		die();
-        
-
-        return $this->render('index');
+       return $this->render('index');
 	}
 
 	
@@ -357,7 +259,7 @@ class DefaultController extends Controller
 	public function actionDrive()
 	{
 		
-		return $this->render('drive/index');
+	   return $this->render('drive/index');
 	}
 
 	public function actionSync()
@@ -370,12 +272,35 @@ class DefaultController extends Controller
 	}
 
 	
-	public function actionScrapping()
+	public function actionChat()
 	{
-		$form_model = new SearchForm();
-		$form_model->scenario = 'scrapping';
+        $chats = new LiveChatApi();
 
-		return $this->render('create',['form_model' => $form_model]);
+        $alert = Alerts::findOne(20);
+     	$nameAlert = $alert->name;
+        $start_date = $alert->start_date;
+        $end_date = $alert->end_date;
+
+      	$words = [];
+        // words
+      	foreach ($alert->dictionaries as $key => $value) {
+	        $words[$value->category->name][] = $value->word;
+	    }
+
+
+        $params = [
+          'alertId' => $nameAlert,
+          'words' => $words,
+          'resources' => ['Twitter'],
+          'products_models' => ['NanoCell 4K','SMART TV LED 55" 4K UHD'],
+          'start_date' => $start_date,
+          'end_date' => $end_date,
+      ]; 
+
+        $tickets = new LiveChatApi($params); 
+        var_dump($tickets->getChats());
+        die();
+		
 	}
 
 
@@ -387,11 +312,5 @@ class DefaultController extends Controller
 	    }
 	}
 
-    public function actionUrl()
-    {
-       $url = '?max_id=1151159575204257793&q=Full%20HD%20since%3A2019-07-15%20until%3A2019-07-17&lang=es&count=100&include_entities=1&result_type=recent';
-       parse_str($url, $output);
-       var_dump($output['?max_id']);
-    }
 
 }

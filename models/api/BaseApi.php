@@ -61,40 +61,12 @@ class BaseApi extends Model
 			$this->$key = $value;
 		}
 
-		/*if (!$this->lastUpdateJsonFile()) {
-			$tweets = [];
-			if (isset($resource['Twitter'])) {
-
-				$data = $this->getSearchTwitter();
-				$tweets = $this->setSearchDataTwitter($data);
-
-				$this->saveJsonFile($tweets);
-			}
-			
-			$tickets = [];
-			if (isset($resource['Live Chat'])) {
-				$data = $this->getSearchLiveChat();
-				$tickets = $this->setSearchDataTickets($data);
-			}
-			
-			$this->saveJsonFile(ArrayHelper::merge($tweets,$tickets));
-
-			if ($this->isAwarioFile()) {
-				$path =  $this->isAwarioFile();
-				$data =  $this->getSearchDataAwario($path);
-				$model = $this->setSearchDataAwario($data);
-				
-				$this->saveJsonFile($model);
-			}
-		}*/
 		if ($this->isAwarioFile()) {
 			$path =  $this->isAwarioFile();
 			$data =  $this->getSearchDataAwario($path);
 			$model = $this->setSearchDataAwario($data);
 			$this->saveJsonFile($model);
 		}
-
-		//$this->countAndSearchWords();
 		
 	}
 
@@ -108,7 +80,6 @@ class BaseApi extends Model
 			$data = $this->getSearchTwitter();
 			$tweets = $this->setSearchDataTwitter($data);
 
-			$this->saveJsonFile($tweets);
 		}
 		
 		$tickets = [];
@@ -116,8 +87,17 @@ class BaseApi extends Model
 			$data = $this->getSearchLiveChat();
 			$tickets = $this->setSearchDataTickets($data);
 		}
+
+		$chats = [];
+		if (isset($resource['Live Chat Conversations'])){
+			$chats = $this->setLiveChatCoversations();
+		}
 		
-		$this->saveJsonFile(ArrayHelper::merge($tweets,$tickets));
+		$model = ArrayHelper::merge($tweets,$tickets);
+		$model = ArrayHelper::merge($model,$chats);
+		//$this->saveJsonFile(ArrayHelper::merge($tweets,$tickets));
+		
+		$this->saveJsonFile($model);
 
 	}
 
@@ -351,6 +331,7 @@ class BaseApi extends Model
 			for ($i=0; $i <sizeof($obj) ; $i++) { 
 				
 				$model_ticket[$model][$i]['source'] = self::LIVECHAT;
+				$model_ticket[$model][$i]['type'] = 'Ticket';
 				$model_ticket[$model][$i]['id'] = $obj[$i]->id;
 				$model_ticket[$model][$i]['status'] = $obj[$i]->status;
 				$model_ticket[$model][$i]['created_at'] = $obj[$i]->date;
@@ -368,7 +349,8 @@ class BaseApi extends Model
 				}
 			}
 		}
-
+		/*var_dump($model_ticket);
+		die();*/
 		return $model_ticket;
 		
 	}
@@ -464,6 +446,35 @@ class BaseApi extends Model
         }
         return $model;
 	}
+
+	private function setLiveChatCoversations(){
+		
+		$liveChat = new LiveChatApi();
+
+		$models_products_all = [];
+		foreach ($this->products_models as $key => $value) {
+			$models_products_all[] = $key;
+			foreach ($value as $model => $serial_model) {
+				$models_products_all[] = $model;
+				foreach ($serial_model as $key => $value) {
+					$models_products_all[] = $value;
+				}
+			}
+		}
+
+
+		$params = [
+			'date_from' => Yii::$app->formatter->asDate($this->start_date,'yyyy-MM-dd'),
+            'date_to' => Yii::$app->formatter->asDate($this->end_date,'yyyy-MM-dd'),
+            'query' => $models_products_all,
+            'page' => $this->live_chat_page,
+            'timezone' => 'America/Santiago',
+        ];
+
+        $data = $liveChat->getChats($params,$this->alertId);
+        return $data;
+	}
+
 	/**
 	 * [lastUpdateJsonFile set true if the document is created in more that 5 minutes]
 	 * @return [boolean] [if true call the api if false el document json is created and update in less that 5 minutes]
@@ -528,6 +539,15 @@ class BaseApi extends Model
 				$total_tickets['total'] = $this->getTotalTicket($sentences_live); 
 				$model['liveChat'] = ArrayHelper::merge($total_tickets,$model['liveChat']);
 			}
+		}
+
+		if(isset($resource['Live Chat Conversations'])){
+			$liveChat = new LiveChatApi();
+			$words = $this->words;
+			$liveChatCoversations['count_category_conversations'] = $liveChat->countByCategoryInLiveChatConversations($data,$words);
+			$liveChatCoversations['count_words_conversations'] = $liveChat->addWordsInLiveChatConversations($data,$words);
+			$liveChatCoversations['sentences_live_conversations'] = $liveChat->addTagsSentenceFoundInConversations($data,$words,self::COLOR);
+
 		}
 
 		if ($this->isAwarioFile()) {
@@ -688,7 +708,7 @@ class BaseApi extends Model
 
 		foreach ($data as $model => $value) {
 			for ($i=0; $i <sizeof($value) ; $i++) { 
-				if ($value[$i]['source'] == self::LIVECHAT) {
+				if (($value[$i]['source'] == self::LIVECHAT) && ($value[$i]['type'] == 'chat') ) {
 					// count by title
 					$stringizer_title = new Stringizer($value[$i]['title']);
 					foreach ($this->words as $categories => $words) {
@@ -732,7 +752,7 @@ class BaseApi extends Model
 		
 		foreach ($data as $model => $value) {
 			for ($i=0; $i <sizeof($value) ; $i++) { 
-				if ($value[$i]['source'] == self::LIVECHAT) {
+				if (($value[$i]['source'] == self::LIVECHAT) && ($value[$i]['type'] == 'Ticket')) {
 					// check by title
 					$stringizer_title = new Stringizer($value[$i]['title']);
 				
@@ -779,56 +799,6 @@ class BaseApi extends Model
 			}
 		}
 		
-	
-		/*
-		 * foreach ($data as $model => $value) {
-			for ($i=0; $i <sizeof($value) ; $i++) { 
-				if ($value[$i]['source'] == self::LIVECHAT) {
-					// check by title
-					$stringizer_title = new Stringizer($value[$i]['title']);
-					foreach ($this->words as $categories => $words) {
-		                for ($j=0; $j <sizeof($words) ; $j++) { 
-		                	if ($stringizer_title->containsCountIncaseSensitive($words[$j])) {
-		                		$background = self::COLOR[$categories];
-		                		$sentence = (array) $stringizer_title->replaceIncaseSensitive($words[$j], "<span style='background: {$background}'>{$words[$j]}</span>");
-		                		$title_tags = array_values($sentence);
-		                		$value[$i]['title'] = $title_tags[0];
-			                	$value[$i]['product'] = $model;
-			                	$live[] = $value[$i];
-		                		
-		                	}// end if contains word
-		                } // for each words
-		            } // for each dictionaries
-
-		            //check by post_from
-		            for ($p=0; $p <sizeof($value[$i]['post_from']) ; $p++) { 
-	            		$entity = array_keys($value[$i]['post_from'][$p]);
-	            		$said = array_values($value[$i]['post_from'][$p]);
-
-	            		$stringizer_sentences = new Stringizer($said[0]);
-
-	            		foreach ($this->words as $categories => $words) {
-			                for ($j=0; $j <sizeof($words) ; $j++) { 
-			                	if ($stringizer_sentences->containsCountIncaseSensitive($words[$j])) {
-			                		$background = self::COLOR[$categories];
-			                		$sentence = (array) $stringizer_sentences->replaceIncaseSensitive($words[$j], "<span style='background: {$background}'>{$words[$j]}</span>");
-			                		$sentence = array_values($sentence);
-			                		$value[$i]['sentence'] = $sentence[0];
-			                		$value[$i]['entity'] = $entity[0];
-			                		$value[$i]['product'] = $model;
-			                		$live[] = $value[$i];
-			                	}// end if contains word
-			                }// for each words
-			            } // for each dictionaries
-
-	            	} // for each post_from
-
-				} // if livechat source
-			}
-		}
-		 * 
-		 * 
-		 * */
 		  
 		return $live;
 	}
@@ -851,7 +821,7 @@ class BaseApi extends Model
 
 		foreach ($data as $products => $value) {
 			for ($i=0; $i <sizeof($value) ; $i++) { 
-				if ($value[$i]['source'] == self::LIVECHAT) {
+				if (($value[$i]['source'] == self::LIVECHAT) && ($value[$i]['type'] == 'Ticket')) {
 
 					// check by title
 					$stringizer_title = new Stringizer($value[$i]['title']);
@@ -1067,7 +1037,7 @@ class BaseApi extends Model
 	 * @param  array
 	 * @return null
 	 */
-	private function saveJsonFile($data = [])
+	public function saveJsonFile($data = [])
 	{
 		$filebase = new Filebase();
 		$filebase->alertId = $this->alertId;
