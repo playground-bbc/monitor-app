@@ -6,7 +6,6 @@ use miloschuman\highcharts\Highcharts;
 <div class="well">
 	<div class="row">
 		<div class="col-md-12">
-		<h2> Total por palabras</h2>
 		<?=  Highcharts::widget([
 			'scripts' => ['modules/drilldown'],	
 			  'options' => [

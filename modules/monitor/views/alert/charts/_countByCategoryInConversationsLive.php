@@ -10,20 +10,20 @@ use miloschuman\highcharts\Highcharts;
 			'scripts' => [
 			      'modules/exporting',
 			      'themes/sand-signika',
-			  ],  				
+			  ],  
 			'options' => [
 			'scripts' => [
 			      'themes/unica',
 			  ],	
 		   	'chart' => ['type' => 'column'],
-			      'title' => ['text' => Yii::t('app','word numbers by products / dictionaries')],
+			      'title' => ['text' => Yii::t('app','word numbers by products / dictionaries / Conversations')],
 			      'xAxis' => [
-			         'categories' => $chartCategories->getCategories('countByCategoryInLiveChat'),
+			         'categories' => $chartCategories->getCategories('count_category_conversations'),
 			      ],
 			      'yAxis' => [
 			         'title' => ['text' => 'Live Chat Data']
 			      ],
-			      'series' => $chartCategories->getSeries('countByCategoryInLiveChat'),
+			      'series' => $chartCategories->getSeries('count_category_conversations'),
 			'credits' => ['enabled' => false],     
 		   		]
 			]);

@@ -219,8 +219,7 @@ class LiveChatApi extends Model
                     $chats[$product][$index]['created_at'] = $property->chats[$c]->started;
                     $chats[$product][$index]['author_name'] = $property->chats[$c]->visitor->name;
                     $chats[$product][$index]['author_name'] = $property->chats[$c]->visitor->name;
-                    /*$chats[$product]['url'] = $property->chats[$c]->chat_start_url;
-                    $chats[$product]['retail'] = parse_url($property->chats[$c]->chat_start_url,PHP_URL_HOST);*/
+                    $chats[$product][$index]['retail'] = parse_url($property->chats[$c]->chat_start_url,PHP_URL_HOST);
                     for($m =0; $m < sizeof($property->chats[$c]->messages) ; $m++){
                         $chats[$product][$index]['post_from'][] = $property->chats[$c]->messages[$m];
                     }// for each messages in chat
@@ -260,11 +259,13 @@ class LiveChatApi extends Model
                 if (($value[$i]['source'] == self::LIVECHAT) && ($value[$i]['type'] == self::LIVE_CHAT_COVERSATIONS) ) {
                     // count by post_form
                     for ($p=0; $p <sizeof($value[$i]['post_from']) ; $p++) { 
-                        $stringizer = new Stringizer($value[$i]['post_from'][$p]['text']);
-                        foreach ($words as $categories => $word) {
-                            for ($j=0; $j <sizeof($word) ; $j++) { 
-                                if ($stringizer->containsCountIncaseSensitive($word[$j])) {
-                                    $countByCategory[$model][$categories] += $stringizer->containsCountIncaseSensitive($word[$j]) ;
+                        if($value[$i]['post_from'][$p]['user_type'] == 'visitor'){
+                            $stringizer = new Stringizer($value[$i]['post_from'][$p]['text']);
+                            foreach ($words as $categories => $word) {
+                                for ($j=0; $j <sizeof($word) ; $j++) { 
+                                    if ($stringizer->containsCountIncaseSensitive($word[$j])) {
+                                        $countByCategory[$model][$categories] += $stringizer->containsCountIncaseSensitive($word[$j]) ;
+                                    }
                                 }
                             }
                         }
@@ -290,29 +291,31 @@ class LiveChatApi extends Model
         unset($products['WEB']);
         unset($products['AWARIO']);
 
-        $dictionaries = [];
-        foreach ($words as $categories => $word) {
-            for ($j=0; $j <sizeof($word) ; $j++) { 
-                $dictionaries[$categories][$word[$j]] = 0;
+        $countByWords = [];
+        for ($i=0; $i <sizeof($products) ; $i++) { 
+            foreach ($words as $categories => $word) {
+                for ($j=0; $j <sizeof($word) ; $j++) { 
+                    $countByWords[$products[$i]][$categories][$word[$j]] = 0;
+                }
             }
         }
-        $countByWords = [];
+        set_time_limit(500);
         foreach ($data as $products => $value) {
             for ($i=0; $i <sizeof($value) ; $i++) { 
                 if (($value[$i]['source'] == self::LIVECHAT) && ($value[$i]['type'] == self::LIVE_CHAT_COVERSATIONS) ) {
-
                     for ($p=0; $p <sizeof($value[$i]['post_from']) ; $p++) { 
-                        $stringizer = new Stringizer($value[$i]['post_from'][$p]['text']);
-                        foreach ($words as $categories => $word) {
-                            for ($j=0; $j <sizeof($word) ; $j++) { 
-                                if ($stringizer->containsCountIncaseSensitive($word[$j]) && isset($dictionaries[$categories][$word[$j]])) {
-                                    $dictionaries[$categories][$word[$j]] += $stringizer->containsCountIncaseSensitive($word[$j]) ;
-                                    $countByWords[$products] = $dictionaries;
+                        if($value[$i]['post_from'][$p]['user_type'] == 'visitor'){
+                            $stringizer = new Stringizer($value[$i]['post_from'][$p]['text']);
+                            foreach ($words as $categories => $word) {
+                                for ($j=0; $j <sizeof($word) ; $j++) { 
+                                    if ($stringizer->containsCountIncaseSensitive($word[$j])) {
+                                        $countByWords[$products][$categories][$word[$j]] += $stringizer->containsCountIncaseSensitive($word[$j]);
+                                    }
                                 }
                             }
-                        }
-                    }
-                }
+                        }// only client
+                    } // for each post_from
+                } // only livechat conversations
             }
         }
 
@@ -347,7 +350,6 @@ class LiveChatApi extends Model
                 
                     //check by post_from
                     for ($p=0; $p <sizeof($value[$i]['post_from']) ; $p++) { 
-
                         $stringizer_sentences = new Stringizer($value[$i]['post_from'][$p]['text']);
                         $tmp = [];
                         foreach ($words as $categories => $word) {
@@ -355,11 +357,18 @@ class LiveChatApi extends Model
                             for ($j=0; $j <sizeof($word) ; $j++) {
                                 if ($stringizer_sentences->containsCountIncaseSensitive($word[$j])) {
                                     
-                                    $sentence = (array) $stringizer_sentences->replaceIncaseSensitive($word[$j], "<span style='background: {$background}'>{$word[$j]}</span>");
-                                    $sentence = array_values($sentence);
+                                    if($value[$i]['post_from'][$p]['user_type'] == 'visitor'){
+                                        $sentence = (array) $stringizer_sentences->replaceIncaseSensitive($word[$j], "<span style='background: {$background}'>{$word[$j]}</span>");
+                                        $sentence = array_values($sentence);
+                                        $tmp['sentence'] = $sentence[0];
+                                    }else{
+                                        $tmp['sentence'] = $value[$i]['post_from'][$p]['text'];
+                                    }
+
                                     $tmp['id'] = $value[$i]['id'];
-                                    $tmp['sentence'] = $sentence[0];
+                                    $tmp['created_at'] = $value[$i]['created_at'];
                                     $tmp['sentence_said'] = $value[$i]['post_from'][$p]['text'];
+                                    $tmp['author_name'] = $value[$i]['post_from'][$p]['author_name'];
                                     $tmp['entity'] = $value[$i]['post_from'][$p]['user_type'];
                                     $tmp['product'] = $model;
                                     
@@ -370,9 +379,8 @@ class LiveChatApi extends Model
                         if ((!empty($tmp)) && (!in_array($tmp,$live)) )
                         {
                             $live[] = $tmp;
-                        }
+                        }                     
                     } // for each post_from
-
                 } // if livechat source
                 
             }

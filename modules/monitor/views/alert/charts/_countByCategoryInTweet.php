@@ -6,8 +6,6 @@ use miloschuman\highcharts\Highcharts;
 <div class="well">
 	<div class="row">
 		<div class="col-md-12">
-		<h1>Tweets Data</h1>
-		<h2> Total por categoria de palabras</h2>	
 		<?=  Highcharts::widget([
 		 	'scripts' => [
 			      'modules/exporting',

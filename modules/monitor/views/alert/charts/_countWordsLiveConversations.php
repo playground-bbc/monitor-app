@@ -11,7 +11,7 @@ use miloschuman\highcharts\Highcharts;
 			'scripts' => ['modules/drilldown'],	
 			  'options' => [
 			  	'chart' => ['type' => 'pie'],
-				'title' => ['text' => Yii::t('app','numbers of words')],
+				'title' => ['text' => Yii::t('app','numbers of words / conversations')],
 				'subtitle' => ['text' => Yii::t('app','subtitle ... of words')],
 				'plotOptions' =>  [
 					'series' => [
@@ -30,11 +30,11 @@ use miloschuman\highcharts\Highcharts;
 			      		[
 			      			'name' => "Browsers",
 			        		'colorByPoint' => true,
-			        		'data' => $chartWords->getSeries('countWords_live') ,
+			        		'data' => $chartWords->getSeries('count_words_conversations') ,
 			      		],
 			    ],
 		      	'drilldown' => [
-		      		'series' => $chartWords->getDrilldownSeries('countWords_live'),
+		      		'series' => $chartWords->getDrilldownSeries('count_words_conversations'),
 
 		      	],
 		      	

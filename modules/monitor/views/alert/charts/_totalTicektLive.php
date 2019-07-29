@@ -7,7 +7,6 @@ use miloschuman\highcharts\Highcharts;
 <div class="well">
 	<div class="row">
 		<div class="col-md-12">
-			<h1>Live Data</h1>
 			<?=  Highcharts::widget([
 			'options' => [
 			'scripts' => [
