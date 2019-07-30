@@ -1,13 +1,12 @@
 <?php 
 use miloschuman\highcharts\Highcharts;
-
+use yii\helpers\Html;
  ?>
 
 <div class="well">
 	<div class="row">
 		<div class="col-md-12">
-		<h1>Awario Data</h1>
-		<h2> Total por categoria de palabras</h2>	
+		<?php echo Html::img('@web/img/logo-awario.png', ['class' => 'img-responsive']); ?>
 		<?=  Highcharts::widget([
 		 	'scripts' => [
 			      'modules/exporting',
@@ -15,8 +14,8 @@ use miloschuman\highcharts\Highcharts;
 			  ],   
 			'options' => [
 		   	'chart' => ['type' => 'column'],
-		      'title' => ['text' => Yii::t('app','word numbers by products / dictionaries')],
-		      'subtitle' => ['text' => Yii::t('app','Subtitle ....')],
+		      'title' => ['text' => Yii::t('app',"number of words by type of dictionary in Awario file ID: # {$info_head['alertId']}")],
+		      	  'subtitle' => ['text' => Yii::t('app',"From date: {$info_head['start_date']} - To date: {$info_head['end_date']}")],
 		      'xAxis' => [
 		         'categories' => $chartAwario->getCategories('countByCategoryInAwario'),
 		         'crosshair' => true,

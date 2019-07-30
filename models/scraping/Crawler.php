@@ -55,7 +55,7 @@ class Crawler extends Model
         // get WEB del Array
         $data = ArrayHelper::getValue($data,'WEB');
         
-        $model = [];
+        $model['web'] = [];
 
         if ($data) {
             $countByCategoryInWeb['countByCategoryInWeb'] = $this->countWordsInWebByCategory($data);
@@ -399,13 +399,13 @@ class Crawler extends Model
             
             for ($i=0; $i <sizeof($value) ; $i++) { 
                 if ($value[$i]['source'] == self::WEB) {
-                    $stringizer = new Stringizer($value[$i]['post_from']);
+                    $stringizer_post_from = new Stringizer($value[$i]['post_from']);
                     $tmp = [];
                     foreach ($this->words as $categories => $words) {
-                        for ($w=0; $w <sizeof($words) ; $w++) { 
-                            if ($stringizer->containsIncaseSensitive($words[$w])) {
+                        for ($w=0; $w <sizeof($words) ; $w++) {
+                            if ($stringizer_post_from->containsIncaseSensitive($words[$w])) {
                                 $background = BaseApi::COLOR[$categories];
-                                $sentence = (array) $stringizer->replaceIncaseSensitive($words[$w], "<span style='background: {$background}'>{$words[$w]}</span>");
+                                $sentence = (array) $stringizer_post_from->replaceIncaseSensitive($words[$w], "<span style='background: {$background}'>{$words[$w]}</span>");
                                 $value[$i]['post_from'] = array_values($sentence);
                                 $value[$i]['product'] = $model;
                                 $tmp[] = $value[$i];

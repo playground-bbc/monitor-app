@@ -2,6 +2,17 @@
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\data\ArrayDataProvider;
+use app\models\AlertResources;
+// format dates 
+$start_date = \Yii::$app->formatter->asDatetime($alert->start_date, "php:d-m-Y");
+$end_date = \Yii::$app->formatter->asDatetime($alert->end_date, "php:d-m-Y");
+
+$info_head = [
+	'alertId' => $alert->id,
+	'start_date' => $start_date,
+	'end_date' => $end_date
+];
+
 
  ?>
  <div class="container">
@@ -11,24 +22,24 @@ use yii\data\ArrayDataProvider;
  		</div>
  	</div>
  	
- 	<div class="container">
- 		<!-- detail alert </!-->
-		<?php if ($alert): ?>
-			<?=$this->render('tables/_detailAlert',['alert' => $alert]); ?>
-	 	<?php endif ?>
+ 	
+	<!-- detail alert </!-->
+	<?php if ($alert): ?>
+		<?=$this->render('tables/_detailAlert',['alert' => $alert]); ?>
+	<?php endif ?>
+	<!-- tweets !-->
+	<?php if(isset($model['tweets'])): ?>
 	 	<!-- detail alert </!-->
 	 	<div class = "row">
 	 		<div class="col-md-6">
 	 			<!-- count categories tweet </!-->
 				<?php if ($chartCategories->getCategories('countByCategoryInTweet')): ?>
-					<?=$this->render('charts/_countByCategoryInTweet',['chartCategories' => $chartCategories]); ?>
+					<?=$this->render('charts/_countByCategoryInTweet',['chartCategories' => $chartCategories,'info_head' => $info_head]); ?>
 			 	<?php endif ?>
 	 		</div>
 	 		<div class="col-md-6">
 				<!-- count words tweet </!-->
-			 	<?php if ($chartWords->getSeries('countWords')): ?>
-					<?=$this->render('charts/_countWordsTweet',['chartWords' => $chartWords]); ?>
-			 	<?php endif ?> 			
+			 	<?=$this->render('charts/_countWordsTweet',['chartWords' => $chartWords,'info_head' => $info_head]); ?>			
 	 		</div>
 	 	</div>
 	 	<div class="row">
@@ -41,130 +52,141 @@ use yii\data\ArrayDataProvider;
 			 	<?php endif ?>
 	 		</div>
 	 	</div>
- 	</div>
- 	<hr>
- 	<div class="row">
- 		<div class="col-md-12">
-			<!-- Live chat countByCategory </!-->
-		 	<?php if ($chartCategories->getCategories('countByCategoryInLiveChat')): ?>
-				<?=$this->render('charts/_countByCategoryInLive',['chartCategories' => $chartCategories]); ?>
-		 	<?php endif ?>
- 		</div>
- 	</div>
-	<div class="row">
-		<div class="col-md-6">
-			<!-- count words live </!-->
-		 	<?php if ($chartWords->getSeries('countWords_live')): ?>
-				<?=$this->render('charts/_countWordsLive',['chartWords' => $chartWords]); ?>
-		 	<?php endif ?>
+		
+		<hr>
+	<?php endif ?>
+	<!-- Live Chat !-->
+	<?php if(isset($model['Live Chat'])): ?>
+	 	<div class="row">
+	 		<div class="col-md-12">
+				<!-- Live chat countByCategory </!-->
+			 	<?php if ($chartCategories->getCategories('countByCategoryInLiveChat')): ?>
+					<?=$this->render('charts/_countByCategoryInLive',['chartCategories' => $chartCategories,'info_head' => $info_head]); ?>
+			 	<?php endif ?>
+	 		</div>
+	 	</div>
+		<div class="row">
+			<div class="col-md-6">
+				<!-- count words live </!-->
+			 	<?php if ($chartWords->getSeries('countWords_live')): ?>
+					<?=$this->render('charts/_countWordsLive',['chartWords' => $chartWords,'info_head' => $info_head]); ?>
+			 	<?php endif ?>
+			</div>
+			<div class="col-md-6">
+				<!-- total ticket Live </!-->
+			 	<?php if (isset($model['liveChat'])): ?>
+			 		<?php if (isset($model['liveChat']['total'])): ?>
+						<?=$this->render('charts/_totalTicektLive',['chartLive' => $chartLive,'info_head' => $info_head]) ?>
+			 		<?php endif ?>
+			 	<?php endif ?>
+			</div>
 		</div>
-		<div class="col-md-6">
-			<!-- total ticket Live </!-->
-		 	<?php if (isset($model['liveChat'])): ?>
-		 		<?php if (isset($model['liveChat']['total'])): ?>
-					<?=$this->render('charts/_totalTicektLive',['chartLive' => $chartLive]) ?>
-		 		<?php endif ?>
-		 	<?php endif ?>
-		</div>
-	</div>
- 	<div class="row">
- 		<div class="col-md-12">
- 			<!-- count sentences Live </!-->
-		 	<?php if (isset($model['liveChat'])): ?>
-		 		<?php if (isset($model['liveChat']['sentences_live'])): ?>
-					<?=$this->render('tables/_sentencesLive',['sentences' => $model['liveChat']['sentences_live'],'alertId' => $alert->id]); ?>
-		 		<?php endif ?>
-		 	<?php endif ?>
- 		</div>
- 	</div>
- 	
- 	<hr>
+	 	<div class="row">
+	 		<div class="col-md-12">
+	 			<!-- count sentences Live </!-->
+			 	<?php if (isset($model['liveChat'])): ?>
+			 		<?php if (isset($model['liveChat']['sentences_live'])): ?>
+						<?=$this->render('tables/_sentencesLive',['sentences' => $model['liveChat']['sentences_live'],'alertId' => $alert->id]); ?>
+			 		<?php endif ?>
+			 	<?php endif ?>
+	 		</div>
+	 	</div>
+	 	
+	 	<hr>
+	<?php endif ?>
+	<!-- live_conversations !-->
 	<?php if(isset($model['live_conversations'])): ?>
-	<div class="row">
-		<div class="col-md-6">
-			<!-- Live chat countByCategory </!-->
-		 	<?php if ($chartCategories->getCategories('count_category_conversations')): ?>
-				<?=$this->render('charts/_countByCategoryInConversationsLive',['chartCategories' => $chartCategories]); ?>
-		 	<?php endif ?>
+		<div class="row">
+			<div class="col-md-6">
+				<!-- Live chat countByCategory </!-->
+			 	<?php if ($chartCategories->getCategories('count_category_conversations')): ?>
+					<?=$this->render('charts/_countByCategoryInConversationsLive',['chartCategories' => $chartCategories,'info_head' => $info_head]); ?>
+			 	<?php endif ?>
+			</div>
+			<div class="col-md-6">
+				<!-- count words live conversations </!-->
+				<?=$this->render('charts/_countWordsLiveConversations',['chartWords' => $chartWords,'info_head' => $info_head]); ?>
+			</div>
 		</div>
-		<div class="col-md-6">
-			<!-- count words live conversations </!-->
-			<?=$this->render('charts/_countWordsLiveConversations',['chartWords' => $chartWords]); ?>
-		</div>
-	</div>
-	<div class="row">
- 		<div class="col-md-12">
- 			<!-- count sentences Live </!-->
-		 	<?php if (isset($model['live_conversations'])): ?>
-		 		<?php if (isset($model['live_conversations']['sentences_live_conversations'])): ?>
-					<?=$this->render('tables/_sentencesLiveConversations',['conversations' => $model['live_conversations']['sentences_live_conversations'],'alertId' => $alert->id]); ?>
-		 		<?php endif ?>
-		 	<?php endif ?>
- 		</div>
- 	</div>
+		<div class="row">
+	 		<div class="col-md-12">
+	 			<!-- count sentences Live </!-->
+			 	<?php if (isset($model['live_conversations'])): ?>
+			 		<?php if (isset($model['live_conversations']['sentences_live_conversations'])): ?>
+						<?=$this->render('tables/_sentencesLiveConversations',['conversations' => $model['live_conversations']['sentences_live_conversations'],'alertId' => $alert->id]); ?>
+			 		<?php endif ?>
+			 	<?php endif ?>
+	 		</div>
+	 	</div>
+	 	<hr>
  	<?php endif ?>
- 	<hr>
-
- 	
-	<div class="row">
-		<div class="col-md-6">
-			<!-- total awario categories </!-->
-		 	<?php if (isset($model['awario'])): ?>
+	<!-- awario !-->
+ 	<?php if (isset($model['awario'])): ?>
+		<div class="row">
+			<div class="col-md-6">
+				<!-- total awario categories </!-->
 		 		<?php if (isset($model['awario']['countByCategoryInAwario'])): ?>
-					<?=$this->render('charts/_countByCategoryInAwario',['chartAwario' => $chartCategories]) ?>
+					<?=$this->render('charts/_countByCategoryInAwario',['chartAwario' => $chartCategories,'info_head' => $info_head]) ?>
 		 		<?php endif ?>
-		 	<?php endif ?>
+			</div>
+			<div class="col-md-6">
+				<!-- count words awario </!-->
+			 	<?php if (isset($model['awario']['countWords_awario'])): ?>
+					<?=$this->render('charts/_countWordsAwario',['chartWords' => $chartWords,'info_head' => $info_head]); ?>
+			 	<?php endif ?>
+			</div>
 		</div>
-		<div class="col-md-6">
-			<!-- count words awario </!-->
-		 	<?php if (isset($model['awario']['countWords_awario'])): ?>
-				<?=$this->render('charts/_countWordsAwario',['chartWords' => $chartWords]); ?>
-		 	<?php endif ?>
+		<div class="row">
+			<div class="col-md-12">
+				<!-- sentences awario </!-->
+			 	<?php if (isset($model['awario'])): ?>
+			 		<?php if (isset($model['awario']['sentence_awario'])): ?>
+						<?=$this->render('tables/_sentencesAwario',['sentences' => $model['awario']['sentence_awario'],'alertId' => $alert->id]) ?>
+			 		<?php endif ?>
+			 	<?php endif ?>
+			</div>
 		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-12">
-			<!-- sentences awario </!-->
-		 	<?php if (isset($model['awario'])): ?>
-		 		<?php if (isset($model['awario']['sentence_awario'])): ?>
-					<?=$this->render('tables/_sentencesAwario',['sentences' => $model['awario']['sentence_awario'],'alertId' => $alert->id]) ?>
-		 		<?php endif ?>
-		 	<?php endif ?>
-		</div>
-	</div>
- 	
- 	
- 	
- 	<div class="row">
- 		<div class="col-md-6">
- 			<!-- count categories web </!-->
-			<?php if ($chartCategories->getCategories('countByCategoryInWeb')): ?>
-				<?=$this->render('charts/_countByCategoryInWeb',['chartCategories' => $chartCategories]); ?>
-		 	<?php endif ?>
- 		</div>
- 		<div class="col-md-6">
- 			<!-- count words web </!-->
-		 	<?php if ($chartWords->getSeries('countWords_web')): ?>
-				<?=$this->render('charts/_countWordsWeb',['chartWords' => $chartWords]); ?>
-		 	<?php endif ?>
- 		</div>
- 	</div>
- 	<div class="row">
- 		<div class="col-md-12">
- 			<!-- sentences web </!-->
-		 	<?php if (isset($model['web'])): ?>
-		 		<?php if (isset($model['web']['sentences_web'])): ?>
-					<?=$this->render('tables/_sentencesWeb',['sentences' => $model['web']['sentences_web']]) ?>
-		 		<?php endif ?>
-		 	<?php endif ?>
- 		</div>
- 	</div>
+	 	
+	 	<hr>
+ 	<?php endif ?>
+ 	<!-- web !-->
+	<?php if (ArrayHelper::keyExists('web',$model, false)): ?>
+	 	<div class="row">
+	 		<div class="col-md-6">
+	 			<?php 
 
-	
- 	
- 	
+	 				$url = [];
 
- 	
+					foreach ($alert->alertResources as $alert => $resources) {
+					    for ($i=0; $i <sizeof($resources->resources) ; $i++) { 
+					        if($resources->resources[$i]->typeResourceId == 1){
+					        	$url [] = "{$resources->resources[$i]->url}";
+					        }
+					    }
+					}
+
+					$url = implode( "<br>", $url );
+
+	 			?>
+	 			<!-- count categories web </!-->
+	 			<?=$this->render('charts/_countByCategoryInWeb',['chartCategories' => $chartCategories,'info_head' => $info_head,'url' => $url]); ?>
+	 		</div>
+	 		<div class="col-md-6">
+	 			<!-- count words web </!-->
+			 	<?=$this->render('charts/_countWordsWeb',['chartWords' => $chartWords,'info_head' => $info_head,'url' => $url]); ?>
+	 		</div>
+	 	</div>
+	 	<div class="row">
+	 		<div class="col-md-12">
+	 			<!-- sentences web </!-->
+			 	
+			 		<?php if (isset($model['web']['sentences_web'])): ?>
+						<?=$this->render('tables/_sentencesWeb',['sentences' => $model['web']['sentences_web']]) ?>
+			 		<?php endif ?>
+			 	
+	 		</div>
+	 	</div>
+ 	<?php endif ?>
  </div>
  
 

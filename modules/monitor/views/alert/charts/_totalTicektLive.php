@@ -1,21 +1,22 @@
 <?php 
 use miloschuman\highcharts\Highcharts;
-
+use kartik\icons\Icon;
+Icon::map($this, Icon::WHHG);
 
  ?>
 
 <div class="well">
 	<div class="row">
 		<div class="col-md-12">
+			<?php echo Icon::show('headphonesalt', ['style' =>'color:#d36126; font-size: 30px', 'framework' => Icon::WHHG]); ?>
 			<?=  Highcharts::widget([
 			'options' => [
 			'scripts' => [
 			      'themes/unica',
 			  ],	
 			      'title' => [
-			      	'text' => Yii::t('app','Universo de Tickets'),
+			      	'text' => Yii::t('app',"rescued tickets and the total tickets in LiveChat ID: # {$info_head['alertId']}"),
 			      	'align' => 'center',
-			      	'y' => 40,
 			      ],
 			      'plotOptions' =>  [
 			      		'series' => [

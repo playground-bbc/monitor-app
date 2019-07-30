@@ -37,7 +37,8 @@
         "yii2tech/spreadsheet": "*",
         "nullref/yii2-datatables": "^1.1",
         "pudinglabs/yii2-bootstrap-tags-input" : "*",
-        "phpoffice/phpspreadsheet": "^1.8"
+        "phpoffice/phpspreadsheet": "^1.8",
+        "kartik-v/yii2-icons": "@dev"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

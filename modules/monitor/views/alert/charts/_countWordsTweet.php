@@ -1,22 +1,24 @@
 <?php 
 use miloschuman\highcharts\Highcharts;
-
-
+use kartik\icons\Icon;
+Icon::map($this, Icon::FAB);
+$twitter_icon = Icon::show('twitter', ['class'=>'fa-2x','style' =>'color:#00ACEE', 'framework' => Icon::FAB]);
  ?>
 <div class="well">
 	<div class="row">
 		<div class="col-md-12">
+			<?php echo  $twitter_icon; ?>	
 		<?=  Highcharts::widget([
 			'scripts' => ['modules/drilldown'],	
 			  'options' => [
 			  	'chart' => ['type' => 'pie'],
-				'title' => ['text' => Yii::t('app','numbers of words twitter')],
-				//'subtitle' => ['text' => Yii::t('app','subtitle ... of words')],
+				'title' => ['text' => Yii::t('app',"total per words in twitter ID: # {$info_head['alertId']}")],
+				'subtitle' => ['text' => Yii::t('app',"From date: {$info_head['start_date']} - To date: {$info_head['end_date']}")],
 				'plotOptions' =>  [
 					'series' => [
 						'dataLabels' => [
 							'enabled' => true,
-			                'format' => '{point.name}: {point.y}'
+			                'format' => "{point.name}: {point.y}"
 						],
 					],
 

@@ -245,7 +245,7 @@ class AlertController extends \yii\web\Controller
       
 
       $cache = Yii::$app->cache;
-     // $cache->delete($alertId); 
+      $cache->delete($alertId); 
       $model =  $cache->getOrSet($alertId, function () use ($baseApi,$crawling) {
           $model_api = $baseApi->countAndSearchWords();
           $model_web = $crawling->countAndSearchWords();
@@ -942,7 +942,7 @@ class AlertController extends \yii\web\Controller
                 array_push($form_alert->social_resources, $model_resource->id);
               }
             }else{
-              $model_resource = Resource::find()->where(['name' => $name_web])->select('id')->one();
+              $model_resource = Resource::find()->where(['name' => $name_web,'url' => $web_resource])->select('id')->one();
               array_push($form_alert->social_resources, $model_resource->id);
             }
           }
