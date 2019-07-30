@@ -56,7 +56,7 @@ $info_head = [
 		<hr>
 	<?php endif ?>
 	<!-- Live Chat !-->
-	<?php if(isset($model['Live Chat'])): ?>
+	<?php if(isset($model['liveChat'])): ?>
 	 	<div class="row">
 	 		<div class="col-md-12">
 				<!-- Live chat countByCategory </!-->
