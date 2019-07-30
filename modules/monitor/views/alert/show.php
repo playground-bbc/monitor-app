@@ -150,7 +150,7 @@ $info_head = [
 	 	<hr>
  	<?php endif ?>
  	<!-- web !-->
-	<?php if (ArrayHelper::keyExists('web',$model, false)): ?>
+	<?php if (ArrayHelper::keyExists('sentences_web',$model['web'], false)): ?>
 	 	<div class="row">
 	 		<div class="col-md-6">
 	 			<?php 
