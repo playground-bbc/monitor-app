@@ -245,7 +245,6 @@ class AlertController extends \yii\web\Controller
       
 
       $cache = Yii::$app->cache;
-      $cache->delete($alertId); 
       $model =  $cache->getOrSet($alertId, function () use ($baseApi,$crawling) {
           $model_api = $baseApi->countAndSearchWords();
           $model_web = $crawling->countAndSearchWords();

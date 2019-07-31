@@ -273,7 +273,6 @@ class LiveChatApi extends Model
                 }
             }
         }
-
         return (count($countByCategory)) ? $countByCategory : null;
 
     }

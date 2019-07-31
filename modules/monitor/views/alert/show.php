@@ -68,9 +68,7 @@ $info_head = [
 		<div class="row">
 			<div class="col-md-6">
 				<!-- count words live </!-->
-			 	<?php if ($chartWords->getSeries('countWords_live')): ?>
-					<?=$this->render('charts/_countWordsLive',['chartWords' => $chartWords,'info_head' => $info_head]); ?>
-			 	<?php endif ?>
+			 	<?=$this->render('charts/_countWordsLive',['chartWords' => $chartWords,'info_head' => $info_head]); ?>
 			</div>
 			<div class="col-md-6">
 				<!-- total ticket Live </!-->

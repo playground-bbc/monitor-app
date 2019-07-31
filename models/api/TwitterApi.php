@@ -99,6 +99,11 @@ class TwitterApi extends Model
                  
                 $data[$index]  = $this->search_tweets($params);
 
+                if(!ArrayHelper::keyExists('search_metadata', $data[$index], false)){
+                    $params['max_id'] =  0;
+                    $next_results = 0;
+                }
+
                 if (ArrayHelper::keyExists('next_results', $data[$index]['search_metadata'], false)) {
                     parse_str($data[$index]['search_metadata']['next_results'], $output);
                     $params['max_id'] = $output['?max_id'];
@@ -111,10 +116,9 @@ class TwitterApi extends Model
                 $index ++;
 
 
-        } while ($params['max_id'] != $next_results);
+        } while ($params['max_id'] != $next_results && $index <= 10);
 
         
-
         return $data;
 
     }

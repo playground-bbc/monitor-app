@@ -252,7 +252,6 @@ class BaseApi extends Model
 
         }
      	
-     	
         return $data;
 	}
 	/**
@@ -265,69 +264,27 @@ class BaseApi extends Model
 		$source = 'TWITTER';
 
 	
-		foreach ($data as $key => $value) {
-			if (!empty($value)) {
-				for ($v=0; $v <sizeof($value) ; $v++) { 
-					for ($i=0; $i <sizeof($value[$v]['statuses']) ; $i++) { 
+		foreach ($data as $product => $object){
+			$index = 0;
+			for ($o = 0; $o < sizeof($object) ; $o++){
+				if(!empty($object[$o]['statuses'])){
+					for ($s =0; $s < sizeof($object[$o]['statuses']) ; $s++){
+						$tweets[$product][$index]['source'] = self::TWITTER;
+						if(count($object[$o]['statuses'][$s]['entities']['urls'])){
+							$tweets[$product][$index]['url'] = $object[$o]['statuses'][$s]['entities']['urls'][0]['url'];
+						}else{
+							$tweets[$product][$index]['url'] = '-';
+						}
 						
-						// set source
-						$tweets[$key][$i]['source'] = self::TWITTER;
-
-						// get url from tweet
-						if (count($value[$v]['statuses'][$i]['entities']['urls'])) {
-							$tweets[$key][$i]['url'] = $value[$v]['statuses'][$i]['entities']['urls'][0]['url'];
-						}else{$tweets[$key][$i]['url'] = '-';}
-						// get created_at from tweet
-						if (isset($value[$v]['statuses'][$i]['created_at'])) {
-							$tweets[$key][$i]['created_at'] = $value[$v]['statuses'][$i]['created_at'];
-						}
-						// get author_name from tweet
-						if (isset($value[$v]['statuses'][$i]['user']['name'])) {
-							$tweets[$key][$i]['author_name'] = $value[$v]['statuses'][$i]['user']['name'];
-						}
-						// get author_username from tweet
-						if (isset($value[$v]['statuses'][$i]['user']['screen_name'])) {
-							$tweets[$key][$i]['author_username'] = $value[$v]['statuses'][$i]['user']['screen_name'];
-						}
-
-						// get Post from tweet
-						if (isset($value[$v]['statuses'][$i]['text'])) {
-							$tweets[$key][$i]['post_from'] = $value[$v]['statuses'][$i]['text'];
-						}
-					}
-				}
-			}
-		}
-		
-		/*foreach ($data as $key => $value) {
-			for ($i=0; $i <sizeof($value['statuses']) ; $i++) { 
-				
-				// set source
-				$tweets[$key][$i]['source'] = self::TWITTER;
-
-				// get url from tweet
-				if (count($value['statuses'][$i]['entities']['urls'])) {
-					$tweets[$key][$i]['url'] = $value['statuses'][$i]['entities']['urls'][0]['url'];
-				}else{$tweets[$key][$i]['url'] = '-';}
-				// get created_at from tweet
-				if (isset($value['statuses'][$i]['created_at'])) {
-					$tweets[$key][$i]['created_at'] = $value['statuses'][$i]['created_at'];
-				}
-				// get author_name from tweet
-				if (isset($value['statuses'][$i]['user']['name'])) {
-					$tweets[$key][$i]['author_name'] = $value['statuses'][$i]['user']['name'];
-				}
-				// get author_username from tweet
-				if (isset($value['statuses'][$i]['user']['screen_name'])) {
-					$tweets[$key][$i]['author_username'] = $value['statuses'][$i]['user']['screen_name'];
-				}
-
-				// get Post from tweet
-				if (isset($value['statuses'][$i]['text'])) {
-					$tweets[$key][$i]['post_from'] = $value['statuses'][$i]['text'];
-				}
-			}
-		}*/
+						$tweets[$product][$index]['created_at'] = $object[$o]['statuses'][$s]['created_at'];
+						$tweets[$product][$index]['author_name'] = $object[$o]['statuses'][$s]['user']['name'];
+						$tweets[$product][$index]['author_username'] = $object[$o]['statuses'][$s]['user']['screen_name'];
+						$tweets[$product][$index]['post_from'] = $object[$o]['statuses'][$s]['text'];
+						$index++;
+					} // for each statuses
+				} // if not empty statuses
+			}// for each object twitter
+		} // for each product
 
 		return $tweets;
 
@@ -622,6 +579,7 @@ class BaseApi extends Model
 	private function addTagsSentenceFoundInTweets($data)
 	{
 		$tweets = [];
+		set_time_limit(500);
 		foreach ($data as $model => $value) {
 			for ($i=0; $i <sizeof($value) ; $i++) { 
 				if ($value[$i]['source'] == self::TWITTER) {
