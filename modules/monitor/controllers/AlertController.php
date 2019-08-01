@@ -212,13 +212,20 @@ class AlertController extends \yii\web\Controller
 
       $start_date = $alert->start_date;
       $end_date = $alert->end_date;
-      $resources = [];
-      // resources
-      foreach ($alert->alertResources as $alert => $alert_value) {
-          foreach ($alert_value->resources as $key => $value) {
-              $resources[] = $value->name;
+      
+
+      $resource = [];
+
+      foreach ($alert->alertResources as $alert => $resources) {
+          for ($i=0; $i <sizeof($resources->resources) ; $i++) { 
+              if($resources->resources[$i]->typeResourceId == 1){
+                $resource ['web'][] = $resources->resources[$i]->name;
+              }elseif($resources->resources[$i]->typeResourceId == 2){
+                $resource ['social'][] = $resources->resources[$i]->name;
+              }
           }
       }
+
       $products_models = [];
         // models products
         foreach (ProductsModelsAlerts::find()->where(['alertId' => $alertId])->with('productModel')->each() as $product) {
@@ -226,20 +233,26 @@ class AlertController extends \yii\web\Controller
             $products_models[$product->productModel->product->category->name][$product->productModel->product->name][] = $product->productModel->serial_model;
         }
 
-      $params = [
+      $social = [
           'alertId' => $nameAlert,
           'words' => $words,
-          'resources' => $resources,
+          'resources' => $resource['social'],
           'products_models' => $products_models,
           'start_date' => $start_date,
           'end_date' => $end_date,
       ]; 
 
-      
+      $web = [
+        'alertId' => $nameAlert,
+        'words' => $words,
+        'resources' => (isset($resource['web'])) ? $resource['web'] : [],
+        'products_models' => $products_models,
+      ];
 
-      $baseApi  = new BaseApi($params);
-      $crawling = new Crawler($params); 
 
+      $baseApi  = new BaseApi($social);
+      $crawling = new Crawler($web); 
+      //$crawling->callCrawling();
       // $baseApi->callApiResources();
       
       
@@ -249,8 +262,8 @@ class AlertController extends \yii\web\Controller
           $model_api = $baseApi->countAndSearchWords();
           $model_web = $crawling->countAndSearchWords();
           return ArrayHelper::merge($model_api,$model_web);
-          //return $baseApi->countAndSearchWords();
       }, 1000);
+
 
 
 	    //$cache->delete($alertId);	
@@ -364,6 +377,235 @@ class AlertController extends \yii\web\Controller
         }
         return (count($models_products) && empty($products_alerts->errors)) ? true : false;
     }
+
+
+    public function actionInsertProduct()
+    {
+      if (Yii::$app->request->isAjax) {
+        $data = \Yii::$app->request->post();
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        
+        $product = $data['product_name'];
+
+        $models_products = $this->getModelsProducts([$product]);
+
+        $products_models = [];
+        foreach (ProductsModels::find()->where(['serial_model' => $models_products])->with('product')->each() as $model) {
+            // batch query with eager loading
+            $products_models[$model->product->category->name][$model->product->name][] = $model->serial_model;
+        }
+
+        $social = [2 => 'Twitter', 3 => 'Live Chat',15 => 'Live Chat Conversations'];
+        $res = [];
+        foreach ($data['resource'] as $key => $resource) {
+            if(array_key_exists($resource,$social)){
+             $res[] = $social[$resource]; 
+            }
+        }
+        
+        
+        $params = [
+            'alertId' => $data['alert_name'],
+            'products_models' => $products_models,
+            'resources' => $res,
+            'start_date' => $data['start_date'],
+            'end_date' => $data['start_end'],
+        ];
+
+        $baseApi = new BaseApi($params);
+        $baseApi->callApiResources();
+
+        return [
+            'data' => [
+                'message' => 'some',
+            ],
+            'code' => 0,
+        ];
+
+      }
+    }
+    
+    public function actionDeleteProduct(){
+		
+  		if (Yii::$app->request->isAjax){
+  			$data = \Yii::$app->request->post();
+  			\Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+  			return [
+  			  'data' => [
+  				  'message' => $data['product_name'],
+  				  'success' => true
+  			  ],
+  			  'code' => 0,
+  		  ];
+  		}
+	
+	  }
+    /**
+     * @param array
+     * @param int
+     */
+    public function setDictionariesAlert($form_alert = [],$alertId)
+    {
+       $drive = new DriveProductsApi();
+            
+       if (ArrayHelper::isIndexed($form_alert->drive_dictionary)) {
+           $models = [];
+           foreach ($form_alert->drive_dictionary as $dictionary) {
+                $categoryId = CategoriesDictionary::find()->where(['name' => $dictionary])->select('id')->one();
+                $data = $drive->getContentDictionaryByTitle([$dictionary]);
+               
+                foreach ($data[$dictionary] as $key => $word) {
+                    $models[] = [$alertId,$categoryId->id,$word];
+                    
+                 }
+                
+            } 
+            // save words from drive 
+            Yii::$app->db->createCommand()->batchInsert('dictionary', ['alertId','category_dictionaryId', 'word'],$models)
+            ->execute();
+       }
+
+       $neutral_words = ($form_alert->positive_words != '') ? explode(',', $form_alert->positive_words) : null;
+
+       $models = [];
+       if (!is_null($neutral_words)) {
+           for ($i=0; $i <sizeof($neutral_words) ; $i++) { 
+               $models[] = [$alertId,2,$neutral_words[$i]];
+           }
+       }
+
+       if (!empty($models)) {
+            // save positives and negatives
+           Yii::$app->db->createCommand()->batchInsert('dictionary', ['alertId','category_dictionaryId', 'word'],$models)
+            ->execute();
+       }
+
+    }
+
+    public function syncDictionaryByAlertId($alertId)
+    {
+        $drive = new DriveProductsApi();
+        
+        $dictionaries_title = $drive->titleDictionary;
+
+        foreach ($dictionaries_title as $dictionary) {
+            $categoryId = CategoriesDictionary::find()->where(['name' => $dictionary])->select('id')->one();
+            $data = $drive->getContentDictionaryByTitle([$dictionary]);
+           
+            foreach ($data[$dictionary] as $key => $word) {
+                $models[] = [$alertId,$categoryId->id,$word];
+                
+             }
+            
+        } 
+        // save words from drive 
+        Yii::$app->db->createCommand()->batchInsert('dictionary', ['alertId','category_dictionaryId', 'word'],$models)
+        ->execute();
+    }
+    /**
+     * @param array
+     * @param int
+     */
+    public function setSocialResources($form_alert = [],$alertId)
+    {
+
+
+        if (empty($form_alert->social_resources)) {
+            Yii::warning("problems when saving the social resources in the alert with id: {$alertId}", __METHOD__);
+            return $this->redirect(['error', 'message' => Yii::t('app','Error save Products Models Products'),'id' => $alert->id]);      
+        }
+
+        if (!empty($form_alert->web_resource)) {
+          $web_resources = explode(',', $form_alert->web_resource);
+
+          foreach ($web_resources as $web_resource) {
+            $name_web = Resource::get_domain($web_resource);
+            
+            if (!Resource::find()->where(['name' => $name_web,'url' => $web_resource ])->exists()) {
+              $model_resource = new Resource();
+              // asign
+              $model_resource->name = $name_web;
+              $model_resource->url = $web_resource;
+              $model_resource->typeResourceId = Resource::TYPE_WEB;
+              if ($model_resource->save()) {
+                array_push($form_alert->social_resources, $model_resource->id);
+              }
+            }else{
+              $model_resource = Resource::find()->where(['name' => $name_web,'url' => $web_resource])->select('id')->one();
+              array_push($form_alert->social_resources, $model_resource->id);
+            }
+          }
+        }
+
+        for ($i=0; $i <sizeof($form_alert->social_resources) ; $i++) { 
+            $model = new AlertResources();
+            $model->idResources = $form_alert->social_resources[$i];
+            $model->idAlert = $alertId;
+            $model->save();
+        }
+
+    }
+    /**
+     * @param array
+     * @param id
+     */
+    public function setAwarioFile($form_alert = [],$alertId)
+    {
+        if (UploadedFile::getInstance($form_alert, 'awario_file')) {
+            $file = UploadedFile::getInstance($form_alert, 'awario_file');
+            $resourceName = 'awario';
+
+            $folderOptions = [
+                'name' => $alertId,
+                'path' => '@monitor',
+                'resource' => $resourceName,
+            ];
+            $path = $this->setFolderPath($folderOptions);
+            $fileName = $alertId . '.' . $file->extension;
+            if (!$file->saveAs($path . $fileName)) {
+              var_dump("expression");
+              die();
+                Yii::warning("problems when saving the awario file in the alert with id: {$alertId}", __METHOD__);
+            }
+            return $path;
+        }
+        return false;
+    }
+
+
+    /**
+     * @return $path string or boolean
+     * create or return the  valid path for save images
+     */
+    public function setFolderPath($folderOptions)
+    {
+        // path to folder flat archives
+        $s = DIRECTORY_SEPARATOR;
+
+        $path = \Yii::getAlias($folderOptions['path'])."{$s}".$folderOptions['resource']."{$s}". $folderOptions['name']. "{$s}";
+        
+        
+        if (!is_dir($path)) {
+           $folder = FileHelper::createDirectory($path, $mode = 0775,$recursive = true);
+           
+           return ($folder) ? $path : false; 
+        }
+
+        return $path;
+    }
+
+    public function setDataTwitterWords($models)
+    {
+        $countWord = [];
+        if (ArrayHelper::keyExists('tweets', $models, false)) {
+            $tweets = ArrayHelper::getValue($models,'tweets');
+            if (ArrayHelper::keyExists('countWords', $tweets, false)) {
+                $countWord = ArrayHelper::getValue($tweets,'countWords');
+            }
+        }
+        return (!empty($countWord)) ? $countWord : false;
+    }
+
 
     public function actionExcelAwario($alertId,$resource_name)
     {
@@ -789,231 +1031,18 @@ class AlertController extends \yii\web\Controller
     }
 
 
-    public function actionInsertProduct()
-    {
-      if (Yii::$app->request->isAjax) {
-        $data = \Yii::$app->request->post();
-        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-        
-        $product = $data['product_name'];
-
-        $models_products = $this->getModelsProducts([$product]);
-
-        $products_models = [];
-        foreach (ProductsModels::find()->where(['serial_model' => $models_products])->with('product')->each() as $model) {
-            // batch query with eager loading
-            $products_models[$model->product->category->name][$model->product->name][] = $model->serial_model;
-        }
-
-        $social = [2 => 'Twitter', 3 => 'Live Chat',15 => 'Live Chat Conversations'];
-        $res = [];
-        foreach ($data['resource'] as $key => $resource) {
-            if(array_key_exists($resource,$social)){
-             $res[] = $social[$resource]; 
-            }
-        }
-        
-        
-        $params = [
-            'alertId' => $data['alert_name'],
-            'products_models' => $products_models,
-            'resources' => $res,
-            'start_date' => $data['start_date'],
-            'end_date' => $data['start_end'],
-        ];
-
-        $baseApi = new BaseApi($params);
-        $baseApi->callApiResources();
-
-        return [
-          'data' => [
-              'message' => 'some',
-          ],
-          'code' => 0,
-      ];
-
-      }
-    }
-    
-    public function actionDeleteProduct(){
-		
-  		if (Yii::$app->request->isAjax){
-  			$data = \Yii::$app->request->post();
-  			\Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-  			return [
-  			  'data' => [
-  				  'message' => $data['product_name'],
-  				  'success' => true
-  			  ],
-  			  'code' => 0,
-  		  ];
-  		}
-	
-	  }
     /**
-     * @param array
-     * @param int
+     * [setDictionaries description]
+     * @param [type] $form_alert [description]
+     * @param [type] $alertId    [description]
      */
-    public function setDictionariesAlert($form_alert = [],$alertId)
+    public static function getProducts($product)
     {
-       $drive = new DriveProductsApi();
-            
-       if (ArrayHelper::isIndexed($form_alert->drive_dictionary)) {
-           $models = [];
-           foreach ($form_alert->drive_dictionary as $dictionary) {
-                $categoryId = CategoriesDictionary::find()->where(['name' => $dictionary])->select('id')->one();
-                $data = $drive->getContentDictionaryByTitle([$dictionary]);
-               
-                foreach ($data[$dictionary] as $key => $word) {
-                    $models[] = [$alertId,$categoryId->id,$word];
-                    
-                 }
-                
-            } 
-            // save words from drive 
-            Yii::$app->db->createCommand()->batchInsert('dictionary', ['alertId','category_dictionaryId', 'word'],$models)
-            ->execute();
-       }
+        $moduleName = \Yii::$app->controller->module->name;
+        $module = \Yii::$app->getModule($moduleName);
+        $controller = new AlertController($module->name, $module);
 
-       $neutral_words = ($form_alert->positive_words != '') ? explode(',', $form_alert->positive_words) : null;
-
-       $models = [];
-       if (!is_null($neutral_words)) {
-           for ($i=0; $i <sizeof($neutral_words) ; $i++) { 
-               $models[] = [$alertId,2,$neutral_words[$i]];
-           }
-       }
-
-       if (!empty($models)) {
-            // save positives and negatives
-           Yii::$app->db->createCommand()->batchInsert('dictionary', ['alertId','category_dictionaryId', 'word'],$models)
-            ->execute();
-       }
-
-    }
-
-    public function syncDictionaryByAlertId($alertId)
-    {
-        $drive = new DriveProductsApi();
-        
-        $dictionaries_title = $drive->titleDictionary;
-
-        foreach ($dictionaries_title as $dictionary) {
-            $categoryId = CategoriesDictionary::find()->where(['name' => $dictionary])->select('id')->one();
-            $data = $drive->getContentDictionaryByTitle([$dictionary]);
-           
-            foreach ($data[$dictionary] as $key => $word) {
-                $models[] = [$alertId,$categoryId->id,$word];
-                
-             }
-            
-        } 
-        // save words from drive 
-        Yii::$app->db->createCommand()->batchInsert('dictionary', ['alertId','category_dictionaryId', 'word'],$models)
-        ->execute();
-    }
-    /**
-     * @param array
-     * @param int
-     */
-    public function setSocialResources($form_alert = [],$alertId)
-    {
-
-
-        if (empty($form_alert->social_resources)) {
-            Yii::warning("problems when saving the social resources in the alert with id: {$alertId}", __METHOD__);
-            return $this->redirect(['error', 'message' => Yii::t('app','Error save Products Models Products'),'id' => $alert->id]);      
-        }
-
-        if (!empty($form_alert->web_resource)) {
-          $web_resources = explode(',', $form_alert->web_resource);
-
-          foreach ($web_resources as $web_resource) {
-            $name_web = Resource::get_domain($web_resource);
-            
-            if (!Resource::find()->where(['name' => $name_web,'url' => $web_resource ])->exists()) {
-              $model_resource = new Resource();
-              // asign
-              $model_resource->name = $name_web;
-              $model_resource->url = $web_resource;
-              $model_resource->typeResourceId = Resource::TYPE_WEB;
-              if ($model_resource->save()) {
-                array_push($form_alert->social_resources, $model_resource->id);
-              }
-            }else{
-              $model_resource = Resource::find()->where(['name' => $name_web,'url' => $web_resource])->select('id')->one();
-              array_push($form_alert->social_resources, $model_resource->id);
-            }
-          }
-        }
-
-        for ($i=0; $i <sizeof($form_alert->social_resources) ; $i++) { 
-            $model = new AlertResources();
-            $model->idResources = $form_alert->social_resources[$i];
-            $model->idAlert = $alertId;
-            $model->save();
-        }
-
-    }
-    /**
-     * @param array
-     * @param id
-     */
-    public function setAwarioFile($form_alert = [],$alertId)
-    {
-        if (UploadedFile::getInstance($form_alert, 'awario_file')) {
-            $file = UploadedFile::getInstance($form_alert, 'awario_file');
-            $resourceName = 'awario';
-
-            $folderOptions = [
-                'name' => $alertId,
-                'path' => '@monitor',
-                'resource' => $resourceName,
-            ];
-            $path = $this->setFolderPath($folderOptions);
-            $fileName = $alertId . '.' . $file->extension;
-            if (!$file->saveAs($path . $fileName)) {
-              var_dump("expression");
-              die();
-                Yii::warning("problems when saving the awario file in the alert with id: {$alertId}", __METHOD__);
-            }
-            return $path;
-        }
-        return false;
-    }
-
-
-    /**
-     * @return $path string or boolean
-     * create or return the  valid path for save images
-     */
-    public function setFolderPath($folderOptions)
-    {
-        // path to folder flat archives
-        $s = DIRECTORY_SEPARATOR;
-
-        $path = \Yii::getAlias($folderOptions['path'])."{$s}".$folderOptions['resource']."{$s}". $folderOptions['name']. "{$s}";
-        
-        
-        if (!is_dir($path)) {
-           $folder = FileHelper::createDirectory($path, $mode = 0775,$recursive = true);
-           
-           return ($folder) ? $path : false; 
-        }
-
-        return $path;
-    }
-
-    public function setDataTwitterWords($models)
-    {
-        $countWord = [];
-        if (ArrayHelper::keyExists('tweets', $models, false)) {
-            $tweets = ArrayHelper::getValue($models,'tweets');
-            if (ArrayHelper::keyExists('countWords', $tweets, false)) {
-                $countWord = ArrayHelper::getValue($tweets,'countWords');
-            }
-        }
-        return (!empty($countWord)) ? $countWord : false;
+        return $controller->getModelsProducts($product);
     }
 
 

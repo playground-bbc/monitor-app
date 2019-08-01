@@ -107,6 +107,7 @@ class DriveProductsApi extends Model
 
     public function saveFamily($value)
     {
+        $value = $this->delete_quotation_marks($value);
         $params = [
             'abbreviation_name' => $value,
         ];
@@ -122,6 +123,8 @@ class DriveProductsApi extends Model
 
     public function saveParent($familyId, $value)
     {
+        $value = $this->delete_quotation_marks($value);
+
         $params = [
             'parentId' => $familyId,
             'name'     => $value,
@@ -139,6 +142,8 @@ class DriveProductsApi extends Model
 
     public function saveProductCategory($familyId, $value)
     {
+        $value = $this->delete_quotation_marks($value);
+
         $params = [
             'familyId' => $familyId,
             'name'     => $value,
@@ -154,7 +159,9 @@ class DriveProductsApi extends Model
     }
 
     public function saveProduct($categoryId, $value)
-    {
+    {   
+        $value = $this->delete_quotation_marks($value);
+
         $params = [
             'categoryId' => $categoryId,
             'name'       => $value,
@@ -171,7 +178,9 @@ class DriveProductsApi extends Model
     }
 
     public function saveProductsModel($productId, $value)
-    {
+    {   
+        $value = $this->delete_quotation_marks($value);
+
         $params = [
             'productId'    => $productId,
             'serial_model' => $value,
@@ -221,5 +230,10 @@ class DriveProductsApi extends Model
         $service = new \Google_Service_Sheets($client);
         return $service;
     }
+
+    public function delete_quotation_marks($string) { 
+        $result = str_replace(array('\'', '"'), '', $string);
+        return $result; 
+    } 
 
 }

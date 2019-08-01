@@ -156,7 +156,9 @@ $this->params['breadcrumbs'][] = $this->title;
 				<?=  $form->field($form_alert, 'web_resource')->widget(TagsinputWidget::classname(), [
 			            'options' => [],
 			            'clientOptions' => [],
-			            'clientEvents' => []
+			            'clientEvents' => [
+			            	"itemAdded" => "function(e) { sendUrls(e.item) }",
+			            ]
 			         ]);
                  ?>
 				 
@@ -177,12 +179,55 @@ use yii\web\View;
 
 $urlModelsAlert = Url::to(['insert-product']);
 $urlModelsAlertDelete = Url::to(['delete-product']);
+
+$urlUrlAlert = Url::to(['web/search-web']);
 $uuid = '';
 
 
 $this->registerJs('
 
 
+function sendUrls(url){
+	var flag           = false;
+	var  url           = url;
+	var  alert_name    = $("#searchform-name").val();
+	var  drive_names   = $("#searchform-drive_dictionary").val();
+	var  neutral_words = $("#searchform-positive_words").val();
+	var  product_name  = $("#searchform-products").val();
+	
+	if( (drive_names || neutral_words.length) && product_name){
+		flag = true;
+	}else{
+		swal("Upps!", "you need to fill in the fields of resources and dates!", "error");
+		$("#searchform-web_resource").tagsinput("removeAll");
+		
+	}
+
+	if(flag){
+		$.ajax({
+        url:"'.$urlUrlAlert.'",
+        type:"post",
+        dataType: "json",
+	        data: {
+	            url: url,  
+	            alert_name: alert_name,  
+	            //drive_names: drive_names,  
+	            //neutral_words: neutral_words,  
+	            product_name: product_name,  
+	        }
+
+	    })
+	    .done(function(response) {
+	                if (response.data.success == true) {
+	                    console.log(response.data);
+	                }
+	            })
+	    .fail(function() {
+	        console.log("error");
+	    });
+	}
+		
+}
 
 
 function removeProducts(name){
@@ -212,54 +257,44 @@ function sendProducts(name){
 	var flag = false;
 	
 	var product_name = name;
-
+	
 	var  alert_name = $("#searchform-name").val()
-	var  resource = $("#social_resources").val()
-	
-	
+	var  resource   = $("#social_resources").val()
 	
 	var  start_date = $("#searchform-start_date").val()
-	var  start_end = $("#searchform-end_date").val()
+	var  start_end  = $("#searchform-end_date").val()
 
 	if( resource && start_date.length && start_end.length ){
 		flag = true;
 	}else{
 		
 		swal("Upps!", "you need to fill in the fields of resources and dates!", "error");
-		
-
 		$("#searchform-products").val("").trigger("change");
 	}
 
-	
-
 	if(flag){
-
 		$.ajax({
         url:"'.$urlModelsAlert.'",
         type:"post",
         dataType: "json",
 	        data: {
-	            product_name: product_name,
-	            alert_name: alert_name,
-	            resource: resource,
-	            start_date: start_date,
-	            start_end: start_end,
+				product_name: product_name,
+				alert_name: alert_name,
+				resource: resource,
+				start_date: start_date,
+				start_end: start_end,
 	           
 	        }
-
 	    })
-	    .done(function(response) {
-	                if (response.data.success == true) {
-	                    console.log(response.data);
-	                }
-	            })
+    	.done(function(response) {
+            if (response.data.success == true) {
+                console.log(response.data);
+            }
+        })
 	    .fail(function() {
 	        console.log("error");
 	    });	
 	}
-
-
 	 
 }
 

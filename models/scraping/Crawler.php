@@ -1,5 +1,4 @@
 <?php
-
 namespace app\models\scraping;
 
 use Yii;
@@ -16,6 +15,7 @@ use app\models\filebase\Filebase;
 use app\models\Resource;
 use app\models\api\BaseApi;
 
+set_time_limit(500);
 
 /**
  * Crawler is the model behind the logic from web scrapping.
@@ -40,6 +40,43 @@ class Crawler extends Model
     // own Crawler search
     const WEB = 'WEB';
 
+    public function __construct($params) {
+        
+
+        $this->_client = new Client();
+        $this->_filebase = new Filebase();
+
+        foreach ($params as $key => $value) {
+            $this->$key = $value;
+        }
+
+        $this->_filebase->alertId = $this->alertId;
+
+        
+        parent::__construct();
+    }
+
+
+    public function callCrawling(){
+
+        $resources = $this->getResouceUri();
+        
+        if (!empty($resources)) {
+
+            $crawler  = $this->getRequest($resources['links']);
+            $contents = $this->getContent($crawler);
+            $model    = $this->setContent($contents);
+            $searchs  = $this->searchProductsInContent($model);
+            //$contains = $this->searchWordsInContent($searchs);
+            $data = $this->setSearchDataWebPage($searchs);
+            if ($data) {
+                $this->saveJsonFile();
+                $this->saveResource($resources['webpage']);
+            }
+        }
+
+    }
+
     /**
      * [countAndSearchWords call methods to count data for graphics]
      * @return [array] [return array with the data of the different methods]
@@ -57,14 +94,16 @@ class Crawler extends Model
         
         $model['web'] = [];
 
-        if ($data) {
-            $countByCategoryInWeb['countByCategoryInWeb'] = $this->countWordsInWebByCategory($data);
-            if (!is_null($countByCategoryInWeb['countByCategoryInWeb'])) {
-                $sentences['sentences_web'] = $this->addTagsSentenceFoundInWeb($data);
-                $countWords['countWords_web'] = $this->addWordsInWeb($data);
-                //join webs
-                $model['web'] = ArrayHelper::merge($sentences,$countWords);
-                $model['web'] = ArrayHelper::merge($countByCategoryInWeb,$model['web']);
+        if(!empty($data)){
+            if ($data) {
+                $countByCategoryInWeb['countByCategoryInWeb'] = $this->countWordsInWebByCategory($data);
+                if (!is_null($countByCategoryInWeb['countByCategoryInWeb'])) {
+                    $sentences['sentences_web'] = $this->addTagsSentenceFoundInWeb($data);
+                    $countWords['countWords_web'] = $this->addWordsInWeb($data);
+                    //join webs
+                    $model['web'] = ArrayHelper::merge($sentences,$countWords);
+                    $model['web'] = ArrayHelper::merge($countByCategoryInWeb,$model['web']);
+                }
             }
         }
         return $model;
@@ -106,17 +145,47 @@ class Crawler extends Model
       
       return $client;
     }
-
     /**
      * [getResouceUri difference if it is a web resource and sorts it by domain and url]
      * @return  
      */
-    private function getResouceUri()
-    {
+    private function getResouceUri(){
         $resources = [];
-        
+        $name_web = Resource::get_domain($this->resources);
+        if($name_web){
+           $resources['webpage'][$name_web] = $this->resources;    
+        }
 
-        for ($r=0; $r <sizeof($this->resources) ; $r++) { 
+        $crawler = $this->_client->request('GET', $this->resources);
+        $status_code = $this->_client->getResponse()->getStatus();
+        if ($status_code== 200) {
+            $links_count = $crawler->filter('a')->count();
+            if ($links_count > 0) {
+                $links = $crawler->filter('a')->links();
+
+                $all_links = [];
+                foreach ($links as $link) {
+                    $link_web = $link->getURI();
+                    $link_same_domain = Resource::get_domain($link_web);
+                    if($name_web == $link_same_domain){
+                      $all_links[] = $link_web;  
+                    }
+                    
+                } // for each links
+                $all_links = array_unique($all_links);
+                $resources['links'] = $all_links;
+            } // if there link
+        } // if 200 request
+        
+        return $resources;
+    }
+
+    
+    private function saveResource($resources)
+    {
+       // $resources = [];
+        
+        /*for ($r=0; $r <sizeof($this->resources) ; $r++) { 
             $is_web = Resource::isWebResource($this->resources[$r]);
             if ($is_web) {
                 $models =  Resource::find()->where(['name' => $this->resources[$r]])->select('url')->all();
@@ -128,9 +197,18 @@ class Crawler extends Model
                 }
                 $resources[$this->resources[$r]] = $urls;
             }
+        }*/
+
+        foreach ($resources as $domain => $url){
+            if(!Resource::find()->where(['name' => $domain,'url' => $url ])->exists()){
+               $model_resource = new Resource();
+               // asign
+               $model_resource->name = $domain;
+               $model_resource->url = $url;
+               $model_resource->typeResourceId = Resource::TYPE_WEB; 
+               $model_resource->save();
+            }
         }
-        
-        return $resources;
     }
     /**
      * [getRequest send request to urls and if status is 200 return object request by domain and url]
@@ -140,7 +218,7 @@ class Crawler extends Model
     {
         $crawler = [];
 
-        foreach ($resources as $domain => $urls) {
+        /*foreach ($resources as $domain => $urls) {
             for ($u=0; $u <sizeof($urls) ; $u++) { 
                 $client = $this->sendRequest($urls[$u]);
                 $status_code = $this->_client->getResponse()->getStatus();
@@ -151,7 +229,19 @@ class Crawler extends Model
                     }
                 }
             }
+        }*/
+
+        foreach ($resources as $domain => $url) {
+            $client = $this->sendRequest($url);
+            $status_code = $this->_client->getResponse()->getStatus();
+            if ($status_code == 200) {
+                $content_type = $this->_client->getResponse()->getHeader('Content-Type');
+                if (strpos($content_type, 'text/html') !== false) {
+                    $crawler[$domain][$url] = $client;
+                }
+            }
         }
+       
 
         return $crawler;
         
@@ -209,7 +299,10 @@ class Crawler extends Model
                                         
                                         if (!empty($data[$l][$i]['_text'])) {
                                             $section['id'] = $data[$l][$i]['id']; 
-                                            $section['_text'] = trim($data[$l][$i]['_text']); 
+                                            $stringizer_text = new Stringizer($data[$l][$i]['_text']);
+                                            $sentence = (array) $stringizer_text->collapseWhitespace(); 
+                                            $sentence = array_values($sentence);
+                                            $section['_text'] = $sentence[0]; 
                                             $model[$domain][$webpage][$label][] = $section; 
                                         }
                                     }
@@ -473,38 +566,7 @@ class Crawler extends Model
 
 
 
-    public function __construct($params) {
-        
-
-        $this->_client = new Client();
-        $this->_filebase = new Filebase();
-
-        foreach ($params as $key => $value) {
-            $this->$key = $value;
-        }
-
-        $this->_filebase->alertId = $this->alertId;
-
-        $resources = $this->getResouceUri();
-        
-        if ($resources) {
-
-            $crawler  = $this->getRequest($resources);
-            $contents = $this->getContent($crawler);
-            $model    = $this->setContent($contents);
-            $searchs  = $this->searchProductsInContent($model);
-            $contains = $this->searchWordsInContent($searchs);
-            $data = $this->setSearchDataWebPage($contains);
-            if ($data) {
-                $this->saveJsonFile();
-            }
-        }
-
-
-        
-        parent::__construct();
-    }
-
+    
 
 
 }
