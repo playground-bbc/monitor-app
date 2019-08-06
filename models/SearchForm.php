@@ -57,10 +57,11 @@ class SearchForm extends Model
         return [
             // scraping
             [['name','products','web_resource'], 'required', 'on' => 'scraping'],
-            
 
             // alert
             [['name','products','start_date','end_date'], 'required', 'on' => 'alert'],
+            // own rule
+            [['web_resource'], 'ruleThereIsResource', 'on' => 'alert'],
             // awario validator
             [['awario_file'], 'file','skipOnEmpty' => false,'extensions' => 'csv','maxSize' => 20000000, 'on' => 'alert'], // see php ini upload_max_filesize and post_max_size values 
 			// date validator
@@ -71,7 +72,19 @@ class SearchForm extends Model
         ];
     }
     
-   
+    public function ruleThereIsResource($attribute,$params){
+        if(empty($this->social_resources)){
+            $this->addError($attribute,'Please select web page option in Social Resource box');
+        }
+        if(!empty($this->social_resources)){
+            $social_id = $this->social_resources;
+            if(!in_array('29',$social_id)){
+                $this->addError($attribute,'at least one resource must be selected eg social resource or web resource');
+            }
+            
+        }
+
+    }
 
     public function scenarios()
     {

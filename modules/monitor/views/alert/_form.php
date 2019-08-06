@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <hr>
 <br>
 <br>
-<?php $form = ActiveForm::begin(['id' => 'search-form','options' => ['enctype' => 'multipart/form-data']]); ?>
+<?php $form = ActiveForm::begin(['id' => 'search-form','enableAjaxValidation' => true,'options' => ['enctype' => 'multipart/form-data']]); ?>
 	
 	<div class="container">
 		<div class="row">
@@ -91,10 +91,12 @@ $this->params['breadcrumbs'][] = $this->title;
 			<div class="col-md-6">
 				<?= $form->field($form_alert, 'social_resources')->widget(Select2::classname(), [
 					   'data' => $form_alert->socialResources,
-					    'options' => [
+					   	'options' => [
 					    	'id' => 'social_resources',
 					    	'placeholder' => 'Select a state ...',
-					    	'multiple' => true
+					    	'multiple' => true,
+					    	'theme' => 'krajee',
+					    	'debug' => true
 						],
 					    'pluginOptions' => [
 					        'allowClear' => true,
@@ -157,7 +159,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			            'options' => [],
 			            'clientOptions' => [],
 			            'clientEvents' => [
-			            	"itemAdded" => "function(e) { sendUrls(e.item) }",
+			            	//"itemAdded" => "function(e) { sendUrls(e.item) }",
 			            ]
 			         ]);
                  ?>
@@ -173,6 +175,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <?php ActiveForm::end(); ?>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 <?php
 
 use yii\web\View; 
@@ -187,47 +190,7 @@ $uuid = '';
 $this->registerJs('
 
 
-function sendUrls(url){
-	var flag           = false;
-	var  url           = url;
-	var  alert_name    = $("#searchform-name").val();
-	var  drive_names   = $("#searchform-drive_dictionary").val();
-	var  neutral_words = $("#searchform-positive_words").val();
-	var  product_name  = $("#searchform-products").val();
-	
-	if( (drive_names || neutral_words.length) && product_name){
-		flag = true;
-	}else{
-		swal("Upps!", "you need to fill in the fields of resources and dates!", "error");
-		$("#searchform-web_resource").tagsinput("removeAll");
-		
-	}
 
-	if(flag){
-		$.ajax({
-        url:"'.$urlUrlAlert.'",
-        type:"post",
-        dataType: "json",
-	        data: {
-	            url: url,  
-	            alert_name: alert_name,  
-	            //drive_names: drive_names,  
-	            //neutral_words: neutral_words,  
-	            product_name: product_name,  
-	        }
-
-	    })
-	    .done(function(response) {
-	                if (response.data.success == true) {
-	                    console.log(response.data);
-	                }
-	            })
-	    .fail(function() {
-	        console.log("error");
-	    });
-	}
-		
-}
 
 
 function removeProducts(name){
@@ -264,7 +227,7 @@ function sendProducts(name){
 	var  start_date = $("#searchform-start_date").val()
 	var  start_end  = $("#searchform-end_date").val()
 
-	if( resource && start_date.length && start_end.length ){
+	if( start_date.length && start_end.length ){
 		flag = true;
 	}else{
 		

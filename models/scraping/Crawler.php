@@ -15,7 +15,7 @@ use app\models\filebase\Filebase;
 use app\models\Resource;
 use app\models\api\BaseApi;
 
-set_time_limit(500);
+set_time_limit(2000);
 
 /**
  * Crawler is the model behind the logic from web scrapping.
@@ -59,19 +59,27 @@ class Crawler extends Model
 
     public function callCrawling(){
 
-        $resources = $this->getResouceUri();
-        
+        if (!empty($this->resources)){
+            foreach ($this->resources as $resource){
+                $resources[] = $this->getResouceUri($resource);
+            }
+        }
+       
         if (!empty($resources)) {
-
-            $crawler  = $this->getRequest($resources['links']);
+            
+            $crawler  = $this->getRequest($resources);
             $contents = $this->getContent($crawler);
             $model    = $this->setContent($contents);
+
             $searchs  = $this->searchProductsInContent($model);
             //$contains = $this->searchWordsInContent($searchs);
+            
             $data = $this->setSearchDataWebPage($searchs);
+
+            
             if ($data) {
                 $this->saveJsonFile();
-                $this->saveResource($resources['webpage']);
+               // $this->saveResource($resources['webpage']);
             }
         }
 
@@ -116,23 +124,24 @@ class Crawler extends Model
     public function rules()
     {
         return [
-            '//title'       => Yii::t('app','document_title'),
             '//h1'          => Yii::t('app','cabezera_1'),
             '//h2'          => Yii::t('app','cabezera_2'),
             '//h3'          => Yii::t('app','cabezera_3'),
             '//h4'          => Yii::t('app','cabezera_4'),
-            '//h5'          => Yii::t('app','cabezera_5'),
+            '//div/article' => Yii::t('app','article'),
             '//strong'      => Yii::t('app','negrita'),
-            '//a'           => Yii::t('app','link'),
-            '//span'        => Yii::t('app','contenedor'),
-            '//li'          => Yii::t('app','ítem'),
-            '//address'     => Yii::t('app','address'),
-            '//div/article' => Yii::t('app','cabezera_2'),
             '//aside'       => Yii::t('app','aside'),
             '//hgroup'      => Yii::t('app','hgroup'),
             '//p'           => Yii::t('app','paragraph'),
-            '//footer/div'  => Yii::t('app','footer'),
-        ];
+           /*'//title'       => Yii::t('app','document_title'),
+           '//h5'          => Yii::t('app','cabezera_5'),
+           '//a'           => Yii::t('app','link'),
+           '//span'        => Yii::t('app','contenedor'),
+            '//li'          => Yii::t('app','ítem'),
+           '//address'     => Yii::t('app','address'),
+           '//article'     => Yii::t('app','article'),
+           '//footer/div'  => Yii::t('app','footer'),
+*/        ];
     }
     /**
      * [sendRequest return client request]
@@ -149,32 +158,45 @@ class Crawler extends Model
      * [getResouceUri difference if it is a web resource and sorts it by domain and url]
      * @return  
      */
-    private function getResouceUri(){
+    private function getResouceUri($resource){
         $resources = [];
-        $name_web = Resource::get_domain($this->resources);
-        if($name_web){
-           $resources['webpage'][$name_web] = $this->resources;    
-        }
+        $name_web = Resource::get_domain($resource);
 
-        $crawler = $this->_client->request('GET', $this->resources);
+        $crawler = $this->_client->request('GET', $resource);
         $status_code = $this->_client->getResponse()->getStatus();
         if ($status_code== 200) {
             $links_count = $crawler->filter('a')->count();
             if ($links_count > 0) {
                 $links = $crawler->filter('a')->links();
 
+
                 $all_links = [];
-                foreach ($links as $link) {
+                $temp = [];
+                /*foreach ($links as $link) {
                     $link_web = $link->getURI();
                     $link_same_domain = Resource::get_domain($link_web);
                     if($name_web == $link_same_domain){
-                      $all_links[] = $link_web;  
+                      $all_links[$name_web][] = $link_web; 
                     }
                     
                 } // for each links
                 $all_links = array_unique($all_links);
-                $resources['links'] = $all_links;
-            } // if there link
+                $resources = $all_links;*/
+
+                foreach ($links as $link) {
+                    $link_web = $link->getURI();
+                    $link_same_domain = Resource::get_domain($link_web);
+                    if($name_web == $link_same_domain){
+                      if(!in_array($link_web, $temp)){
+                        $temp[] = $link_web;
+                      }
+                    }
+                    
+                } // for each links
+
+                $all_links[$name_web] = $temp; 
+                $resources = $all_links;
+            }
         } // if 200 request
         
         return $resources;
@@ -217,7 +239,7 @@ class Crawler extends Model
     private function getRequest($resources)
     {
         $crawler = [];
-
+        
         /*foreach ($resources as $domain => $urls) {
             for ($u=0; $u <sizeof($urls) ; $u++) { 
                 $client = $this->sendRequest($urls[$u]);
@@ -230,19 +252,23 @@ class Crawler extends Model
                 }
             }
         }*/
+        foreach ($resources as $index => $domains) {
+            foreach ($domains as $domain => $urls){
+                for ($u = 0; $u <sizeof($urls) ; $u++){
+                    $client = $this->sendRequest($urls[$u]);
+                    $status_code = $this->_client->getResponse()->getStatus();
 
-        foreach ($resources as $domain => $url) {
-            $client = $this->sendRequest($url);
-            $status_code = $this->_client->getResponse()->getStatus();
-            if ($status_code == 200) {
-                $content_type = $this->_client->getResponse()->getHeader('Content-Type');
-                if (strpos($content_type, 'text/html') !== false) {
-                    $crawler[$domain][$url] = $client;
+                    if ($status_code == 200) {
+                        $content_type = $this->_client->getResponse()->getHeader('Content-Type');
+                        if (strpos($content_type, 'text/html') !== false) {
+                            $crawler[$domain][$urls[$u]] = $client;
+                        }
+                    }
                 }
             }
         }
        
-
+        
         return $crawler;
         
     }
@@ -298,12 +324,13 @@ class Crawler extends Model
                                     for ($i=0; $i <sizeof($data[$l]) ; $i++) { 
                                         
                                         if (!empty($data[$l][$i]['_text'])) {
+
                                             $section['id'] = $data[$l][$i]['id']; 
                                             $stringizer_text = new Stringizer($data[$l][$i]['_text']);
                                             $sentence = (array) $stringizer_text->collapseWhitespace(); 
                                             $sentence = array_values($sentence);
                                             $section['_text'] = $sentence[0]; 
-                                            $model[$domain][$webpage][$label][] = $section; 
+                                            $model[$domain][$webpage][$label][] = $section;
                                         }
                                     }
                                 }
@@ -314,7 +341,7 @@ class Crawler extends Model
             }
 
         }
-
+       
         return $model;
     }
     
@@ -326,7 +353,7 @@ class Crawler extends Model
     private function searchProductsInContent($model)
     {
         $searchs = [];
-     
+        
         // searchs by procuts
         foreach ($model as $domain => $webpages) {
             foreach ($webpages as $webpage => $labels) {
@@ -334,7 +361,7 @@ class Crawler extends Model
                     for ($d=0; $d <sizeof($data) ; $d++) { 
                         $sentence = new Stringizer($data[$d]['_text']);
                         foreach ($this->setProducts() as $products => $product) {
-                            if ($sentence->containsCountIncaseSensitive($product)) {
+                            if ($sentence->containsIncaseSensitive($product)) {
                                 $data[$d]['product'] = $product;
                                 $searchs[$domain][$webpage][$label][] = $data[$d];
                             }
@@ -344,6 +371,7 @@ class Crawler extends Model
             }
         }
        
+        
         return $searchs;
     }
 
@@ -364,7 +392,7 @@ class Crawler extends Model
                         $sentence_in_word = new Stringizer($data[$d]['_text']);
                         foreach ($this->words as $dictionary => $word) {
                             for ($w=0; $w <sizeof($word) ; $w++) { 
-                                if ($sentence_in_word->containsCountIncaseSensitive($word[$w])) {
+                                if ($sentence_in_word->containsIncaseSensitive($word[$w])) {
                                     $data[$d]['word'] = $word[$w];
                                     $contains[$domain][$webpage][$label][] = $data[$d];
                                 }
@@ -428,6 +456,10 @@ class Crawler extends Model
             $products[] = $key;
             foreach ($value as $model => $serial_model) {
                 $products[] = $model;
+               /* $porcions = explode(' ', $model);
+                for ($m =0; $m <sizeof($porcions) ; $m++){
+                    $products[] = $porcions[$m];
+                }*/
                 foreach ($serial_model as $serial => $model_value) {
                     $products[] = $model_value;
                 }
@@ -468,8 +500,8 @@ class Crawler extends Model
                     $stringizer = new Stringizer($value[$i]['post_from']);
                     foreach ($this->words as $categories => $words) {
                         for ($j=0; $j <sizeof($words) ; $j++) { 
-                            if ($stringizer->containsCountIncaseSensitive($words[$j])) {
-                               $countByCategory[$model][$categories] += $stringizer->containsCountIncaseSensitive($words[$j]) ;
+                            if ($stringizer->containsIncaseSensitive($words[$j])) {
+                               $countByCategory[$model][$categories] += 1;
                             }
                         }
                     }
@@ -488,6 +520,8 @@ class Crawler extends Model
     private function addTagsSentenceFoundInWeb($data)
     {
         $sentences = [];
+       /* var_dump($data);
+        die();*/
         foreach ($data as $model => $value) {
             
             for ($i=0; $i <sizeof($value) ; $i++) { 
@@ -502,6 +536,7 @@ class Crawler extends Model
                                 $value[$i]['post_from'] = array_values($sentence);
                                 $value[$i]['product'] = $model;
                                 $tmp[] = $value[$i];
+                                
                             }
                         }
                     }
@@ -539,8 +574,8 @@ class Crawler extends Model
                     $stringizer = new Stringizer($value[$i]['post_from']);
                     foreach ($this->words as $categories => $words) {
                         for ($j=0; $j <sizeof($words) ; $j++) { 
-                            if ($stringizer->containsCountIncaseSensitive($words[$j]) && isset($countByWords[$products][$categories][$words[$j]])) {
-                                $countByWords[$products][$categories][$words[$j]] += $stringizer->containsCountIncaseSensitive($words[$j]) ;
+                            if ($stringizer->containsIncaseSensitive($words[$j]) && isset($countByWords[$products][$categories][$words[$j]])) {
+                                $countByWords[$products][$categories][$words[$j]] += 1 ;
                             }
                         }
                     }
