@@ -4,7 +4,7 @@ use yii\helpers\Url;
 
  ?>
 
-<?= Html::a('Export Excel', [['excel/excel-tweets'],'alertId' => $alertId,'resource_name' => 'tweets'], ['class' => 'btn btn-success','target' => '_blank']) ?>
+<?= Html::a('Export Excel', [Url::to('excel/excel'),'alertId' => $alertId,'resource_name' => 'Twitter'], ['class' => 'btn btn-success','target' => '_blank']) ?>
 <hr>
  <?= \nullref\datatable\DataTable::widget([
     'data' => $sentences,

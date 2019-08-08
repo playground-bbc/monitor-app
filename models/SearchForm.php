@@ -61,7 +61,9 @@ class SearchForm extends Model
             // alert
             [['name','products','start_date','end_date'], 'required', 'on' => 'alert'],
             // own rule
-            [['web_resource'], 'ruleThereIsResource', 'on' => 'alert'],
+            [['web_resource'], 'ruleThereIsResourceForWeb', 'on' => 'alert'],
+            [['products'], 'ruleThereIsResource', 'on' => 'alert'],
+            [['products'], 'ruleThereIsDictionaries', 'on' => 'alert'],
             // awario validator
             [['awario_file'], 'file','skipOnEmpty' => false,'extensions' => 'csv','maxSize' => 20000000, 'on' => 'alert'], // see php ini upload_max_filesize and post_max_size values 
 			// date validator
@@ -72,20 +74,53 @@ class SearchForm extends Model
         ];
     }
     
-    public function ruleThereIsResource($attribute,$params){
+    /**
+     * [ruleThereIsResourceForWeb rule for the web_resource text box, which alerts when the social resource text box is empty or the web page option has not been taken]
+     * @param  [type] $attribute [description]
+     * @param  [type] $params    [description]
+     * @return [error]           [error messages]
+     */
+    public function ruleThereIsResourceForWeb($attribute,$params){
         if(empty($this->social_resources)){
             $this->addError($attribute,'Please select web page option in Social Resource box');
         }
         if(!empty($this->social_resources)){
             $social_id = $this->social_resources;
-            if(!in_array('29',$social_id)){
+            if(!in_array('4',$social_id)){
                 $this->addError($attribute,'at least one resource must be selected eg social resource or web resource');
             }
             
         }
 
     }
+    /**
+     * [ruleThereIsResource rule if empy social_resources]
+     * @param  [type] $attribute [description]
+     * @param  [type] $params    [description]
+     * @return [error]           [error messages]
+     */
+    public function ruleThereIsResource($attribute,$params){
+        if(empty($this->social_resources)){
+            $this->addError($attribute,'Please select at least one resource');
+        }
+    }
+    /**
+     * [ruleThereIsDictionaries if empty group of dictionaries]
+     * @param  [type] $attribute [description]
+     * @param  [type] $params    [description]
+     * @return [type]            [description]
+     */
+    public function ruleThereIsDictionaries($attribute,$params){
+        if(empty($this->drive_dictionary) && empty($this->positive_words)){
+            $this->addError($attribute,'Please select at least one dictionary');
+        }
+    }
 
+
+    /**
+     * [scenarios distins scenarios for distins views]
+     * @return [array] [description]
+     */
     public function scenarios()
     {
         $scenarios = parent::scenarios();
@@ -93,7 +128,10 @@ class SearchForm extends Model
         $scenarios['live-chat'] = ['products','positive_words','negative_words','start_date','end_date'];
         return $scenarios;
     }
-
+    /**
+     * [getProducts get all products by categories]
+     * @return [array] []
+     */
     public function getProducts()
     {
         $family['Products Family'] = ArrayHelper::map(ProductsFamily::find()->andFilterCompare('parentId','null','<>')->all(),'name','name');
@@ -107,14 +145,19 @@ class SearchForm extends Model
         return $data;
 
     }
-
+    /**
+     * [getDictionaryNameOnDrive return tittles of dictionaries drive]
+     * @return [type] [description]
+     */
     public function getDictionaryNameOnDrive()
     {
         $drive = new DriveProductsApi();
-        
         return $drive->titleDictionary;
     }
-
+    /**
+     * [getSocialResources get all resources social]
+     * @return [type] [description]
+     */
     public function getSocialResources()
     {
        $type = TypeResource::findOne(['name'=> self::TYPE_SOCIAL]);

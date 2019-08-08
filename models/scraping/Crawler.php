@@ -61,7 +61,9 @@ class Crawler extends Model
 
         if (!empty($this->resources)){
             foreach ($this->resources as $resource){
-                $resources[] = $this->getResouceUri($resource);
+                if(!empty($this->getResouceUri($resource))){
+                    $resources[] = $this->getResouceUri($resource);
+                }
             }
         }
        
@@ -188,12 +190,18 @@ class Crawler extends Model
                     $link_same_domain = Resource::get_domain($link_web);
                     if($name_web == $link_same_domain){
                       if(!in_array($link_web, $temp)){
-                        $temp[] = $link_web;
+                        $stringizer = new Stringizer($link_web);
+                        foreach ($this->words as $dictionary => $word) {
+                            for ($w=0; $w <sizeof($word) ; $w++) { 
+                                if ($stringizer->containsIncaseSensitive($word[$w])) {
+                                    $temp[] = $link_web;
+                                }
+                            }
+                        }
                       }
                     }
                     
                 } // for each links
-
                 $all_links[$name_web] = $temp; 
                 $resources = $all_links;
             }
@@ -353,7 +361,7 @@ class Crawler extends Model
     private function searchProductsInContent($model)
     {
         $searchs = [];
-        
+       
         // searchs by procuts
         foreach ($model as $domain => $webpages) {
             foreach ($webpages as $webpage => $labels) {
@@ -465,6 +473,8 @@ class Crawler extends Model
                 }
             }
         }
+        $words = $this->words['Palabras Libres'];
+        $products = ArrayHelper::merge($products,$words);
         return $products;
     }
 
@@ -598,10 +608,6 @@ class Crawler extends Model
 
         return $model;
     }
-
-
-
-    
 
 
 }

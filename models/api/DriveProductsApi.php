@@ -3,6 +3,7 @@ namespace app\models\api;
 
 use Yii;
 use yii\base\Model;
+use yii\base\ErrorException;
 
 use app\models\Products;
 use app\models\ProductsModels;
@@ -20,6 +21,10 @@ class DriveProductsApi extends Model
 
     private $_productsFamily = ['HA', 'HE', 'MC', 'Monitores y proyectores'];
 
+    /**
+     * [SaveToDatabase calls distins function to save in database]
+     * @param [array] $values [all products from dictionaries]
+     */
     public function SaveToDatabase($values)
     {
         for ($i = 0; $i < sizeof($values); $i++) {
@@ -48,8 +53,14 @@ class DriveProductsApi extends Model
             $response = $service->spreadsheets_values->get($spreadsheetId, $sheetName);
             $values[] = $response->getValues();
         }
+
+        try {
+            $this->SaveToDatabase($values);
+        }catch (ErrorException $e){
+            throw new \yii\web\NotFoundHttpException(Yii::t('app','houston we have a problem, problem in the drive document ლ(ಠ_ಠლ)   '));
+        }
       
-        $this->SaveToDatabase($values);
+        
 
         /*try {
         $this->orderByHeaders($values);

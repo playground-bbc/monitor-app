@@ -48,6 +48,11 @@ $this->params['breadcrumbs'][] = $this->title;
 						        'format' => 'mm/dd/yyyy',
 						        //'startDate' => date(Yii::$app->formatter->dateFormat, strtotime('today')),
 		                    	'todayHighlight' => true
+						    ],
+						    'pluginEvents' => [
+						    	'changeDate' => "function(e) { 
+										callSendProducts();
+							       }",
 						    ]
 						]);
 					    
@@ -63,6 +68,11 @@ $this->params['breadcrumbs'][] = $this->title;
 						        'format' => 'mm/dd/yyyy',
 						        //'startDate' => date(Yii::$app->formatter->dateFormat, strtotime('today')),
 		                    	'todayHighlight' => true
+						    ],
+						    'pluginEvents' => [
+						    	'changeDate' => "function(e) { 
+										callSendProducts();
+							       }",
 						    ]
 						]);
 					    
@@ -102,7 +112,10 @@ $this->params['breadcrumbs'][] = $this->title;
 					        'allowClear' => true,
 					    ],
 					    'pluginEvents' => [
-					       "select2:select" => "function(e) { populateClientCode(e.params.data.id); }",
+					       "select2:select" => "function(e) { 
+								callSendProducts();
+					       		populateClientCode(e.params.data.id); 
+					       }",
 					    ]
 					]);
 				?>
@@ -190,6 +203,15 @@ $uuid = '';
 $this->registerJs('
 
 
+function callSendProducts(){
+	var products = $("#searchform-products").val();
+	if(products.length){
+		for(p = 0; p < products.length; p ++){
+			sendProducts(products[p]);
+
+		}
+	}
+}
 
 
 
@@ -227,7 +249,7 @@ function sendProducts(name){
 	var  start_date = $("#searchform-start_date").val()
 	var  start_end  = $("#searchform-end_date").val()
 
-	if( start_date.length && start_end.length ){
+	if( start_date.length && start_end.length && resource ){
 		flag = true;
 	}else{
 		
