@@ -72,10 +72,11 @@ class ExcelController extends \yii\web\Controller
       $nameAlert = $alert->name;
 
       $words = $this->getWords($alert);
+      $free_word['Palabras Libres'] =  $words['Palabras Libres'];
       
       $web = [
         'alertId' => $nameAlert,
-        'words' => $words['Palabras Libres'],
+        'words' => $free_word,
         'resources' => $this->getResourceWeb($alert),
         'products_models' => $this->getProductModel($alertId),
       ];
@@ -408,7 +409,7 @@ class ExcelController extends \yii\web\Controller
               [
                   'label' => 'post_from',
                   'value' => function($model) {
-                    return $model['post_from'][0];
+                    return $model['post_from'][1];
                   },
 
               ],
