@@ -31,7 +31,11 @@ class CountByCategoryAwario extends Model
 			}
 		}
 	}
-
+	/**
+	 * [getSeries get series awario for highcharts]
+	 * @param  [string] $target [target for looking for in the model data]
+	 * @return [array]          [series to the model data]
+	 */
 	public function getSeries($target)
 	{
 		$series = [];
@@ -66,14 +70,14 @@ class CountByCategoryAwario extends Model
 				}
 
 		}
-		
-		/*var_dump($this->model_data[$target]);
-		var_dump($series);
-		die();*/
 		return $series;
 	}
 
-
+	/**
+	 * [getCategories get categories awario for highcharts]
+	 * @param  [string] $target [target for looking for in the model data]
+	 * @return [array]          [categories to the model data]
+	 */
 	public function getCategories($target)
 	{
 		$products = [];

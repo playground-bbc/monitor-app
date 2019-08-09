@@ -9,10 +9,6 @@ use app\models\ProductsModels;
 use yii\widgets\Pjax;
 
 
-/*foreach ($modelMC as $key => $value) {
-  echo($value->products);
-}*/
-
  ?>
 <div class="monitor-default-index">
     <h1><?= $this->context->action->uniqueId ?></h1>

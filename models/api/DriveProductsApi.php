@@ -38,7 +38,10 @@ class DriveProductsApi extends Model
         }
 
     }
-
+    /**
+     * [getContentDocument calls services google document and read values]
+     * @return [function or ErrorException] [ call function to save in database otherwise raise errorException]
+     */
     public function getContentDocument()
     {
         $service = $this->_getServices();
@@ -50,7 +53,11 @@ class DriveProductsApi extends Model
         $values = [];
 
         foreach ($sheetNames as $id => $sheetName) {
-            $response = $service->spreadsheets_values->get($spreadsheetId, $sheetName);
+            try {
+                $response = $service->spreadsheets_values->get($spreadsheetId, $sheetName);
+            }catch(\Google_Service_Exception $e){
+                throw new \yii\web\NotFoundHttpException(Yii::t('app','houston we have a problem, drive api has problems .·´¯`(>▂<)´¯`·.'));
+            }
             $values[] = $response->getValues();
         }
 
@@ -59,24 +66,23 @@ class DriveProductsApi extends Model
         }catch (ErrorException $e){
             throw new \yii\web\NotFoundHttpException(Yii::t('app','houston we have a problem, problem in the drive document ლ(ಠ_ಠლ)   '));
         }
-      
-        
-
-        /*try {
-        $this->orderByHeaders($values);
-        } catch (ErrorException $e) {
-        Yii::error("Error in the Document :( ");
-        }*/
-        //return $values;
 
     }
-
+    /**
+     * [getContentDictionaryByTitle get the content dictionary by title]
+     * @param  array  $sheetNames [array with names dictionaries] dictionaries
+     * @return [array]             [content of the dictionary]
+     */
     public function getContentDictionaryByTitle($sheetNames = [])
     {
         $service = $this->_getServices();
 
         $spreadsheetId = Yii::$app->params['drive']['Drive Diccionario Listening'];
-        $response      = $service->spreadsheets->get($spreadsheetId);
+        try {
+          $response = $service->spreadsheets->get($spreadsheetId);
+        } catch (\Google_Service_Exception $e) {
+          throw new \yii\web\NotFoundHttpException(Yii::t('app','houston we have a problem, drive api has problems .·´¯`(>▂<)´¯`·.'));
+        }
 
         $values = [];
         foreach ($sheetNames as $sheetName) {
@@ -94,14 +100,24 @@ class DriveProductsApi extends Model
         return (count($values)) ? $values : null;
 
     }
-
+    /**
+     * [getTitleDictionary get the title dictionaries in drive]
+     * @return [array] [titles dictionaries]
+     */
     public function getTitleDictionary()
     {
         // Get the API client and construct the service object.
         $service = $this->_getServices();
 
         $spreadsheetId = Yii::$app->params['drive']['Drive Diccionario Listening'];
-        $response      = $service->spreadsheets->get($spreadsheetId);
+        
+        try {
+          $response = $service->spreadsheets->get($spreadsheetId);
+          
+        } catch (\Google_Service_Exception $e) {
+
+          throw new \yii\web\NotFoundHttpException(Yii::t('app','houston we have a problem, drive api has problems .·´¯`(>▂<)´¯`·.'));
+        }
         $sheetNames    = [];
         for ($i = 0; $i < sizeof($response->sheets); $i++) {
             if (!in_array($response->sheets[$i]->properties->title, $this->_productsFamily)) {
@@ -115,7 +131,11 @@ class DriveProductsApi extends Model
         return (count($sheetName)) ? $sheetName : null;
 
     }
-
+    /**
+     * [saveFamily save in database family of products]
+     * @param  [string] $value [family name]
+     * @return [int]           [family id]
+     */
     public function saveFamily($value)
     {
         $value = $this->delete_quotation_marks($value);
@@ -131,7 +151,12 @@ class DriveProductsApi extends Model
         }
         return $model->id;
     }
-
+    /**
+     * [saveParent save parent in the family]
+     * @param  [int] $familyId [id of the family records]
+     * @param  [string] $value [string to save]
+     * @return [int]           [id of new recors]
+     */
     public function saveParent($familyId, $value)
     {
         $value = $this->delete_quotation_marks($value);
@@ -150,7 +175,12 @@ class DriveProductsApi extends Model
         }
         return $model->id;
     }
-
+    /**
+     * [saveProductCategory save in category table]
+     * @param  [int] $familyId  [familyId of the record]
+     * @param  [string] $value  [string to save]
+     * @return [int]            [id of new record category]
+     */
     public function saveProductCategory($familyId, $value)
     {
         $value = $this->delete_quotation_marks($value);
@@ -168,7 +198,12 @@ class DriveProductsApi extends Model
         }
         return $model->id;
     }
-
+    /**
+     * [saveProduct save the product in to respective category]
+     * @param  [int] $categoryId [id the category]
+     * @param  [string] $value   [value to save]
+     * @return [int]             [id of new record product]
+     */
     public function saveProduct($categoryId, $value)
     {   
         $value = $this->delete_quotation_marks($value);
@@ -187,7 +222,12 @@ class DriveProductsApi extends Model
         return $model->id;
 
     }
-
+    /**
+     * [saveProductsModel save the model in to respective product]
+     * @param  [int] $productId [id the product]
+     * @param  [string] $value  [string to save]
+     * @return [int]            [id of the new record]
+     */
     public function saveProductsModel($productId, $value)
     {   
         $value = $this->delete_quotation_marks($value);
@@ -206,7 +246,11 @@ class DriveProductsApi extends Model
         }
         return $model->id;
     }
-
+    /**
+     * [saveCategoriesDictionary save new category if not exist]
+     * @param  [string] $categoryTitles [ name of the new category dictionary]
+     * @return [null]                 [description]
+     */
     public function saveCategoriesDictionary($categoryTitles)
     {
         foreach ($categoryTitles as $category) {
@@ -218,7 +262,10 @@ class DriveProductsApi extends Model
             }
         }
     }
-
+    /**
+     * [_getClient get google client]
+     * @return [object] [client to call to api google drive]
+     */
     private function _getClient()
     {
         $client = new \Google_Client();
@@ -233,7 +280,10 @@ class DriveProductsApi extends Model
         return $client;
 
     }
-
+    /**
+     * [_getServices get google service sheets]
+     * @return [obj] [service to call function style sheets]
+     */
     private function _getServices()
     {
         // Get the API client and construct the service object.
@@ -241,7 +291,11 @@ class DriveProductsApi extends Model
         $service = new \Google_Service_Sheets($client);
         return $service;
     }
-
+    /**
+     * [delete_quotation_marks delete the quotations marks in the string]
+     * @param  [string] $string [string to sanitaze]
+     * @return [string]         [sanitaze string]
+     */
     public function delete_quotation_marks($string) { 
         $result = str_replace(array('\'', '"'), '', $string);
         return $result; 

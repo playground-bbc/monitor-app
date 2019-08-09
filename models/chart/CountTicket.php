@@ -32,7 +32,11 @@ class CountTicket extends Model
 		}
 		
 	}
-
+	/**
+	 * [getSeries get series tickets in the liveChat]
+	 * @param  [string] $target [name target for looking for in the model data]
+	 * @return [array]          [series for highcharts]
+	 */
 	public function getSeries($target)
 	{
 		$series = [];

@@ -32,7 +32,11 @@ class CountByCategory extends Model
 		}
 		
 	}
-
+	/**
+	 * [getSeries get the series for Highcharts]
+	 * @param  [string] $target [target for looking for in the model data]
+	 * @return [array]          [series the data model by target]
+	 */
 	public function getSeries($target)
 	{
 		$series = [];
@@ -63,7 +67,11 @@ class CountByCategory extends Model
 		return $series;
 	}
 
-
+	/**
+	 * [getCategories get the categories for Highcharts]
+	 * @param  [type] $target [target for looking for in the model data]
+	 * @return [array]        [categories the data model by target]
+	 */
 	public function getCategories($target)
 	{
 		$products = [];

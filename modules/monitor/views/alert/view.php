@@ -1,6 +1,5 @@
 <?php
 /* @var $this yii\web\View */
-use miloschuman\highcharts\Highcharts;
 use yii\web\JsExpression;
 use yii\grid\GridView;
 use yii\helpers\ArrayHelper;

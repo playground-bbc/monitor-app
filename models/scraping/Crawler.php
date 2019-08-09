@@ -81,7 +81,6 @@ class Crawler extends Model
             
             if ($data) {
                 $this->saveJsonFile();
-               // $this->saveResource($resources['webpage']);
             }
         }
 
@@ -174,16 +173,6 @@ class Crawler extends Model
 
                 $all_links = [];
                 $temp = [];
-                /*foreach ($links as $link) {
-                    $link_web = $link->getURI();
-                    $link_same_domain = Resource::get_domain($link_web);
-                    if($name_web == $link_same_domain){
-                      $all_links[$name_web][] = $link_web; 
-                    }
-                    
-                } // for each links
-                $all_links = array_unique($all_links);
-                $resources = $all_links;*/
 
                 foreach ($links as $link) {
                     $link_web = $link->getURI();
@@ -213,21 +202,6 @@ class Crawler extends Model
     
     private function saveResource($resources)
     {
-       // $resources = [];
-        
-        /*for ($r=0; $r <sizeof($this->resources) ; $r++) { 
-            $is_web = Resource::isWebResource($this->resources[$r]);
-            if ($is_web) {
-                $models =  Resource::find()->where(['name' => $this->resources[$r]])->select('url')->all();
-                $urls = [];
-                foreach ($models as $resource => $model) {
-                    if (!in_array($model->url, $urls)) {
-                        $urls[] = $model->url;
-                    }
-                }
-                $resources[$this->resources[$r]] = $urls;
-            }
-        }*/
 
         foreach ($resources as $domain => $url){
             if(!Resource::find()->where(['name' => $domain,'url' => $url ])->exists()){
@@ -248,18 +222,6 @@ class Crawler extends Model
     {
         $crawler = [];
         
-        /*foreach ($resources as $domain => $urls) {
-            for ($u=0; $u <sizeof($urls) ; $u++) { 
-                $client = $this->sendRequest($urls[$u]);
-                $status_code = $this->_client->getResponse()->getStatus();
-                if ($status_code == 200) {
-                    $content_type = $this->_client->getResponse()->getHeader('Content-Type');
-                    if (strpos($content_type, 'text/html') !== false) {
-                        $crawler[$domain][$urls[$u]] = $client;
-                    }
-                }
-            }
-        }*/
         foreach ($resources as $index => $domains) {
             foreach ($domains as $domain => $urls){
                 for ($u = 0; $u <sizeof($urls) ; $u++){
@@ -503,7 +465,6 @@ class Crawler extends Model
             }
         }
        
-        
         foreach ($data as $model => $value) {
             for ($i=0; $i <sizeof($value) ; $i++) { 
                 if ($value[$i]['source'] == self::WEB) {
@@ -530,8 +491,7 @@ class Crawler extends Model
     private function addTagsSentenceFoundInWeb($data)
     {
         $sentences = [];
-       /* var_dump($data);
-        die();*/
+       
         foreach ($data as $model => $value) {
             
             for ($i=0; $i <sizeof($value) ; $i++) { 

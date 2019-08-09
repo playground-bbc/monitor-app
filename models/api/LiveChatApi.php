@@ -386,7 +386,11 @@ class LiveChatApi extends Model
         }
         return $live;
     }
-
+    /**
+     * [getTicketsByProduct DEPRECATED]
+     * @param  string $product [description]
+     * @return [type]          [description]
+     */
     public function getTicketsByProduct($product='')
     {
         
@@ -397,20 +401,29 @@ class LiveChatApi extends Model
         return $value;
 
     }
-
+    /**
+     * [getWordsToSearch DEPRECATED]
+     * @return [type] [description]
+     */
     public function getWordsToSearch()
     {
         $dictionaries = Dictionary::find()->where(['alertId'=> $this->alertId])->with('category')->asArray()->all();
         $words = ArrayHelper::map($dictionaries,'id','word','category.name');
         return $words;
     }
-
+    /**
+     * [countTicketsAll DEPRECATED]
+     * @return [type] [description]
+     */
     public function countTicketsAll()
     {
         $tickets =  $this->_liveChat->tickets->get($params = array());
         return $tickets->total;
     }
-
+    /**
+     * [gettotalByQuery DEPRECATED]
+     * @return [type] [description]
+     */
     public function gettotalByQuery()
     {
         return $this->totalByQuery;

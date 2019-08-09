@@ -6,6 +6,8 @@ use yii\base\Model;
 use yii\helpers\ArrayHelper;
 
 use Codebird\Codebird;
+
+set_time_limit(500); // 
 /**
  * TwitterApi is the model behind the login API.
  *
@@ -39,7 +41,6 @@ class TwitterApi extends Model
         Yii::$app->session->set('oauth_verify_twitter',true);
 
         $this->redirect_to_auth_website();
-        //return $this->redirect_to_auth_website_to_view();
     }
 
     public function logout()
@@ -74,9 +75,6 @@ class TwitterApi extends Model
         // store the token (which is different from the request token!)
         Yii::$app->session->set('oauth_token_twitter',$reply->oauth_token);
         Yii::$app->session->set('oauth_token_secret_twitter',$reply->oauth_token_secret);
-       /* // send to same URL, without oauth GET parameters
-        header('Location: ' . basename(__FILE__));
-        die();*/
 
     }
 
@@ -85,7 +83,6 @@ class TwitterApi extends Model
     {
 
         $this->twitter->setReturnFormat(CODEBIRD_RETURNFORMAT_ARRAY);
-        set_time_limit(500); // 
         return $this->twitter->search_tweets($params,true);
          
     }

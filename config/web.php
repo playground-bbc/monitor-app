@@ -59,20 +59,11 @@ $config = [
             ],
         ],
         'db' => $db,
-        /*'session' => [
-            'class' => 'yii\web\DbSession',
-            'db' => $db,
-            'sessionTable' => 'session_monitor',
-        ],*/
-        /*
-        */
         'urlManager' => [
             'enablePrettyUrl' => true,
             //'showScriptName' => false,
             'rules' => [
                // '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
-             
-                
             ],
         ],
         
@@ -80,10 +71,6 @@ $config = [
     'modules' => [
         'monitor' => [
             'class' => 'app\modules\monitor\Module',
-        ],
-        'gridview' => [
-            'class' => 'kartik\grid\Module',
-            // other module settings
         ],
     ],
     'params' => $params,

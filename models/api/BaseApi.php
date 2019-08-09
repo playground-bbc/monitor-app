@@ -11,6 +11,7 @@ use app\models\filebase\Filebase;
 
 use Stringizer\Stringizer;
 
+set_time_limit(1000);
 /**
  * Wrap class for call other api models
  */
@@ -95,7 +96,6 @@ class BaseApi extends Model
 		
 		$model = ArrayHelper::merge($tweets,$tickets);
 		$model = ArrayHelper::merge($model,$chats);
-		//$this->saveJsonFile(ArrayHelper::merge($tweets,$tickets));
 		
 		$this->saveJsonFile($model);
 
@@ -213,39 +213,21 @@ class BaseApi extends Model
         foreach ($categories as $key) {
         	$params['q'] = $key;
         	$data[$key] = $twitterApi->search_tweets_by_date($params);
-        	/*if ($data[$key]['rate']['remaining'] < $this->twitter_limit) {
-        		break;
-        	}*/
+        	
         }
 
         foreach ($this->products_models as $key => $value) {
         	foreach ($value as $model => $serial_model) {
         		$params['q'] = $model;
         	    $data[$model] = $twitterApi->search_tweets_by_date($params);
-        	   /* if ($data[$key]['rate']['remaining'] < $this->twitter_limit) {
-	        		break;
-	        	}*/
+        	   
 	        	// new serial_model
 	        	for ($i=0; $i <sizeof($serial_model) ; $i++) { 
 	        		$params['q'] = $serial_model[$i];
 	        		$data[$serial_model[$i]] = $twitterApi->search_tweets_by_date($params);
-	        	    /*if ($data[$serial_model[$i]]['rate']['remaining'] < $this->twitter_limit) {
-		        		break;
-		        	}*/
+	        	    
 	        	}
         	}
-
-
-
-        	// serial_model
-        	/*foreach ($value as $model => $serial_model) {
-        		$params['q'] = $serial_model;
-        	    $data[$serial_model] = $twitterApi->search_tweets($params);
-        	    if ($data[$key]['rate']['remaining'] < $this->twitter_limit) {
-	        		break;
-	        	}
-        	}*/
-
 
         }
      	
@@ -259,8 +241,6 @@ class BaseApi extends Model
 		
 		$tweets = [];
 		$source = 'TWITTER';
-
-	
 		foreach ($data as $product => $object){
 			$index = 0;
 			for ($o = 0; $o < sizeof($object) ; $o++){
@@ -387,8 +367,7 @@ class BaseApi extends Model
 				}
 			}
 		}
-		/*var_dump($model_ticket);
-		die();*/
+		
 		return $model_ticket;
 		
 	}
@@ -514,7 +493,7 @@ class BaseApi extends Model
 	}
 
 	/**
-	 * [lastUpdateJsonFile set true if the document is created in more that 5 minutes]
+	 * [lastUpdateJsonFile DEPRECATED set true if the document is created in more that 5 minutes]
 	 * @return [boolean] [if true call the api if false el document json is created and update in less that 5 minutes]
 	 */
 	private function lastUpdateJsonFile()
@@ -576,7 +555,7 @@ class BaseApi extends Model
 	private function addTagsSentenceFoundInTweets($data)
 	{
 		$tweets = [];
-		set_time_limit(500);
+		
 		foreach ($data as $model => $value) {
 			for ($i=0; $i <sizeof($value) ; $i++) { 
 				if ($value[$i]['source'] == self::TWITTER) {
@@ -669,7 +648,6 @@ class BaseApi extends Model
 		unset($countByCategory['WEB']);
 		unset($countByCategory['AWARIO']);
 
-		set_time_limit(500);
 
 		foreach ($data as $model => $value) {
 			for ($i=0; $i <sizeof($value) ; $i++) { 
@@ -701,10 +679,6 @@ class BaseApi extends Model
 				} // if livechat source
 			}
 		}
-
-
-		
-		
 		
 		return (count($countByCategory)) ? $countByCategory : null;
 
@@ -783,7 +757,6 @@ class BaseApi extends Model
 	private function addTagsSentenceFoundInLive($data)
 	{
 		$live = [];
-		set_time_limit(500);
 		foreach ($data as $model => $value) {
 			for ($i=0; $i <sizeof($value) ; $i++) { 
 				if (($value[$i]['source'] == self::LIVECHAT) && ($value[$i]['type'] == 'Ticket')) {
@@ -840,8 +813,6 @@ class BaseApi extends Model
 				
 			}
 		}
-		
-		  
 		return $live;
 	}
 	
@@ -850,7 +821,6 @@ class BaseApi extends Model
 	{
 		$awario_data =[];
 		// lets find out
-		set_time_limit(500);
 		if (isset($data['AWARIO'])) {
 			// set array analisys Model => dictionary_title => word
 			$products = [];
@@ -863,16 +833,12 @@ class BaseApi extends Model
 					}
 				}
 			}
-			
-			
 
 			for ($a=0; $a <sizeof($data['AWARIO']) ; $a++) { 
 				// search by title 
 				$stringizer_title = new Stringizer($data['AWARIO'][$a]['title']);
-
 				// search by post_from
 				$stringizer = new Stringizer($data['AWARIO'][$a]['post_from']);
-				
 				for ($p=0; $p <sizeof($products) ; $p++) { 
 
 					if ($stringizer_title->containsCountIncaseSensitive($products[$p])) {
@@ -937,7 +903,6 @@ class BaseApi extends Model
 	{
         $data = [];
 		// lets find out
-		set_time_limit(500);
         foreach ($awario_data['AWARIO'] as $products => $value ) {
         	for ($i=0; $i <sizeof($value) ; $i++) { 
         		// search by title
@@ -1020,8 +985,6 @@ class BaseApi extends Model
 		unset($countByWords);
 
 		return (count($data)) ? $data : null;
-
-
 
 	}
 

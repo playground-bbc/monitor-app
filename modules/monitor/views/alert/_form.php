@@ -5,11 +5,6 @@ use yii\widgets\Breadcrumbs;
 use yii\helpers\ArrayHelper;
 use yii\bootstrap\ActiveForm;
 
-use app\models\ProductsFamily;
-use app\models\ProductCategory;
-use app\models\ProductsModels;
-use app\models\api\TwitterApi;
-
 use kartik\select2\Select2;
 use kartik\date\DatePicker;
 use kartik\file\FileInput;
@@ -205,10 +200,13 @@ $this->registerJs('
 
 function callSendProducts(){
 	var products = $("#searchform-products").val();
-	if(products.length){
-		for(p = 0; p < products.length; p ++){
-			sendProducts(products[p]);
+	console.log(products);
+	if(products != null){
+		if(products.length){
+			for(p = 0; p < products.length; p ++){
+				sendProducts(products[p]);
 
+			}
 		}
 	}
 }
@@ -287,13 +285,13 @@ function sendProducts(name){
     View::POS_READY
 );
 
-
 if (!\Yii::$app->session->has('oauth_token_twitter')) {
 	$url = Url::to('twitter');
 
 	$this->registerJs('
 		function populateClientCode(params){
-			if(params == 2){
+			console.log(params)
+			if(params == 1){
 			window.location.replace("'.$url.'");
 			}
 		}

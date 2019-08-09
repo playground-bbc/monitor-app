@@ -39,17 +39,6 @@ class m190531_003401_users extends Migration
         ]);
 
         $this->insert('{{%users}}', [
-            'username'      => 'drive-app',
-            'auth_key'      => 'tPwo4kDpN7JAz8Rrm9EwNAQ7q8F1p7FN',
-            // deathnote
-            'password_hash' => '$2y$13$Xv3tYWezdvWV9GRUUv1/8.NEC8CX4fp2MRntK5L0EBJXgwy49IF.K',
-            'email'         => 'monitor-app@montior-app.iam.gserviceaccount.com',
-            'status'        => 10,
-            'created_at'    => 0,
-            'updated_at'    => 0,
-        ]);
-
-        $this->insert('{{%users}}', [
             'username'      => 'dafne',
             'auth_key'      => 'tPwo4kDpN7JAz8Rrm9EwNAQ7q8F1p7FN',
             // lgdafne

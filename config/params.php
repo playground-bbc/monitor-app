@@ -3,11 +3,9 @@
 // path to folder flat archives
 $s = DIRECTORY_SEPARATOR;
 
-Yii::setAlias('@live-chat', dirname(dirname(__DIR__)) . "{$s}monitor-app{$s}monitor-app-data{$s}live-chat");
 Yii::setAlias('@monitor', dirname(dirname(__DIR__)) . "{$s}monitor-app{$s}monitor-app-data{$s}");
 Yii::setAlias('@resources', dirname(dirname(__DIR__)) . "{$s}monitor-app{$s}monitor-app-data{$s}resources");
 Yii::setAlias('@backup', dirname(dirname(__DIR__)) . "{$s}monitor-app{$s}monitor-app-data{$s}backup");
-Yii::setAlias('@service_account', dirname(dirname(__DIR__)) . "{$s}monitor-app{$s}monitor-app-data{$s}service_account");
 Yii::setAlias('@drive_account', dirname(dirname(__DIR__)) . "{$s}monitor-app{$s}monitor-app-data{$s}service_account{$s}monitor-app-96f0293a0153.json");
 
 return [
@@ -20,7 +18,6 @@ return [
     'liveChat' => [
     	'apiLogin' => 'eduardo@montana-studio.com',
         'apiKey' => 'b1f9cbda5e332b55d03fa2a5deb4c037'
-    	/*'apiKey' => 'ad24335143918c8470d4962a1c52866e'*/
     ],
     'drive' => [
         'Drive Diccionario Listening' => '1LBf9kTwPswIQuvNx0xH8RiMBZiXNZeBGi_QjTrHVwAc',

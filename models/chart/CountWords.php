@@ -32,7 +32,11 @@ class CountWords extends Model
 		}
 	}
 
-
+	/**
+	 * [getSeries get series for count words in the highcharts]
+	 * @param  [string] $target [target for looking for in the model data]
+	 * @return [array]          [series the data model by target]
+	 */
 	public function getSeries($target)
 	{
 		$series = [];
@@ -55,7 +59,11 @@ class CountWords extends Model
 		return $series;
 	}
 
-
+	/**
+	 * [getDrilldownSeries get drilldown for highcharts]
+	 * @param  [string] $target [target for looking for in the model data]
+	 * @return [array]          [drilldown the data model by target]
+	 */
 	public function getDrilldownSeries($target)
 	{
 		$series = [];

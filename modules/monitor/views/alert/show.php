@@ -2,7 +2,6 @@
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\data\ArrayDataProvider;
-use app\models\AlertResources;
 // format dates 
 $start_date = \Yii::$app->formatter->asDatetime($alert->start_date, "php:d-m-Y");
 $end_date = \Yii::$app->formatter->asDatetime($alert->end_date, "php:d-m-Y");

@@ -52,19 +52,4 @@ class m190521_144417_type_resource extends Migration
     {
         $this->dropTable('{{%type_resource}}');
     }
-
-    /*
-    // Use up()/down() to run migration code without a transaction.
-    public function up()
-    {
-
-    }
-
-    public function down()
-    {
-        echo "m190521_144417_TypeResource cannot be reverted.\n";
-
-        return false;
-    }
-    */
 }

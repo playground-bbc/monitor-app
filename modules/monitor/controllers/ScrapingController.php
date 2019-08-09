@@ -28,10 +28,6 @@ class ScrapingController extends Controller
       $model = new Crawler();
 
       if ($form_model->load(Yii::$app->request->post())) {
-         
-
-
-        
        // return $this->redirect(['view','id' => $resource->id]);
 
       }

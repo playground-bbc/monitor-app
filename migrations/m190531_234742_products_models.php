@@ -29,6 +29,7 @@ class m190531_234742_products_models extends Migration
             'updatedBy'    => $this->integer(),
 
         ], $tableOptions);
+       
         // tv
         /*$this->insert('{{%products_models}}', [
             'productId'    => 1,
@@ -38,73 +39,7 @@ class m190531_234742_products_models extends Migration
             'updatedAt'    => '1488153462',
             'createdBy'    => '1',
             'updatedBy'    => '1',
-        ]);
-
-        $this->insert('{{%products_models}}', [
-            'productId'    => 1,
-            'serial_model' => 'LG 43LK5700PSC',
-            'status'       => 1,
-            'createdAt'    => '1488153462',
-            'updatedAt'    => '1488153462',
-            'createdBy'    => '1',
-            'updatedBy'    => '1',
-        ]);
-
-        $this->insert('{{%products_models}}', [
-            'productId'    => 1,
-            'serial_model' => 'LG 32LK540BPSA',
-            'status'       => 1,
-            'createdAt'    => '1488153462',
-            'updatedAt'    => '1488153462',
-            'createdBy'    => '1',
-            'updatedBy'    => '1',
-        ]);
-
-        $this->insert('{{%products_models}}', [
-            'productId'    => 1,
-            'serial_model' => 'LG 55UK6200PSA',
-            'status'       => 1,
-            'createdAt'    => '1488153462',
-            'updatedAt'    => '1488153462',
-            'createdBy'    => '1',
-            'updatedBy'    => '1',
-        ]);
-
-        $this->insert('{{%products_models}}', [
-            'productId'    => 1,
-            'serial_model' => 'LG 60UK6200PSA',
-            'status'       => 1,
-            'createdAt'    => '1488153462',
-            'updatedAt'    => '1488153462',
-            'createdBy'    => '1',
-            'updatedBy'    => '1',
-        ]);
-
-        $this->insert('{{%products_models}}', [
-            'productId'    => 1,
-            'serial_model' => 'LG 43UK6300PSB',
-            'status'       => 1,
-            'createdAt'    => '1488153462',
-            'updatedAt'    => '1488153462',
-            'createdBy'    => '1',
-            'updatedBy'    => '1',
-        ]);
-
-        $this->insert('{{%products_models}}', [
-            'productId'    => 1,
-            'serial_model' => 'LG 50UK6300PSB',
-            'status'       => 1,
-            'createdAt'    => '1488153462',
-            'updatedAt'    => '1488153462',
-            'createdBy'    => '1',
-            'updatedBy'    => '1',
         ]);*/
-        //end tv
-
-        // Audio
-
-        // end Audio
-
 
         // creates index for column `parentId`
         $this->createIndex(

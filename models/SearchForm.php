@@ -178,7 +178,6 @@ class SearchForm extends Model
             'products' => 'Productos - Model - Code',
             'categories_dictionary' => 'categories dictionary',
             'positive_words' => 'free words',
-           // 'negative_words' => 'negative words',
             'is_dictionary' => 'Add Dictionary',
             'awario_file' => 'Add Awario File',
         ];

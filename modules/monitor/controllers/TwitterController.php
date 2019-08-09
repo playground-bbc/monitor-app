@@ -37,12 +37,6 @@ class TwitterController extends Controller
                 'count' => '100',
 
             ];
-             
-            /*
-            $reply = Yii::$app->cache->getOrSet($key, function () use ($twitterApi,$params) {
-                return $twitterApi->search_tweets($params, true);
-            });
-            */
             $reply = $twitterApi->search_tweets($params, true);
 
             return $this->render('index',[

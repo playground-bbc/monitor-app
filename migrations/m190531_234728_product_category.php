@@ -38,46 +38,6 @@ class m190531_234728_product_category extends Migration
             'updatedAt' => '1488153462',
             'createdBy' => '1',
             'updatedBy' => '1',
-        ]);
-        //2
-        $this->insert('{{%product_category}}', [
-            'familyId'  => 2,
-            'name'      => 'FULL HD',
-            'status'    => 1,
-            'createdAt' => '1488153462',
-            'updatedAt' => '1488153462',
-            'createdBy' => '1',
-            'updatedBy' => '1',
-        ]);
-        //3
-        $this->insert('{{%product_category}}', [
-            'familyId'  => 2,
-            'name'      => 'Ultra HD 4K',
-            'status'    => 1,
-            'createdAt' => '1488153462',
-            'updatedAt' => '1488153462',
-            'createdBy' => '1',
-            'updatedBy' => '1',
-        ]);
-        //4
-        $this->insert('{{%product_category}}', [
-            'familyId'  => 2,
-            'name'      => 'OLED 4K',
-            'status'    => 1,
-            'createdAt' => '1488153462',
-            'updatedAt' => '1488153462',
-            'createdBy' => '1',
-            'updatedBy' => '1',
-        ]);
-        //5
-        $this->insert('{{%product_category}}', [
-            'familyId'  => 2,
-            'name'      => 'OLED 4K',
-            'status'    => 1,
-            'createdAt' => '1488153462',
-            'updatedAt' => '1488153462',
-            'createdBy' => '1',
-            'updatedBy' => '1',
         ]);*/
 
 
@@ -114,19 +74,4 @@ class m190531_234728_product_category extends Migration
 
         return false;
     }
-
-    /*
-    // Use up()/down() to run migration code without a transaction.
-    public function up()
-    {
-
-    }
-
-    public function down()
-    {
-        echo "m190608_233311_product_category cannot be reverted.\n";
-
-        return false;
-    }
-    */
 }

@@ -8,8 +8,11 @@ use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use yii\data\ArrayDataProvider;
+
 use app\models\LoginForm;
 use app\models\ContactForm;
+
+use app\models\api\TwitterApi;
 
 
 
@@ -84,7 +87,17 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+
+            $twitterApi = new TwitterApi();
+            // if no esta autenticado en twitterApi
+            if (!\Yii::$app->session->has('oauth_token_twitter')) {
+                  $twitterApi->authenticate();
+            }elseif (isset($_GET['oauth_verifier']) && isset($_SESSION['oauth_verify'])) {
+                // si lo esta buscamos el token en la db 
+               $twitterApi->redirect_to_monitor();
+            }
+           
+           return $this->goBack();
         }
 
         $model->password = '';
@@ -130,9 +143,16 @@ class SiteController extends Controller
     public function actionAbout()
     {
 
-        /*$password_hash = Yii::$app->security->generatePasswordHash("lgcristobal");
-        var_dump($password_hash);
-        die();*/   
+         
         return $this->render('about');
+    }
+    /**
+     * [actionPassword only for assign password]
+     * @return [exit] [description]
+     */
+    public function actionPassword(){
+        $password_hash = Yii::$app->security->generatePasswordHash("lgcristobal");
+        //var_dump($password_hash);
+        //die();  
     }
 }

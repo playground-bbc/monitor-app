@@ -11,14 +11,10 @@ use yii\web\UploadedFile;
 use yii\helpers\FileHelper;
 use yii\data\ArrayDataProvider;
 
-use yii2tech\spreadsheet\Spreadsheet;
-use Stringizer\Stringizer;
 
 use app\models\api\BaseApi;
 use app\models\api\TwitterApi;
-use app\models\api\LiveChatApi;
 
-use app\models\filebase\Filebase;
 
 use app\models\scraping\Crawler;
 
@@ -39,7 +35,6 @@ use app\models\ProductCategory;
 use app\models\api\DriveProductsApi;
 use app\models\ProductsModelsAlerts;
 use app\models\CategoriesDictionary;
-use app\models\search\ProductsModelsAlertsSearch;
 
 class AlertController extends \yii\web\Controller
 {

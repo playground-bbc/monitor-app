@@ -15,11 +15,6 @@ use yii\helpers\Url;
     ],
     'columns' => [
         'product',
-        /*[
-            'data' => 'active',
-            'title' => \Yii::t('app', 'Is active'),
-            'filter' => ['true' => 'Yes', 'false' => 'No'],
-        ],*/
         'source',
         [
             'data' => 'post_from',
