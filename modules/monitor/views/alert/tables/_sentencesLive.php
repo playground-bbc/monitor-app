@@ -24,5 +24,15 @@ $gridColumns = [
     'tableOptions' => [
         'class' => 'table table-striped',
     ],
-    'columns' => $gridColumns,
+    'columns' => [
+        'product',
+        'title',
+        'source',
+        'sentence',
+        'created_at',
+        'author_name',
+        'entity',
+        'status',
+        'url_retail'
+    ],
 ]) ?>

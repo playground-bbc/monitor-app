@@ -12,11 +12,6 @@ use yii\data\ArrayDataProvider;
     ],
     'columns' => [
         'product',
-        /*[
-            'data' => 'active',
-            'title' => \Yii::t('app', 'Is active'),
-            'filter' => ['true' => 'Yes', 'false' => 'No'],
-        ],*/
         'source',
         [
             'data' => 'post_from',
@@ -29,6 +24,20 @@ use yii\data\ArrayDataProvider;
         'author_name',
         'author_username',
         'tag',
-        'url'
+        [
+            'data' => 'url',
+            'render' => new \yii\web\JsExpression('function(data, type, row, meta) { 
+                var link = "-";
+                if(row.url.length > 1){
+                    var url = row.url;
+                    var cadena = "<a href=";
+                    
+                    var cadena2 = ">link</a>";
+                    link = cadena.concat(url,cadena2);
+                    return link;
+                }
+                return link;
+        }'),
+        ]
     ],
 ]) ?>

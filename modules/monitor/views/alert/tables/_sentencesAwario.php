@@ -28,7 +28,21 @@ use yii\helpers\Url;
         ],
         'created_at',
         'author_name',
-        'url'
+        [
+            'data' => 'url',
+            'render' => new \yii\web\JsExpression('function(data, type, row, meta) { 
+                var link = "-";
+                if(row.url.length > 1){
+                    var url = row.url;
+                    var cadena = "<a href=";
+                    
+                    var cadena2 = ">link</a>";
+                    link = cadena.concat(url,cadena2);
+                    return link;
+                }
+                return link;
+        }'),
+        ]
     ],
    // 'withColumnFilter' => false,
 ]) ?>

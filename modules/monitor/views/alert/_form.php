@@ -25,8 +25,6 @@ $this->params['breadcrumbs'][] = ['label' => $moduleName, 'Alerta', 'url' => ['i
 $this->params['breadcrumbs'][] = $this->title;
 
 
-
-
 ?>
 <hr>
 <br>
@@ -268,12 +266,14 @@ function sendProducts(name){
 );
 
 
+
 if (!\Yii::$app->session->has('oauth_token_twitter')) {
 	$url = Url::to('twitter');
-
+	
 	$this->registerJs('
 		function populateClientCode(params){
-			if(params == 2){
+			
+			if(params == 1){
 			window.location.replace("'.$url.'");
 			}
 		}

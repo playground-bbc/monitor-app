@@ -15,7 +15,7 @@ Icon::map($this, Icon::WHHG);
 			      'themes/unica',
 			  ],	
 			      'title' => [
-			      	'text' => Yii::t('app',"rescued tickets and the total tickets in LiveChat ID: # {$info_head['alertId']}"),
+			      	'text' => Yii::t('app',"tickets rescatados y el total de tickets en LiveChat ID: # {$info_head['alertId']}"),
 			      	'align' => 'center',
 			      ],
 			      'plotOptions' =>  [

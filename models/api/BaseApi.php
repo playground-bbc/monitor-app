@@ -251,7 +251,6 @@ class BaseApi extends Model
 
 
         }
-     	
         return $data;
 	}
 	/**
@@ -276,9 +275,11 @@ class BaseApi extends Model
 							$tweets[$product][$index]['url'] = '-';
 						}
 						
+						$tweets[$product][$index]['location'] = $object[$o]['statuses'][$s]['user']['location'];
 						$tweets[$product][$index]['created_at'] = $object[$o]['statuses'][$s]['created_at'];
 						$tweets[$product][$index]['author_name'] = $object[$o]['statuses'][$s]['user']['name'];
 						$tweets[$product][$index]['author_username'] = $object[$o]['statuses'][$s]['user']['screen_name'];
+						$tweets[$product][$index]['followers_count'] = $object[$o]['statuses'][$s]['user']['followers_count'];
 						$tweets[$product][$index]['post_from'] = $object[$o]['statuses'][$s]['text'];
 						$index++;
 					} // for each statuses

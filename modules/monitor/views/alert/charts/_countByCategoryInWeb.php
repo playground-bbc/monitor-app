@@ -16,7 +16,7 @@ Icon::map($this, Icon::WHHG);
 			  ],   
 			'options' => [
 		   	'chart' => ['type' => 'column'],
-		      'title' => ['text' => Yii::t('app',"number of words by type of dictionary in Web Page Tickets ID: # {$info_head['alertId']}")],
+		      'title' => ['text' => Yii::t('app',"numero de palabras por diccionario en Web Page Tickets ID: # {$info_head['alertId']}")],
 		      	'subtitle' => ['text' => $url],
 		      'xAxis' => [
 		         'categories' => $chartCategories->getCategories('countByCategoryInWeb'),

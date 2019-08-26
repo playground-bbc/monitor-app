@@ -15,12 +15,8 @@ use yii\helpers\Url;
     ],
     'columns' => [
         'product',
-        /*[
-            'data' => 'active',
-            'title' => \Yii::t('app', 'Is active'),
-            'filter' => ['true' => 'Yes', 'false' => 'No'],
-        ],*/
         'source',
+        'location',
         [
             'data' => 'post_from',
             'title' => \Yii::t('app', 'post_from'),
@@ -31,7 +27,23 @@ use yii\helpers\Url;
         'created_at',
         'author_name',
         'author_username',
-        'url'
+        'followers_count',
+        //'url'
+        [
+            'data' => 'url',
+            'render' => new \yii\web\JsExpression('function(data, type, row, meta) { 
+                var link = "-";
+                if(row.url.length > 1){
+                    var url = row.url;
+                    var cadena = "<a href=";
+                    
+                    var cadena2 = ">link</a>";
+                    link = cadena.concat(url,cadena2);
+                    return link;
+                }
+                return link;
+        }'),
+        ]
     ],
 ]) ?>
 

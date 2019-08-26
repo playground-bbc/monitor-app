@@ -823,11 +823,11 @@ class AlertController extends \yii\web\Controller
         ];
 
         $baseApi = new BaseApi($params);
-        $baseApi->callApiResources();
+        $data = $baseApi->callApiResources();
 
         return [
           'data' => [
-              'message' => 'some',
+              'message' => $data,
           ],
           'code' => 0,
       ];
@@ -931,11 +931,11 @@ class AlertController extends \yii\web\Controller
           foreach ($web_resources as $web_resource) {
             $name_web = Resource::get_domain($web_resource);
             
-            if (!Resource::find()->where(['name' => $name_web,'url' => $web_resource ])->exists()) {
+            if (!Resource::find()->where(['name' => $name_web,'url' => trim($web_resource) ])->exists()) {
               $model_resource = new Resource();
               // asign
               $model_resource->name = $name_web;
-              $model_resource->url = $web_resource;
+              $model_resource->url = trim($web_resource);
               $model_resource->typeResourceId = Resource::TYPE_WEB;
               if ($model_resource->save()) {
                 array_push($form_alert->social_resources, $model_resource->id);

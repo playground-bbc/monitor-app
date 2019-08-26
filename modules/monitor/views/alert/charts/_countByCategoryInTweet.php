@@ -17,8 +17,8 @@ Icon::map($this, Icon::FAB);
 			  ],   
 			'options' => [
 		   	'chart' => ['type' => 'column'],
-		      'title' => ['text' => Yii::t('app',"number of words by type of dictionary in twitter ID: # {$info_head['alertId']}")],
-		      'subtitle' => ['text' => Yii::t('app',"From date: {$info_head['start_date']} - To date: {$info_head['end_date']}")],
+		      'title' => ['text' => Yii::t('app',"numero de palabras por diccionario en twitter ID: # {$info_head['alertId']}")],
+		      'subtitle' => ['text' => Yii::t('app',"desde la fecha: {$info_head['start_date']} - hasta la fecha: {$info_head['end_date']}")],
 		      'xAxis' => [
 		         'categories' => $chartCategories->getCategories('countByCategoryInTweet'),
 		         'crosshair' => true,

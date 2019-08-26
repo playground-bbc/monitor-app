@@ -12,20 +12,20 @@ Icon::map($this, Icon::WHHG);
 			'scripts' => ['modules/drilldown'],	
 			  'options' => [
 			  	'chart' => ['type' => 'pie'],
-				'title' => ['text' => Yii::t('app',"total per words in Web page ID: # {$info_head['alertId']}")],
+				'title' => ['text' => Yii::t('app',"total por palabras en Web page ID: # {$info_head['alertId']}")],
 				'subtitle' => ['text' => $url],
 				'plotOptions' =>  [
 					'series' => [
 						'dataLabels' => [
 							'enabled' => true,
-			                'format' => '{point.name}: {point.y}'
+			                'format' => "{point.name}: {point.y} <br/> {point.percentage:.1f}%"
 						],
 					],
 
 				],
 				'tooltip' =>[
 					'headerFormat' => '<span style="font-size:11px">{series.name}</span><br>',
-			        'pointFormat' => '<span style="color:{point.color}">{point.name}</span> = <b>{point.y}</b> of total<br/>'
+			        'pointFormat' => '<span style="color:{point.color}">{point.name}</span> = <b>{point.y}</b> of total<br/> {point.percentage:.1f}%'
 				],
 			    'series' => [
 			      		[
