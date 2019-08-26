@@ -285,7 +285,7 @@ function sendProducts(name){
     View::POS_READY
 );
 
-if (!\Yii::$app->session->has('oauth_token_twitter')) {
+/*if (!\Yii::$app->session->has('oauth_token_twitter')) {
 	$url = Url::to('twitter');
 
 	$this->registerJs('
@@ -299,7 +299,7 @@ if (!\Yii::$app->session->has('oauth_token_twitter')) {
 	');
 
 }
-
+*/
 
 
 

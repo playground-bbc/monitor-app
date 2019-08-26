@@ -18,31 +18,33 @@ class m190531_003538_alerts extends Migration
         }
 
         $this->createTable('{{%alerts}}',[
-            'id'        => $this->primaryKey(),
-            'userId'         => $this->integer()->notNull(),
-            'name'           => $this->string(),
-            'status'         => $this->smallInteger(1)->defaultValue(1),
-            'is_boolean'     => $this->smallInteger(1)->defaultValue(0),
-            'start_date'     => $this->integer(),
-            'end_date'       => $this->integer(),
-            'createdAt'      => $this->integer(),
-            'updatedAt'      => $this->integer(),
-            'createdBy'      => $this->integer(),
-            'updatedBy'      => $this->integer(),
+            'id'              => $this->primaryKey(),
+            'userId'          => $this->integer()->notNull(),
+            'file_identifier' => $this->string()->notNull(),
+            'name'            => $this->string(),
+            'status'          => $this->smallInteger(1)->defaultValue(1),
+            'is_boolean'      => $this->smallInteger(1)->defaultValue(0),
+            'start_date'      => $this->integer(),
+            'end_date'        => $this->integer(),
+            'createdAt'       => $this->integer(),
+            'updatedAt'       => $this->integer(),
+            'createdBy'       => $this->integer(),
+            'updatedBy'       => $this->integer(),
 
         ],$tableOptions);
 
         $this->insert('{{%alerts}}', [
-            'userId'         => 1,
-            'name'           => 'LiveChat',
-            'status'         => 1,
-            'is_boolean'     => 1,
-            'start_date'     => 1559312912 ,
-            'end_date'       => 1559312912 ,
-            'createdAt'      => 1559312912,
-            'updatedAt'      => 1559312912,
-            'createdBy'      => 1,
-            'updatedBy'      => 1,
+            'userId'          => 1,
+            'name'            => 'LiveChat',
+            'file_identifier' => 'LiveChat_1559312912',
+            'status'          => 1,
+            'is_boolean'      => 1,
+            'start_date'      => 1559312912 ,
+            'end_date'        => 1559312912 ,
+            'createdAt'       => 1559312912,
+            'updatedAt'       => 1559312912,
+            'createdBy'       => 1,
+            'updatedBy'       => 1,
         ]);
 
         $this->addForeignKey(

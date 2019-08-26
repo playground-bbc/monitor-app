@@ -14,6 +14,7 @@ return [
     	'api_secret_key'=> 'msPakDIfXECOe6NrgGrAVwkHdCtbDHzeaHMgVqO4R0ioDyPWlh',
     	'access_token' => '305928001-TTdlPqtbByToHaReoou7LBSOAYPa4uS7WQKqn3xx',
     	'access_secret_token'=> 'IP9mAjRyK9u3xzysDAw43tKkoRy8mYVxxihhZvqXuuZYO',
+        'bearer_token'=> 'AAAAAAAAAAAAAAAAAAAAAPfj%2BQAAAAAAnmUTOdGSql%2FZdpdThzlk77I0pkY%3DveTBOEAVxJRkNguDDXNJvtPt83fkl2EVYUncRGdTGtZ6UWLHyc',
     ],
     'liveChat' => [
     	'apiLogin' => 'eduardo@montana-studio.com',

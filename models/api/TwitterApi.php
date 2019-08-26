@@ -120,9 +120,19 @@ class TwitterApi extends Model
 
     }
 
+    public function getBearerToken(){
+        $reply = $this->twitter->oauth2_token();
+        $bearer_token = $reply->access_token;
+        return $bearer_token;
+    }
+
+    public function oauth2_invalidateToken(){
+        $this->twitter->oauth2_invalidateToken();
+    }
 
     public function __construct() {
-        Codebird::setConsumerKey(Yii::$app->params['twitter']['api_key'], Yii::$app->params['twitter']['api_secret_key']);
+        //Codebird::setConsumerKey(Yii::$app->params['twitter']['api_key'], Yii::$app->params['twitter']['api_secret_key']);
+        Codebird::setBearerToken(Yii::$app->params['twitter']['bearer_token']);
         $this->twitter = Codebird::getInstance();
         
         parent::__construct();
