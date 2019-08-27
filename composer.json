@@ -24,7 +24,6 @@
         "kartik-v/yii2-widget-select2": "dev-master",
         "fabpot/goutte": "^3.2",
         "faryshta/yii2-jquery-tagsinput": "*",
-        "filebase/filebase": "^1.0",
         "kartik-v/yii2-widget-datepicker": "dev-master",
         "kartik-v/yii2-field-range": "dev-master",
         "jasonlam604/stringizer": "^2.14.0",
@@ -38,7 +37,8 @@
         "nullref/yii2-datatables": "^1.1",
         "pudinglabs/yii2-bootstrap-tags-input" : "*",
         "phpoffice/phpspreadsheet": "^1.8",
-        "kartik-v/yii2-icons": "@dev"
+        "kartik-v/yii2-icons": "@dev",
+        "tmarois/filebase": "^1.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

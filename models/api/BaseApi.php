@@ -40,16 +40,16 @@ class BaseApi extends Model
 	const LIVECHAT = 'LIVECHAT';
 
 	const COLOR = [
-		'Palabras Libres' => '#14112C',
-		'MH Series' => '#FF6B6B',
-		'Positivos MH Series' => '#89E62D',
-		'Negativos MH Series' => '#AE1E11',
-		'Buenas' => '#6454D8',
-		'Malas' => '#570F09',
-		'Kws Positivos' => '#7A6AEE',
-		'Kws Negativos' => '#8C3131',
-		'Frases Negativas' => '#5D2A00',
-		'Frases Positivas' => '#89E62D',
+		'Palabras Libres' => '#a7d8f2',
+		'MH Series' => '#f27979',
+		'Positivos MH Series' => '#cddb65',
+		'Negativos MH Series' => '#a1050d',
+		'Buenas' => '#55e6c9',
+		'Malas' => '#f7978f',
+		'Kws Positivos' => '#c66aee',
+		'Kws Negativos' => '#e39b0b',
+		'Frases Negativas' => '#fadc91',
+		'Frases Positivas' => '#07e8a1',
 	];
 	
 	/**
@@ -135,7 +135,7 @@ class BaseApi extends Model
 
 			if (!is_null($countByCategoryInLiveChat['countByCategoryInLiveChat'])) {
 				
-				$sentences_live['sentences_live'] = $this->addTagsSentenceFoundInLive($data);
+				$sentences_live['sentences'] = $this->addTagsSentenceFoundInLive($data);
 				
 				$countWords_live['countWords_live'] = $this->addWordsInLive($data);
 
@@ -155,7 +155,7 @@ class BaseApi extends Model
 			if(!is_null($liveChatCoversations['count_category_conversations'])){
 
 				$liveChatCoversations['count_words_conversations'] = $liveChat->addWordsInLiveChatConversations($data,$words);
-				$liveChatCoversations['sentences_live_conversations'] = $liveChat->addTagsSentenceFoundInConversations($data,$words,self::COLOR);
+				$liveChatCoversations['sentences'] = $liveChat->addTagsSentenceFoundInConversations($data,$words,self::COLOR);
 
 				$model['live_conversations'] = $liveChatCoversations;
 
@@ -170,11 +170,8 @@ class BaseApi extends Model
 			if (!is_null($awario_data)) {
 				
 				$awarioFile['countByCategoryInAwario'] = $this->countByCategoryAwario($awario_data);
-				$awarioFile['sentence_awario'] = $this->addTagsSentenceFoundInAwario($awario_data);
+				$awarioFile['sentences'] = $this->addTagsSentenceFoundInAwario($awario_data);
 				$awarioFile['countWords_awario'] = $this->addWordsInAwario($awario_data);
-				
-			
-				//$model['awario'] = ArrayHelper::merge($awario_data,$countByCategoryInLive);
 				$model['awario'] = $awarioFile;
 				
 
@@ -818,6 +815,8 @@ class BaseApi extends Model
 									$title_tags = array_values($sentence_title);
 									$value[$i]['product'] = $model;
 									$value[$i]['title'] = $title_tags[0];
+									$value[$i]['sentence'] = $said[0];
+									
 									$tmp[] = $value[$i];
 								} 
 			                	if ($stringizer_sentences->containsCountIncaseSensitive($words[$j])) {

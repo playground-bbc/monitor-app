@@ -108,6 +108,11 @@ class AlertController extends \yii\web\Controller
 
         $form_alert->name = 'alert_'.uniqid();
         $form_alert->scenario = 'alert';
+
+        if(yii::$app->request->isAjax && $form_alert->load($_POST)){
+          yii::$app->response->format = 'json';
+          return \yii\widgets\ActiveForm::validate($form_alert);
+        }
         
         if ($form_alert->load(Yii::$app->request->post()) && $alert->load(Yii::$app->request->post(),'SearchForm')) {
             $alert->start_date = strtotime($form_alert->start_date);
@@ -212,13 +217,20 @@ class AlertController extends \yii\web\Controller
 
       $start_date = $alert->start_date;
       $end_date = $alert->end_date;
-      $resources = [];
-      // resources
-      foreach ($alert->alertResources as $alert => $alert_value) {
-          foreach ($alert_value->resources as $key => $value) {
-              $resources[] = $value->name;
+      
+
+      $resource = [];
+
+      foreach ($alert->alertResources as $alert => $resources) {
+          for ($i=0; $i <sizeof($resources->resources) ; $i++) { 
+              if($resources->resources[$i]->typeResourceId == 1){
+                $resource ['web'][] = $resources->resources[$i]->url;
+              }elseif($resources->resources[$i]->typeResourceId == 2){
+                $resource ['social'][] = $resources->resources[$i]->name;
+              }
           }
       }
+
       $products_models = [];
         // models products
         foreach (ProductsModelsAlerts::find()->where(['alertId' => $alertId])->with('productModel')->each() as $product) {
@@ -226,31 +238,39 @@ class AlertController extends \yii\web\Controller
             $products_models[$product->productModel->product->category->name][$product->productModel->product->name][] = $product->productModel->serial_model;
         }
 
-      $params = [
+      
+      $social = [
           'alertId' => $nameAlert,
           'words' => $words,
-          'resources' => $resources,
+          'resources' => $resource['social'],
           'products_models' => $products_models,
           'start_date' => $start_date,
           'end_date' => $end_date,
       ]; 
+      $free_word['Palabras Libres'] =  $words['Palabras Libres'];
+      $web = [
+        'alertId' => $nameAlert,
+        'words' => $free_word,
+        'resources' => (isset($resource['web'])) ? $resource['web'] : [],
+        'products_models' => $products_models,
+      ];
 
-      
 
-      $baseApi  = new BaseApi($params);
-      $crawling = new Crawler($params); 
-
+      $baseApi  = new BaseApi($social);
+      $crawling = new Crawler($web); 
+      $crawling->callCrawling();
       // $baseApi->callApiResources();
       
       
 
       $cache = Yii::$app->cache;
+      $cache->delete($alertId); 
       $model =  $cache->getOrSet($alertId, function () use ($baseApi,$crawling) {
           $model_api = $baseApi->countAndSearchWords();
           $model_web = $crawling->countAndSearchWords();
           return ArrayHelper::merge($model_api,$model_web);
-          //return $baseApi->countAndSearchWords();
       }, 1000);
+
 
 
 	    //$cache->delete($alertId);	
@@ -365,429 +385,6 @@ class AlertController extends \yii\web\Controller
         return (count($models_products) && empty($products_alerts->errors)) ? true : false;
     }
 
-    public function actionExcelAwario($alertId,$resource_name)
-    {
-      $alert = Alerts::findOne($alertId);
-      $nameAlert = $alert->name;
-      $start_date = $alert->start_date;
-      $end_date = $alert->end_date;
-
-      $words = [];
-      // words
-      foreach ($alert->dictionaries as $key => $value) {
-          $words[$value->category->name][] = $value->word;
-      }
-
-      $start_date = $alert->start_date;
-      $end_date = $alert->end_date;
-      $resources = [];
-      // resources
-      foreach ($alert->alertResources as $alert => $alert_value) {
-          foreach ($alert_value->resources as $key => $value) {
-              $resources[] = $value->name;
-          }
-      }
-      $products_models = [];
-        // models products
-        foreach (ProductsModelsAlerts::find()->where(['alertId' => $alertId])->with('productModel')->each() as $product) {
-            // batch query with eager loading
-            $products_models[$product->productModel->product->category->name][$product->productModel->product->name][] = $product->productModel->serial_model;
-        }
-
-      $params = [
-          'alertId' => $nameAlert,
-          'words' => $words,
-          'resources' => $resources,
-          'products_models' => $products_models,
-          'start_date' => $start_date,
-          'end_date' => $end_date,
-      ]; 
-
-      
-
-      $baseApi = new BaseApi($params);
-      $crawling = new Crawler($params); 
-      // $baseApi->callApiResources();
-      
-      
-
-      $cache = Yii::$app->cache;
-
-      $model =  $cache->getOrSet($alertId, function () use ($baseApi) {
-          return $baseApi->countAndSearchWords();
-      }, 1000);
-
-      
-
-        $exporter = new Spreadsheet([
-        'dataProvider' => new ArrayDataProvider([
-            'allModels' => $model['awario']['sentence_awario']
-        ]),
-          'columns' => [
-              [
-                  'attribute' => 'source',
-                  'contentOptions' => [
-                      'alignment' => [
-                          'horizontal' => 'center',
-                          'vertical' => 'center',
-                      ],
-                  ],
-              ],
-              [
-                  'attribute' => 'url',
-              ],
-              [
-                  'attribute' => 'created_at',
-              ],
-              [
-                  'label' => 'author_name',
-                  'value' => function($model) {
-                    return preg_replace('/[[:^print:]]/', '', $model['author_name']);
-                  },
-
-              ],
-              [
-                  'label' => 'title',
-                  'value' => function($model) {
-                    return preg_replace('/[[:^print:]]/', '', $model['title']);
-                  },
-
-              ],
-              [
-                  'label' => 'post_from',
-                  'value' => function($model) {
-                    if(ArrayHelper::keyExists('post_from_orign',$model)){
-                      $sentences = preg_replace('/[[:^print:]]/', '', $model['post_from_orign']);
-                    }else{
-                      $sentences = preg_replace('/[[:^print:]]/', '', $model['post_from']);
-                    }
-
-                    return $sentences;
-                  },
-
-              ],
-              
-          ],
-      ]);
-      return $exporter->send($resource_name.".xls");
-
-    }
-
-    public function actionExcelTweets($alertId,$resource_name)
-    {
-      $alert = Alerts::findOne($alertId);
-      $nameAlert = $alert->name;
-      $start_date = $alert->start_date;
-      $end_date = $alert->end_date;
-
-      $words = [];
-      // words
-      foreach ($alert->dictionaries as $key => $value) {
-          $words[$value->category->name][] = $value->word;
-      }
-
-      $start_date = $alert->start_date;
-      $end_date = $alert->end_date;
-      $resources = [];
-      // resources
-      foreach ($alert->alertResources as $alert => $alert_value) {
-          foreach ($alert_value->resources as $key => $value) {
-              $resources[] = $value->name;
-          }
-      }
-      $products_models = [];
-        // models products
-        foreach (ProductsModelsAlerts::find()->where(['alertId' => $alertId])->with('productModel')->each() as $product) {
-            // batch query with eager loading
-            $products_models[$product->productModel->product->category->name][$product->productModel->product->name][] = $product->productModel->serial_model;
-        }
-
-      $params = [
-          'alertId' => $nameAlert,
-          'words' => $words,
-          'resources' => $resources,
-          'products_models' => $products_models,
-          'start_date' => $start_date,
-          'end_date' => $end_date,
-      ]; 
-
-      
-
-      $baseApi = new BaseApi($params);
-      $crawling = new Crawler($params); 
-      // $baseApi->callApiResources();
-      
-      
-
-      $cache = Yii::$app->cache;
-      $model =  $cache->getOrSet($alertId, function () use ($baseApi,$crawling) {
-          $model_api = $baseApi->countAndSearchWords();
-          $model_web = $crawling->countAndSearchWords();
-          return ArrayHelper::merge($model_api,$model_web);
-      }, 1000);
-
-
-        $exporter = new Spreadsheet([
-        'dataProvider' => new ArrayDataProvider([
-            'allModels' => $model['tweets']['sentences']
-        ]),
-          'columns' => [
-            [
-                  'attribute' => 'product',
-                  'contentOptions' => [
-                      'alignment' => [
-                          'horizontal' => 'center',
-                          'vertical' => 'center',
-                      ],
-                  ],
-              ],
-              [
-                  'attribute' => 'source',
-                  'contentOptions' => [
-                      'alignment' => [
-                          'horizontal' => 'center',
-                          'vertical' => 'center',
-                      ],
-                  ],
-              ],
-              [
-                  'attribute' => 'url',
-              ],
-              [
-                  'attribute' => 'created_at',
-              ],
-              [
-                  'label' => 'author_name',
-                  'value' => function($model) {
-                    return preg_replace('/[[:^print:]]/', '', $model['author_name']);
-                  },
-
-              ],
-              [
-                  'label' => 'author_username',
-                  'value' => function($model) {
-                    // replace emojis
-                    $author_name = preg_replace('/[[:^print:]]/', '', $model['author_username']);
-                    return $author_name;
-                  },
-
-              ],
-              [
-                  'label' => 'post_form',
-                  'value' => function($model) {
-                    return preg_replace('/[[:^print:]]/', '', $model['post_from'][1]);
-                  },
-
-              ],
-              
-          ],
-      ]);
-      return $exporter->send($resource_name.".xls");
-
-    }
-
-    public function actionExcelLive($alertId,$resource_name)
-    {
-      $alert = Alerts::findOne($alertId);
-      $nameAlert = $alert->name;
-      $start_date = $alert->start_date;
-      $end_date = $alert->end_date;
-
-      $words = [];
-      // words
-      foreach ($alert->dictionaries as $key => $value) {
-          $words[$value->category->name][] = $value->word;
-      }
-
-      $start_date = $alert->start_date;
-      $end_date = $alert->end_date;
-      $resources = [];
-      // resources
-      foreach ($alert->alertResources as $alert => $alert_value) {
-          foreach ($alert_value->resources as $key => $value) {
-              $resources[] = $value->name;
-          }
-      }
-      $products_models = [];
-        // models products
-        foreach (ProductsModelsAlerts::find()->where(['alertId' => $alertId])->with('productModel')->each() as $product) {
-            // batch query with eager loading
-            $products_models[$product->productModel->product->category->name][$product->productModel->product->name][] = $product->productModel->serial_model;
-        }
-
-      $params = [
-          'alertId' => $nameAlert,
-          'words' => $words,
-          'resources' => $resources,
-          'products_models' => $products_models,
-          'start_date' => $start_date,
-          'end_date' => $end_date,
-      ]; 
-
-      
-
-      $baseApi = new BaseApi($params);
-      $crawling = new Crawler($params); 
-      // $baseApi->callApiResources();
-      
-      
-
-      $cache = Yii::$app->cache;
-      $model =  $cache->getOrSet($alertId, function () use ($baseApi,$crawling) {
-          $model_api = $baseApi->countAndSearchWords();
-          $model_web = $crawling->countAndSearchWords();
-          return ArrayHelper::merge($model_api,$model_web);
-      }, 1000);
-
-      
-        $exporter = new Spreadsheet([
-        'dataProvider' => new ArrayDataProvider([
-            'allModels' => $model['liveChat']['sentences_live']
-        ]),
-          'columns' => [
-              [
-                  'attribute' => 'product',
-                  'contentOptions' => [
-                      'alignment' => [
-                          'horizontal' => 'center',
-                          'vertical' => 'center',
-                      ],
-                  ],
-              ],
-              [
-                  'attribute' => 'title',
-              ],
-              [
-                  'attribute' => 'source',
-                  'contentOptions' => [
-                      'alignment' => [
-                          'horizontal' => 'center',
-                          'vertical' => 'center',
-                      ],
-                  ],
-              ],
-              [
-                  'attribute' => 'sentence_said',
-              ],
-              [
-                  'attribute' => 'created_at',
-              ],
-              [
-                  'attribute' => 'author_name',
-              ],
-              [
-                  'attribute' => 'entity',
-              ],
-              [
-                  'attribute' => 'status',
-              ],
-              [
-                  'attribute' => 'url_retail',
-              ],
-          ],
-      ]);
-      return $exporter->send($resource_name.".xls");
-
-    }
-
-    public function actionExcelLiveConversations($alertId,$resource_name)
-    {
-      $alert = Alerts::findOne($alertId);
-      $nameAlert = $alert->name;
-      $start_date = $alert->start_date;
-      $end_date = $alert->end_date;
-
-      $words = [];
-      // words
-      foreach ($alert->dictionaries as $key => $value) {
-          $words[$value->category->name][] = $value->word;
-      }
-
-      $start_date = $alert->start_date;
-      $end_date = $alert->end_date;
-      $resources = [];
-      // resources
-      foreach ($alert->alertResources as $alert => $alert_value) {
-          foreach ($alert_value->resources as $key => $value) {
-              $resources[] = $value->name;
-          }
-      }
-      $products_models = [];
-        // models products
-        foreach (ProductsModelsAlerts::find()->where(['alertId' => $alertId])->with('productModel')->each() as $product) {
-            // batch query with eager loading
-            $products_models[$product->productModel->product->category->name][$product->productModel->product->name][] = $product->productModel->serial_model;
-        }
-
-      $params = [
-          'alertId' => $nameAlert,
-          'words' => $words,
-          'resources' => $resources,
-          'products_models' => $products_models,
-          'start_date' => $start_date,
-          'end_date' => $end_date,
-      ]; 
-
-      
-
-      $baseApi = new BaseApi($params);
-      $crawling = new Crawler($params); 
-      // $baseApi->callApiResources();
-      
-      
-
-      $cache = Yii::$app->cache;
-      $model =  $cache->getOrSet($alertId, function () use ($baseApi,$crawling) {
-          $model_api = $baseApi->countAndSearchWords();
-          $model_web = $crawling->countAndSearchWords();
-          return ArrayHelper::merge($model_api,$model_web);
-      }, 1000);
-
-      
-        $exporter = new Spreadsheet([
-        'dataProvider' => new ArrayDataProvider([
-            'allModels' => $model['live_conversations']['sentences_live_conversations']
-        ]),
-          'columns' => [
-              [
-                  'attribute' => 'product',
-                  'contentOptions' => [
-                      'alignment' => [
-                          'horizontal' => 'center',
-                          'vertical' => 'center',
-                      ],
-                  ],
-              ],
-              [
-                  'attribute' => 'id',
-                  'contentOptions' => [
-                      'alignment' => [
-                          'horizontal' => 'center',
-                          'vertical' => 'center',
-                      ],
-                  ],
-              ],
-              [
-                  'attribute' => 'sentence_said',
-              ],
-              [
-                  'attribute' => 'created_at',
-              ],
-              [
-                  'attribute' => 'author_name',
-              ],
-              [
-                  'attribute' => 'entity',
-              ],
-              [
-                  'attribute' => 'status',
-              ],
-          ],
-      ]);
-      return $exporter->send($resource_name.".xls");
-
-    }
-
 
     public function actionInsertProduct()
     {
@@ -805,7 +402,7 @@ class AlertController extends \yii\web\Controller
             $products_models[$model->product->category->name][$model->product->name][] = $model->serial_model;
         }
 
-        $social = [2 => 'Twitter', 3 => 'Live Chat',4 => 'Live Chat Conversations'];
+        $social = [1 => 'Twitter', 2 => 'Live Chat',3 => 'Live Chat Conversations'];
         $res = [];
         foreach ($data['resource'] as $key => $resource) {
             if(array_key_exists($resource,$social)){
@@ -826,11 +423,19 @@ class AlertController extends \yii\web\Controller
         $data = $baseApi->callApiResources();
 
         return [
+<<<<<<<
           'data' => [
               'message' => $data,
           ],
           'code' => 0,
       ];
+=======
+            'data' => [
+                'message' => 'some',
+            ],
+            'code' => 0,
+        ];
+>>>>>>>
 
       }
     }
@@ -922,13 +527,15 @@ class AlertController extends \yii\web\Controller
 
         if (empty($form_alert->social_resources)) {
             Yii::warning("problems when saving the social resources in the alert with id: {$alertId}", __METHOD__);
-            return $this->redirect(['error', 'message' => Yii::t('app','Error save Products Models Products'),'id' => $alert->id]);      
+            throw new \yii\web\NotFoundHttpException(Yii::t('app','Error save Products Models Products (╯°□°）╯︵ ┻━┻   '));
+                 
         }
 
         if (!empty($form_alert->web_resource)) {
           $web_resources = explode(',', $form_alert->web_resource);
 
           foreach ($web_resources as $web_resource) {
+            $web_resource = trim($web_resource);
             $name_web = Resource::get_domain($web_resource);
             
             if (!Resource::find()->where(['name' => $name_web,'url' => trim($web_resource) ])->exists()) {
@@ -1014,6 +621,21 @@ class AlertController extends \yii\web\Controller
             }
         }
         return (!empty($countWord)) ? $countWord : false;
+    }
+
+
+    /**
+     * [setDictionaries description]
+     * @param [type] $form_alert [description]
+     * @param [type] $alertId    [description]
+     */
+    public static function getProducts($product)
+    {
+        $moduleName = \Yii::$app->controller->module->name;
+        $module = \Yii::$app->getModule($moduleName);
+        $controller = new AlertController($module->name, $module);
+
+        return $controller->getModelsProducts($product);
     }
 
 

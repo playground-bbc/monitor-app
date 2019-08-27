@@ -15,7 +15,7 @@ $gridColumns = [
 ];
 
  ?>
-<?= Html::a('Export Excel', ['excel-live','alertId' => $alertId,'resource_name' => 'livechat'], ['class' => 'btn btn-success','target' => '_blank']) ?>
+<?= Html::a('Export Excel', [Url::to('excel/excel'),'alertId' => $alertId,'resource_name' => 'Live Chat'], ['class' => 'btn btn-success','target' => '_blank']) ?>
 <hr>
  <?= \nullref\datatable\DataTable::widget([
     'id' => 'live',

@@ -6,7 +6,7 @@ use yii\helpers\Url;
 $target = '"_blank"';
  ?>
 
-<?= Html::a('Export Excel', ['excel-tweets','alertId' => $alertId,'resource_name' => 'tweets'], ['class' => 'btn btn-success','target' => '_blank']) ?>
+<?= Html::a('Export Excel', [Url::to('excel/excel'),'alertId' => $alertId,'resource_name' => 'Twitter'], ['class' => 'btn btn-success','target' => '_blank']) ?>
 <hr>
  <?= \nullref\datatable\DataTable::widget([
     'id' => 'twitter',

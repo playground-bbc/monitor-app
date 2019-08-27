@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <hr>
 <br>
 <br>
-<?php $form = ActiveForm::begin(['id' => 'search-form','options' => ['enctype' => 'multipart/form-data']]); ?>
+<?php $form = ActiveForm::begin(['id' => 'search-form','enableAjaxValidation' => true,'options' => ['enctype' => 'multipart/form-data']]); ?>
 	
 	<div class="container">
 		<div class="row">
@@ -46,6 +46,11 @@ $this->params['breadcrumbs'][] = $this->title;
 						        'format' => 'mm/dd/yyyy',
 						        //'startDate' => date(Yii::$app->formatter->dateFormat, strtotime('today')),
 		                    	'todayHighlight' => true
+						    ],
+						    'pluginEvents' => [
+						    	'changeDate' => "function(e) { 
+										callSendProducts();
+							       }",
 						    ]
 						]);
 					    
@@ -61,6 +66,11 @@ $this->params['breadcrumbs'][] = $this->title;
 						        'format' => 'mm/dd/yyyy',
 						        //'startDate' => date(Yii::$app->formatter->dateFormat, strtotime('today')),
 		                    	'todayHighlight' => true
+						    ],
+						    'pluginEvents' => [
+						    	'changeDate' => "function(e) { 
+										callSendProducts();
+							       }",
 						    ]
 						]);
 					    
@@ -89,16 +99,21 @@ $this->params['breadcrumbs'][] = $this->title;
 			<div class="col-md-6">
 				<?= $form->field($form_alert, 'social_resources')->widget(Select2::classname(), [
 					   'data' => $form_alert->socialResources,
-					    'options' => [
+					   	'options' => [
 					    	'id' => 'social_resources',
 					    	'placeholder' => 'Select a state ...',
-					    	'multiple' => true
+					    	'multiple' => true,
+					    	'theme' => 'krajee',
+					    	'debug' => true
 						],
 					    'pluginOptions' => [
 					        'allowClear' => true,
 					    ],
 					    'pluginEvents' => [
-					       "select2:select" => "function(e) { populateClientCode(e.params.data.id); }",
+					       "select2:select" => "function(e) { 
+								callSendProducts();
+					       		populateClientCode(e.params.data.id); 
+					       }",
 					    ]
 					]);
 				?>
@@ -154,7 +169,9 @@ $this->params['breadcrumbs'][] = $this->title;
 				<?=  $form->field($form_alert, 'web_resource')->widget(TagsinputWidget::classname(), [
 			            'options' => [],
 			            'clientOptions' => [],
-			            'clientEvents' => []
+			            'clientEvents' => [
+			            	//"itemAdded" => "function(e) { sendUrls(e.item) }",
+			            ]
 			         ]);
                  ?>
 				 
@@ -169,17 +186,30 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <?php ActiveForm::end(); ?>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 <?php
 
 use yii\web\View; 
 
 $urlModelsAlert = Url::to(['insert-product']);
 $urlModelsAlertDelete = Url::to(['delete-product']);
+
+$urlUrlAlert = Url::to(['web/search-web']);
 $uuid = '';
 
 
 $this->registerJs('
 
+
+function callSendProducts(){
+	var products = $("#searchform-products").val();
+	if(products.length){
+		for(p = 0; p < products.length; p ++){
+			sendProducts(products[p]);
+
+		}
+	}
+}
 
 
 
@@ -210,54 +240,44 @@ function sendProducts(name){
 	var flag = false;
 	
 	var product_name = name;
-
+	
 	var  alert_name = $("#searchform-name").val()
-	var  resource = $("#social_resources").val()
-	
-	
+	var  resource   = $("#social_resources").val()
 	
 	var  start_date = $("#searchform-start_date").val()
-	var  start_end = $("#searchform-end_date").val()
+	var  start_end  = $("#searchform-end_date").val()
 
-	if( resource && start_date.length && start_end.length ){
+	if( start_date.length && start_end.length && resource ){
 		flag = true;
 	}else{
 		
 		swal("Upps!", "you need to fill in the fields of resources and dates!", "error");
-		
-
 		$("#searchform-products").val("").trigger("change");
 	}
 
-	
-
 	if(flag){
-
 		$.ajax({
         url:"'.$urlModelsAlert.'",
         type:"post",
         dataType: "json",
 	        data: {
-	            product_name: product_name,
-	            alert_name: alert_name,
-	            resource: resource,
-	            start_date: start_date,
-	            start_end: start_end,
+				product_name: product_name,
+				alert_name: alert_name,
+				resource: resource,
+				start_date: start_date,
+				start_end: start_end,
 	           
 	        }
-
 	    })
-	    .done(function(response) {
-	                if (response.data.success == true) {
-	                    console.log(response.data);
-	                }
-	            })
+    	.done(function(response) {
+            if (response.data.success == true) {
+                console.log(response.data);
+            }
+        })
 	    .fail(function() {
 	        console.log("error");
 	    });	
 	}
-
-
 	 
 }
 

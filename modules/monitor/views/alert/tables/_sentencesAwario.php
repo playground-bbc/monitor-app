@@ -3,7 +3,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 
  ?>
-<?= Html::a('Export Excel', ['excel-awario','alertId' => $alertId,'resource_name' => 'awario'], ['class' => 'btn btn-success','target' => '_blank']) ?>
+<?= Html::a('Export Excel', [Url::to('excel/excel'),'alertId' => $alertId,'resource_name' => 'awario'], ['class' => 'btn btn-success','target' => '_blank']) ?>
  <hr>
  <?= \nullref\datatable\DataTable::widget([
     'id' => 'awario',

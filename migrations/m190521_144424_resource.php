@@ -30,16 +30,7 @@ class m190521_144424_resource extends Migration
 
         ],$tableOptions);
 
-        $this->insert('{{%resource}}', [
-            'name' => 'hipertextual',
-            'url' => 'https://hipertextual.com',
-            'typeResourceId'  => 1,
-            'status'  => 1,
-            'createdAt'=> '1488153462',
-            'updatedAt'=> '1488153462',
-            'createdBy'=> '1',
-            'updatedBy'=> '1',
-        ]);
+        
 
         $this->insert('{{%resource}}', [
             'name' => 'Twitter',
@@ -73,6 +64,19 @@ class m190521_144424_resource extends Migration
             'createdBy'=> '1',
             'updatedBy'=> '1',
         ]);
+
+        $this->insert('{{%resource}}', [
+            'name' => 'web page',
+            'url' => '',
+            'typeResourceId'  => 2,
+            'status'  => 1,
+            'createdAt'=> '1488153462',
+            'updatedAt'=> '1488153462',
+            'createdBy'=> '1',
+            'updatedBy'=> '1',
+        ]);
+
+
 
         // creates index for column `typeResourceId`
         $this->createIndex(

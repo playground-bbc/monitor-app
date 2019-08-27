@@ -3,6 +3,7 @@ namespace app\models\api;
 
 use Yii;
 use yii\base\Model;
+use yii\base\ErrorException;
 
 use app\models\Products;
 use app\models\ProductsModels;
@@ -20,6 +21,10 @@ class DriveProductsApi extends Model
 
     private $_productsFamily = ['HA', 'HE', 'MC', 'Monitores y proyectores'];
 
+    /**
+     * [SaveToDatabase calls distins function to save in database]
+     * @param [array] $values [all products from dictionaries]
+     */
     public function SaveToDatabase($values)
     {
         for ($i = 0; $i < sizeof($values); $i++) {
@@ -48,8 +53,14 @@ class DriveProductsApi extends Model
             $response = $service->spreadsheets_values->get($spreadsheetId, $sheetName);
             $values[] = $response->getValues();
         }
+
+        try {
+            $this->SaveToDatabase($values);
+        }catch (ErrorException $e){
+            throw new \yii\web\NotFoundHttpException(Yii::t('app','houston we have a problem, problem in the drive document ლ(ಠ_ಠლ)   '));
+        }
       
-        $this->SaveToDatabase($values);
+        
 
         /*try {
         $this->orderByHeaders($values);
@@ -107,6 +118,7 @@ class DriveProductsApi extends Model
 
     public function saveFamily($value)
     {
+        $value = $this->delete_quotation_marks($value);
         $params = [
             'abbreviation_name' => $value,
         ];
@@ -122,6 +134,8 @@ class DriveProductsApi extends Model
 
     public function saveParent($familyId, $value)
     {
+        $value = $this->delete_quotation_marks($value);
+
         $params = [
             'parentId' => $familyId,
             'name'     => $value,
@@ -139,6 +153,8 @@ class DriveProductsApi extends Model
 
     public function saveProductCategory($familyId, $value)
     {
+        $value = $this->delete_quotation_marks($value);
+
         $params = [
             'familyId' => $familyId,
             'name'     => $value,
@@ -154,7 +170,9 @@ class DriveProductsApi extends Model
     }
 
     public function saveProduct($categoryId, $value)
-    {
+    {   
+        $value = $this->delete_quotation_marks($value);
+
         $params = [
             'categoryId' => $categoryId,
             'name'       => $value,
@@ -171,7 +189,9 @@ class DriveProductsApi extends Model
     }
 
     public function saveProductsModel($productId, $value)
-    {
+    {   
+        $value = $this->delete_quotation_marks($value);
+
         $params = [
             'productId'    => $productId,
             'serial_model' => $value,
@@ -221,5 +241,10 @@ class DriveProductsApi extends Model
         $service = new \Google_Service_Sheets($client);
         return $service;
     }
+
+    public function delete_quotation_marks($string) { 
+        $result = str_replace(array('\'', '"'), '', $string);
+        return $result; 
+    } 
 
 }

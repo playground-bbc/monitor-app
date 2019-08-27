@@ -73,8 +73,8 @@ $info_head = [
 	 		<div class="col-md-12">
 	 			<!-- count sentences Live </!-->
 			 	<?php if (isset($model['liveChat'])): ?>
-			 		<?php if (isset($model['liveChat']['sentences_live'])): ?>
-						<?=$this->render('tables/_sentencesLive',['sentences' => $model['liveChat']['sentences_live'],'alertId' => $alert->id]); ?>
+			 		<?php if (isset($model['liveChat']['sentences'])): ?>
+						<?=$this->render('tables/_sentencesLive',['sentences' => $model['liveChat']['sentences'],'alertId' => $alert->id]); ?>
 			 		<?php endif ?>
 			 	<?php endif ?>
 	 		</div>
@@ -109,8 +109,8 @@ $info_head = [
 	 		<div class="col-md-12">
 	 			<!-- count sentences Live </!-->
 			 	<?php if (isset($model['live_conversations'])): ?>
-			 		<?php if (isset($model['live_conversations']['sentences_live_conversations'])): ?>
-						<?=$this->render('tables/_sentencesLiveConversations',['conversations' => $model['live_conversations']['sentences_live_conversations'],'alertId' => $alert->id]); ?>
+			 		<?php if (isset($model['live_conversations']['sentences'])): ?>
+						<?=$this->render('tables/_sentencesLiveConversations',['conversations' => $model['live_conversations']['sentences'],'alertId' => $alert->id]); ?>
 			 		<?php endif ?>
 			 	<?php endif ?>
 	 		</div>
@@ -137,8 +137,8 @@ $info_head = [
 			<div class="col-md-12">
 				<!-- sentences awario </!-->
 			 	<?php if (isset($model['awario'])): ?>
-			 		<?php if (isset($model['awario']['sentence_awario'])): ?>
-						<?=$this->render('tables/_sentencesAwario',['sentences' => $model['awario']['sentence_awario'],'alertId' => $alert->id]) ?>
+			 		<?php if (isset($model['awario']['sentences'])): ?>
+						<?=$this->render('tables/_sentencesAwario',['sentences' => $model['awario']['sentences'],'alertId' => $alert->id]) ?>
 			 		<?php endif ?>
 			 	<?php endif ?>
 			</div>
@@ -178,7 +178,7 @@ $info_head = [
 	 			<!-- sentences web </!-->
 			 	
 			 		<?php if (isset($model['web']['sentences_web'])): ?>
-						<?=$this->render('tables/_sentencesWeb',['sentences' => $model['web']['sentences_web']]) ?>
+						<?=$this->render('tables/_sentencesWeb',['sentences' => $model['web']['sentences_web'],'alertId' => $info_head['alertId']]) ?>
 			 		<?php endif ?>
 			 	
 	 		</div>

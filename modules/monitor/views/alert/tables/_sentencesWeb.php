@@ -1,8 +1,10 @@
 <?php 
 use yii\data\ArrayDataProvider;
-
+use yii\helpers\Html;
+use yii\helpers\Url;
  ?>
-
+<?= Html::a('Export Excel', [Url::to('excel/excel-web'),'alertId' => $alertId,'resource_name' => 'web'], ['class' => 'btn btn-success','target' => '_blank']) ?>
+<hr>
  <?= \nullref\datatable\DataTable::widget([
     'id' => 'web',
     'data' => $sentences,
