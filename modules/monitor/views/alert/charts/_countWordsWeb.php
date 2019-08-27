@@ -15,18 +15,22 @@ Icon::map($this, Icon::WHHG);
 				'title' => ['text' => Yii::t('app',"total por palabras en Web page ID: # {$info_head['alertId']}")],
 				'subtitle' => ['text' => $url],
 				'plotOptions' =>  [
-					'cursor' => 'pointer',
-		      		'point' => [
+					'series' => [
+						'cursor' => 'pointer',
+						'point' => [
 							'events' =>[
 								'click' => new \yii\web\JsExpression('function(e){
-									var table = $("#web").DataTable();
-									table.search(this.category).draw();
+									var point_name = e.point.name;
+									if(point_name !== null){
+										var name = point_name.split(":");
+										var table = $("#web").DataTable();
+										table.search(name[1]).draw();
+									}
 								}
 								
 								'),
 							],
 						],
-					'series' => [
 						'dataLabels' => [
 							'enabled' => true,
 			                'format' => "{point.name}: {point.y} <br/> {point.percentage:.1f}%"

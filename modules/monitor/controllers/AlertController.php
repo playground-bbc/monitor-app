@@ -423,19 +423,11 @@ class AlertController extends \yii\web\Controller
         $data = $baseApi->callApiResources();
 
         return [
-<<<<<<<
           'data' => [
               'message' => $data,
           ],
           'code' => 0,
       ];
-=======
-            'data' => [
-                'message' => 'some',
-            ],
-            'code' => 0,
-        ];
->>>>>>>
 
       }
     }

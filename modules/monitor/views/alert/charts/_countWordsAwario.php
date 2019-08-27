@@ -16,11 +16,15 @@ use yii\helpers\Html;
 				'plotOptions' =>  [
 					'series' => [
 						'cursor' => 'pointer',
-		      			'point' => [
+						'point' => [
 							'events' =>[
 								'click' => new \yii\web\JsExpression('function(e){
-									var table = $("#web").DataTable();
-									table.search(this.category).draw();
+									var point_name = e.point.name;
+									if(point_name !== null){
+										var name = point_name.split(":");
+										var table = $("#awario").DataTable();
+										table.search(name[1]).draw();
+									}
 								}
 								
 								'),
