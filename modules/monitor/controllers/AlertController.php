@@ -805,7 +805,7 @@ class AlertController extends \yii\web\Controller
             $products_models[$model->product->category->name][$model->product->name][] = $model->serial_model;
         }
 
-        $social = [2 => 'Twitter', 3 => 'Live Chat',15 => 'Live Chat Conversations'];
+        $social = [2 => 'Twitter', 3 => 'Live Chat',4 => 'Live Chat Conversations'];
         $res = [];
         foreach ($data['resource'] as $key => $resource) {
             if(array_key_exists($resource,$social)){

@@ -15,6 +15,17 @@ Icon::map($this, Icon::WHHG);
 				'title' => ['text' => Yii::t('app',"total por palabras en Web page ID: # {$info_head['alertId']}")],
 				'subtitle' => ['text' => $url],
 				'plotOptions' =>  [
+					'cursor' => 'pointer',
+		      		'point' => [
+							'events' =>[
+								'click' => new \yii\web\JsExpression('function(e){
+									var table = $("#web").DataTable();
+									table.search(this.category).draw();
+								}
+								
+								'),
+							],
+						],
 					'series' => [
 						'dataLabels' => [
 							'enabled' => true,

@@ -25,6 +25,17 @@ Icon::map($this, Icon::FAB);
 		      ],
 		      'plotOptions' => [
 		      	'series' => [
+		      		'cursor' => 'pointer',
+		      		'point' => [
+							'events' =>[
+								'click' => new \yii\web\JsExpression('function(e){
+									var table = $("#twitter").DataTable();
+									table.search(this.category).draw();
+								}
+								
+								'),
+							],
+						],
 		      		'dataLabels' => [
 		      			'enabled' => true
 		      		]

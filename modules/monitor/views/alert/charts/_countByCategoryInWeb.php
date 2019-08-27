@@ -22,6 +22,24 @@ Icon::map($this, Icon::WHHG);
 		         'categories' => $chartCategories->getCategories('countByCategoryInWeb'),
 		         'crosshair' => true,
 		      ],
+		      'plotOptions' => [
+		      	'series' => [
+		      		'cursor' => 'pointer',
+		      		'point' => [
+							'events' =>[
+								'click' => new \yii\web\JsExpression('function(e){
+									var table = $("#web").DataTable();
+									table.search(this.category).draw();
+								}
+								
+								'),
+							],
+						],
+		      		'dataLabels' => [
+		      			'enabled' => true
+		      		]
+		      	],
+		      ],
 		      'yAxis' => [
 		         'title' => ['text' => 'Web Data'],
 		         'labels' => ['overflow' => 'justify']

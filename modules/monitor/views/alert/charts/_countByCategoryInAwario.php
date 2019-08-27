@@ -20,8 +20,27 @@ use yii\helpers\Html;
 		         'categories' => $chartAwario->getCategories('countByCategoryInAwario'),
 		         'crosshair' => true,
 		      ],
+		      'plotOptions' => [
+				      	'series' => [
+				      		'cursor' => 'pointer',
+				      		'point' => [
+									'events' =>[
+										'click' => new \yii\web\JsExpression('function(e){
+											var table = $("#awario").DataTable();
+											table.search(this.category).draw();
+											
+										}
+										
+										'),
+									],
+								],
+				      		'dataLabels' => [
+				      			'enabled' => true
+				      		]
+				      	],
+				      ],
 		      'yAxis' => [
-		         'title' => ['text' => 'Twitter Data'],
+		         'title' => ['text' => 'Awario Data'],
 		         'labels' => ['overflow' => 'justify']
 		      ],
 			'series' => $chartAwario->getSeries('countByCategoryInAwario'),

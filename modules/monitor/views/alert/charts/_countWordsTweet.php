@@ -9,6 +9,7 @@ $twitter_icon = Icon::show('twitter', ['class'=>'fa-2x','style' =>'color:#00ACEE
 		<div class="col-md-12">
 			<?php echo  $twitter_icon; ?>	
 		<?=  Highcharts::widget([
+			'id' => 'twitter_pie',
 			'scripts' => ['modules/drilldown'],	
 			  'options' => [
 			  	'chart' => ['type' => 'pie'],
@@ -16,6 +17,21 @@ $twitter_icon = Icon::show('twitter', ['class'=>'fa-2x','style' =>'color:#00ACEE
 				'subtitle' => ['text' => Yii::t('app',"desde la fecha: {$info_head['start_date']} - hasta la fecha: {$info_head['end_date']}")],
 				'plotOptions' =>  [
 					'series' => [
+						'cursor' => 'pointer',
+						'point' => [
+							'events' =>[
+								'click' => new \yii\web\JsExpression('function(e){
+									var point_name = e.point.name;
+									if(point_name !== null){
+										var name = point_name.split(":");
+										var table = $("#twitter").DataTable();
+										table.search(name[1]).draw();
+									}
+								}
+								
+								'),
+							],
+						],
 						'dataLabels' => [
 							'enabled' => true,
 			                'format' => "{point.name}: {point.y} <br/> {point.percentage:.1f}%"

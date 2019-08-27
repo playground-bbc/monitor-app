@@ -15,6 +15,17 @@ use yii\helpers\Html;
 				'subtitle' => ['text' => Yii::t('app',"desde la fecha: {$info_head['start_date']} - hasta la fecha: {$info_head['end_date']}")],
 				'plotOptions' =>  [
 					'series' => [
+						'cursor' => 'pointer',
+		      			'point' => [
+							'events' =>[
+								'click' => new \yii\web\JsExpression('function(e){
+									var table = $("#web").DataTable();
+									table.search(this.category).draw();
+								}
+								
+								'),
+							],
+						],
 						'dataLabels' => [
 							'enabled' => true,
 			                'format' => "{point.name}: {point.y} <br/> {point.percentage:.1f}%"

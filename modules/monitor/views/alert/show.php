@@ -58,27 +58,17 @@ $info_head = [
 	<!-- Live Chat !-->
 	<?php if(isset($model['liveChat'])): ?>
 	 	<div class="row">
-	 		<div class="col-md-12">
+	 		<div class="col-md-6">
 				<!-- Live chat countByCategory </!-->
 			 	<?php if ($chartCategories->getCategories('countByCategoryInLiveChat')): ?>
 					<?=$this->render('charts/_countByCategoryInLive',['chartCategories' => $chartCategories,'info_head' => $info_head]); ?>
 			 	<?php endif ?>
 	 		</div>
-	 	</div>
-		<div class="row">
-			<div class="col-md-6">
+	 		<div class="col-md-6">
 				<!-- count words live </!-->
 			 	<?=$this->render('charts/_countWordsLive',['chartWords' => $chartWords,'info_head' => $info_head]); ?>
 			</div>
-			<div class="col-md-6">
-				<!-- total ticket Live </!-->
-			 	<?php if (isset($model['liveChat'])): ?>
-			 		<?php if (isset($model['liveChat']['total'])): ?>
-						<?=$this->render('charts/_totalTicektLive',['chartLive' => $chartLive,'info_head' => $info_head]) ?>
-			 		<?php endif ?>
-			 	<?php endif ?>
-			</div>
-		</div>
+	 	</div>
 	 	<div class="row">
 	 		<div class="col-md-12">
 	 			<!-- count sentences Live </!-->
@@ -89,7 +79,16 @@ $info_head = [
 			 	<?php endif ?>
 	 		</div>
 	 	</div>
-	 	
+		<div class="row">
+			<div class="col-md-12">
+				<!-- total ticket Live </!-->
+			 	<?php if (isset($model['liveChat'])): ?>
+			 		<?php if (isset($model['liveChat']['total'])): ?>
+						<?=$this->render('charts/_totalTicektLive',['chartLive' => $chartLive,'info_head' => $info_head]) ?>
+			 		<?php endif ?>
+			 	<?php endif ?>
+			</div>
+		</div>
 	 	<hr>
 	<?php endif ?>
 	<!-- live_conversations !-->

@@ -269,13 +269,22 @@ class BaseApi extends Model
 				if(!empty($object[$o]['statuses'])){
 					for ($s =0; $s < sizeof($object[$o]['statuses']) ; $s++){
 						$tweets[$product][$index]['source'] = self::TWITTER;
-						if(count($object[$o]['statuses'][$s]['entities']['urls'])){
+						
+						
+						if(isset($object[$o]['statuses'][$s]['entities']['urls'][0])){
 							$tweets[$product][$index]['url'] = $object[$o]['statuses'][$s]['entities']['urls'][0]['url'];
 						}else{
 							$tweets[$product][$index]['url'] = '-';
 						}
+
+						if(array_key_exists('place', $object[$o])){
+							if(!is_null($object[$o]['place'])){
+								$tweets[$product][$index]['location'] = $object[$o]['place']['country'];
+							}
+						}else{
+							$tweets[$product][$index]['location'] = "-";
+						}
 						
-						$tweets[$product][$index]['location'] = $object[$o]['statuses'][$s]['user']['location'];
 						$tweets[$product][$index]['created_at'] = $object[$o]['statuses'][$s]['created_at'];
 						$tweets[$product][$index]['author_name'] = $object[$o]['statuses'][$s]['user']['name'];
 						$tweets[$product][$index]['author_username'] = $object[$o]['statuses'][$s]['user']['screen_name'];

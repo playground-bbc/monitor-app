@@ -2,15 +2,19 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 
+
+$target = '"_blank"';
  ?>
 
 <?= Html::a('Export Excel', ['excel-tweets','alertId' => $alertId,'resource_name' => 'tweets'], ['class' => 'btn btn-success','target' => '_blank']) ?>
 <hr>
  <?= \nullref\datatable\DataTable::widget([
+    'id' => 'twitter',
     'data' => $sentences,
     'scrollY' => '400px',
     'scrollCollapse' => true,
     'tableOptions' => [
+        'id' => 'twitter',
         'class' => 'table table-striped',
     ],
     'columns' => [
@@ -34,11 +38,11 @@ use yii\helpers\Url;
             'render' => new \yii\web\JsExpression('function(data, type, row, meta) { 
                 var link = "-";
                 if(row.url.length > 1){
+                    var href = "<a href=";
                     var url = row.url;
-                    var cadena = "<a href=";
-                    
-                    var cadena2 = ">link</a>";
-                    link = cadena.concat(url,cadena2);
+                    var target =   " target=" + '.$target.'
+                    var text = ">link</a>";
+                    link = href.concat(url,target ,text);
                     return link;
                 }
                 return link;
@@ -46,4 +50,17 @@ use yii\helpers\Url;
         ]
     ],
 ]) ?>
+
+<?php 
+use yii\web\View; 
+$this->registerJs('
+    $("#twitter_wrapper").on( "init.dt", function ( e, settings ) {
+    var api = new $.fn.dataTable.Api( settings );
+ 
+    console.log( "New DataTable created:", api.table().node() );
+} );
+    ',
+    View::POS_READY);
+
+?>
 

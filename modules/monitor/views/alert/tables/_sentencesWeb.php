@@ -4,10 +4,12 @@ use yii\data\ArrayDataProvider;
  ?>
 
  <?= \nullref\datatable\DataTable::widget([
+    'id' => 'web',
     'data' => $sentences,
     'scrollY' => '400px',
     'scrollCollapse' => true,
     'tableOptions' => [
+        'id' => 'web',
         'class' => 'table table-striped',
     ],
     'columns' => [

@@ -23,6 +23,25 @@ Icon::map($this, Icon::WHHG);
 			      'xAxis' => [
 			         'categories' => $chartCategories->getCategories('count_category_conversations'),
 			      ],
+			      'plotOptions' => [
+				      	'series' => [
+				      		'cursor' => 'pointer',
+				      		'point' => [
+									'events' =>[
+										'click' => new \yii\web\JsExpression('function(e){
+											var table = $("#live_conversation").DataTable();
+											table.search(this.category).draw();
+											
+										}
+										
+										'),
+									],
+								],
+				      		'dataLabels' => [
+				      			'enabled' => true
+				      		]
+				      	],
+				      ],
 			      'yAxis' => [
 			         'title' => ['text' => 'Live Chat Data']
 			      ],

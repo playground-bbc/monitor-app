@@ -6,10 +6,12 @@ use yii\helpers\Url;
 <?= Html::a('Export Excel', ['excel-awario','alertId' => $alertId,'resource_name' => 'awario'], ['class' => 'btn btn-success','target' => '_blank']) ?>
  <hr>
  <?= \nullref\datatable\DataTable::widget([
+    'id' => 'awario',
     'data' => $sentences,
     'scrollY' => '400px',
     'scrollCollapse' => true,
     'tableOptions' => [
+        'id' => 'awario',
         'class' => 'table table-striped',
     ],
     'columns' => [
