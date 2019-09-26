@@ -247,7 +247,7 @@ class AlertController extends \yii\web\Controller
           'start_date' => $start_date,
           'end_date' => $end_date,
       ]; 
-      $free_word['Palabras Libres'] =  $words['Palabras Libres'];
+      $free_word['Palabras Libres'] =  (isset($words['Palabras Libres'])) ? $words['Palabras Libres'] : '';
       $web = [
         'alertId' => $nameAlert,
         'words' => $free_word,

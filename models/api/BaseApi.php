@@ -40,16 +40,16 @@ class BaseApi extends Model
 	const LIVECHAT = 'LIVECHAT';
 
 	const COLOR = [
-		'Palabras Libres' => '#a7d8f2',
-		'MH Series' => '#f27979',
+		'Palabras Libres'     => '#a7d8f2',
+		'MH Series'           => '#f27979',
 		'Positivos MH Series' => '#cddb65',
 		'Negativos MH Series' => '#a1050d',
-		'Buenas' => '#55e6c9',
-		'Malas' => '#f7978f',
-		'Kws Positivos' => '#c66aee',
-		'Kws Negativos' => '#e39b0b',
-		'Frases Negativas' => '#fadc91',
-		'Frases Positivas' => '#07e8a1',
+		'Buenas'              => '#55e6c9',
+		'Malas'               => '#f7978f',
+		'Kws Positivos'       => '#c66aee',
+		'Kws Negativos'       => '#e39b0b',
+		'Frases Negativas'    => '#fadc91',
+		'Frases Positivas'    => '#07e8a1',
 	];
 	
 	/**

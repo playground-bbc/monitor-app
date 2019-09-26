@@ -150,7 +150,8 @@ class LiveChatApi extends Model
      * @return [type]         [description]
      */
     private function _get($params)
-    {
+    {   
+        sleep(1);
         if ($this->_liveChat->status->get()) {
             return $this->_liveChat->tickets->get($params);
         }
