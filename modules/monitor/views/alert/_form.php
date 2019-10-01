@@ -14,6 +14,7 @@ use kartik\select2\Select2;
 use kartik\date\DatePicker;
 use kartik\file\FileInput;
 use pudinglabs\tagsinput\TagsinputWidget;
+//use kartik\spinner\Spinner;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\LiveChat */
@@ -179,9 +180,11 @@ $this->params['breadcrumbs'][] = $this->title;
 		</div>
 		
 	    <div class="form-group">
-	        <?= Html::submitButton('Submit', ['class' => 'btn btn-primary',
-	        								'id' => 'form-button',
-	        								]) ?>
+	        <?= Html::submitButton(Yii::t('app', 'Submit'), [
+	        			'id' => 'form-button',
+	        			'class' => 'btn btn-primary',
+	        			'loading-text' => "<i class='fa fa-spinner fa-spin '></i> Processing Order"
+	        		]) ?>
 	    </div>
 	</div>
 
@@ -202,10 +205,25 @@ $uuid = '';
 
 $this->registerJs('
 
+$("#form-button").click(function(){
+    var $this = $(this);
+	var  start_date = $("#searchform-start_date").val()
+	var  start_end  = $("#searchform-end_date").val()
+	var products = $("#searchform-products").val();
+	var  resource   = $("#social_resources").val()
+	if((start_date && start_end) && (products && resource )){
+		console.log("hii..")
+		$this.button("loading");
+	}else{
+		console.log("reset..");
+		$this.button("reset");
+	}
+	
+});
 
 function callSendProducts(){
 	var products = $("#searchform-products").val();
-	if(products.length){
+	if(products){
 		for(p = 0; p < products.length; p ++){
 			sendProducts(products[p]);
 
